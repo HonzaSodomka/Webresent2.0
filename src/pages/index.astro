@@ -1,0 +1,456 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Webresent - Reprezentativní weby na míru">
+  <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
+
+    <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+
+        <div class="flex flex-col items-start text-left fade-in-up">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm 2xl:text-base text-blue-700 mb-8 2xl:mb-10 font-semibold">
+            <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
+            </span>
+            Přijímám nové projekty
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl md:text-7xl 2xl:text-[5.5rem] font-extrabold tracking-tighter text-zinc-900 leading-[0.95] mb-6 2xl:mb-8">
+            Prémiové <br />
+            weby, které <br />
+            <span class="text-blue-600">vydělávají.</span>
+          </h1>
+
+          <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 mb-10 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
+            Stavím weby s důrazem na detail. Špičková rychlost, čistý minimalismus a technické SEO, díky kterému vás klienti najdou dřív než konkurenci.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="/portfolio" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+              Ukázky práce
+            </a>
+            <a href="/objednavka" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-white border-2 border-zinc-200 text-zinc-900 font-bold text-center hover:border-zinc-300 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200 transition-all duration-300 hover:-translate-y-0.5">
+              Nezávazná poptávka
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-0 mt-4 lg:mt-0 h-fit">
+
+          <div class="col-span-1 sm:col-span-2 bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 fade-in-up group" style="animation-delay: 0.1s;">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase">Špičkový výkon</h2>
+              <span class="px-3 py-1 bg-zinc-100 text-zinc-800 font-bold text-xs 2xl:text-sm rounded-full">Blesková odezva</span>
+            </div>
+            <div class="w-full bg-zinc-100 rounded-full h-2.5 mb-4 overflow-hidden relative" aria-hidden="true">
+              <div class="bg-blue-600 h-full rounded-full w-full speed-bar origin-left relative overflow-hidden">
+                <div class="absolute inset-0 w-full h-full shimmer-effect"></div>
+              </div>
+            </div>
+            <p class="text-zinc-900 font-bold text-lg 2xl:text-xl">Zlomky vteřin rozhodují.</p>
+            <p class="text-zinc-500 text-sm mt-1 font-medium">Optimalizovaný kód, který nenechá zákazníka čekat a sníží míru opuštění webu.</p>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 fade-in-up relative overflow-hidden flex flex-col justify-between group" style="animation-delay: 0.2s;">
+            <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase mb-2 z-10">Responzivita</h2>
+
+            <div class="relative w-full max-w-[200px] mx-auto h-[160px] 2xl:scale-[1.05] origin-center transition-transform my-3">
+              <div class="absolute right-0 top-1 z-0 group-hover:-translate-y-2 transition-transform duration-500">
+                <div class="w-[120px] h-[80px] border-[4px] border-[#27272a] rounded-xl bg-white shadow-sm overflow-hidden flex flex-col">
+                  <div class="h-2.5 w-full border-b border-zinc-200 bg-zinc-50 flex items-center px-1.5 gap-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div><div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div><div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div>
+                  </div>
+                  <div class="p-1.5 flex flex-col gap-1.5">
+                    <div class="w-3/4 h-1.5 bg-zinc-200 rounded-full"></div><div class="w-1/2 h-1.5 bg-zinc-200 rounded-full"></div><div class="w-full h-6 mt-1 bg-blue-50 border border-blue-100 rounded-sm"></div>
+                  </div>
+                </div>
+                <div class="w-[12px] h-[8px] bg-[#27272a] mx-auto"></div><div class="w-[40px] h-[4px] bg-[#27272a] rounded-full mx-auto"></div>
+              </div>
+
+              <div class="absolute left-0 bottom-0 w-[80px] h-[150px] border-[4px] border-[#27272a] rounded-[20px] bg-white overflow-hidden shadow-xl group-hover:scale-105 transition-all duration-500 z-10" aria-hidden="true">
+                <div class="absolute top-[4px] left-1/2 -translate-x-1/2 w-[24px] h-[6px] bg-[#27272a] rounded-full z-20"></div>
+                <div class="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[30px] h-[2.5px] bg-[#27272a] rounded-full z-20 opacity-90"></div>
+                <div class="w-full h-full relative z-10 pt-4 pb-3 px-2 overflow-hidden">
+                  <div class="flex flex-col gap-2 w-full visible-scroll-content">
+                    <div class="flex justify-between items-center"><div class="w-4 h-1.5 bg-[#27272a] rounded-full"></div><div class="flex flex-col gap-[2px]"><div class="w-3 h-[1px] bg-[#27272a]"></div><div class="w-3 h-[1px] bg-[#27272a]"></div></div></div>
+                    <div class="w-full h-[36px] bg-zinc-50 rounded-lg flex items-center justify-center border border-zinc-100 group-hover:bg-blue-50 transition-colors duration-500"><div class="w-5 h-5 bg-blue-600 rounded-full group-hover:scale-110 transition-transform duration-500"></div></div>
+                    <div class="w-full flex flex-col gap-1 items-start"><div class="w-[85%] h-2 bg-[#27272a] rounded-full"></div><div class="w-full h-1 bg-zinc-200 rounded-full mt-0.5"></div><div class="w-[75%] h-1 bg-zinc-200 rounded-full"></div></div>
+                    <div class="w-3/5 h-3 bg-blue-600 rounded-full"></div>
+                    <div class="flex gap-1 mt-1"><div class="w-1/2 h-8 bg-zinc-50 rounded-md border border-zinc-100"></div><div class="w-1/2 h-8 bg-zinc-50 rounded-md border border-zinc-100"></div></div>
+                    <div class="w-full h-8 bg-zinc-100 rounded-lg mt-0.5"></div><div class="w-2/3 h-1.5 bg-[#27272a] rounded-full mt-1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-zinc-900 font-bold z-10 text-center text-sm">Plynulý zážitek <br/> na každém displeji.</p>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 fade-in-up flex flex-col justify-between group overflow-hidden" style="animation-delay: 0.3s;">
+            <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase mb-4 z-10">SEO Architektura</h2>
+            <div class="w-full relative mb-2 z-0 flex flex-col gap-3">
+              <div class="w-full bg-zinc-50 border border-zinc-200 rounded-full h-9 flex items-center px-3 shadow-inner">
+                <svg class="w-3.5 h-3.5 text-zinc-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <div id="typewriter-wrapper" class="flex items-center flex-1 overflow-hidden">
+                  <span id="typewriter-text" class="text-xs font-semibold text-zinc-700 whitespace-nowrap"></span>
+                  <span class="w-[2px] h-3.5 bg-blue-600 ml-[1px] animate-cursor-blink flex-shrink-0"></span>
+                </div>
+              </div>
+              <div class="w-full bg-white border border-blue-100 rounded-xl p-3 shadow-[0_4px_20px_-4px_rgba(37,99,235,0.12)] transform transition-transform duration-500 group-hover:scale-[1.03] relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-4 h-4 rounded-full bg-blue-100 flex items-center justify-center"><div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div></div>
+                  <div class="text-[10px] font-bold text-zinc-900">Váš nový web</div>
+                  <div class="text-[9px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-sm ml-auto uppercase tracking-wider">Pozice #1</div>
+                </div>
+                <div class="w-4/5 h-2 bg-zinc-200 rounded-full mb-1.5"></div><div class="w-1/2 h-2 bg-zinc-100 rounded-full"></div>
+              </div>
+            </div>
+            <p class="text-zinc-900 font-bold text-center z-10 text-sm mt-1">Zkonstruováno pro <br/> přední pozice.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full flex items-center justify-center py-12 lg:py-16 2xl:py-24 scroll-reveal">
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+      <div class="w-2 h-2 rounded-full bg-zinc-300 mx-4"></div>
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+    </div>
+
+    <section>
+      <div class="text-center mb-12 2xl:mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Nelepím šablony.<br/>Píšu čistý kód.</h2>
+        <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl mx-auto">Většina agentur vám prodá pomalý WordPress s předpřipravenou šablonou. Já stavím weby od nuly, aby byly bezpečné, bleskové a naprosto unikátní.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div class="bg-zinc-50 border border-zinc-200 rounded-3xl p-6 lg:p-8 2xl:p-10 scroll-reveal">
+          <h3 class="text-lg 2xl:text-xl font-bold text-zinc-900 mb-6 flex items-center gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-zinc-200 text-zinc-500">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </span>
+            Běžný šablonový web
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-zinc-600 text-sm 2xl:text-base">
+              <svg class="w-5 h-5 text-zinc-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Pomalé načítání</strong> kvůli tisícům řádků zbytečného kódu.</span>
+            </li>
+            <li class="flex items-start gap-3 text-zinc-600 text-sm 2xl:text-base">
+              <svg class="w-5 h-5 text-zinc-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Bezpečnostní rizika</strong> a nutnost neustále aktualizovat pluginy.</span>
+            </li>
+            <li class="flex items-start gap-3 text-zinc-600 text-sm 2xl:text-base">
+              <svg class="w-5 h-5 text-zinc-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Tuctový design</strong>, který má dalších tisíc firem na internetu.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-zinc-900 rounded-3xl p-6 lg:p-8 2xl:p-10 shadow-lg scroll-reveal border border-zinc-800 delay-100">
+          <h3 class="text-lg 2xl:text-xl font-bold text-white mb-6 flex items-center gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+            </span>
+            Kód na míru (Webresent)
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-zinc-300 text-sm 2xl:text-base">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Plynulost a rychlost</strong> díky využití moderních technologií.</span>
+            </li>
+            <li class="flex items-start gap-3 text-zinc-300 text-sm 2xl:text-base">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Neprůstřelná bezpečnost</strong>, žádné databáze k hacknutí.</span>
+            </li>
+            <li class="flex items-start gap-3 text-zinc-300 text-sm 2xl:text-base">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Unikátní vizuál</strong> navržený přesně pro váš brand a cílovku.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full flex items-center justify-center py-12 lg:py-16 2xl:py-24 scroll-reveal">
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+      <div class="w-2 h-2 rounded-full bg-zinc-300 mx-4"></div>
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+    </div>
+
+    <section>
+      <div class="mb-12 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Jak to bude probíhat?</h2>
+        <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Žádný chaos. Od prvního e-mailu až po spuštění webu vás provedu jasným a srozumitelným procesem.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+        <div class="hidden lg:block absolute top-8 left-10 right-10 h-0.5 bg-zinc-100 -z-10"></div>
+
+        <div class="bg-white rounded-3xl p-6 lg:p-8 border border-zinc-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 scroll-reveal">
+          <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 font-bold flex items-center justify-center text-lg mb-6 border border-blue-100">1</div>
+          <h3 class="text-lg font-bold text-zinc-900 mb-2">Poptávka & Strategie</h3>
+          <p class="text-zinc-600 text-sm leading-relaxed">Pochopím váš byznys. Pobavíme se o vašich cílech, pro koho web děláme a co od něj očekáváte.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 lg:p-8 border border-zinc-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 scroll-reveal" style="transition-delay: 50ms;">
+          <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 font-bold flex items-center justify-center text-lg mb-6 border border-blue-100">2</div>
+          <h3 class="text-lg font-bold text-zinc-900 mb-2">Návrh a UX Design</h3>
+          <p class="text-zinc-600 text-sm leading-relaxed">Navrhnu moderní uživatelské rozhraní, které vaše zákazníky intuitivně dovede až k nákupu či poptávce.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 lg:p-8 border border-zinc-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 scroll-reveal" style="transition-delay: 100ms;">
+          <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 font-bold flex items-center justify-center text-lg mb-6 border border-blue-100">3</div>
+          <h3 class="text-lg font-bold text-zinc-900 mb-2">Precizní kódování</h3>
+          <p class="text-zinc-600 text-sm leading-relaxed">Oživím design. Napíšu čistý kód, nastavím technické SEO a vyladím web tak, aby běžel rychlostí blesku.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 lg:p-8 border border-zinc-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 scroll-reveal" style="transition-delay: 150ms;">
+          <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-lg mb-6 shadow-md border border-blue-500">4</div>
+          <h3 class="text-lg font-bold text-zinc-900 mb-2">Spuštění a Růst</h3>
+          <p class="text-zinc-600 text-sm leading-relaxed">Web otestujeme na všech zařízeních, nasadíme na ostrou doménu a vy můžete začít oslovovat klienty.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full flex items-center justify-center py-12 lg:py-16 2xl:py-24 scroll-reveal">
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+      <div class="w-2 h-2 rounded-full bg-zinc-300 mx-4"></div>
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+    </div>
+
+    <section>
+      <div class="mb-12 2xl:mb-16 scroll-reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Výsledky mluví za vše</h2>
+          <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Kvalita je pro mě víc než kvantita. Podívejte se pod pokličku mého projektu a zjistěte, jak vypadá web, když se dělá pořádně.</p>
+        </div>
+        <a href="/portfolio" data-astro-prefetch class="inline-flex items-center gap-2 text-blue-600 font-bold text-lg 2xl:text-xl hover:text-blue-700 transition-colors shrink-0 group">
+          Zobrazit portfolio
+          <svg class="w-5 h-5 2xl:w-6 2xl:h-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <div class="bg-white border border-zinc-200 rounded-[2rem] p-6 lg:p-10 2xl:p-12 shadow-sm hover:shadow-xl transition-all duration-500 scroll-reveal flex flex-col xl:flex-row gap-10 lg:gap-16 items-center">
+        
+        <div class="w-full xl:w-[55%] relative flex justify-start sm:justify-center order-1 xl:order-2 mb-4 xl:mb-0">
+          
+          <div class="relative w-full sm:w-[90%] pb-6 sm:pb-12 pt-2">
+            
+            <div class="w-[85%] rounded-xl shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] border border-zinc-200/80 bg-white overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative z-10 group cursor-pointer">
+              <div class="h-8 sm:h-10 bg-zinc-50 border-b border-zinc-200/80 flex items-center px-3 sm:px-4 gap-2 relative">
+                <div class="flex gap-1.5 sm:gap-2">
+                  <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-300"></div>
+                  <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-300"></div>
+                  <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-zinc-300"></div>
+                </div>
+                <div class="absolute left-1/2 -translate-x-1/2 bg-white border border-zinc-200 rounded-md px-3 py-1 hidden sm:flex items-center gap-2 shadow-sm">
+                  <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                  <span class="text-[10px] text-zinc-500 font-medium">americapodvezi.cz</span>
+                </div>
+              </div>
+              <div class="w-full aspect-[1842/923] bg-zinc-100 overflow-hidden relative">
+                <img src="/images/america-pod-vezi-desktop.webp" alt="Desktop design" class="w-full h-full object-cover object-top" loading="lazy" />
+              </div>
+            </div>
+
+            <div class="w-[32%] sm:w-[28%] max-w-[180px] absolute right-0 sm:right-4 bottom-0 rounded-[1.2rem] sm:rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[4px] sm:border-[8px] border-zinc-900 bg-zinc-900 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-105 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] z-20 cursor-pointer">
+              <div class="w-full aspect-[944/2046] bg-zinc-100 overflow-hidden relative rounded-[0.8rem] sm:rounded-[1.4rem]">
+                <img src="/images/america-pod-vezi-mobile.webp" alt="Mobilní design" class="w-full h-full object-cover object-top" loading="lazy" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="w-full xl:w-[45%] flex flex-col items-start relative z-10 order-2 xl:order-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 text-sm 2xl:text-base font-bold text-zinc-600 mb-6 tracking-wide uppercase">
+            Případová studie
+          </div>
+          
+          <h3 class="text-2xl sm:text-3xl 2xl:text-4xl font-extrabold text-zinc-900 mb-4">Restaurace America Pod Věží</h3>
+          
+          <p class="text-zinc-600 text-base 2xl:text-lg mb-6 leading-relaxed font-medium">
+            Původní statický web byl bez certifikátu, pod útokem spamových botů a na telefonu se nedal ovládat. Navrhl jsem bezpečné řešení šité na míru smartphonům, kde zákazníci hledají restaurace nejčastěji.
+          </p>
+
+          <p class="text-zinc-600 text-base 2xl:text-lg mb-10 leading-relaxed font-medium">
+            Kromě webu, který automaticky stahuje denní menu a šetří čas, jsem pro klienta zajistil a plně zoptimalizoval Google Firemní profil pro maximální lokální dohledatelnost.
+          </p>
+          
+          <a href="/portfolio" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto shadow-md">
+            Prohlédnout detail
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24 scroll-reveal">
+      <div class="bg-zinc-900 rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 text-center shadow-xl flex flex-col items-center">
+        
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-white mb-6 tracking-tight">
+          Zaujala vás moje práce? <br class="hidden sm:block" />
+          Pojďme probrat váš projekt.
+        </h2>
+        
+        <p class="text-zinc-400 text-base sm:text-lg 2xl:text-xl max-w-2xl mx-auto mb-8 sm:mb-10 font-medium leading-relaxed">
+          Žádné složité procesy a nesmyslné schůzky. Napíšete mi, co potřebujete, a já vám obratem navrhnu řešení, které bude fungovat a prodávat.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <a href="/objednavka" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-white text-zinc-900 font-bold text-center hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 focus:ring-offset-zinc-900 transition-all duration-300 hover:-translate-y-0.5">
+            Nezávazná poptávka
+          </a>
+          <a href="/cenik" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-transparent border-2 border-zinc-700 text-white font-bold text-center hover:border-zinc-500 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 focus:ring-offset-zinc-900 transition-all duration-300 hover:-translate-y-0.5">
+            Zobrazit ceník
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* Hero: mobil = min-height, lg+ = přesná výška viewportu zamčená vůči vw */
+  #hero {
+    min-height: 100svh;
+  }
+  @media (min-width: 1024px) {
+    #hero {
+      height: var(--locked-vh, 100svh);
+      min-height: unset;
+    }
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .speed-bar {
+    transform: scaleX(0);
+    animation: fillSpeed 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+  }
+  @keyframes fillSpeed {
+    to { transform: scaleX(1); }
+  }
+
+  .shimmer-effect {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 2.5s infinite 1.5s;
+  }
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  .visible-scroll-content {
+    animation: visibleBob 7s ease-in-out infinite;
+  }
+  @keyframes visibleBob {
+    0%, 15% { transform: translateY(0); }
+    45%, 55% { transform: translateY(-40px); }
+    85%, 100% { transform: translateY(0); }
+  }
+
+  .animate-cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+
+    // --- Zamčení vh vůči šířce okna (lišta prohlížeče hero netrkne) ---
+    let lastVw = window.innerWidth;
+
+    function setLockedVh() {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 0;
+      document.documentElement.style.setProperty(
+        '--locked-vh',
+        `${window.innerHeight - headerHeight}px`
+      );
+    }
+
+    setLockedVh();
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth !== lastVw) {
+        lastVw = window.innerWidth;
+        setLockedVh();
+      }
+    }, { passive: true });
+
+    // --- Typewriter ---
+    const textElement = document.getElementById('typewriter-text');
+    const wrapperElement = document.getElementById('typewriter-wrapper');
+
+    if (textElement && !textElement.dataset.init) {
+      textElement.dataset.init = 'true';
+
+      const phrases = [
+        "tvorba prémiových webů na míru",
+        "jak zvýšit prodeje z firemního webu",
+        "profesionální webdesign a kódování",
+        "bleskově rychlý web pro váš byznys",
+      ];
+
+      let phraseIndex = 0, charIndex = 0, isDeleting = false, typingSpeed = 80;
+
+      function type() {
+        if (!textElement) return;
+
+        const currentPhrase = phrases[phraseIndex];
+        textElement.textContent = currentPhrase.substring(0, isDeleting ? --charIndex : ++charIndex);
+        if (wrapperElement) wrapperElement.scrollLeft = wrapperElement.scrollWidth;
+
+        if (!isDeleting && charIndex === currentPhrase.length) { typingSpeed = 2500; isDeleting = true; }
+        else if (isDeleting && charIndex === 0)                { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typingSpeed = 500; }
+        else                                                   { typingSpeed = isDeleting ? 30 : 80; }
+
+        setTimeout(type, typingSpeed);
+      }
+      setTimeout(type, 1000);
+    }
+
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+  });
+</script>
