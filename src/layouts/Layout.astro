@@ -41,6 +41,14 @@ const { title } = Astro.props;
 		<Footer />
 
 		<script>
+			// Oprava TypeScript chyby pro objekt window (declare global window)
+			declare global {
+				interface Window {
+					lenis: any;
+					Lenis: any;
+				}
+			}
+
 			// Inicializace Lenis smooth scrollingu
 			document.addEventListener('astro:page-load', () => {
 				if (window.lenis) {
@@ -48,13 +56,13 @@ const { title } = Astro.props;
 				}
 
 				// Rychlejší a responzivnější nastavení scrollování (lerp místo pevné duration)
-				window.lenis = new Lenis({
+				window.lenis = new window.Lenis({
 					lerp: 0.15, // 0.1 je default, 0.15 je rychlejší a snappier
 					wheelMultiplier: 1.2, // Kolečko myši teď posune stránku o něco dál
 					smoothWheel: true,
 				});
 
-				function raf(time) {
+				function raf(time: number) {
 					window.lenis.raf(time);
 					requestAnimationFrame(raf);
 				}
