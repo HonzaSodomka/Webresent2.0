@@ -11,46 +11,49 @@ const navItems = [
 ];
 ---
 
-<footer class="bg-zinc-900 border-t border-zinc-800">
-  <div class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 py-8">
-    
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="w-full flex justify-center px-4 sm:px-6 pb-6 sm:pb-8 pt-4">
+  <!-- Plovoucí ostrov se zachováním původního obsahu a šířky -->
+  <footer class="w-full max-w-6xl 2xl:max-w-7xl bg-zinc-900 border border-zinc-800 rounded-[2rem] shadow-xl overflow-hidden">
+    <div class="px-6 py-8 sm:px-10">
       
-      <!-- Brand & Name -->
-      <div class="flex flex-col items-center md:items-start">
-        <a href="/" class="text-xl font-bold text-white">
-          Webresent<span class="text-blue-500">.</span>
-        </a>
-        <span class="text-sm font-bold text-zinc-400 mt-0.5 tracking-wide">Bc. Jan Sodomka</span>
-      </div>
-
-      <!-- Horizontal Nav -->
-      <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3">
-        {navItems.map(item => (
-          <a href={item.href} class="text-sm font-semibold text-zinc-400 hover:text-white transition-colors">
-            {item.label}
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        
+        <!-- Brand & Name -->
+        <div class="flex flex-col items-center md:items-start">
+          <a href="/" class="text-xl font-bold text-white">
+            Webresent<span class="text-blue-500">.</span>
           </a>
-        ))}
-      </nav>
+          <span class="text-sm font-bold text-zinc-400 mt-0.5 tracking-wide">Bc. Jan Sodomka</span>
+        </div>
 
-      <!-- Contact -->
-      <div class="flex items-center">
-        <a href="mailto:h.sodomka@seznam.cz" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-800 border border-zinc-700 text-sm font-bold text-zinc-300 hover:border-blue-500 hover:text-white hover:bg-zinc-700 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
-          <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          h.sodomka@seznam.cz
-        </a>
+        <!-- Horizontal Nav -->
+        <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3">
+          {navItems.map(item => (
+            <a href={item.href} class="text-sm font-semibold text-zinc-400 hover:text-white transition-colors">
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <!-- Contact -->
+        <div class="flex items-center">
+          <a href="mailto:h.sodomka@seznam.cz" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-800 border border-zinc-700 text-sm font-bold text-zinc-300 hover:border-blue-500 hover:text-white hover:bg-zinc-700 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
+            <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            h.sodomka@seznam.cz
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium text-zinc-500">
+        <p>&copy; {currentYear} Webresent. Všechna práva vyhrazena.</p>
+        <div class="flex gap-6">
+          <a href="/ochrana-udaju" class="hover:text-zinc-300 transition-colors">Ochrana údajů</a>
+          <a href="/obchodni-podminky" class="hover:text-zinc-300 transition-colors">Obchodní podmínky</a>
+        </div>
       </div>
 
     </div>
-
-    <!-- Bottom bar -->
-    <div class="mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium text-zinc-500">
-      <p>&copy; {currentYear} Webresent. Všechna práva vyhrazena.</p>
-      <div class="flex gap-6">
-        <a href="/ochrana-udaju" class="hover:text-zinc-300 transition-colors">Ochrana údajů</a>
-        <a href="/obchodni-podminky" class="hover:text-zinc-300 transition-colors">Obchodní podmínky</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
+  </footer>
+</div>
