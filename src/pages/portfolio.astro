@@ -3,21 +3,23 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Portfolio | Webresent">
-  <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 pt-32 pb-24 overflow-hidden">
+  <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 pt-12 lg:pt-0 pb-24 overflow-hidden">
     
-    <!-- HEADER -->
-    <header class="max-w-3xl mb-16 sm:mb-24 fade-in-up">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm font-semibold text-blue-700 mb-6">
-        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-        Ukázky práce
+    <!-- HEADER (Added min-height to match Hero section on main page) -->
+    <header class="max-w-3xl mb-16 sm:mb-24 fade-in-up min-h-[50svh] lg:min-h-[unset] lg:mt-24 2xl:mt-32 flex flex-col justify-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm font-semibold text-blue-700 mb-6">
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          Ukázky práce
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-zinc-900 leading-[1.05] mb-6">
+          Když se spojí <br/>
+          <span class="text-blue-600">design a výkon.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-zinc-600 leading-relaxed font-medium">
+          Prohlédněte si weby, které nejen dobře vypadají, ale především plní svůj účel. Bleskové načítání, čistý kód a propracované SEO v praxi.
+        </p>
       </div>
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-zinc-900 leading-[1.05] mb-6">
-        Když se spojí <br/>
-        <span class="text-blue-600">design a výkon.</span>
-      </h1>
-      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed font-medium">
-        Prohlédněte si weby, které nejen dobře vypadají, ale především plní svůj účel. Bleskové načítání, čistý kód a propracované SEO v praxi.
-      </p>
     </header>
 
     <!-- PROJECT 1: AMERICA POD VEZI -->
