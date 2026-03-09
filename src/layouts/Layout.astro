@@ -81,7 +81,7 @@ const { title } = Astro.props;
 					});
 				}, { threshold: 0.1 });
 
-				document.querySelectorAll('.scroll-reveal, .fade-in-up').forEach(el => observer.observe(el));
+				document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 			});
 		</script>
 	</body>
