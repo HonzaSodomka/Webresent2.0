@@ -471,25 +471,6 @@ import Divider from '../components/Divider.astro';
    * JS logice to necháme na starost všude, kde je to potřeba.
    */
 
-  .fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  @keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .scroll-reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   .speed-bar {
     transform: scaleX(0);
     animation: fillSpeed 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
