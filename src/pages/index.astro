@@ -482,7 +482,16 @@ import Layout from '../layouts/Layout.astro';
 
   /* Výchozí CSS pro Hero zbytek */
   #hero {
-    min-height: 100svh;
+    /* Na mobilu necháme přirozenou výšku (dle obsahu a paddingu) */
+    min-height: unset;
+  }
+  @media (min-width: 1024px) {
+    #hero {
+      /* Na PC nastavíme 100svh minus pt-20 (5rem) z body v Layoutu. 
+         Tím přesně vyplní viditelnou část obrazovky pod hlavičkou,
+         aniž by přetekl a byl posunutý dolů. */
+      min-height: calc(100svh - 5rem);
+    }
   }
 
   .fade-in-up {
