@@ -309,6 +309,92 @@ import Layout from '../layouts/Layout.astro';
 
     </section>
 
+    <div class="w-full flex items-center justify-center py-12 lg:py-16 2xl:py-24 scroll-reveal">
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+      <div class="w-2 h-2 rounded-full bg-zinc-300 mx-4"></div>
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+    </div>
+
+    <!-- NOVÁ FAQ SEKCE -->
+    <section class="max-w-3xl mx-auto mb-12 2xl:mb-16 scroll-reveal">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Časté dotazy</h2>
+        <p class="text-zinc-600 text-lg 2xl:text-xl">Vše, co potřebujete vědět před začátkem spolupráce.</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Otázka 1 -->
+        <details class="group bg-white border border-zinc-200 rounded-2xl hover:border-blue-200 transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-zinc-900 font-bold text-lg select-none">
+            Jak si na webu bez šablony upravím texty nebo fotky?
+            <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-600 font-medium leading-relaxed">
+            I když weby programuji od nuly, pro klienty, kteří chtějí často přidávat obsah, je mohu napojit na moderní redakční systémy (např. Sanity CMS). Dostanete jednoduché a přehledné administrační rozhraní v češtině, kde si sami snadno upravíte cokoliv budete potřebovat. Bez rizika, že byste omylem "rozbili" design.
+          </div>
+        </details>
+
+        <!-- Otázka 2 -->
+        <details class="group bg-white border border-zinc-200 rounded-2xl hover:border-blue-200 transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-zinc-900 font-bold text-lg select-none">
+            Za jak dlouho bude můj nový web hotový?
+            <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-600 font-medium leading-relaxed">
+            Jednoduché prezentační weby (landing pages) obvykle spouštím do 2 až 3 týdnů od dodání podkladů. U rozsáhlejších projektů s více podstránkami a specifickými funkcemi se bavíme zhruba o 4 až 6 týdnech. Harmonogram je vždy součástí úvodní cenové nabídky.
+          </div>
+        </details>
+
+        <!-- Otázka 3 -->
+        <details class="group bg-white border border-zinc-200 rounded-2xl hover:border-blue-200 transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-zinc-900 font-bold text-lg select-none">
+            Kolik mě to bude celkově stát?
+            <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-600 font-medium leading-relaxed">
+            Každý projekt oceňuji individuálně na základě jeho rozsahu a náročnosti. Jednoduché weby začínají na částkách okolo 15 000 Kč, zatímco komplexnější firemní prezentace mohou stát od 30 000 Kč výše. Pro detailnější představu si můžete prohlédnout můj <a href="/cenik" class="text-blue-600 font-bold hover:underline">orientační ceník</a>.
+          </div>
+        </details>
+
+        <!-- Otázka 4 -->
+        <details class="group bg-white border border-zinc-200 rounded-2xl hover:border-blue-200 transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-zinc-900 font-bold text-lg select-none">
+            Zajistíte mi i doménu, hosting a údržbu?
+            <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-600 font-medium leading-relaxed">
+            Rozhodně. Zprostředkuji registraci správné domény a web nasadím na moderní a bleskově rychlý hosting. O technický chod stránky se můžu starat dlouhodobě v rámci správy webu, takže vy budete mít zcela bezstarostný provoz.
+          </div>
+        </details>
+        
+        <!-- Otázka 5 -->
+        <details class="group bg-white border border-zinc-200 rounded-2xl hover:border-blue-200 transition-colors duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-zinc-900 font-bold text-lg select-none">
+            Budu potřebovat dodat vlastní texty a fotky?
+            <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-zinc-600 font-medium leading-relaxed">
+            Je ideální, pokud máte vlastní autentické fotografie a základní představu o textech. Pokud je ale nemáte, nic se neděje. Texty dokážu napsat tak, aby oslovily vaši cílovou skupinu a fungovaly i pro vyhledávače (SEO). Obrázky můžeme vyřešit pomocí kvalitních fotobank.
+          </div>
+        </details>
+      </div>
+    </section>
+
     <section class="py-16 lg:py-24 scroll-reveal">
   <div class="bg-zinc-900 rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 text-center shadow-xl flex flex-col items-center">
     
@@ -402,6 +488,25 @@ import Layout from '../layouts/Layout.astro';
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
+
+  /* Animace pro FAQ akordeon */
+  details > div {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+  
+  details[open] > div {
+    grid-template-rows: 1fr;
+    padding-bottom: 1.5rem;
+  }
+  
+  details > div > div {
+    overflow: hidden;
+  }
 </style>
 
 <script>
@@ -471,6 +576,20 @@ import Layout from '../layouts/Layout.astro';
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+    // --- FAQ Accordion Logic (zajištění otevření pouze jednoho naráz) ---
+    const faqs = document.querySelectorAll('details');
+    faqs.forEach(targetDetail => {
+      targetDetail.addEventListener('click', (e) => {
+        // Zabráníme výchozímu otevření, aby fungovala animace z CSS
+        // Ale protože <details> to řeší nativně, stačí jen zavřít ostatní
+        faqs.forEach(detail => {
+          if (detail !== targetDetail && detail.hasAttribute('open')) {
+            detail.removeAttribute('open');
+          }
+        });
+      });
+    });
 
   });
 </script>
