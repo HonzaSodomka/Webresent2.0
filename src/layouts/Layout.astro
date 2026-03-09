@@ -41,19 +41,17 @@ const { title } = Astro.props;
 		<Footer />
 
 		<script>
-			// Inicializace Lenis smooth scrollingu (funguje s Astro ViewTransitions)
+			// Inicializace Lenis smooth scrollingu
 			document.addEventListener('astro:page-load', () => {
-				// Prevent double initialization
 				if (window.lenis) {
 					window.lenis.destroy();
 				}
 
+				// Rychlejší a responzivnější nastavení scrollování (lerp místo pevné duration)
 				window.lenis = new Lenis({
-					duration: 1.2,
-					easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Ostrý, ale plynulý easing
+					lerp: 0.15, // 0.1 je default, 0.15 je rychlejší a snappier
+					wheelMultiplier: 1.2, // Kolečko myši teď posune stránku o něco dál
 					smoothWheel: true,
-					wheelMultiplier: 1,
-					touchMultiplier: 2,
 				});
 
 				function raf(time) {
