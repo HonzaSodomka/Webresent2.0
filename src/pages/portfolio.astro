@@ -104,7 +104,8 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- PROJECT 1: AMERICA POD VEZI -->
-    <section class="mb-24 lg:mb-32 mt-6 lg:mt-0 fade-in-up" style="animation-delay: 0.2s;">
+    <!-- Zmenšen spodní okraj z mb-24 lg:mb-32 na mb-16 lg:mb-20 -->
+    <section class="mb-16 lg:mb-20 mt-6 lg:mt-0 fade-in-up" style="animation-delay: 0.2s;">
       
       <div class="bg-white border border-zinc-200 rounded-[2rem] p-6 lg:p-10 2xl:p-12 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col xl:flex-row gap-10 lg:gap-16 items-center">
 
@@ -186,11 +187,11 @@ import Layout from '../layouts/Layout.astro';
 
     </section>
 
-    <!-- CALL TO ACTION OR MORE PROJECTS (Přidána classa pb-16 lg:pb-24 aby nebyla nalepená na footer) -->
-    <section class="pb-16 lg:pb-24 pt-10">
+    <!-- CALL TO ACTION OR MORE PROJECTS (Zmenšen pt z pt-10 na pt-4 aby nebyla sekce zbytečně daleko od projektu) -->
+    <section class="pb-16 lg:pb-24 pt-4">
       <div class="flex flex-col items-center justify-center fade-in-up" style="animation-delay: 0.3s;">
-        <div class="w-16 h-1 bg-zinc-200 rounded-full mb-8"></div>
-        <h3 class="text-2xl font-extrabold text-zinc-900 mb-4 text-center">Další projekty brzy</h3>
+        <div class="w-16 h-1 bg-zinc-200 rounded-full mb-6"></div>
+        <h3 class="text-2xl font-extrabold text-zinc-900 mb-3 text-center">Další projekty brzy</h3>
         <p class="text-zinc-500 font-medium text-center mb-8 max-w-md">Moje portfolio se neustále rozrůstá. Chcete být dalším úspěšným případem?</p>
         <a href="/objednavka" data-astro-prefetch class="px-8 py-3.5 rounded-full bg-white border-2 border-zinc-200 text-zinc-900 font-bold text-center hover:border-zinc-300 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200 transition-all duration-300 hover:-translate-y-0.5">
           Poptat nezávazně web
