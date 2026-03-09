@@ -5,12 +5,11 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Portfolio | Webresent">
   <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
     
-    <!-- HEADER -->
-    <header class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0 mb-20 sm:mb-24 lg:mb-12">
-      <!-- Používáme úplně stejnou logiku jako na úvodní straně pro výšku -->
-      <div id="portfolio-hero" class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+    <!-- HEADER jako SECTION, přesně jako na HP -->
+    <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
         <!-- Left: Text -->
-        <div class="fade-in-up">
+        <div class="flex flex-col items-start text-left fade-in-up">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm 2xl:text-base font-semibold text-blue-700 mb-8 2xl:mb-10">
             <span class="w-2 h-2 rounded-full bg-blue-600"></span>
             Ukázky práce
@@ -19,7 +18,7 @@ import Layout from '../layouts/Layout.astro';
             Když se spojí <br/>
             <span class="text-blue-600">design a výkon.</span>
           </h1>
-          <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 mb-0 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
+          <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 mb-10 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
             Prohlédněte si weby, které nejen dobře vypadají, ale především plní svůj účel. Bleskové načítání, čistý kód a propracované SEO v praxi.
           </p>
         </div>
@@ -102,7 +101,7 @@ import Layout from '../layouts/Layout.astro';
 
         </div>
       </div>
-    </header>
+    </section>
 
     <!-- PROJECT 1: AMERICA POD VEZI -->
     <section class="mb-24 fade-in-up" style="animation-delay: 0.2s;">
@@ -201,12 +200,12 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  /* Výchozí CSS pro přesné kopírování výšky Hero jako na úvodní straně */
-  header {
+  /* Výchozí CSS pro Hero - ZCELA TOTOŽNÉ s index.astro */
+  #hero {
     min-height: 100svh;
   }
   @media (min-width: 1024px) {
-    header {
+    #hero {
       height: var(--locked-vh, 100svh);
       min-height: unset;
     }
@@ -239,15 +238,14 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    // Stejný script jako na HP pro perfektní uzamčení výšky
+    // Stejný script jako na HP
     let lastVw = window.innerWidth;
     function setLockedVh() {
-      const navHeader = document.querySelector('header'); // Ne tenhle tag <header>, ale ten v Layoutu (navigace)
-      // Navigace má výšku 80px (pt-20 v body, nebo prostě natvrdo odečteme 80)
-      const offset = 80; 
+      const header = document.querySelector('header'); // Navbar v Layoutu
+      const headerHeight = header ? header.offsetHeight : 0;
       document.documentElement.style.setProperty(
         '--locked-vh',
-        `${window.innerHeight - offset}px`
+        `${window.innerHeight - headerHeight}px`
       );
     }
     setLockedVh();
