@@ -2,46 +2,54 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Ochrana osobních údajů">
-  <main class="max-w-3xl mx-auto px-6 py-20 lg:py-32">
+<Layout title="Zásady ochrany osobních údajů">
+  <main class="max-w-4xl mx-auto px-6 py-20 lg:py-32">
     <div class="mb-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm font-bold text-blue-700 mb-6 tracking-wide uppercase">
-        Informace
-      </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-zinc-900 tracking-tight mb-6">Ochrana osobních údajů</h1>
-      <p class="text-lg text-zinc-600 font-medium">Jak nakládám s vašimi daty a proč jsou u mě v bezpečí.</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-zinc-900 tracking-tight mb-4">Zásady zpracování osobních údajů</h1>
+      <p class="text-zinc-600">Informace o zpracování osobních údajů ve smyslu nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR).</p>
     </div>
 
-    <div class="space-y-8 text-zinc-600 leading-relaxed">
+    <div class="space-y-10 text-zinc-700 leading-relaxed text-sm md:text-base">
       <section>
-        <h2 class="text-2xl font-bold text-zinc-900 mb-4">1. Kdo vaše údaje zpracovává?</h2>
-        <p>
-          Správcem osobních údajů je <strong>Bc. Jan Sodomka</strong>. Můžete mě kdykoliv kontaktovat na e-mailu: <a href="mailto:h.sodomka@seznam.cz" class="text-blue-600 font-bold hover:underline">h.sodomka@seznam.cz</a>.
-        </p>
+        <h2 class="text-xl font-bold text-zinc-900 mb-3">1. Správce osobních údajů</h2>
+        <p>Správcem osobních údajů je <strong>Bc. Jan Sodomka</strong> (dále jen "Správce"). Kontaktní e-mail: <a href="mailto:h.sodomka@seznam.cz" class="text-blue-600 hover:underline">h.sodomka@seznam.cz</a>.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-zinc-900 mb-4">2. Jaké údaje zpracovávám a proč?</h2>
-        <p class="mb-3">Pokud mě kontaktujete přes e-mail nebo poptávkový formulář, zpracovávám:</p>
-        <ul class="list-disc pl-5 space-y-2">
-          <li><strong>Jméno a příjmení</strong> – abych věděl, s kým komunikuji.</li>
-          <li><strong>E-mail a případně telefonní číslo</strong> – pro zpětnou komunikaci ohledně vaší poptávky nebo projektu.</li>
-          <li><strong>IČO/DIČ a fakturační údaje</strong> – v případě, že spolu navážeme spolupráci (je to nutné ze zákona pro vystavení faktury).</li>
+        <h2 class="text-xl font-bold text-zinc-900 mb-3">2. Rozsah a účel zpracování osobních údajů</h2>
+        <p class="mb-2">Správce zpracovává osobní údaje poskytnuté subjektem údajů (klientem či zájemcem o služby) pro následující účely:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Plnění smlouvy a jednání o smlouvě:</strong> Jméno, příjmení, e-mailová adresa, telefonní číslo, IČO, DIČ a adresa sídla. Tyto údaje jsou nezbytné pro vypracování nabídky, komunikaci ohledně projektu a následné plnění závazků.</li>
+          <li><strong>Plnění zákonných povinností:</strong> Fakturační údaje pro účely vedení účetnictví a daňové evidence v souladu s platnou legislativou ČR.</li>
         </ul>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-zinc-900 mb-4">3. Kde data uchovávám a komu je předávám?</h2>
-        <p>
-          Vaše data nikam neprodávám ani je nesdílím s třetími stranami pro marketingové účely. Přístup k nim mám pouze já. Předávám je pouze v nezbytných případech (např. účetní program pro vystavení faktury, nebo poskytovatel webhostingu, pokud vám zprostředkovávám doménu).
-        </p>
+        <h2 class="text-xl font-bold text-zinc-900 mb-3">3. Právní základ pro zpracování</h2>
+        <p>Právním základem pro zpracování osobních údajů je čl. 6 odst. 1 písm. b) GDPR (zpracování nezbytné pro splnění smlouvy nebo pro provedení opatření přijatých před uzavřením smlouvy) a čl. 6 odst. 1 písm. c) GDPR (splnění právní povinnosti, která se na správce vztahuje).</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-zinc-900 mb-4">4. Vaše práva</h2>
-        <p>
-          Máte plné právo mě kdykoliv požádat o informaci, jaké údaje o vás eviduji. Pokud budete chtít, abych vaše údaje upravil nebo je ze své databáze úplně smazal, stačí mi napsat na výše uvedený e-mail a obratem to vyřeším.
-        </p>
+        <h2 class="text-xl font-bold text-zinc-900 mb-3">4. Doba uchovávání údajů</h2>
+        <p>Osobní údaje jsou zpracovávány po dobu trvání smluvního vztahu a následně po dobu nezbytnou pro účely archivace podle příslušných platných právních předpisů (např. zákon o účetnictví, zákon o dani z přidané hodnoty).</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-zinc-900 mb-3">5. Příjemci osobních údajů</h2>
+        <p>Správce nesdílí osobní údaje s třetími stranami za účelem marketingu. K osobním údajům mohou mít přístup pouze pověření zpracovatelé poskytující správci služby nezbytné pro výkon jeho činnosti (např. poskytovatelé webhostingu, účetní systémy), a to vždy na základě příslušných zpracovatelských smluv.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-zinc-900 mb-3">6. Práva subjektu údajů</h2>
+        <p class="mb-2">V souladu s nařízením GDPR máte právo:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>požadovat přístup ke svým osobním údajům a informacím o jejich zpracování,</li>
+          <li>požadovat opravu nepřesných nebo doplnění neúplných osobních údajů,</li>
+          <li>požadovat výmaz osobních údajů (právo „být zapomenut“), pokud již nejsou potřebné pro účely, pro které byly shromážděny,</li>
+          <li>požadovat omezení zpracování,</li>
+          <li>na přenositelnost údajů,</li>
+          <li>podat stížnost u Úřadu pro ochranu osobních údajů (ÚOOÚ), pokud se domníváte, že bylo porušeno vaše právo na ochranu osobních údajů.</li>
+        </ul>
       </section>
     </div>
   </main>
