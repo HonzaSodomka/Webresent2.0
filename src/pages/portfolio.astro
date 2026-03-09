@@ -5,18 +5,18 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Portfolio | Webresent">
   <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 pt-12 lg:pt-0 pb-24 overflow-hidden">
     
-    <!-- HEADER (Added min-height to match Hero section on main page) -->
-    <header class="max-w-3xl mb-16 sm:mb-24 fade-in-up min-h-[50svh] lg:min-h-[unset] lg:mt-24 2xl:mt-32 flex flex-col justify-center">
+    <!-- HEADER -->
+    <header class="max-w-3xl mb-16 sm:mb-24 fade-in-up min-h-[50svh] lg:min-h-[unset] lg:mt-24 2xl:mt-[11vh] flex flex-col justify-center">
       <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm font-semibold text-blue-700 mb-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm 2xl:text-base font-semibold text-blue-700 mb-8 2xl:mb-10">
           <span class="w-2 h-2 rounded-full bg-blue-600"></span>
           Ukázky práce
         </div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-zinc-900 leading-[1.05] mb-6">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl 2xl:text-[5.5rem] font-extrabold tracking-tighter text-zinc-900 leading-[0.95] mb-6 2xl:mb-8">
           Když se spojí <br/>
           <span class="text-blue-600">design a výkon.</span>
         </h1>
-        <p class="text-lg md:text-xl text-zinc-600 leading-relaxed font-medium">
+        <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 mb-10 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
           Prohlédněte si weby, které nejen dobře vypadají, ale především plní svůj účel. Bleskové načítání, čistý kód a propracované SEO v praxi.
         </p>
       </div>
@@ -28,7 +28,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="bg-white border border-zinc-200 rounded-[2rem] p-6 lg:p-10 2xl:p-12 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col xl:flex-row gap-10 lg:gap-16 items-center">
 
         <!-- TEXTOVÁ ČÁST -->
-        <div class="w-full xl:w-[45%] flex flex-col items-start relative z-10 order-1">
+        <div class="w-full xl:w-[45%] flex flex-col items-start relative z-10 order-1 xl:order-1">
 
           <h2 class="text-3xl sm:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 mb-6 tracking-tight">America Pod Věží</h2>
 
@@ -42,23 +42,26 @@ import Layout from '../layouts/Layout.astro';
             Kompletní záchrana a redesign webu oblíbené restaurace. Odstranil jsem masivní útok spamových botů, navrhl bleskový moderní design a implementoval automatické stahování denního menu, aby majitel ušetřil čas.
           </p>
 
-          <div class="w-full border-l-4 border-green-500 pl-5 xl:mb-10 mb-8 py-1">
-            <p class="text-xs font-bold text-green-600 uppercase tracking-wider mb-1.5">Výsledek</p>
+          <div class="w-full border-l-[3px] border-blue-600 pl-4 mb-8 py-1">
+            <p class="text-[11px] font-bold text-blue-600 uppercase tracking-wider mb-1.5">Výsledek</p>
             <p class="text-zinc-800 font-semibold text-base leading-relaxed">
               Stabilní pozice <strong class="text-zinc-900">#1 na Googlu</strong> na dotaz <em>„burger Mladá Boleslav“</em> a bezúdržbový chod.
             </p>
           </div>
 
-          <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 text-base rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 shadow-md w-full sm:w-auto justify-center group">
-            Navštívit web
-            <svg class="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-          </a>
+          <!-- Tlačítko se na mobilu schová (přesune se pod obrázek přes jiný div) a ukáže se až na sm+ -->
+          <div class="hidden sm:block">
+            <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 shadow-md justify-center group">
+              Navštívit web
+              <svg class="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+          </div>
         </div>
 
-        <!-- OBRÁZKY (Kopírují přesně styl a rozměry z úvodní stránky) -->
-        <div class="w-full xl:w-[55%] relative flex flex-col items-start sm:items-center order-2 mt-4 xl:mt-0">
+        <!-- OBRÁZKY A TLAČÍTKO PRO MOBIL -->
+        <div class="w-full xl:w-[55%] relative flex flex-col items-start sm:items-center order-2 mt-2 xl:mt-0">
 
-          <div class="relative w-full sm:w-[90%] pb-6 sm:pb-12 pt-2">
+          <div class="relative w-full sm:w-[90%] pb-6 sm:pb-12 pt-2 mb-6 sm:mb-0">
 
             <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] -z-10"></div>
 
@@ -86,8 +89,16 @@ import Layout from '../layouts/Layout.astro';
                 <img src="/images/america-pod-vezi-mobile.webp" alt="Mobilní design" class="w-full h-full object-cover object-top" loading="lazy" />
               </div>
             </div>
-            
           </div>
+
+          <!-- Tlačítko zobrazené jen na mobilu (sm:hidden) POD obrázkem -->
+          <div class="w-full sm:hidden">
+            <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-8 py-4 text-base rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 shadow-md group w-full">
+              Navštívit web
+              <svg class="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+          </div>
+
         </div>
 
       </div>
