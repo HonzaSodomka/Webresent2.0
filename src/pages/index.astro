@@ -481,15 +481,11 @@ import Layout from '../layouts/Layout.astro';
     opacity: 1;
   }
 
-  /* Výchozí CSS pro Hero zbytek */
-  #hero {
-    /* Na mobilu chceme používat fixní proměnnou, aby se neustále nepřepočítávalo vh */
-    min-height: calc((var(--vh, 1vh) * 100) - 5rem);
-  }
+  /* Výchozí CSS pro Hero - min-height řeší JS přímo */
   @media (min-width: 1024px) {
     #hero {
       /* Na PC nastavíme 100svh minus pt-20 (5rem) z body v Layoutu. */
-      min-height: calc(100svh - 5rem);
+      min-height: calc(100svh - 5rem) !important;
     }
   }
 
@@ -567,6 +563,29 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener('astro:page-load', () => {
+
+    // Fix pro 100vh na mobilech přes přímou manipulaci DOMu (bez repaint způsobeného CSS proměnnou)
+    const hero = document.getElementById('hero');
+    if (hero && window.innerWidth < 1024) { // Pustíme JS logiku jen pro mobily
+        let lastWidth = window.innerWidth;
+
+        const setHeroHeight = () => {
+            hero.style.minHeight = `${window.innerHeight - 80}px`; // 80px = pt-20 z body
+        };
+
+        setHeroHeight();
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth !== lastWidth) {
+                lastWidth = window.innerWidth;
+                setHeroHeight();
+            }
+        });
+
+        window.addEventListener('orientationchange', () => {
+            setTimeout(setHeroHeight, 100);
+        });
+    }
 
     // Typewriter efekt
     const textElement = document.getElementById('typewriter-text');
