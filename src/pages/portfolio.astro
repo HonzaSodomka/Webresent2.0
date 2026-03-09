@@ -23,13 +23,10 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <!-- Right: Abstract Visual (Nyní jednotné pro PC i mobil, na mobilu responzivně zmenšené a vycentrované) -->
+        <!-- Right: Abstract Visual -->
         <div class="flex relative w-full h-[280px] sm:h-[350px] lg:h-[400px] items-center justify-center group fade-in-up" style="animation-delay: 0.1s;">
-          
-          <!-- Kontejner pro překrývající se karty. Na mobilu ho trochu zmenšíme, aby se karty vešly na obrazovku bez "kousání" ven -->
           <div class="relative w-full max-w-[400px] aspect-square flex items-center justify-center transform scale-[0.8] sm:scale-90 lg:scale-100 mt-[-20px] lg:mt-0">
-
-            <!-- Floating Card 1: Performance (Top Right) -->
+            <!-- Floating Card 1: Performance -->
             <div class="absolute top-[5%] right-[0%] lg:right-[5%] z-20 animate-float-delayed">
               <div class="w-44 lg:w-48 bg-white rounded-2xl p-3 lg:p-4 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-zinc-100 transform rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-default">
                 <div class="flex items-center gap-3 mb-3">
@@ -50,7 +47,7 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
 
-            <!-- Floating Card 2: Code (Bottom Left) -->
+            <!-- Floating Card 2: Code -->
             <div class="absolute bottom-[10%] lg:bottom-[5%] left-[0%] lg:left-[5%] z-10 animate-float">
               <div class="w-48 lg:w-56 bg-zinc-900 rounded-2xl p-4 lg:p-5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)] border border-zinc-800 transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-default">
                 <div class="flex gap-1.5 mb-3 lg:mb-4">
@@ -67,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
 
-            <!-- Floating Card 3: UI Design (Center) -->
+            <!-- Floating Card 3: UI Design -->
             <div class="absolute top-[25%] left-[15%] lg:left-[20%] z-30 animate-float-slow">
               <div class="w-56 lg:w-64 bg-white/90 backdrop-blur-md rounded-2xl p-4 lg:p-5 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] border border-zinc-200/60 transform rotate-[-2deg] hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-default">
                 <div class="w-full h-24 lg:h-28 bg-zinc-50 border border-zinc-100 rounded-xl mb-3 lg:mb-4 overflow-hidden relative">
@@ -96,22 +93,20 @@ import Layout from '../layouts/Layout.astro';
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- SECTION DIVIDER (stejný jako homepage) -->
-    <div class="w-full flex items-center justify-center py-12 lg:py-16 2xl:py-24 scroll-reveal">
+    <!-- SECTION DIVIDER -->
+    <div class="w-full flex items-center justify-center pb-12 pt-6 lg:pb-16 lg:pt-8 2xl:pb-24 2xl:pt-12 scroll-reveal">
       <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
       <div class="w-2 h-2 rounded-full bg-zinc-300 mx-4"></div>
       <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
     </div>
 
-    <!-- PROJECT 1: AMERICA POD VEZI -->
-    <section class="mb-16 lg:mb-20 mt-6 lg:mt-0 fade-in-up" style="animation-delay: 0.2s;">
+    <!-- PROJECT 1: AMERICA POD VEZI (Removed bottom margin to fix gap before divider) -->
+    <section class="mt-6 lg:mt-0 fade-in-up" style="animation-delay: 0.2s;">
       
       <div class="bg-white border border-zinc-200 rounded-[2rem] p-6 lg:p-10 2xl:p-12 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col xl:flex-row gap-10 lg:gap-16 items-center">
 
@@ -137,7 +132,6 @@ import Layout from '../layouts/Layout.astro';
             </p>
           </div>
 
-          <!-- Tlačítko se na mobilu schová a ukáže se až na sm+ -->
           <div class="hidden sm:block">
             <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 shadow-md justify-center group">
               Navštívit web
@@ -146,13 +140,10 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <!-- OBRÁZKY A TLAČÍTKO PRO MOBIL -->
+        <!-- OBRÁZKY -->
         <div class="w-full xl:w-[55%] relative flex flex-col items-start sm:items-center order-2 mt-4 xl:mt-0">
-
           <div class="relative w-full sm:w-[90%] pb-6 sm:pb-12 pt-2 mb-2 sm:mb-0">
-
             <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] -z-10"></div>
-
             <!-- Desktop -->
             <div class="w-[85%] rounded-xl shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] border border-zinc-200/80 bg-white overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.15)] relative z-10 group cursor-pointer">
               <div class="h-8 sm:h-10 bg-zinc-50 border-b border-zinc-200/80 flex items-center px-3 sm:px-4 gap-2 relative">
@@ -179,31 +170,26 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
 
-          <!-- Tlačítko zobrazené jen na mobilu (sm:hidden) POD obrázkem s lepším odsazením -->
           <div class="w-full sm:hidden mt-4">
             <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-8 py-4 text-base rounded-full bg-zinc-900 text-white font-bold text-center active:bg-zinc-800 transition-all duration-300 shadow-md group w-full">
               Navštívit web
               <svg class="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
           </div>
-
         </div>
-
       </div>
-
     </section>
 
-    <!-- SECTION DIVIDER (stejný jako homepage) -->
+    <!-- SECTION DIVIDER -->
     <div class="w-full flex items-center justify-center py-12 lg:py-16 2xl:py-24 scroll-reveal">
       <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
       <div class="w-2 h-2 rounded-full bg-zinc-300 mx-4"></div>
       <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
     </div>
 
-    <!-- CALL TO ACTION OR MORE PROJECTS -->
-    <section class="pb-16 lg:pb-24 pt-4">
+    <!-- CALL TO ACTION OR MORE PROJECTS (Odstraněna malá modrá linka, aby zůstal jen oddělovač) -->
+    <section class="pb-16 lg:pb-24">
       <div class="flex flex-col items-center justify-center fade-in-up" style="animation-delay: 0.3s;">
-        <div class="w-16 h-1 bg-blue-600 rounded-full mb-6"></div>
         <h3 class="text-2xl md:text-3xl font-extrabold text-zinc-900 mb-4 text-center">Další projekty brzy</h3>
         <p class="text-zinc-500 font-medium text-center mb-8 max-w-md">Moje portfolio se neustále rozrůstá. Chcete být dalším úspěšným případem?</p>
         <a href="/objednavka" data-astro-prefetch class="px-8 py-4 rounded-full bg-blue-600 text-white font-bold text-lg hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_20px_rgba(37,99,235,0.2)] focus:outline-none focus:ring-4 focus:ring-blue-500/50">
@@ -216,14 +202,14 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  /* Výchozí CSS pro Hero - ZCELA TOTOŽNÉ s index.astro */
+  /* Upraveno tak, aby Hero fungovalo bezpečně jako 100vh pomocí min-height a nepevnou height */
   #hero {
     min-height: 100svh;
   }
   @media (min-width: 1024px) {
     #hero {
-      height: var(--locked-vh, 100svh);
-      min-height: unset;
+      min-height: var(--locked-vh, 100svh);
+      height: auto;
     }
   }
 
@@ -236,7 +222,7 @@ import Layout from '../layouts/Layout.astro';
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Scroll reveal (stejné jako homepage) */
+  /* Scroll reveal */
   .scroll-reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -247,7 +233,7 @@ import Layout from '../layouts/Layout.astro';
     transform: translateY(0);
   }
 
-  /* Animace pro levitující karty v hero sekci na PC i mobilu */
+  /* Animace pro levitující karty */
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-12px); }
@@ -265,10 +251,9 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    // Stejný script jako na HP
     let lastVw = window.innerWidth;
     function setLockedVh() {
-      const header = document.querySelector('header'); // Navbar v Layoutu
+      const header = document.querySelector('header');
       const headerHeight = header ? header.offsetHeight : 0;
       document.documentElement.style.setProperty(
         '--locked-vh',
