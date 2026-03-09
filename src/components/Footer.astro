@@ -11,56 +11,46 @@ const navItems = [
 ];
 ---
 
-<footer class="bg-zinc-900 text-zinc-400 py-12 border-t border-zinc-800 mt-20">
-  <div class="max-w-6xl 2xl:max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+<footer class="bg-zinc-50 border-t border-zinc-200 mt-12">
+  <div class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 py-8">
+    
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
       
-      <!-- Brand a popisek -->
-      <div class="flex flex-col items-start">
-        <a href="/" class="text-2xl font-bold text-white mb-4">
-          Webresent<span class="text-blue-500">.</span>
+      <!-- Brand & Name -->
+      <div class="flex flex-col items-center md:items-start">
+        <a href="/" class="text-xl font-bold text-zinc-900">
+          Webresent<span class="text-blue-600">.</span>
         </a>
-        <p class="text-zinc-400 text-sm leading-relaxed max-w-xs">
-          Stavím prémiové weby na míru. Blesková rychlost, čistý kód a důraz na to nejdůležitější – váš zisk.
-        </p>
+        <span class="text-sm font-bold text-zinc-500 mt-0.5 tracking-wide">Bc. Jan Sodomka</span>
       </div>
 
-      <!-- Navigace -->
-      <div>
-        <h3 class="text-white font-bold mb-4">Navigace</h3>
-        <ul class="space-y-2">
-          {navItems.map(item => (
-            <li>
-              <a href={item.href} class="text-sm hover:text-white transition-colors duration-200">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <!-- Horizontal Nav -->
+      <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3">
+        {navItems.map(item => (
+          <a href={item.href} class="text-sm font-semibold text-zinc-500 hover:text-zinc-900 transition-colors">
+            {item.label}
+          </a>
+        ))}
+      </nav>
 
-      <!-- Kontakt -->
-      <div>
-        <h3 class="text-white font-bold mb-4">Kontakt</h3>
-        <ul class="space-y-2">
-          <li>
-            <a href="mailto:info@webresent.cz" class="text-sm hover:text-white transition-colors duration-200 flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              info@webresent.cz
-            </a>
-          </li>
-        </ul>
+      <!-- Contact -->
+      <div class="flex items-center">
+        <a href="mailto:h.sodomka@seznam.cz" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-zinc-200 text-sm font-bold text-zinc-700 hover:border-blue-200 hover:text-blue-600 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
+          <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          h.sodomka@seznam.cz
+        </a>
       </div>
 
     </div>
 
-    <!-- Spodní lišta -->
-    <div class="pt-8 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+    <!-- Bottom bar -->
+    <div class="mt-8 pt-6 border-t border-zinc-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium text-zinc-400">
       <p>&copy; {currentYear} Webresent. Všechna práva vyhrazena.</p>
-      <div class="flex gap-4">
-        <a href="/ochrana-udaju" class="hover:text-white transition-colors">Ochrana údajů</a>
-        <a href="/obchodni-podminky" class="hover:text-white transition-colors">Obchodní podmínky</a>
+      <div class="flex gap-6">
+        <a href="/ochrana-udaju" class="hover:text-zinc-900 transition-colors">Ochrana údajů</a>
+        <a href="/obchodni-podminky" class="hover:text-zinc-900 transition-colors">Obchodní podmínky</a>
       </div>
     </div>
+
   </div>
 </footer>
