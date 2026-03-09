@@ -484,12 +484,6 @@ import Layout from '../layouts/Layout.astro';
   #hero {
     min-height: 100svh;
   }
-  @media (min-width: 1024px) {
-    #hero {
-      height: var(--locked-vh, 100svh);
-      min-height: unset;
-    }
-  }
 
   .fade-in-up {
     opacity: 0;
@@ -565,24 +559,6 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener('astro:page-load', () => {
-
-    // Výpočet bezpečné výšky Hero obrazovky
-    let lastVw = window.innerWidth;
-    function setLockedVh() {
-      const header = document.querySelector('header');
-      const headerHeight = header ? header.offsetHeight : 0;
-      document.documentElement.style.setProperty(
-        '--locked-vh',
-        `${window.innerHeight - headerHeight}px`
-      );
-    }
-    setLockedVh();
-    window.addEventListener('resize', () => {
-      if (window.innerWidth !== lastVw) {
-        lastVw = window.innerWidth;
-        setLockedVh();
-      }
-    }, { passive: true });
 
     // Typewriter efekt
     const textElement = document.getElementById('typewriter-text');
