@@ -9,31 +9,31 @@ const navItems = [
 ];
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 bg-zinc-50/95 backdrop-blur-md border-b border-zinc-200">
+<header class="fixed top-0 left-0 w-full z-50 bg-zinc-900/95 backdrop-blur-md border-b border-zinc-800">
   <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
     
-    <a href="/" class="text-2xl font-bold text-zinc-900 relative z-50">
-      Webresent<span class="text-zinc-400">.</span>
+    <a href="/" class="text-2xl font-bold text-white relative z-50">
+      Webresent<span class="text-blue-500">.</span>
     </a>
 
     <nav class="hidden md:flex items-center gap-8">
       {navItems.map(item => (
-        <a href={item.href} class="text-sm font-semibold text-zinc-500 hover:text-zinc-900 transition-colors">
+        <a href={item.href} class="text-sm font-semibold text-zinc-300 hover:text-blue-500 transition-colors">
           {item.label}
         </a>
       ))}
     </nav>
     
     <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-50" aria-label="Menu">
-      <span class="w-6 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
-      <span class="w-6 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
+      <span class="w-6 h-[2px] bg-white rounded-full transition-transform duration-300 origin-center"></span>
+      <span class="w-6 h-[2px] bg-white rounded-full transition-transform duration-300 origin-center"></span>
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-zinc-50 border-b border-zinc-200 shadow-xl md:hidden">
+  <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-zinc-900 border-b border-zinc-800 shadow-xl md:hidden">
     <nav class="flex flex-col px-6 pb-6 pt-2">
       {navItems.map(item => (
-        <a href={item.href} class="mobile-link text-xl font-semibold text-zinc-800 py-4 border-b border-zinc-100 last:border-none">
+        <a href={item.href} class="mobile-link text-xl font-semibold text-zinc-300 hover:text-blue-500 transition-colors py-4 border-b border-zinc-800 last:border-none">
           {item.label}
         </a>
       ))}
