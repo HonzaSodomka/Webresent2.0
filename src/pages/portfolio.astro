@@ -204,7 +204,7 @@ import Layout from '../layouts/Layout.astro';
 <style>
   /* Upraveno tak, aby Hero fungovalo bezpečně jako 100vh pomocí min-height a nepevnou height */
   #hero {
-    min-height: unset;
+    min-height: calc((var(--vh, 1vh) * 100) - 5rem);
   }
   @media (min-width: 1024px) {
     #hero {
