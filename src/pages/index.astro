@@ -239,7 +239,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <a href="/portfolio" data-astro-prefetch class="inline-flex items-center gap-2 text-blue-600 font-bold text-lg 2xl:text-xl hover:text-blue-700 transition-colors shrink-0 group">
           Zobrazit portfolio
-          <svg class="w-5 h-5 2xl:w-6 2xl:h-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          <svg class="w-5 h-5 2xl:w-6 2xl:h-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke currentColor stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
       </div>
 
@@ -481,13 +481,10 @@ import Layout from '../layouts/Layout.astro';
     opacity: 1;
   }
 
-  /* Výchozí CSS pro Hero - min-height řeší JS přímo */
-  @media (min-width: 1024px) {
-    #hero {
-      /* Na PC nastavíme 100svh minus pt-20 (5rem) z body v Layoutu. */
-      min-height: calc(100svh - 5rem) !important;
-    }
-  }
+  /*
+   * Tady chyběl reset z CSS - úplně odstraněno omezení height!
+   * JS logice to necháme na starost všude, kde je to potřeba.
+   */
 
   .fade-in-up {
     opacity: 0;
@@ -569,8 +566,10 @@ import Layout from '../layouts/Layout.astro';
     if (hero) {
         let lastWidth = window.innerWidth;
 
+        // Pokud je nahoře pevný header s padding-top z Layout.astro (těch pt-20 = 80px),
+        // musíme odečíst 80px. Pokud chceme, aby hero nezpůsobovalo scrollování:
         const setHeroHeight = () => {
-            hero.style.minHeight = `${window.innerHeight}px`;
+            hero.style.minHeight = `${window.innerHeight - 80}px`;
         };
 
         setHeroHeight();
