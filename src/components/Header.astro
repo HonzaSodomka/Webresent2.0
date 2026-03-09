@@ -5,38 +5,52 @@ const navItems = [
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Ceník', href: '/cenik' },
   { label: 'O mně', href: '/o-mne' },
-  { label: 'Objednávka', href: '/objednavka' },
 ];
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 bg-zinc-900 border-b border-zinc-800">
-  <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+<header class="fixed top-4 left-0 w-full z-50 px-4 pointer-events-none">
+  <div class="max-w-4xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md border border-zinc-200/50 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.1)] rounded-full h-16 px-6 pointer-events-auto transition-all duration-300">
     
-    <a href="/" class="text-2xl font-bold text-white relative z-50">
-      Webresent<span class="text-blue-500">.</span>
+    <!-- Logo -->
+    <a href="/" class="text-xl font-extrabold text-zinc-900 group">
+      Webresent<span class="text-blue-600 transition-colors group-hover:text-blue-500">.</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8">
+    <!-- Desktop Navigace -->
+    <nav class="hidden md:flex items-center gap-1">
       {navItems.map(item => (
-        <a href={item.href} class="text-sm font-semibold text-zinc-300 hover:text-blue-500 transition-colors">
+        <a 
+          href={item.href} 
+          class="px-4 py-2 rounded-full text-sm font-bold text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/50 transition-all"
+        >
           {item.label}
         </a>
       ))}
     </nav>
+
+    <!-- Call to action button (Desktop) -->
+    <a href="/objednavka" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-zinc-900 text-white text-sm font-bold hover:bg-blue-600 transition-colors shadow-sm hover:shadow">
+      Poptat web
+    </a>
     
-    <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-50" aria-label="Menu">
-      <span class="w-6 h-[2px] bg-white rounded-full transition-transform duration-300 origin-center"></span>
-      <span class="w-6 h-[2px] bg-white rounded-full transition-transform duration-300 origin-center"></span>
+    <!-- Hamburger Menu (Mobile) -->
+    <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-50 bg-zinc-50 rounded-full border border-zinc-200" aria-label="Menu">
+      <span class="w-4 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
+      <span class="w-4 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-zinc-900 border-b border-zinc-800 shadow-xl md:hidden">
-    <nav class="flex flex-col px-6 pb-6 pt-2">
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 bg-white/95 backdrop-blur-xl border border-zinc-200 shadow-2xl rounded-3xl md:hidden overflow-hidden pointer-events-auto transform origin-top transition-all duration-300 opacity-0 -translate-y-4">
+    <nav class="flex flex-col p-4 gap-2">
       {navItems.map(item => (
-        <a href={item.href} class="mobile-link text-xl font-semibold text-zinc-300 hover:text-blue-500 transition-colors py-4 border-b border-zinc-800 last:border-none">
+        <a href={item.href} class="mobile-link px-4 py-3 rounded-2xl text-lg font-bold text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 transition-all">
           {item.label}
         </a>
       ))}
+      <a href="/objednavka" class="mobile-link mt-2 px-4 py-4 rounded-2xl bg-zinc-900 text-white text-center text-lg font-bold hover:bg-blue-600 transition-colors">
+        Poptat web
+      </a>
     </nav>
   </div>
 </header>
@@ -48,7 +62,6 @@ const navItems = [
     const lines = toggle?.querySelectorAll('span');
     const links = menu?.querySelectorAll('.mobile-link');
 
-    // Pojistka, aby se skript nenačetl dvakrát
     if (!toggle || !menu || toggle.dataset.init) return;
     toggle.dataset.init = 'true';
 
@@ -56,14 +69,28 @@ const navItems = [
 
     const toggleMenu = () => {
       isOpen = !isOpen;
-      menu.classList.toggle('hidden');
       
-      // Magie na překlopení dvou čárek do křížku
-      if (lines && lines.length === 2) {
-        if (isOpen) {
+      if (isOpen) {
+        menu.classList.remove('hidden');
+        // Malý timeout pro spuštění CSS transition po odebrání 'hidden'
+        setTimeout(() => {
+          menu.classList.remove('opacity-0', '-translate-y-4');
+          menu.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+        
+        if (lines && lines.length === 2) {
           lines[0].style.transform = 'translateY(4px) rotate(45deg)';
           lines[1].style.transform = 'translateY(-4px) rotate(-45deg)';
-        } else {
+        }
+      } else {
+        menu.classList.remove('opacity-100', 'translate-y-0');
+        menu.classList.add('opacity-0', '-translate-y-4');
+        
+        setTimeout(() => {
+          menu.classList.add('hidden');
+        }, 300); // Počká na dokončení animace před schováním
+
+        if (lines && lines.length === 2) {
           lines[0].style.transform = 'none';
           lines[1].style.transform = 'none';
         }
@@ -72,7 +99,6 @@ const navItems = [
 
     toggle.addEventListener('click', toggleMenu);
 
-    // Zavření menu po kliknutí na odkaz
     links?.forEach(link => {
       link.addEventListener('click', () => {
         if (isOpen) toggleMenu();
