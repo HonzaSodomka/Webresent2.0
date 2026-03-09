@@ -483,8 +483,8 @@ import Layout from '../layouts/Layout.astro';
 
   /* Výchozí CSS pro Hero zbytek */
   #hero {
-    /* Na mobilu necháme přirozenou výšku (dle obsahu a paddingu) */
-    min-height: unset;
+    /* Na mobilu chceme používat fixní proměnnou, aby se neustále nepřepočítávalo vh */
+    min-height: calc((var(--vh, 1vh) * 100) - 5rem);
   }
   @media (min-width: 1024px) {
     #hero {
