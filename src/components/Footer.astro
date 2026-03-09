@@ -11,31 +11,35 @@ const navItems = [
 ];
 ---
 
-<footer class="bg-zinc-900 border-t border-zinc-800">
-  <div class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 py-8">
+<footer class="max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8 pt-4">
+  <div class="bg-zinc-900 rounded-[2rem] sm:rounded-[2.5rem] px-6 sm:px-10 py-10 shadow-2xl relative overflow-hidden">
     
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+    <!-- Subtilní glow efekt na pozadí footeru -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-blue-500/10 blur-[80px] pointer-events-none"></div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
       
       <!-- Brand & Name -->
       <div class="flex flex-col items-center md:items-start">
-        <a href="/" class="text-xl font-bold text-white">
+        <a href="/" class="text-2xl font-extrabold text-white tracking-tight">
           Webresent<span class="text-blue-500">.</span>
         </a>
-        <span class="text-sm font-bold text-zinc-400 mt-0.5 tracking-wide">Bc. Jan Sodomka</span>
+        <span class="text-sm font-semibold text-zinc-400 mt-1 tracking-wide">Bc. Jan Sodomka</span>
       </div>
 
       <!-- Horizontal Nav -->
-      <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3">
+      <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4">
         {navItems.map(item => (
-          <a href={item.href} class="text-sm font-semibold text-zinc-400 hover:text-white transition-colors">
+          <a href={item.href} class="text-sm font-semibold text-zinc-400 hover:text-white transition-colors duration-300 relative group">
             {item.label}
+            <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
           </a>
         ))}
       </nav>
 
       <!-- Contact -->
       <div class="flex items-center">
-        <a href="mailto:h.sodomka@seznam.cz" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-800 border border-zinc-700 text-sm font-bold text-zinc-300 hover:border-blue-500 hover:text-white hover:bg-zinc-700 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
+        <a href="mailto:h.sodomka@seznam.cz" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-sm font-bold text-zinc-300 hover:border-blue-500/50 hover:bg-blue-500/10 hover:text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm">
           <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
           h.sodomka@seznam.cz
         </a>
@@ -44,11 +48,11 @@ const navItems = [
     </div>
 
     <!-- Bottom bar -->
-    <div class="mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium text-zinc-500">
+    <div class="mt-10 pt-6 border-t border-zinc-800/50 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium text-zinc-500 relative z-10">
       <p>&copy; {currentYear} Webresent. Všechna práva vyhrazena.</p>
       <div class="flex gap-6">
-        <a href="/ochrana-udaju" class="hover:text-zinc-300 transition-colors">Ochrana údajů</a>
-        <a href="/obchodni-podminky" class="hover:text-zinc-300 transition-colors">Obchodní podmínky</a>
+        <a href="/ochrana-udaju" class="hover:text-zinc-300 transition-colors duration-300">Ochrana osobních údajů</a>
+        <a href="/obchodni-podminky" class="hover:text-zinc-300 transition-colors duration-300">Obchodní podmínky</a>
       </div>
     </div>
 
