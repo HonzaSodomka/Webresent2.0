@@ -49,28 +49,9 @@ const { title } = Astro.props;
 				}
 			}
 
-			// Inicializace Lenis smooth scrollingu a fix pro VH na mobilu
+			// Inicializace Lenis smooth scrollingu
 			document.addEventListener('astro:page-load', () => {
 				
-				// Fix pro 100vh na mobilech (řeší poskakování při scrollování a schovávání lišty)
-				let vw = window.innerWidth;
-				const setVh = () => {
-					let vh = window.innerHeight * 0.01;
-					document.documentElement.style.setProperty('--vh', `${vh}px`);
-				};
-				
-				// Nastavit při načtení
-				setVh();
-				
-				// Přepočítat pouze pokud se změní šířka okna (rotace telefonu), 
-				// ne když se schová URL lišta při scrollování
-				window.addEventListener('resize', () => {
-					if (vw !== window.innerWidth) {
-						vw = window.innerWidth;
-						setVh();
-					}
-				});
-
 				// Inicializace Lenis
 				if (window.lenis) {
 					window.lenis.destroy();
