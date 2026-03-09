@@ -208,7 +208,8 @@ import Layout from '../layouts/Layout.astro';
   }
   @media (min-width: 1024px) {
     #hero {
-      min-height: calc(100svh - 5rem);
+      /* Změněno z 100svh na 85svh, aby další prvek dole vykukoval */
+      min-height: calc(85svh - 5rem);
     }
   }
 
