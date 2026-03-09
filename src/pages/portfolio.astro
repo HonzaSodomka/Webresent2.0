@@ -204,12 +204,11 @@ import Layout from '../layouts/Layout.astro';
 <style>
   /* Upraveno tak, aby Hero fungovalo bezpečně jako 100vh pomocí min-height a nepevnou height */
   #hero {
-    min-height: 100svh;
+    min-height: unset;
   }
   @media (min-width: 1024px) {
     #hero {
-      min-height: var(--locked-vh, 100svh);
-      height: auto;
+      min-height: calc(100svh - 5rem);
     }
   }
 
@@ -251,23 +250,6 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    let lastVw = window.innerWidth;
-    function setLockedVh() {
-      const header = document.querySelector('header');
-      const headerHeight = header ? header.offsetHeight : 0;
-      document.documentElement.style.setProperty(
-        '--locked-vh',
-        `${window.innerHeight - headerHeight}px`
-      );
-    }
-    setLockedVh();
-    window.addEventListener('resize', () => {
-      if (window.innerWidth !== lastVw) {
-        lastVw = window.innerWidth;
-        setLockedVh();
-      }
-    }, { passive: true });
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
