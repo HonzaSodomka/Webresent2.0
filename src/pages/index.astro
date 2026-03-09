@@ -21,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
           <h1 class="text-5xl sm:text-6xl md:text-7xl 2xl:text-[5.5rem] font-extrabold tracking-tighter text-zinc-900 leading-[0.95] mb-6 2xl:mb-8">
             Prémiové <br />
             weby, které <br />
-            <span class="text-blue-600">vydělávají.</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600 bg-300% animate-gradient">vydělávají.</span>
           </h1>
 
           <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 mb-10 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
@@ -29,87 +29,93 @@ import Layout from '../layouts/Layout.astro';
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <a href="/portfolio" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+            <a href="/portfolio" data-astro-prefetch class="magnetic-btn px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-shadow duration-300 shadow-lg hover:shadow-xl">
               Ukázky práce
             </a>
-            <a href="/objednavka" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-white border-2 border-zinc-200 text-zinc-900 font-bold text-center hover:border-zinc-300 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200 transition-all duration-300 hover:-translate-y-0.5">
+            <a href="/objednavka" data-astro-prefetch class="magnetic-btn px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-white border-2 border-zinc-200 text-zinc-900 font-bold text-center hover:border-zinc-300 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200 transition-colors duration-300">
               Nezávazná poptávka
             </a>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-0 mt-4 lg:mt-0 h-fit">
+        <div id="cards-wrapper" class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-0 mt-4 lg:mt-0 h-fit group/wrapper">
 
-          <div class="col-span-1 sm:col-span-2 bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 fade-in-up group" style="animation-delay: 0.1s;">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase">Špičkový výkon</h2>
-              <span class="px-3 py-1 bg-zinc-100 text-zinc-800 font-bold text-xs 2xl:text-sm rounded-full">Blesková odezva</span>
-            </div>
-            <div class="w-full bg-zinc-100 rounded-full h-2.5 mb-4 overflow-hidden relative" aria-hidden="true">
-              <div class="bg-blue-600 h-full rounded-full w-full speed-bar origin-left relative overflow-hidden">
-                <div class="absolute inset-0 w-full h-full shimmer-effect"></div>
+          <div class="spotlight-card col-span-1 sm:col-span-2 bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm transition-all duration-500 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase">Špičkový výkon</h2>
+                <span class="px-3 py-1 bg-zinc-100 text-zinc-800 font-bold text-xs 2xl:text-sm rounded-full">Blesková odezva</span>
               </div>
+              <div class="w-full bg-zinc-100 rounded-full h-2.5 mb-4 overflow-hidden relative" aria-hidden="true">
+                <div class="bg-blue-600 h-full rounded-full w-full speed-bar origin-left relative overflow-hidden">
+                  <div class="absolute inset-0 w-full h-full shimmer-effect"></div>
+                </div>
+              </div>
+              <p class="text-zinc-900 font-bold text-lg 2xl:text-xl">Zlomky vteřin rozhodují.</p>
+              <p class="text-zinc-500 text-sm mt-1 font-medium">Optimalizovaný kód, který nenechá zákazníka čekat a sníží míru opuštění webu.</p>
             </div>
-            <p class="text-zinc-900 font-bold text-lg 2xl:text-xl">Zlomky vteřin rozhodují.</p>
-            <p class="text-zinc-500 text-sm mt-1 font-medium">Optimalizovaný kód, který nenechá zákazníka čekat a sníží míru opuštění webu.</p>
           </div>
 
-          <div class="bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 fade-in-up relative overflow-hidden flex flex-col justify-between group" style="animation-delay: 0.2s;">
-            <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase mb-2 z-10">Responzivita</h2>
+          <div class="spotlight-card bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm transition-all duration-500 fade-in-up flex flex-col justify-between" style="animation-delay: 0.2s;">
+            <div class="relative z-10 flex flex-col h-full justify-between group">
+              <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase mb-2">Responzivita</h2>
 
-            <div class="relative w-full max-w-[200px] mx-auto h-[160px] 2xl:scale-[1.05] origin-center transition-transform my-3">
-              <div class="absolute right-0 top-1 z-0 group-hover:-translate-y-2 transition-transform duration-500">
-                <div class="w-[120px] h-[80px] border-[4px] border-[#27272a] rounded-xl bg-white shadow-sm overflow-hidden flex flex-col">
-                  <div class="h-2.5 w-full border-b border-zinc-200 bg-zinc-50 flex items-center px-1.5 gap-1">
-                    <div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div><div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div><div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div>
+              <div class="relative w-full max-w-[200px] mx-auto h-[160px] 2xl:scale-[1.05] origin-center transition-transform my-3">
+                <div class="absolute right-0 top-1 z-0 group-hover:-translate-y-2 transition-transform duration-500">
+                  <div class="w-[120px] h-[80px] border-[4px] border-[#27272a] rounded-xl bg-white shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-2.5 w-full border-b border-zinc-200 bg-zinc-50 flex items-center px-1.5 gap-1">
+                      <div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div><div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div><div class="w-1.5 h-1.5 rounded-full bg-zinc-300"></div>
+                    </div>
+                    <div class="p-1.5 flex flex-col gap-1.5">
+                      <div class="w-3/4 h-1.5 bg-zinc-200 rounded-full"></div><div class="w-1/2 h-1.5 bg-zinc-200 rounded-full"></div><div class="w-full h-6 mt-1 bg-blue-50 border border-blue-100 rounded-sm"></div>
+                    </div>
                   </div>
-                  <div class="p-1.5 flex flex-col gap-1.5">
-                    <div class="w-3/4 h-1.5 bg-zinc-200 rounded-full"></div><div class="w-1/2 h-1.5 bg-zinc-200 rounded-full"></div><div class="w-full h-6 mt-1 bg-blue-50 border border-blue-100 rounded-sm"></div>
+                  <div class="w-[12px] h-[8px] bg-[#27272a] mx-auto"></div><div class="w-[40px] h-[4px] bg-[#27272a] rounded-full mx-auto"></div>
+                </div>
+
+                <div class="absolute left-0 bottom-0 w-[80px] h-[150px] border-[4px] border-[#27272a] rounded-[20px] bg-white overflow-hidden shadow-xl group-hover:scale-105 transition-all duration-500 z-10" aria-hidden="true">
+                  <div class="absolute top-[4px] left-1/2 -translate-x-1/2 w-[24px] h-[6px] bg-[#27272a] rounded-full z-20"></div>
+                  <div class="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[30px] h-[2.5px] bg-[#27272a] rounded-full z-20 opacity-90"></div>
+                  <div class="w-full h-full relative z-10 pt-4 pb-3 px-2 overflow-hidden">
+                    <div class="flex flex-col gap-2 w-full visible-scroll-content">
+                      <div class="flex justify-between items-center"><div class="w-4 h-1.5 bg-[#27272a] rounded-full"></div><div class="flex flex-col gap-[2px]"><div class="w-3 h-[1px] bg-[#27272a]"></div><div class="w-3 h-[1px] bg-[#27272a]"></div></div></div>
+                      <div class="w-full h-[36px] bg-zinc-50 rounded-lg flex items-center justify-center border border-zinc-100 group-hover:bg-blue-50 transition-colors duration-500"><div class="w-5 h-5 bg-blue-600 rounded-full group-hover:scale-110 transition-transform duration-500"></div></div>
+                      <div class="w-full flex flex-col gap-1 items-start"><div class="w-[85%] h-2 bg-[#27272a] rounded-full"></div><div class="w-full h-1 bg-zinc-200 rounded-full mt-0.5"></div><div class="w-[75%] h-1 bg-zinc-200 rounded-full"></div></div>
+                      <div class="w-3/5 h-3 bg-blue-600 rounded-full"></div>
+                      <div class="flex gap-1 mt-1"><div class="w-1/2 h-8 bg-zinc-50 rounded-md border border-zinc-100"></div><div class="w-1/2 h-8 bg-zinc-50 rounded-md border border-zinc-100"></div></div>
+                      <div class="w-full h-8 bg-zinc-100 rounded-lg mt-0.5"></div><div class="w-2/3 h-1.5 bg-[#27272a] rounded-full mt-1"></div>
+                    </div>
                   </div>
                 </div>
-                <div class="w-[12px] h-[8px] bg-[#27272a] mx-auto"></div><div class="w-[40px] h-[4px] bg-[#27272a] rounded-full mx-auto"></div>
               </div>
 
-              <div class="absolute left-0 bottom-0 w-[80px] h-[150px] border-[4px] border-[#27272a] rounded-[20px] bg-white overflow-hidden shadow-xl group-hover:scale-105 transition-all duration-500 z-10" aria-hidden="true">
-                <div class="absolute top-[4px] left-1/2 -translate-x-1/2 w-[24px] h-[6px] bg-[#27272a] rounded-full z-20"></div>
-                <div class="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[30px] h-[2.5px] bg-[#27272a] rounded-full z-20 opacity-90"></div>
-                <div class="w-full h-full relative z-10 pt-4 pb-3 px-2 overflow-hidden">
-                  <div class="flex flex-col gap-2 w-full visible-scroll-content">
-                    <div class="flex justify-between items-center"><div class="w-4 h-1.5 bg-[#27272a] rounded-full"></div><div class="flex flex-col gap-[2px]"><div class="w-3 h-[1px] bg-[#27272a]"></div><div class="w-3 h-[1px] bg-[#27272a]"></div></div></div>
-                    <div class="w-full h-[36px] bg-zinc-50 rounded-lg flex items-center justify-center border border-zinc-100 group-hover:bg-blue-50 transition-colors duration-500"><div class="w-5 h-5 bg-blue-600 rounded-full group-hover:scale-110 transition-transform duration-500"></div></div>
-                    <div class="w-full flex flex-col gap-1 items-start"><div class="w-[85%] h-2 bg-[#27272a] rounded-full"></div><div class="w-full h-1 bg-zinc-200 rounded-full mt-0.5"></div><div class="w-[75%] h-1 bg-zinc-200 rounded-full"></div></div>
-                    <div class="w-3/5 h-3 bg-blue-600 rounded-full"></div>
-                    <div class="flex gap-1 mt-1"><div class="w-1/2 h-8 bg-zinc-50 rounded-md border border-zinc-100"></div><div class="w-1/2 h-8 bg-zinc-50 rounded-md border border-zinc-100"></div></div>
-                    <div class="w-full h-8 bg-zinc-100 rounded-lg mt-0.5"></div><div class="w-2/3 h-1.5 bg-[#27272a] rounded-full mt-1"></div>
-                  </div>
-                </div>
-              </div>
+              <p class="text-zinc-900 font-bold text-center text-sm mt-auto">Plynulý zážitek <br/> na každém displeji.</p>
             </div>
-
-            <p class="text-zinc-900 font-bold z-10 text-center text-sm">Plynulý zážitek <br/> na každém displeji.</p>
           </div>
 
-          <div class="bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 fade-in-up flex flex-col justify-between group overflow-hidden" style="animation-delay: 0.3s;">
-            <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase mb-4 z-10">SEO Architektura</h2>
-            <div class="w-full relative mb-2 z-0 flex flex-col gap-3">
-              <div class="w-full bg-zinc-50 border border-zinc-200 rounded-full h-9 flex items-center px-3 shadow-inner">
-                <svg class="w-3.5 h-3.5 text-zinc-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                <div id="typewriter-wrapper" class="flex items-center flex-1 overflow-hidden">
-                  <span id="typewriter-text" class="text-xs font-semibold text-zinc-700 whitespace-nowrap"></span>
-                  <span class="w-[2px] h-3.5 bg-blue-600 ml-[1px] animate-cursor-blink flex-shrink-0"></span>
+          <div class="spotlight-card bg-white rounded-3xl p-6 2xl:p-8 border border-zinc-200 shadow-sm transition-all duration-500 fade-in-up flex flex-col justify-between overflow-hidden" style="animation-delay: 0.3s;">
+            <div class="relative z-10 flex flex-col h-full justify-between group">
+              <h2 class="text-zinc-500 font-bold text-sm tracking-wider uppercase mb-4">SEO Architektura</h2>
+              <div class="w-full relative mb-2 z-0 flex flex-col gap-3">
+                <div class="w-full bg-zinc-50 border border-zinc-200 rounded-full h-9 flex items-center px-3 shadow-inner">
+                  <svg class="w-3.5 h-3.5 text-zinc-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  <div id="typewriter-wrapper" class="flex items-center flex-1 overflow-hidden">
+                    <span id="typewriter-text" class="text-xs font-semibold text-zinc-700 whitespace-nowrap"></span>
+                    <span class="w-[2px] h-3.5 bg-blue-600 ml-[1px] animate-cursor-blink flex-shrink-0"></span>
+                  </div>
+                </div>
+                <div class="w-full bg-white border border-blue-100 rounded-xl p-3 shadow-[0_4px_20px_-4px_rgba(37,99,235,0.12)] transform transition-transform duration-500 group-hover:scale-[1.03] relative overflow-hidden">
+                  <div class="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <div class="w-4 h-4 rounded-full bg-blue-100 flex items-center justify-center"><div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div></div>
+                    <div class="text-[10px] font-bold text-zinc-900">Váš nový web</div>
+                    <div class="text-[9px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-sm ml-auto uppercase tracking-wider">Pozice #1</div>
+                  </div>
+                  <div class="w-4/5 h-2 bg-zinc-200 rounded-full mb-1.5"></div><div class="w-1/2 h-2 bg-zinc-100 rounded-full"></div>
                 </div>
               </div>
-              <div class="w-full bg-white border border-blue-100 rounded-xl p-3 shadow-[0_4px_20px_-4px_rgba(37,99,235,0.12)] transform transition-transform duration-500 group-hover:scale-[1.03] relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
-                <div class="flex items-center gap-2 mb-2">
-                  <div class="w-4 h-4 rounded-full bg-blue-100 flex items-center justify-center"><div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div></div>
-                  <div class="text-[10px] font-bold text-zinc-900">Váš nový web</div>
-                  <div class="text-[9px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-sm ml-auto uppercase tracking-wider">Pozice #1</div>
-                </div>
-                <div class="w-4/5 h-2 bg-zinc-200 rounded-full mb-1.5"></div><div class="w-1/2 h-2 bg-zinc-100 rounded-full"></div>
-              </div>
+              <p class="text-zinc-900 font-bold text-center text-sm mt-auto pt-1">Zkonstruováno pro <br/> přední pozice.</p>
             </div>
-            <p class="text-zinc-900 font-bold text-center z-10 text-sm mt-1">Zkonstruováno pro <br/> přední pozice.</p>
           </div>
 
         </div>
@@ -440,10 +446,10 @@ import Layout from '../layouts/Layout.astro';
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a href="/objednavka" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-blue-600 text-white font-bold text-center hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 focus:ring-offset-zinc-900 transition-all duration-300 hover:-translate-y-0.5">
+          <a href="/objednavka" data-astro-prefetch class="magnetic-btn px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-blue-600 text-white font-bold text-center hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 focus:ring-offset-zinc-900 transition-shadow duration-300 shadow-lg hover:shadow-xl">
             Nezávazná poptávka
           </a>
-          <a href="/cenik" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-transparent border-2 border-zinc-700 text-white font-bold text-center hover:border-zinc-500 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 focus:ring-offset-zinc-900 transition-all duration-300 hover:-translate-y-0.5">
+          <a href="/cenik" data-astro-prefetch class="magnetic-btn px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-transparent border-2 border-zinc-700 text-white font-bold text-center hover:border-zinc-500 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 focus:ring-offset-zinc-900 transition-colors duration-300">
             Zobrazit ceník
           </a>
         </div>
@@ -455,6 +461,35 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+  /* Animovaný gradient */
+  .bg-300\% { background-size: 300% auto; }
+  .animate-gradient { animation: textGradient 6s ease infinite; }
+  @keyframes textGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Spotlight kartičky */
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, -100%), rgba(37, 99, 235, 0.08), transparent 40%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .group\/wrapper:hover .spotlight-card::before {
+    opacity: 1;
+  }
+
+  /* Výchozí CSS pro Hero zbytek */
   #hero {
     min-height: 100svh;
   }
@@ -540,8 +575,8 @@ import Layout from '../layouts/Layout.astro';
 <script>
   document.addEventListener('astro:page-load', () => {
 
+    // Výpočet bezpečné výšky Hero obrazovky
     let lastVw = window.innerWidth;
-
     function setLockedVh() {
       const header = document.querySelector('header');
       const headerHeight = header ? header.offsetHeight : 0;
@@ -550,9 +585,7 @@ import Layout from '../layouts/Layout.astro';
         `${window.innerHeight - headerHeight}px`
       );
     }
-
     setLockedVh();
-
     window.addEventListener('resize', () => {
       if (window.innerWidth !== lastVw) {
         lastVw = window.innerWidth;
@@ -560,37 +593,32 @@ import Layout from '../layouts/Layout.astro';
       }
     }, { passive: true });
 
+    // Typewriter efekt
     const textElement = document.getElementById('typewriter-text');
     const wrapperElement = document.getElementById('typewriter-wrapper');
-
     if (textElement && !textElement.dataset.init) {
       textElement.dataset.init = 'true';
-
       const phrases = [
         "tvorba prémiových webů na míru",
         "jak zvýšit prodeje z firemního webu",
         "profesionální webdesign a kódování",
         "bleskově rychlý web pro váš byznys",
       ];
-
       let phraseIndex = 0, charIndex = 0, isDeleting = false, typingSpeed = 80;
-
       function type() {
         if (!textElement) return;
-
         const currentPhrase = phrases[phraseIndex];
         textElement.textContent = currentPhrase.substring(0, isDeleting ? --charIndex : ++charIndex);
         if (wrapperElement) wrapperElement.scrollLeft = wrapperElement.scrollWidth;
-
         if (!isDeleting && charIndex === currentPhrase.length) { typingSpeed = 2500; isDeleting = true; }
         else if (isDeleting && charIndex === 0)                { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typingSpeed = 500; }
         else                                                   { typingSpeed = isDeleting ? 30 : 80; }
-
         setTimeout(type, typingSpeed);
       }
       setTimeout(type, 1000);
     }
 
+    // Scroll Reveal Intersection Observer
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -599,9 +627,9 @@ import Layout from '../layouts/Layout.astro';
         }
       });
     }, { threshold: 0.15 });
-
     document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
+    // FAQ Akordeon - zavírání ostatních
     const faqs = document.querySelectorAll('details');
     faqs.forEach(targetDetail => {
       targetDetail.addEventListener('click', () => {
@@ -610,6 +638,44 @@ import Layout from '../layouts/Layout.astro';
             detail.removeAttribute('open');
           }
         });
+      });
+    });
+
+    // 🌟 SECRET TIP 1: Spotlight (Baterka) pro karty
+    const cardsWrapper = document.getElementById('cards-wrapper');
+    const cards = document.querySelectorAll('.spotlight-card');
+    
+    if (cardsWrapper && cards.length > 0) {
+      cardsWrapper.addEventListener('mousemove', (e) => {
+        const wrapperRect = cardsWrapper.getBoundingClientRect();
+        cards.forEach(card => {
+          const cardRect = card.getBoundingClientRect();
+          // Výpočet pozice myši uvnitř dané karty
+          const x = (e as MouseEvent).clientX - cardRect.left;
+          const y = (e as MouseEvent).clientY - cardRect.top;
+          (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+          (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+        });
+      });
+    }
+
+    // 🌟 SECRET TIP 2: Magnetická tlačítka
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const ev = e as MouseEvent;
+        const rect = btn.getBoundingClientRect();
+        // Spočítáme o kolik pixelů je myš od středu tlačítka
+        const x = ev.clientX - rect.left - rect.width / 2;
+        const y = ev.clientY - rect.top - rect.height / 2;
+        
+        // Pohneme tlačítkem o zlomek této vzdálenosti (např. 20 %)
+        (btn as HTMLElement).style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      });
+      
+      btn.addEventListener('mouseleave', () => {
+        // Při opuštění vrátíme tlačítko zpět na místo
+        (btn as HTMLElement).style.transform = 'translate(0px, 0px)';
       });
     });
 
