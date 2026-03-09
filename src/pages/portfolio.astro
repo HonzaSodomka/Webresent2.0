@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Portfolio | Webresent">
+  <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 pt-32 pb-24 overflow-hidden">
+    
+    <!-- HEADER -->
+    <header class="max-w-3xl mb-16 sm:mb-24 fade-in-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm font-semibold text-blue-700 mb-6">
+        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+        Ukázky práce
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-zinc-900 leading-[1.05] mb-6">
+        Když se spojí <br/>
+        <span class="text-blue-600">design a výkon.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-600 leading-relaxed font-medium">
+        Prohlédněte si weby, které nejen dobře vypadají, ale především plní svůj účel. Bleskové načítání, čistý kód a propracované SEO v praxi.
+      </p>
+    </header>
+
+    <!-- PROJECT 1: AMERICA POD VEZI -->
+    <section class="mb-24 fade-in-up" style="animation-delay: 0.15s;">
+      <div class="bg-white border border-zinc-200 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 group">
+        
+        <!-- Top Project Header / Info -->
+        <div class="p-6 sm:p-10 lg:p-12 lg:pb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-zinc-100">
+          <div class="max-w-3xl">
+            <div class="flex items-center gap-4 mb-4">
+              <h2 class="text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight">America Pod Věží</h2>
+            </div>
+            <p class="text-base sm:text-lg text-zinc-600 font-medium leading-relaxed mb-6">
+              Kompletní záchrana a redesign webu oblíbené burgrárny. Od odstranění tisíců spamových stránek z Googlu přes automatizaci stahování denního menu až po dosažení prvních pozic ve vyhledávání.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-zinc-100 text-zinc-700 rounded-lg text-xs sm:text-sm font-bold">Web na míru</span>
+              <span class="px-3 py-1.5 bg-zinc-100 text-zinc-700 rounded-lg text-xs sm:text-sm font-bold">Technické SEO</span>
+              <span class="px-3 py-1.5 bg-zinc-100 text-zinc-700 rounded-lg text-xs sm:text-sm font-bold">Vlastní administrace</span>
+              <span class="px-3 py-1.5 bg-zinc-100 text-zinc-700 rounded-lg text-xs sm:text-sm font-bold">API Automatizace</span>
+            </div>
+          </div>
+          
+          <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center justify-center gap-2 px-8 py-4 w-full lg:w-auto rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 shadow-md group/btn">
+            Navštívit web
+            <svg class="w-5 h-5 transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+
+        <!-- Project Details Grid -->
+        <div class="grid lg:grid-cols-12 bg-zinc-50/50">
+          
+          <!-- Text details -->
+          <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-zinc-100">
+            <div class="space-y-8 sm:space-y-10">
+              
+              <div>
+                <h3 class="flex items-center gap-3 text-sm font-extrabold text-zinc-900 uppercase tracking-wider mb-3">
+                  <span class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                  </span>
+                  Původní stav
+                </h3>
+                <p class="text-zinc-600 leading-relaxed font-medium text-sm sm:text-base">Měsíc offline, propadlý SSL certifikát a obří útok spam botů, který vygeneroval přes <strong>7 000 podvodných stránek</strong> v Google indexu pod doménou restaurace. Na mobilních zařízeních byl web navíc prakticky nepoužitelný.</p>
+              </div>
+
+              <div>
+                <h3 class="flex items-center gap-3 text-sm font-extrabold text-zinc-900 uppercase tracking-wider mb-3">
+                  <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  </span>
+                  Moje řešení
+                </h3>
+                <p class="text-zinc-600 leading-relaxed font-medium text-sm sm:text-base">Postavil jsem nový, extrémně rychlý web s důrazem na mobil. Očistil jsem Google index od toxického spamu. Majitel nyní nahrává denní menu jen na externí portál a <strong>web si ho sám stahuje a zobrazuje</strong>. Navíc jsem mu připravil na míru administrační portál pro snadnou správu fotogalerie a informačních pop-upů.</p>
+              </div>
+
+              <div class="bg-white p-5 rounded-2xl border border-zinc-200 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-green-500"></div>
+                <p class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1.5">Konečný výsledek</p>
+                <p class="text-zinc-900 font-bold text-base sm:text-lg">Stabilní #1 pozice na dotaz "burger Mladá Boleslav". Obnovená důvěra klientů a ušetřený čas majitele díky automatizaci.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Images Preview -->
+          <div class="lg:col-span-6 bg-zinc-100 relative overflow-hidden min-h-[400px] flex items-center justify-center p-6 sm:p-10 lg:p-12 z-0">
+            
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-100/40 to-transparent pointer-events-none -z-10"></div>
+            
+            <div class="relative w-full max-w-lg mx-auto transition-transform duration-700 group-hover:scale-[1.02]">
+              <!-- Desktop Image -->
+              <div class="relative z-10 rounded-xl shadow-2xl border border-zinc-200/80 bg-white overflow-hidden">
+                <div class="h-6 sm:h-8 bg-zinc-100 border-b border-zinc-200 flex items-center px-3 gap-1.5">
+                  <div class="w-2 h-2 rounded-full bg-zinc-300"></div>
+                  <div class="w-2 h-2 rounded-full bg-zinc-300"></div>
+                  <div class="w-2 h-2 rounded-full bg-zinc-300"></div>
+                </div>
+                <img src="/images/america-pod-vezi-desktop.webp" alt="America Pod Věží - Náhled webu na PC" class="w-full h-auto object-cover object-top aspect-[16/10]" loading="lazy" />
+              </div>
+              
+              <!-- Mobile Image -->
+              <div class="absolute -bottom-6 sm:-bottom-10 -right-2 sm:-right-6 w-[35%] sm:w-[30%] min-w-[100px] max-w-[160px] z-20 rounded-[1.2rem] sm:rounded-[1.5rem] shadow-2xl border-[4px] sm:border-[6px] border-zinc-900 bg-zinc-900 overflow-hidden transform translate-y-4 group-hover:-translate-y-2 transition-transform duration-700">
+                <img src="/images/america-pod-vezi-mobile.webp" alt="America Pod Věží - Náhled webu na mobilu" class="w-full h-auto object-cover object-top aspect-[9/19]" loading="lazy" />
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION OR MORE PROJECTS -->
+    <div class="flex flex-col items-center justify-center mt-20 fade-in-up" style="animation-delay: 0.3s;">
+      <div class="w-16 h-1 bg-zinc-200 rounded-full mb-8"></div>
+      <h3 class="text-2xl font-extrabold text-zinc-900 mb-4 text-center">Další projekty brzy</h3>
+      <p class="text-zinc-500 font-medium text-center mb-8 max-w-md">Moje portfolio se neustále rozrůstá. Chcete být dalším úspěšným případem?</p>
+      <a href="/objednavka" data-astro-prefetch class="px-8 py-3.5 rounded-full bg-white border-2 border-zinc-200 text-zinc-900 font-bold text-center hover:border-zinc-300 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200 transition-all duration-300 hover:-translate-y-0.5">
+        Poptat nezávazně web
+      </a>
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
