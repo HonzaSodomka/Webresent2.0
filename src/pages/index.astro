@@ -564,13 +564,13 @@ import Layout from '../layouts/Layout.astro';
 <script>
   document.addEventListener('astro:page-load', () => {
 
-    // Fix pro 100vh na mobilech přes přímou manipulaci DOMu (bez repaint způsobeného CSS proměnnou)
+    // Fix pro 100vh na mobilech přes přímou manipulaci DOMu, 1:1 dle americaPodVezi
     const hero = document.getElementById('hero');
-    if (hero && window.innerWidth < 1024) { // Pustíme JS logiku jen pro mobily
+    if (hero) {
         let lastWidth = window.innerWidth;
 
         const setHeroHeight = () => {
-            hero.style.minHeight = `${window.innerHeight - 80}px`; // 80px = pt-20 z body
+            hero.style.minHeight = `${window.innerHeight}px`;
         };
 
         setHeroHeight();
