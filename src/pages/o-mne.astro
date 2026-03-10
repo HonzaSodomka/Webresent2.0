@@ -10,7 +10,6 @@ import Divider from '../components/Divider.astro';
     <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
 
-        <!-- Levá strana: Text -->
         <div class="flex flex-col items-start text-left fade-in-up">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm 2xl:text-base font-semibold text-blue-700 mb-8 2xl:mb-10">
             <span class="w-2 h-2 rounded-full bg-blue-600"></span>
@@ -18,16 +17,15 @@ import Divider from '../components/Divider.astro';
           </div>
 
           <h1 class="text-5xl sm:text-6xl md:text-7xl 2xl:text-[5.5rem] font-extrabold tracking-tighter text-zinc-900 leading-[0.95] mb-6 2xl:mb-8">
-            Jeden člověk.<br />
-            Celý <span class="text-blue-600">web.</span>
+            Bc. Jan<br />
+            <span class="text-blue-600">Sodomka.</span>
           </h1>
 
           <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
-            Jsem Jan, je mi 22 let a weby dělám na míru — od návrhu až po spustění. Vyrostl jsem u Mladé Boleslavi, teď studuju na TUL v Liberci. Zajímá mě hlavně to, aby výsledek nevypadal genericky a aby se přičtně načítal.
+            Maturoval jsem z informatiky, dodelal bakaľáře na TUL a teď pokračuju na magistru. Weby dělám na míru — od prvního návrhu až po spustění.
           </p>
         </div>
 
-        <!-- Pravá strana: Fotka -->
         <div class="flex items-center justify-center fade-in-up" style="animation-delay: 0.1s;">
           <div class="relative w-full max-w-[460px]">
             <div class="absolute -inset-4 bg-blue-500/5 blur-3xl rounded-[3rem] -z-10"></div>
@@ -52,6 +50,185 @@ import Divider from '../components/Divider.astro';
       <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
     </div>
 
+    <!-- TIMELINE -->
+    <section class="scroll-reveal">
+      <div class="mb-12 2xl:mb-16">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Jak jsem se sem dostal.</h2>
+        <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Informatika mě chytla na gymplť a od té doby mě nepustila.</p>
+      </div>
+
+      <div class="relative flex flex-col gap-0 max-w-3xl">
+        <!-- Vertikální linka -->
+        <div class="absolute left-[19px] top-3 bottom-3 w-px bg-zinc-200 hidden sm:block"></div>
+
+        <!-- 2018 -->
+        <div class="flex gap-6 sm:gap-10 items-start pb-10 scroll-reveal">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center z-10">
+            <span class="text-xs font-bold text-zinc-500">'18</span>
+          </div>
+          <div class="pt-1.5">
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2018</p>
+            <h3 class="text-lg font-bold text-zinc-900 mb-1">Gympl a první řádky kódu</h3>
+            <p class="text-zinc-500 font-medium text-sm leading-relaxed">Na střední jsem poprvé narazil na tvorbu webu. Začalo to jako předmět, skončilo jako záliba.</p>
+          </div>
+        </div>
+
+        <!-- 2022 maturita -->
+        <div class="flex gap-6 sm:gap-10 items-start pb-10 scroll-reveal">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center z-10">
+            <span class="text-xs font-bold text-zinc-500">'22</span>
+          </div>
+          <div class="pt-1.5">
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2022</p>
+            <h3 class="text-lg font-bold text-zinc-900 mb-1">Maturita z informatiky za 1</h3>
+            <p class="text-zinc-500 font-medium text-sm leading-relaxed">Gympl uzavřen s jedničkou z informatiky. Nastával čas na vážnější věci — nástup na Aplikovanou informatiku na Fakultě mechatroniky TUL.</p>
+          </div>
+        </div>
+
+        <!-- 2025 Bc. -->
+        <div class="flex gap-6 sm:gap-10 items-start pb-10 scroll-reveal">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center z-10">
+            <span class="text-xs font-bold text-blue-600">'25</span>
+          </div>
+          <div class="pt-1.5">
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2025</p>
+            <h3 class="text-lg font-bold text-zinc-900 mb-1">Bakaľář — a nápad jménem Webresent</h3>
+            <p class="text-zinc-500 font-medium text-sm leading-relaxed">Ukončil jsem bakalářské studium a začal magistra na Ekonomické fakultě TUL, obor Systémové inženýrství a informatika. Zrovna tehdy vznikl nápad na Webresent — nejdřív jen jako projekt na procvičení nových technologií.</p>
+          </div>
+        </div>
+
+        <!-- 2026 -->
+        <div class="flex gap-6 sm:gap-10 items-start scroll-reveal">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center z-10">
+            <span class="text-xs font-bold text-white">'26</span>
+          </div>
+          <div class="pt-1.5">
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2026</p>
+            <h3 class="text-lg font-bold text-zinc-900 mb-1">První klient, spustěný web</h3>
+            <p class="text-zinc-500 font-medium text-sm leading-relaxed">První web na míru pro restauraci America Pod Věží v Mladé Boleslavi. A spolu s tím i spustění samotného Webresent. Teprve začátek.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <Divider />
+
+    <!-- TECHNOLOGIE -->
+    <section class="scroll-reveal">
+      <div class="mb-10 2xl:mb-14">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">S čím pracuju.</h2>
+        <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Volba technologií není náhoda. Každá má svůj důvod.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-xs">A</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-900 text-sm">Astro</p>
+            <p class="text-zinc-400 text-xs font-medium">Statické weby</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-black flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-xs">N</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-900 text-sm">Next.js</p>
+            <p class="text-zinc-400 text-xs font-medium">Webové aplikace</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-xs">PHP</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-900 text-sm">PHP</p>
+            <p class="text-zinc-400 text-xs font-medium">Backend logika</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-xs">SQL</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-900 text-sm">MySQL</p>
+            <p class="text-zinc-400 text-xs font-medium">Databáze</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-xs">Git</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-900 text-sm">Git</p>
+            <p class="text-zinc-400 text-xs font-medium">Správa kódu</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-sky-500 flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-xs">TW</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-900 text-sm">Tailwind</p>
+            <p class="text-zinc-400 text-xs font-medium">Stylování</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center flex-shrink-0">
+            <span class="text-zinc-900 font-bold text-xs">JS</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-900 text-sm">TypeScript</p>
+            <p class="text-zinc-400 text-xs font-medium">Logika & typy</p>
+          </div>
+        </div>
+
+        <div class="bg-zinc-50 border border-dashed border-zinc-200 rounded-2xl p-5 flex items-center gap-4 scroll-reveal">
+          <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center flex-shrink-0">
+            <span class="text-zinc-400 font-bold text-lg">+</span>
+          </div>
+          <div>
+            <p class="font-bold text-zinc-400 text-sm">A další</p>
+            <p class="text-zinc-300 text-xs font-medium">podle projektu</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <Divider />
+
+    <!-- CTA -->
+    <section class="pb-16 lg:pb-24 scroll-reveal">
+      <div class="bg-zinc-900 rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 text-center shadow-xl flex flex-col items-center">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-white mb-6 tracking-tight">
+          Pojďme spolu<br class="hidden sm:block" />
+          udělat něco <span class="text-blue-500">dobrého.</span>
+        </h2>
+        <p class="text-zinc-400 text-base sm:text-lg 2xl:text-xl max-w-xl mx-auto mb-8 sm:mb-10 font-medium leading-relaxed">
+          Žádné složité procesy. Napíšete mi co potřebujete a já vám navrhnu řešení.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/objednavka" data-astro-prefetch class="px-8 py-4 text-base rounded-full bg-blue-600 text-white font-bold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:-translate-y-0.5">
+            Nezávazná poptávka
+          </a>
+          <a href="/portfolio" data-astro-prefetch class="px-8 py-4 text-base rounded-full bg-transparent border-2 border-zinc-700 text-white font-bold hover:border-zinc-500 hover:bg-zinc-800 transition-all duration-300 hover:-translate-y-0.5">
+            Ukázky práce
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 </Layout>
 
@@ -60,20 +237,16 @@ import Divider from '../components/Divider.astro';
     const hero = document.getElementById('hero');
     if (hero) {
       let lastWidth = window.innerWidth;
-
       const setHeroHeight = () => {
         hero.style.minHeight = `${window.innerHeight - 80}px`;
       };
-
       setHeroHeight();
-
       window.addEventListener('resize', () => {
         if (window.innerWidth !== lastWidth) {
           lastWidth = window.innerWidth;
           setHeroHeight();
         }
       });
-
       window.addEventListener('orientationchange', () => {
         setTimeout(setHeroHeight, 100);
       });
