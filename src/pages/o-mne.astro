@@ -15,14 +15,12 @@ import Divider from '../components/Divider.astro';
             <span class="w-2 h-2 rounded-full bg-blue-600"></span>
             O mně
           </div>
-
           <h1 class="text-5xl sm:text-6xl md:text-7xl 2xl:text-[5.5rem] font-extrabold tracking-tighter text-zinc-900 leading-[0.95] mb-6 2xl:mb-8">
             Bc. Jan<br />
             <span class="text-blue-600">Sodomka.</span>
           </h1>
-
           <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
-            Maturoval jsem z informatiky, dodelal bakaľáře na TUL a teď pokračuju na magistru. Weby dělám na míru — od prvního návrhu až po spustění.
+            Maturoval jsem z informatiky, dodelal bakaľáře na TUL a nyní pokračuji na magistru. Weby tvořím na míru — od prvního návrhu až po spustění.
           </p>
         </div>
 
@@ -30,12 +28,7 @@ import Divider from '../components/Divider.astro';
           <div class="relative w-full max-w-[460px]">
             <div class="absolute -inset-4 bg-blue-500/5 blur-3xl rounded-[3rem] -z-10"></div>
             <div class="w-full rounded-[2rem] overflow-hidden border border-zinc-200 shadow-[0_25px_50px_-15px_rgba(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.12)]">
-              <img
-                src="/images/jan-sodomka.webp"
-                alt="Jan Sodomka"
-                class="w-full h-full object-cover object-top"
-                loading="eager"
-              />
+              <img src="/images/jan-sodomka.webp" alt="Jan Sodomka" class="w-full h-full object-cover object-top" loading="eager" />
             </div>
           </div>
         </div>
@@ -51,56 +44,65 @@ import Divider from '../components/Divider.astro';
     </div>
 
     <!-- TIMELINE -->
-    <section class="scroll-reveal">
-      <div class="mb-12 2xl:mb-16">
+    <section>
+      <div class="mb-12 2xl:mb-16 scroll-reveal">
         <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Jak jsem se sem dostal.</h2>
-        <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Informatika mě chytla na gymplť a od té doby mě nepustila.</p>
+        <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Informatika mě chytla na gymnáziu a od té doby mě nepustila.</p>
       </div>
 
-      <div class="relative flex flex-col gap-0 max-w-3xl">
-        <div class="absolute left-[19px] top-3 bottom-3 w-px bg-zinc-200 hidden sm:block"></div>
+      <div class="relative flex flex-col max-w-3xl">
+        <!-- vertikální linka -->
+        <div class="absolute left-5 top-6 bottom-6 w-px bg-gradient-to-b from-zinc-200 via-zinc-200 to-transparent hidden sm:block"></div>
 
-        <div class="flex gap-6 sm:gap-10 items-start pb-10 scroll-reveal">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center z-10">
-            <span class="text-xs font-bold text-zinc-500">'18</span>
+        <!-- 2018 -->
+        <div class="flex gap-8 sm:gap-12 items-start pb-12 scroll-reveal">
+          <div class="flex-shrink-0 flex flex-col items-center gap-1 z-10">
+            <div class="w-10 h-10 rounded-full bg-white border-2 border-zinc-200 flex items-center justify-center shadow-sm">
+              <span class="text-[11px] font-extrabold text-zinc-400">2018</span>
+            </div>
           </div>
-          <div class="pt-1.5">
-            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2018</p>
-            <h3 class="text-lg font-bold text-zinc-900 mb-1">Gympl a první řádky kódu</h3>
-            <p class="text-zinc-500 font-medium text-sm leading-relaxed">Na střední jsem poprvé narazil na tvorbu webu. Začalo to jako předmět, skončilo jako záliba.</p>
+          <div class="pb-2">
+            <h3 class="text-xl font-extrabold text-zinc-900 mb-2">Gymnázium a první řádky kódu</h3>
+            <p class="text-zinc-500 font-medium text-base leading-relaxed">Na střední škole jsem poprvé narazil na tvorbu webových stránek. Začalo to jako školní předmět, skončilo jako koubač, kterému jsem propadl.</p>
           </div>
         </div>
 
-        <div class="flex gap-6 sm:gap-10 items-start pb-10 scroll-reveal">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center z-10">
-            <span class="text-xs font-bold text-zinc-500">'22</span>
+        <!-- 2022 -->
+        <div class="flex gap-8 sm:gap-12 items-start pb-12 scroll-reveal">
+          <div class="flex-shrink-0 z-10">
+            <div class="w-10 h-10 rounded-full bg-white border-2 border-zinc-200 flex items-center justify-center shadow-sm">
+              <span class="text-[11px] font-extrabold text-zinc-400">2022</span>
+            </div>
           </div>
-          <div class="pt-1.5">
-            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2022</p>
-            <h3 class="text-lg font-bold text-zinc-900 mb-1">Maturita z informatiky za 1</h3>
-            <p class="text-zinc-500 font-medium text-sm leading-relaxed">Gympl uzavřen s jedničkou z informatiky. Nástup na Aplikovanou informatiku na Fakultě mechatroniky TUL.</p>
-          </div>
-        </div>
-
-        <div class="flex gap-6 sm:gap-10 items-start pb-10 scroll-reveal">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center z-10">
-            <span class="text-xs font-bold text-blue-600">'25</span>
-          </div>
-          <div class="pt-1.5">
-            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2025</p>
-            <h3 class="text-lg font-bold text-zinc-900 mb-1">Bakaľář — a nápad jménem Webresent</h3>
-            <p class="text-zinc-500 font-medium text-sm leading-relaxed">Ukončil jsem bakalářské studium a začal magistra na Ekonomické fakultě TUL, obor Systémové inženýrství a informatika. Zrovna tehdy vznikl nápad na Webresent — nejdřív jen jako projekt na procvičení nových technologií.</p>
+          <div class="pb-2">
+            <h3 class="text-xl font-extrabold text-zinc-900 mb-2">Maturita z informatiky za 1</h3>
+            <p class="text-zinc-500 font-medium text-base leading-relaxed">Gymnázium ukončeno s jedničkou z informatiky. Následoval nástup na Aplikovanou informatiku na Fakultě mechatroniky TUL v Liberci.</p>
           </div>
         </div>
 
-        <div class="flex gap-6 sm:gap-10 items-start scroll-reveal">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center z-10">
-            <span class="text-xs font-bold text-white">'26</span>
+        <!-- 2025 -->
+        <div class="flex gap-8 sm:gap-12 items-start pb-12 scroll-reveal">
+          <div class="flex-shrink-0 z-10">
+            <div class="w-10 h-10 rounded-full bg-blue-50 border-2 border-blue-300 flex items-center justify-center shadow-sm">
+              <span class="text-[11px] font-extrabold text-blue-600">2025</span>
+            </div>
           </div>
-          <div class="pt-1.5">
-            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">2026</p>
-            <h3 class="text-lg font-bold text-zinc-900 mb-1">První klient, spustěný web</h3>
-            <p class="text-zinc-500 font-medium text-sm leading-relaxed">První web na míru pro restauraci America Pod Věží v Mladé Boleslavi. A spolu s tím i spustění samotného Webresent. Teprve začátek.</p>
+          <div class="pb-2">
+            <h3 class="text-xl font-extrabold text-zinc-900 mb-2">Bakaľář a nápad jménem Webresent</h3>
+            <p class="text-zinc-500 font-medium text-base leading-relaxed">Ukončil jsem bakalářské studium a nastávil na navazující magisterský program na Ekonomické fakultě TUL, obor Systémové inženýrství a informatika. Ve stejné době vznikl nápad na Webresent — zpocátku jen jako projekt pro procvičení nových technologií.</p>
+          </div>
+        </div>
+
+        <!-- 2026 -->
+        <div class="flex gap-8 sm:gap-12 items-start scroll-reveal">
+          <div class="flex-shrink-0 z-10">
+            <div class="w-10 h-10 rounded-full bg-zinc-900 border-2 border-zinc-800 flex items-center justify-center shadow-md">
+              <span class="text-[11px] font-extrabold text-white">2026</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-zinc-900 mb-2">První klient a spustěný web</h3>
+            <p class="text-zinc-500 font-medium text-base leading-relaxed">První web na míru pro restauraci America Pod Věží v Mladé Boleslavi. Spolu s tím i ofíciální spustění Webresent. Teprve začátek.</p>
           </div>
         </div>
 
@@ -109,10 +111,10 @@ import Divider from '../components/Divider.astro';
 
     <Divider />
 
-    <!-- JAK NA TO PŘISTUPUJU -->
-    <section class="scroll-reveal">
-      <div class="mb-12 2xl:mb-16">
-        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Jak na to přistupuju.</h2>
+    <!-- JAK NA TO PŘISTUPUJI -->
+    <section>
+      <div class="mb-12 2xl:mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">Jak na to přistupuji.</h2>
         <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Několik věcí, které dělám jinak — a které se na výsledku pozná.</p>
       </div>
 
@@ -120,32 +122,26 @@ import Divider from '../components/Divider.astro';
 
         <div class="bg-white border border-zinc-200 rounded-3xl p-6 lg:p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 scroll-reveal">
           <div class="w-11 h-11 rounded-2xl bg-zinc-900 flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
           </div>
-          <h3 class="text-lg font-bold text-zinc-900 mb-2">Testuju na 5 zařízeních</h3>
-          <p class="text-zinc-500 text-sm font-medium leading-relaxed">Android, iOS, iPad, notebook a velký monitor — na každém více prohlížečů. Když se mi něco nezdá, opravím to tak, aby to vypadalo skvele všude.</p>
+          <h3 class="text-lg font-bold text-zinc-900 mb-2">Testování na 5 zařízeních</h3>
+          <p class="text-zinc-500 text-sm font-medium leading-relaxed">Každý web prochází testy na Androidu, iOS, iPadu, notebooku i velkém monitoru — vždy ve více prohlížečích. Pokud něco nevypadá správně, jde to zpět na opravu. Bez výjimky.</p>
         </div>
 
         <div class="bg-white border border-zinc-200 rounded-3xl p-6 lg:p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 scroll-reveal">
           <div class="w-11 h-11 rounded-2xl bg-blue-600 flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-            </svg>
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
           </div>
           <h3 class="text-lg font-bold text-zinc-900 mb-2">Design přímo pro vás</h3>
-          <p class="text-zinc-500 text-sm font-medium leading-relaxed">Vždy od nuly, žádné šablony. Každý web navrhuji tak, aby vizulně sedal konkrétnímu podniku — ne aby vypadal jako tisíc dalších stránek na internetu.</p>
+          <p class="text-zinc-500 text-sm font-medium leading-relaxed">Vždy od nuly, žádné šablony. Každý web navrhuji tak, aby vizulně přesně odpovídal konkrétnímu podniku — a nebylo ho možné zaměnit s žádnou jinou stránkou na internetu.</p>
         </div>
 
         <div class="bg-white border border-zinc-200 rounded-3xl p-6 lg:p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 scroll-reveal md:col-span-2 lg:col-span-1">
           <div class="w-11 h-11 rounded-2xl bg-zinc-100 flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-            </svg>
+            <svg class="w-5 h-5 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" /></svg>
           </div>
           <h3 class="text-lg font-bold text-zinc-900 mb-2">Osobně nebo přes video</h3>
-          <p class="text-zinc-500 text-sm font-medium leading-relaxed">Preferuju osobní nebo videoschrůzky před e-mailem. Při rozhovoru vypluje na povrch daleko víc užitečných informací — a výsledek je pak přesnější.</p>
+          <p class="text-zinc-500 text-sm font-medium leading-relaxed">Před e-mailem upřednostňuji osobní nebo videoschůzky. Otřímaný rozhovor odhalí daleko více než dlouhá e-mailová korespondence — a výsledný web je díky tomu přesnější.</p>
         </div>
 
       </div>
@@ -154,17 +150,18 @@ import Divider from '../components/Divider.astro';
     <Divider />
 
     <!-- TECHNOLOGIE -->
-    <section class="scroll-reveal">
-      <div class="mb-10 2xl:mb-14">
-        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">S čím pracuju.</h2>
+    <section>
+      <div class="mb-10 2xl:mb-14 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">S čím pracuji.</h2>
         <p class="text-zinc-600 text-lg 2xl:text-xl max-w-2xl">Volba technologií není náhoda. Každá má svůj důvod.</p>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
 
+        <!-- Astro -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center flex-shrink-0">
-            <span class="text-white font-bold text-xs">A</span>
+          <div class="w-10 h-10 rounded-xl bg-[#17191E] flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M161.014 30.3996C163.833 33.7968 165.239 38.2984 168.052 47.3016L201.826 156.039C190.325 149.961 177.955 145.529 164.917 143.127L143.485 75.8151C142.679 73.2211 140.29 71.4595 137.575 71.4595C134.856 71.4595 132.464 73.2261 131.663 75.8261L110.395 143.104C97.3179 145.498 84.9102 149.933 73.3782 156.022L107.364 47.2637C110.186 38.2625 111.597 33.762 114.417 30.3664C116.909 27.3728 120.172 25.1172 123.857 23.8517C128.021 22.4199 132.737 22.4199 142.169 22.4199H143.289C152.717 22.4199 157.428 22.4199 161.591 23.8517C165.274 25.1151 168.536 27.3667 161.014 30.3996Z" fill="white"/><path d="M166.264 161.148C162.114 164.948 153.65 167.546 143.856 167.546C131.696 167.546 121.471 163.222 118.745 157.246C117.735 160.318 117.503 163.927 117.503 166.296C117.503 166.296 116.857 176.975 124.009 184.127C124.009 180.393 127.048 177.354 130.782 177.354C137.235 177.354 137.228 182.91 137.222 187.659V188.134C137.222 195.238 141.58 201.336 147.76 203.885C146.902 202.19 146.419 200.275 146.419 198.249C146.419 191.673 150.493 189.36 155.232 186.748C158.987 184.671 163.19 182.358 166.014 177.05C167.476 174.316 168.309 171.193 168.309 167.876C168.309 165.456 167.941 163.122 166.264 161.148Z" fill="#FF5D01"/></svg>
           </div>
           <div>
             <p class="font-bold text-zinc-900 text-sm">Astro</p>
@@ -172,9 +169,10 @@ import Divider from '../components/Divider.astro';
           </div>
         </div>
 
+        <!-- Next.js -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <div class="w-10 h-10 rounded-xl bg-black flex items-center justify-center flex-shrink-0">
-            <span class="text-white font-bold text-xs">N</span>
+            <svg class="w-6 h-6" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180"><circle cx="90" cy="90" r="90" fill="black"/></mask><g mask="url(#mask0)"><circle cx="90" cy="90" r="90" fill="black"/><path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z" fill="url(#gradient0)"/><rect x="115" y="54" width="12" height="72" fill="url(#gradient1)"/><defs><linearGradient id="gradient0" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient><linearGradient id="gradient1" x1="121" y1="54" x2="120.799" y2="106.875" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient></defs></g></svg>
           </div>
           <div>
             <p class="font-bold text-zinc-900 text-sm">Next.js</p>
@@ -182,9 +180,10 @@ import Divider from '../components/Divider.astro';
           </div>
         </div>
 
+        <!-- PHP -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
-            <span class="text-white font-bold text-xs">PHP</span>
+          <div class="w-10 h-10 rounded-xl bg-[#4F5B93] flex items-center justify-center flex-shrink-0">
+            <svg class="w-7 h-7" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M64 33.039c-33.74 0-61.094 13.862-61.094 30.961s27.354 30.961 61.094 30.961 61.094-13.862 61.094-30.961-27.354-30.961-61.094-30.961zm-14.027 19.096h-2.753l-.933 4.712h2.817c1.855 0 2.934-.93 3.249-2.366.306-1.527-.39-2.346-2.38-2.346zm35.717 0h-2.752l-.934 4.712h2.817c1.854 0 2.933-.93 3.249-2.366.305-1.527-.391-2.346-2.38-2.346zm-28.386 3.665c-.456 2.302-2.218 3.624-4.849 3.624h-3.284l-.867 4.38H45.19l2.857-14.427h6.64c3.68 0 5.503 2.078 4.617 6.423zm22.805-6.423h-6.64l-2.855 14.427h3.064l.805-4.066h3.576c3.64 0 6.148-2.078 6.716-5.208.641-3.43-1.155-5.153-4.666-5.153zm13.27 0h-3.065l-2.856 14.427h3.065zm-6.187 5.712c-.457 2.302-2.219 3.624-4.849 3.624h-3.285l-.867 4.38h-3.063l2.856-14.427h6.64c3.68 0 5.503 2.078 4.568 6.423z"/></svg>
           </div>
           <div>
             <p class="font-bold text-zinc-900 text-sm">PHP</p>
@@ -192,9 +191,10 @@ import Divider from '../components/Divider.astro';
           </div>
         </div>
 
+        <!-- MySQL -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <div class="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center flex-shrink-0">
-            <span class="text-white font-bold text-xs">SQL</span>
+          <div class="w-10 h-10 rounded-xl bg-[#00618A] flex items-center justify-center flex-shrink-0">
+            <svg class="w-7 h-5" viewBox="0 0 100 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M95.8 43.4c-3.5-.1-6.2.3-8.5 1.2-.6.3-1.7.3-1.8 1 .4.4.4 1 .7 1.5.5.9 1.4 2.1 2.2 2.7.9.7 1.8 1.3 2.7 1.9 1.6 1 3.5 1.6 5.1 2.6.9.6 1.9 1.3 2.8 2 .5.4.8 1 1.3 1.3V56c-.3-.4-.3-.9-.6-1.3-.4-.4-.9-.7-1.3-1.1-1.3-1.7-2.9-3.2-4.6-4.4-1.4-1-4.5-2.3-5.1-3.9v-.1c1-.1 2.2-.5 3.2-.8 1.6-.4 3-.3 4.6-.7.7-.2 1.5-.4 2.2-.7v-.4c-.8-.8-1.4-2-2.3-2.7-2.4-2-5-3.9-7.7-5.5-1.5-.9-3.4-1.5-5-2.3-.5-.3-1.5-.4-1.9-.9-1-1.3-1.5-2.9-2.2-4.3-1.5-2.9-3-6.1-4.3-9.2-1-2.2-1.5-4.4-2.7-6.4-5.5-9-11.4-14.5-20.6-19.9-1.9-1.1-4.3-1.6-6.8-2.2l-4-.2c-.8-.3-1.7-1.4-2.4-1.9C30.2 2.3 22.4-.3 15.3 0 10.8.2 6.5 1.4 2.7 3.7.6 5 -1 7.2.8 7.2c1.1 0 3-.3 4.1.1 1.4.4 2.8 1.6 4 2.3 1 .5 1.9 1.1 2.7 1.7 2.5 1.8 4.7 3.9 6.7 6.2 1 1.2 1.8 2.5 2.7 3.7.5.7.6 1.8 1.3 2.2 0-2.3-.1-4.7.3-6.7.7-3.7 2.7-5.8 5.3-6.6.2 0 .4.1.6.1.6.3 1.2.5 1.7.9C32.5 14 34.5 18 36 22.3c.5 1.4.9 2.8 1.6 4.1.8 1.5 1.8 3 2.7 4.5.9 1.4 1.9 2.9 3 4.1.5.6 1.4.8 1.5 1.8-1.6.2-2.5.7-3.4 1.4-.4.3-.7.6-.9 1 .3.1.6.1.9.1.4 0 .7-.1 1.1-.1 0 .1.1.1.1.2l-2.2 2.3c-.7.8-1.5 1.6-2 2.6-.1.2-.4.5-.3.8.1.4.6.4 1 .4 1.5.1 3.2-.4 4.7-.9.9-.3 1.8-.6 2.7-1 .3-.1.7-.1.8-.4 0 .4-.1.7-.1 1-.2.9-.4 1.7-.5 2.6-.2 1.5-.1 3.1.1 4.7.1.8.4 1.6.6 2.3.1.3.1.8.4.9.3.1.5-.3.7-.5.5-.5 1-1 1.3-1.6.7-1.6 1.3-3.2 1.9-4.9.3-.8.5-1.7.8-2.5l.1-.1c.1.4.1.9.2 1.3.4 2.3.7 4.6.9 6.9.1.7.1 1.5.2 2.2.1.3.1.6.1.8l.6.6c.4-.3.9-.6 1.2-1 .4-.5.7-1.1.9-1.7.7-2 1.1-4.2 1.2-6.6 0-.9.2-1.8.2-2.7 0-.1 0-.2.1-.2.5.3 1 .7 1.5 1 1.4 1 2.7 2 4 3 .7.5 1.4 1 2 1.5.7.5 1.3 1.2 2.1 1.5l-.4-.4c-.3-.4-.7-.8-1.1-1.2-2.6-3.5-5.8-6.5-9.2-9.2-.7-.5-2.2-1.1-2.5-2 .6-.7 1.5-1.2 2.2-1.8 1.1-.9 2.2-1.7 3.3-2.7 1-.9 2-1.9 2.9-2.9.4-.5.7-1 1-1.5-.3-.1-.6 0-.9.1-.5.2-1 .5-1.5.8-1.5 1-3 2-4.6 2.9-.7.4-1.4.9-2.2 1.2h-.1c0-.8-.2-1.7-.3-2.5-.3-3-1-6-1.8-8.8-.4-1.4-.9-2.8-1.5-4.1-.3-.7-.6-1.4-1-2.1l-.1-.4c.7.5 1.3 1 1.9 1.5 2.5 2.1 4.8 4.4 7 6.8.5.6 1 1.2 1.5 1.8.3.4.5.8.9 1.1.1 0 .2.1.3.1h.1c0-.1.1-.1.1-.2-.3-.3-.5-.7-.8-1-1.2-2.1-2.7-4-4.1-5.9-2-2.9-4.3-5.5-6.8-7.9-.5-.5-.9-1-1.4-1.5-.2-.2-.5-.3-.6-.6.4-.1.8-.1 1.1-.1 1 0 2 .2 3 .4 2.2.6 4.3 1.6 6.2 2.8 5.6 3.5 10.1 8.5 13.4 14.3.5.9 1 1.9 1.4 2.8.8 1.9 1.6 3.8 2.5 5.7 1.7 3.7 3.5 7.3 6.1 10.4.9 1 1.8 2.1 2.7 3.1.5.5 1 1 1.5 1.5.3.3.9.4 1 .8z" fill="white"/></svg>
           </div>
           <div>
             <p class="font-bold text-zinc-900 text-sm">MySQL</p>
@@ -202,9 +202,10 @@ import Divider from '../components/Divider.astro';
           </div>
         </div>
 
+        <!-- Git -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <div class="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center flex-shrink-0">
-            <span class="text-white font-bold text-xs">Git</span>
+          <div class="w-10 h-10 rounded-xl bg-[#F05032] flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" viewBox="0 0 92 92" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M90.156 41.965L50.036 1.848a5.922 5.922 0 00-8.378 0l-8.331 8.33 10.566 10.566a7.03 7.03 0 017.23 1.684 7.04 7.04 0 011.677 7.265l10.183 10.183a7.028 7.028 0 017.265 1.677 7.044 7.044 0 010 9.951 7.05 7.05 0 01-9.954 0 7.044 7.044 0 01-1.528-7.661l-9.5-9.499v24.997a7.044 7.044 0 011.876 1.315 7.044 7.044 0 010 9.954 7.048 7.048 0 01-9.953 0 7.044 7.044 0 010-9.954 7.074 7.074 0 012.21-1.495V34.27a7.074 7.074 0 01-2.21-1.495 7.044 7.044 0 01-1.525-7.676L30.6 14.536 1.734 43.402a5.928 5.928 0 000 8.381l40.12 40.118a5.924 5.924 0 008.377 0l39.925-39.924a5.928 5.928 0 000-8.012z"/></svg>
           </div>
           <div>
             <p class="font-bold text-zinc-900 text-sm">Git</p>
@@ -212,9 +213,10 @@ import Divider from '../components/Divider.astro';
           </div>
         </div>
 
+        <!-- Tailwind -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <div class="w-10 h-10 rounded-xl bg-sky-500 flex items-center justify-center flex-shrink-0">
-            <span class="text-white font-bold text-xs">TW</span>
+          <div class="w-10 h-10 rounded-xl bg-[#0EA5E9] flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" viewBox="0 0 54 33" fill="white" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"/></svg>
           </div>
           <div>
             <p class="font-bold text-zinc-900 text-sm">Tailwind</p>
@@ -222,16 +224,18 @@ import Divider from '../components/Divider.astro';
           </div>
         </div>
 
+        <!-- TypeScript -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-5 flex items-center gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <div class="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center flex-shrink-0">
-            <span class="text-zinc-900 font-bold text-xs">JS</span>
+          <div class="w-10 h-10 rounded-xl bg-[#3178C6] flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" viewBox="0 0 400 400" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M0 200V0h400v400H0" fill="#3178c6"/><path d="M87.6 200.7V217h52v148h36.9V217h52v-16c0-9 0-16.3-.4-16.5 0-.3-31.7-.4-70.2-.4l-70 .3v16.4zm185.5-17.4c9.8 2.7 17.5 7.6 24.2 15.3 3.6 4 8.8 11.2 9.3 13 .2.7-16.5 12-26.6 18.3-.4.2-2-1.5-3.7-4-5.2-7.5-10.7-10.7-19-11.3-12.3-.8-20.2 5.6-20.1 16.3 0 3.1.5 5 1.8 7.6 2.8 5.8 8 9.3 23 15.6 28.4 12.2 40.6 20.3 48.2 31.7 8.5 12.8 10.4 33.2 4.7 48.4-6.3 16.5-22 27.7-44.2 31.6-6.8 1.2-23 1-30.4-.3-16-3-31.2-11-40.6-21.5-3.6-4-10.6-14.6-10.2-15.2l3.7-2.4 14.8-8.6 11.4-6.7 2.4 3.6c3.3 5.3 10.5 12.5 14.7 15 12.7 6.7 30.2 5.7 38.8-2 3.6-3.4 5-6.8 5-11.9 0-4.6-.7-6.7-3-10.3-3.1-4.7-9.4-8.7-27.4-16.5-20.6-8.9-29.4-14.3-37.4-23-4.6-5-9-13.2-10.8-20.4-1.5-6.3-2-17.2-.8-23.5 3.4-18 15.5-30.6 33.8-35.5 5.7-1.7 20-2.1 26.2-.7z"/></svg>
           </div>
           <div>
             <p class="font-bold text-zinc-900 text-sm">TypeScript</p>
-            <p class="text-zinc-400 text-xs font-medium">Logika & typy</p>
+            <p class="text-zinc-400 text-xs font-medium">Logika &amp; typy</p>
           </div>
         </div>
 
+        <!-- + další -->
         <div class="bg-zinc-50 border border-dashed border-zinc-200 rounded-2xl p-5 flex items-center gap-4 scroll-reveal">
           <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center flex-shrink-0">
             <span class="text-zinc-400 font-bold text-lg">+</span>
@@ -255,7 +259,7 @@ import Divider from '../components/Divider.astro';
           udělat něco <span class="text-blue-500">dobrého.</span>
         </h2>
         <p class="text-zinc-400 text-base sm:text-lg 2xl:text-xl max-w-xl mx-auto mb-8 sm:mb-10 font-medium leading-relaxed">
-          Žádné složité procesy. Napíšete mi co potřebujete a já vám navrhnu řešení.
+          Žádné složité procesy. Napíšete mi, co potřebujete, a já vám navrhnu řešení.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/objednavka" data-astro-prefetch class="px-8 py-4 text-base rounded-full bg-blue-600 text-white font-bold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:-translate-y-0.5">
