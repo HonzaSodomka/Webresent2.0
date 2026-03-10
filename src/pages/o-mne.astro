@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Divider from '../components/Divider.astro';
+---
+
+<Layout title="O mně | Webresent">
+  <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+
+        <!-- Left: Text -->
+        <div class="flex flex-col items-start text-left fade-in-up">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm 2xl:text-base font-semibold text-blue-700 mb-8 2xl:mb-10">
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+            O mně
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl md:text-7xl 2xl:text-[5.5rem] font-extrabold tracking-tighter text-zinc-900 leading-[0.95] mb-6 2xl:mb-8">
+            Kód s duší.<br />
+            <span class="text-blue-600">Design s důvodem.</span>
+          </h1>
+
+          <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 mb-10 max-w-lg 2xl:max-w-xl leading-relaxed font-medium">
+            Je mi 22 let, pocházím z okolí Mladé Boleslavi a ke každému webu přistupuju se smyslem pro detail. Nestačí mi, aby web fungoval — musí taky dobře vypadat a přesvědčit na první pohled.
+          </p>
+
+          <div class="flex items-center gap-3 mb-10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 border border-zinc-200">
+              <svg class="w-4 h-4 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 0121 13c0 5.523-4.477 10-9 10S3 18.523 3 13c0-.868.121-1.707.34-2.5L12 14z"/></svg>
+              <span class="text-sm font-bold text-zinc-700">Bc. — Technická univerzita v Liberci</span>
+            </div>
+          </div>
+
+          <a href="/objednavka" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+            Poptat web
+          </a>
+        </div>
+
+        <!-- Right: Photo -->
+        <div class="flex relative w-full items-center justify-center fade-in-up" style="animation-delay: 0.1s;">
+          <div class="relative w-full max-w-[420px] mx-auto">
+
+            <!-- Subtle glow -->
+            <div class="absolute inset-0 bg-blue-400/8 blur-3xl rounded-[3rem] -z-10"></div>
+
+            <!-- Floating card: Location -->
+            <div class="absolute -top-4 -left-4 lg:-left-8 z-20 animate-float-delayed">
+              <div class="flex items-center gap-2.5 bg-white rounded-2xl px-4 py-3 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.12)] border border-zinc-100">
+                <span class="text-lg">📍</span>
+                <div>
+                  <p class="text-xs font-bold text-zinc-900 leading-tight">Mladá Boleslav</p>
+                  <p class="text-[10px] font-semibold text-zinc-400">Liberec</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo frame -->
+            <div class="w-full rounded-[2rem] overflow-hidden border border-zinc-200 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.15)] bg-white">
+              <img
+                src="/images/jan-sodomka.webp"
+                alt="Jan Sodomka – Webresent"
+                class="w-full h-full object-cover object-top"
+                loading="eager"
+              />
+            </div>
+
+            <!-- Floating card: Detail -->
+            <div class="absolute -bottom-4 -right-4 lg:-right-8 z-20 animate-float">
+              <div class="bg-zinc-900 rounded-2xl px-4 py-3 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.4)] border border-zinc-800">
+                <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1">Přístup</p>
+                <p class="text-sm font-bold text-white leading-tight">Detail rozhoduje.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Hero divider (bez scroll-reveal, stejně jako na HP a portfoliu) -->
+    <div class="w-full flex items-center justify-center pb-12 lg:pb-16 2xl:pb-24 pt-8 lg:pt-0">
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+      <div class="w-2 h-2 rounded-full bg-zinc-300 mx-4"></div>
+      <div class="h-px bg-zinc-200 w-full max-w-[80px] sm:max-w-[200px] 2xl:max-w-xs"></div>
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const hero = document.getElementById('hero');
+    if (hero) {
+      let lastWidth = window.innerWidth;
+
+      const setHeroHeight = () => {
+        hero.style.minHeight = `${window.innerHeight - 80}px`;
+      };
+
+      setHeroHeight();
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth !== lastWidth) {
+          lastWidth = window.innerWidth;
+          setHeroHeight();
+        }
+      });
+
+      window.addEventListener('orientationchange', () => {
+        setTimeout(setHeroHeight, 100);
+      });
+    }
+  });
+</script>
