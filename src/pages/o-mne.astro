@@ -9,7 +9,6 @@ import Divider from '../components/Divider.astro';
     <!-- HERO -->
     <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
-
         <div class="flex flex-col items-start text-left fade-in-up">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm 2xl:text-base font-semibold text-blue-700 mb-8 2xl:mb-10">
             <span class="w-2 h-2 rounded-full bg-blue-600"></span>
@@ -23,7 +22,6 @@ import Divider from '../components/Divider.astro';
             Maturoval jsem z informatiky, dodelal bakaľáře na TUL a nyní pokračuji na magistru. Weby tvořím na míru — od prvního návrhu až po spustění.
           </p>
         </div>
-
         <div class="flex items-center justify-center fade-in-up mt-4 lg:mt-0" style="animation-delay: 0.15s;">
           <div class="relative w-full max-w-[420px] lg:max-w-[460px]">
             <div class="absolute -inset-4 bg-blue-500/5 blur-3xl rounded-[3rem] -z-10"></div>
@@ -32,7 +30,6 @@ import Divider from '../components/Divider.astro';
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -45,68 +42,77 @@ import Divider from '../components/Divider.astro';
 
     <!-- TIMELINE -->
     <section>
-      <div class="mb-10 lg:mb-14 2xl:mb-16 scroll-reveal">
+      <div class="mb-12 2xl:mb-16 scroll-reveal">
         <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-3">Jak jsem se sem dostal.</h2>
-        <p class="text-zinc-500 text-base md:text-lg 2xl:text-xl max-w-xl">Informatika mě chytla na gymnáziu a od té doby mě nepustila.</p>
+        <p class="text-zinc-500 text-base md:text-lg max-w-xl">Informatika mě chytla na gymnáziu a od té doby mě nepustila.</p>
       </div>
 
-      <div class="relative flex flex-col">
-        <!-- vertikální linka -->
-        <div class="absolute left-[22px] top-8 bottom-0 w-px bg-gradient-to-b from-zinc-300 via-zinc-200 to-transparent hidden sm:block"></div>
+      <div class="flex flex-col gap-0">
 
         <!-- 2018 -->
-        <div class="flex gap-6 sm:gap-10 items-start pb-10 sm:pb-12 scroll-reveal">
-          <div class="flex-shrink-0 z-10 flex flex-col items-center">
-            <div class="w-11 h-11 rounded-2xl bg-white border-2 border-zinc-200 shadow-sm flex flex-col items-center justify-center">
-              <span class="text-[10px] font-black text-zinc-300 leading-none tracking-tight">20</span>
-              <span class="text-sm font-black text-zinc-700 leading-none">18</span>
-            </div>
+        <div class="group flex flex-col sm:flex-row gap-0 sm:gap-12 scroll-reveal">
+          <div class="flex sm:flex-col items-center sm:items-end gap-4 sm:gap-0 sm:w-28 flex-shrink-0 pb-2 sm:pb-0">
+            <span class="text-[3.5rem] sm:text-[4.5rem] font-black text-zinc-100 group-hover:text-zinc-200 transition-colors leading-none select-none">2018</span>
           </div>
-          <div class="pt-1">
-            <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-1.5">Gymnázium a první řádky kódu</h3>
-            <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed">Na střední škole jsem poprvé narazil na tvorbu webových stránek. Začalo to jako školní předmět, skončilo jako záliba, které už nepřestala.</p>
+          <div class="flex gap-5 sm:gap-0 items-start pb-10 sm:pb-14">
+            <div class="flex flex-col items-center sm:mr-10 flex-shrink-0">
+              <div class="w-2.5 h-2.5 rounded-full bg-zinc-300 group-hover:bg-blue-400 transition-colors mt-2 flex-shrink-0"></div>
+              <div class="w-px flex-1 bg-zinc-100 mt-2"></div>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">Gymnázium a první řádky kódu</h3>
+              <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed max-w-lg">Na střední škole jsem poprvé narazil na tvorbu webových stránek. Začalo to jako školní předmět, skončilo jako záliba, které už nepřestala.</p>
+            </div>
           </div>
         </div>
 
         <!-- 2022 -->
-        <div class="flex gap-6 sm:gap-10 items-start pb-10 sm:pb-12 scroll-reveal">
-          <div class="flex-shrink-0 z-10">
-            <div class="w-11 h-11 rounded-2xl bg-white border-2 border-zinc-200 shadow-sm flex flex-col items-center justify-center">
-              <span class="text-[10px] font-black text-zinc-300 leading-none tracking-tight">20</span>
-              <span class="text-sm font-black text-zinc-700 leading-none">22</span>
-            </div>
+        <div class="group flex flex-col sm:flex-row gap-0 sm:gap-12 scroll-reveal">
+          <div class="flex sm:flex-col items-center sm:items-end gap-4 sm:gap-0 sm:w-28 flex-shrink-0 pb-2 sm:pb-0">
+            <span class="text-[3.5rem] sm:text-[4.5rem] font-black text-zinc-100 group-hover:text-zinc-200 transition-colors leading-none select-none">2022</span>
           </div>
-          <div class="pt-1">
-            <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-1.5">Maturita z informatiky za 1</h3>
-            <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed">Gymnázium ukončeno s jedničkou z informatiky. Následoval nástup na Aplikovanou informatiku na Fakultě mechatroniky TUL v Liberci.</p>
+          <div class="flex gap-5 sm:gap-0 items-start pb-10 sm:pb-14">
+            <div class="flex flex-col items-center sm:mr-10 flex-shrink-0">
+              <div class="w-2.5 h-2.5 rounded-full bg-zinc-300 group-hover:bg-blue-400 transition-colors mt-2 flex-shrink-0"></div>
+              <div class="w-px flex-1 bg-zinc-100 mt-2"></div>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">Maturita z informatiky za 1</h3>
+              <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed max-w-lg">Gymnázium ukončeno s jedničkou z informatiky. Následoval nástup na Aplikovanou informatiku na Fakultě mechatroniky TUL v Liberci.</p>
+            </div>
           </div>
         </div>
 
         <!-- 2025 -->
-        <div class="flex gap-6 sm:gap-10 items-start pb-10 sm:pb-12 scroll-reveal">
-          <div class="flex-shrink-0 z-10">
-            <div class="w-11 h-11 rounded-2xl bg-blue-600 border-2 border-blue-500 shadow-[0_4px_14px_rgba(37,99,235,0.35)] flex flex-col items-center justify-center">
-              <span class="text-[10px] font-black text-blue-200 leading-none tracking-tight">20</span>
-              <span class="text-sm font-black text-white leading-none">25</span>
-            </div>
+        <div class="group flex flex-col sm:flex-row gap-0 sm:gap-12 scroll-reveal">
+          <div class="flex sm:flex-col items-center sm:items-end gap-4 sm:gap-0 sm:w-28 flex-shrink-0 pb-2 sm:pb-0">
+            <span class="text-[3.5rem] sm:text-[4.5rem] font-black text-blue-200 group-hover:text-blue-300 transition-colors leading-none select-none">2025</span>
           </div>
-          <div class="pt-1">
-            <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-1.5">Bakaľář a základ Webresent</h3>
-            <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed">Ukončil jsem bakalářské studium a nastávil na navazující magisterský program — obor Systémové inženýrství a informatika na Ekonomické fakultě TUL. Ve stejnou dobu vznikl nápad na Webresent, zpočátku jen jako projekt pro procvičení nových technologií.</p>
+          <div class="flex gap-5 sm:gap-0 items-start pb-10 sm:pb-14">
+            <div class="flex flex-col items-center sm:mr-10 flex-shrink-0">
+              <div class="w-2.5 h-2.5 rounded-full bg-blue-400 mt-2 flex-shrink-0"></div>
+              <div class="w-px flex-1 bg-blue-100 mt-2"></div>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">Bakaľář a základ Webresent</h3>
+              <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed max-w-lg">Ukončil jsem bakalářské studium a nastoupil na navazující magisterský program — obor Systémové inženýrství a informatika na Ekonomické fakultě TUL. Ve stejnou dobu vznikl nápad na Webresent.</p>
+            </div>
           </div>
         </div>
 
         <!-- 2026 -->
-        <div class="flex gap-6 sm:gap-10 items-start scroll-reveal">
-          <div class="flex-shrink-0 z-10">
-            <div class="w-11 h-11 rounded-2xl bg-zinc-900 border-2 border-zinc-700 shadow-md flex flex-col items-center justify-center">
-              <span class="text-[10px] font-black text-zinc-500 leading-none tracking-tight">20</span>
-              <span class="text-sm font-black text-white leading-none">26</span>
-            </div>
+        <div class="group flex flex-col sm:flex-row gap-0 sm:gap-12 scroll-reveal">
+          <div class="flex sm:flex-col items-center sm:items-end gap-4 sm:gap-0 sm:w-28 flex-shrink-0 pb-2 sm:pb-0">
+            <span class="text-[3.5rem] sm:text-[4.5rem] font-black text-zinc-800 group-hover:text-zinc-700 transition-colors leading-none select-none">2026</span>
           </div>
-          <div class="pt-1">
-            <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-1.5">První klient a spustěný web</h3>
-            <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed">První web na míru pro restauraci America Pod Věží v Mladé Boleslavi. Spolu s tím i oficiální spustění Webresent. Teprve začátek.</p>
+          <div class="flex gap-5 sm:gap-0 items-start">
+            <div class="flex flex-col items-center sm:mr-10 flex-shrink-0">
+              <div class="w-3 h-3 rounded-full bg-zinc-900 mt-1.5 flex-shrink-0 shadow-md"></div>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold text-zinc-900 mb-2">První klient a spustěný web</h3>
+              <p class="text-zinc-500 text-sm sm:text-base font-medium leading-relaxed max-w-lg">První web na míru pro restauraci America Pod Věží v Mladé Boleslavi. Spolu s tím i oficiální spustění Webresent. Teprve začátek.</p>
+            </div>
           </div>
         </div>
 
@@ -119,11 +125,9 @@ import Divider from '../components/Divider.astro';
     <section>
       <div class="mb-10 lg:mb-14 2xl:mb-16 scroll-reveal">
         <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-3">Jak na to přistupuji.</h2>
-        <p class="text-zinc-500 text-base md:text-lg 2xl:text-xl max-w-xl">Několik věcí, které dělám jinak — a které se na výsledku pozná.</p>
+        <p class="text-zinc-500 text-base md:text-lg max-w-xl">Několik věcí, které dělám jinak — a které se na výsledku pozná.</p>
       </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-
         <div class="bg-white border border-zinc-200 rounded-3xl p-6 lg:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 scroll-reveal">
           <div class="w-11 h-11 rounded-2xl bg-zinc-900 flex items-center justify-center mb-5">
             <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
@@ -131,7 +135,6 @@ import Divider from '../components/Divider.astro';
           <h3 class="text-base sm:text-lg font-bold text-zinc-900 mb-2">Testování na 5 zařízeních</h3>
           <p class="text-zinc-500 text-sm font-medium leading-relaxed">Každý web prochází testy na Androidu, iOS, iPadu, notebooku i velkém monitoru — vždy ve více prohlížečích. Pokud něco nevypadá správně, jde to zpět na opravu. Bez výjimky.</p>
         </div>
-
         <div class="bg-white border border-zinc-200 rounded-3xl p-6 lg:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 scroll-reveal">
           <div class="w-11 h-11 rounded-2xl bg-blue-600 flex items-center justify-center mb-5">
             <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
@@ -139,7 +142,6 @@ import Divider from '../components/Divider.astro';
           <h3 class="text-base sm:text-lg font-bold text-zinc-900 mb-2">Design přímo pro vás</h3>
           <p class="text-zinc-500 text-sm font-medium leading-relaxed">Vždy od nuly, žádné šablony. Každý web navrhuji tak, aby vizulně přesně odpovídal konkrétnímu podniku — a nebylo ho možné zaměnit s žádnou jinou stránkou.</p>
         </div>
-
         <div class="bg-white border border-zinc-200 rounded-3xl p-6 lg:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 scroll-reveal md:col-span-2 lg:col-span-1">
           <div class="w-11 h-11 rounded-2xl bg-zinc-100 flex items-center justify-center mb-5">
             <svg class="w-5 h-5 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" /></svg>
@@ -147,7 +149,6 @@ import Divider from '../components/Divider.astro';
           <h3 class="text-base sm:text-lg font-bold text-zinc-900 mb-2">Osobně nebo přes video</h3>
           <p class="text-zinc-500 text-sm font-medium leading-relaxed">Před e-mailem upřednostňuji osobní nebo videoschůzky. Rozhovor odhalí daleko více než e-mailová korespondence — výsledný web je díky tomu přesnější.</p>
         </div>
-
       </div>
     </section>
 
@@ -157,117 +158,56 @@ import Divider from '../components/Divider.astro';
     <section>
       <div class="mb-10 lg:mb-14 2xl:mb-16 scroll-reveal">
         <h2 class="text-3xl md:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 tracking-tight mb-3">S čím pracuji.</h2>
-        <p class="text-zinc-500 text-base md:text-lg 2xl:text-xl max-w-xl">Volba nástrojů není náhoda. Každý má svůj důvod.</p>
+        <p class="text-zinc-500 text-base md:text-lg max-w-xl">Volba nástrojů není náhoda. Každý má svůj důvod.</p>
       </div>
-
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
 
-        <!-- Astro -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/astro" alt="Astro" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">Astro</p>
-            <p class="text-zinc-400 text-xs font-medium">Statické weby</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">Astro</p><p class="text-zinc-400 text-xs font-medium">Statické weby</p></div>
         </div>
 
-        <!-- Next.js -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="Next.js" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">Next.js</p>
-            <p class="text-zinc-400 text-xs font-medium">Webové aplikace</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">Next.js</p><p class="text-zinc-400 text-xs font-medium">Webové aplikace</p></div>
         </div>
 
-        <!-- React -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/react" alt="React" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">React</p>
-            <p class="text-zinc-400 text-xs font-medium">UI komponenty</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">React</p><p class="text-zinc-400 text-xs font-medium">UI komponenty</p></div>
         </div>
 
-        <!-- TypeScript -->
-        <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="https://cdn.simpleicons.org/typescript" alt="TypeScript" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">TypeScript</p>
-            <p class="text-zinc-400 text-xs font-medium">Logika &amp; typy</p>
-          </div>
-        </div>
-
-        <!-- Tailwind -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind CSS" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">Tailwind CSS</p>
-            <p class="text-zinc-400 text-xs font-medium">Stylování</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">Tailwind</p><p class="text-zinc-400 text-xs font-medium">Stylování</p></div>
         </div>
 
-        <!-- PHP -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/php" alt="PHP" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">PHP</p>
-            <p class="text-zinc-400 text-xs font-medium">Backend logika</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">PHP</p><p class="text-zinc-400 text-xs font-medium">Backend logika</p></div>
         </div>
 
-        <!-- MySQL -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/mysql" alt="MySQL" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">MySQL</p>
-            <p class="text-zinc-400 text-xs font-medium">Databáze</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">MySQL</p><p class="text-zinc-400 text-xs font-medium">Databáze</p></div>
         </div>
 
-        <!-- Git -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/git" alt="Git" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">Git</p>
-            <p class="text-zinc-400 text-xs font-medium">Správa kódu</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">Git</p><p class="text-zinc-400 text-xs font-medium">Správa kódu</p></div>
         </div>
 
-        <!-- GitHub -->
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
           <img src="https://cdn.simpleicons.org/github/18181B" alt="GitHub" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">GitHub</p>
-            <p class="text-zinc-400 text-xs font-medium">Repozitáře</p>
-          </div>
+          <div><p class="font-bold text-zinc-900 text-sm">GitHub</p><p class="text-zinc-400 text-xs font-medium">Repozitáře</p></div>
         </div>
 
-        <!-- Figma -->
-        <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="https://cdn.simpleicons.org/figma" alt="Figma" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">Figma</p>
-            <p class="text-zinc-400 text-xs font-medium">Návrh UI</p>
+        <!-- a další -->
+        <div class="bg-zinc-50 border border-dashed border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 scroll-reveal">
+          <div class="w-8 h-8 rounded-xl bg-zinc-100 flex items-center justify-center flex-shrink-0">
+            <span class="text-zinc-400 font-bold text-base leading-none">+</span>
           </div>
-        </div>
-
-        <!-- Vercel -->
-        <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="https://cdn.simpleicons.org/vercel/000000" alt="Vercel" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">Vercel</p>
-            <p class="text-zinc-400 text-xs font-medium">Nasazení</p>
-          </div>
-        </div>
-
-        <!-- VS Code -->
-        <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code" class="w-8 h-8 flex-shrink-0" />
-          <div>
-            <p class="font-bold text-zinc-900 text-sm">VS Code</p>
-            <p class="text-zinc-400 text-xs font-medium">Editor</p>
-          </div>
+          <div><p class="font-bold text-zinc-400 text-sm">A další</p><p class="text-zinc-300 text-xs font-medium">podle projektu</p></div>
         </div>
 
       </div>
@@ -282,16 +222,12 @@ import Divider from '../components/Divider.astro';
           Pojďme spolu<br class="hidden sm:block" />
           udělat něco <span class="text-blue-500">dobrého.</span>
         </h2>
-        <p class="text-zinc-400 text-base sm:text-lg 2xl:text-xl max-w-xl mx-auto mb-8 sm:mb-10 font-medium leading-relaxed">
+        <p class="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-10 font-medium leading-relaxed">
           Žádné složité procesy. Napíšete mi, co potřebujete, a já vám navrhnu řešení.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a href="/objednavka" data-astro-prefetch class="px-8 py-4 text-base rounded-full bg-blue-600 text-white font-bold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:-translate-y-0.5 text-center">
-            Nezávazná poptávka
-          </a>
-          <a href="/portfolio" data-astro-prefetch class="px-8 py-4 text-base rounded-full bg-transparent border-2 border-zinc-700 text-white font-bold hover:border-zinc-500 hover:bg-zinc-800 transition-all duration-300 hover:-translate-y-0.5 text-center">
-            Ukázky práce
-          </a>
+          <a href="/objednavka" data-astro-prefetch class="px-8 py-4 text-base rounded-full bg-blue-600 text-white font-bold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:-translate-y-0.5 text-center">Nezávazná poptávka</a>
+          <a href="/portfolio" data-astro-prefetch class="px-8 py-4 text-base rounded-full bg-transparent border-2 border-zinc-700 text-white font-bold hover:border-zinc-500 hover:bg-zinc-800 transition-all duration-300 hover:-translate-y-0.5 text-center">Ukázky práce</a>
         </div>
       </div>
     </section>
@@ -304,19 +240,10 @@ import Divider from '../components/Divider.astro';
     const hero = document.getElementById('hero');
     if (hero) {
       let lastWidth = window.innerWidth;
-      const setHeroHeight = () => {
-        hero.style.minHeight = `${window.innerHeight - 80}px`;
-      };
+      const setHeroHeight = () => { hero.style.minHeight = `${window.innerHeight - 80}px`; };
       setHeroHeight();
-      window.addEventListener('resize', () => {
-        if (window.innerWidth !== lastWidth) {
-          lastWidth = window.innerWidth;
-          setHeroHeight();
-        }
-      });
-      window.addEventListener('orientationchange', () => {
-        setTimeout(setHeroHeight, 100);
-      });
+      window.addEventListener('resize', () => { if (window.innerWidth !== lastWidth) { lastWidth = window.innerWidth; setHeroHeight(); } });
+      window.addEventListener('orientationchange', () => { setTimeout(setHeroHeight, 100); });
     }
   });
 </script>
