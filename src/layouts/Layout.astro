@@ -6,16 +6,17 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = 'Webresent - Web, který vás reprezentuje.' } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="cs" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Webresent - Web, který vás reprezentuje." />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		
@@ -31,13 +32,38 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-zinc-50 text-zinc-900 font-['Plus_Jakarta_Sans',_sans-serif] antialiased selection:bg-zinc-900 selection:text-zinc-50 pt-20 flex flex-col min-h-screen relative">
 		
-		<!-- Premium Noise Texture Overlay -->
-		<div class="pointer-events-none fixed inset-0 z-[100] opacity-[0.035] mix-blend-overlay" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);"></div>
+		<!-- ─────────────────────────────────────────────────────────────────────
+		     FOUC FIX: Přidá třídu .js na <html> okamžitě před prvním renderem.
+		     CSS používá .js .scroll-reveal { opacity: 0 } takže bez JS jsou
+		     elementy viditelné (no-JS fallback funguje správně).
+		──────────────────────────────────────────────────────────────────────── -->
+		<script>document.documentElement.classList.add('js')</script>
+
+		<!-- ─────────────────────────────────────────────────────────────────────
+		     PŘÍSTUPNOST: Skip to content link
+		     Viditelný pouze při focusu klávesnicí (Tab z vrcholu stránky).
+		──────────────────────────────────────────────────────────────────────── -->
+		<a 
+			href="#main-content" 
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[200] focus:px-6 focus:py-3 focus:bg-white focus:text-zinc-900 focus:font-bold focus:rounded-full focus:border focus:border-zinc-300 focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+		>
+			Přeskočit na hlavní obsah
+		</a>
+
+		<!-- Premium Noise Texture Overlay — čistě dekorativní, skryto před screen readery -->
+		<div 
+			aria-hidden="true"
+			class="pointer-events-none fixed inset-0 z-[100] opacity-[0.035] mix-blend-overlay" 
+			style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);">
+		</div>
 
 		<Header />
-		<div class="flex-grow">
+
+		<!-- id="main-content" je cíl skip-to-content linku výše -->
+		<div class="flex-grow" id="main-content">
 			<slot />
 		</div>
+
 		<Footer />
 
 		<script>
@@ -92,11 +118,16 @@ const { title } = Astro.props;
 					let lastWidth = window.innerWidth;
 
 					const setHeroHeight = () => {
-						// Použijeme skutečnou výšku headeru místo pevné konstanty 80px.
-						// Fallback na 80 pro případ, že by header nebyl v DOMu.
 						const headerEl = document.querySelector('header');
-						const headerHeight = headerEl ? headerEl.offsetHeight : 80;
-						hero.style.minHeight = `${window.innerHeight - headerHeight}px`;
+						if (headerEl) {
+							// getBoundingClientRect().top zachytí i top-4 offset (16px)
+							// takže dostaneme skutečnou spodní hranu headeru ve viewportu
+							const rect = headerEl.getBoundingClientRect();
+							const headerBottom = rect.top + rect.height;
+							hero.style.minHeight = `${window.innerHeight - headerBottom}px`;
+						} else {
+							hero.style.minHeight = `${window.innerHeight - 80}px`;
+						}
 					};
 
 					setHeroHeight();

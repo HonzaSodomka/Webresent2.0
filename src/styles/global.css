@@ -31,12 +31,50 @@ html.lenis, html.lenis body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.scroll-reveal {
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOUC FIX: scroll-reveal elementy se skryjí POUZE pokud JS běží.
+   Třída .js se přidá inline scriptem v Layout.astro hned za <body>.
+   Bez JS třídy jsou elementy viditelné (no-JS fallback).
+───────────────────────────────────────────────────────────────────────────── */
+.js .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.scroll-reveal.active {
+.js .scroll-reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PŘÍSTUPNOST: Respektujeme prefers-reduced-motion
+   Pro uživatele s epilepsií, vestibulárními poruchami nebo
+   jen s preferencí klidnějšího UI.
+───────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Okamžité zobrazení fade-in-up elementů */
+  .fade-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Okamžité zobrazení scroll-reveal elementů */
+  .js .scroll-reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .js .scroll-reveal.active {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Globální vypnutí všech ostatních animací a přechodů */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -40,14 +40,28 @@ const currentPath = Astro.url.pathname;
     </a>
     
     <!-- Hamburger Menu (Mobile) -->
-    <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-50 bg-zinc-50 rounded-full border border-zinc-200" aria-label="Menu">
+    <!-- aria-expanded: oznamuje screen readerům stav menu -->
+    <!-- aria-controls: propojuje button s menu elementem -->
+    <button 
+      id="menu-toggle" 
+      aria-label="Otevřít navigační menu" 
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 relative z-50 bg-zinc-50 rounded-full border border-zinc-200"
+    >
       <span class="w-4 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
       <span class="w-4 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
     </button>
   </div>
 
   <!-- Mobile Menu Dropdown -->
-  <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 bg-white/95 backdrop-blur-xl border border-zinc-200 shadow-2xl rounded-3xl md:hidden overflow-hidden pointer-events-auto transform origin-top transition-all duration-300 opacity-0 -translate-y-4">
+  <!-- role="dialog" + aria-label umožní screen readerům pochopit kontext -->
+  <div 
+    id="mobile-menu" 
+    role="dialog"
+    aria-label="Navigační menu"
+    class="hidden absolute top-20 left-4 right-4 bg-white/95 backdrop-blur-xl border border-zinc-200 shadow-2xl rounded-3xl md:hidden overflow-hidden pointer-events-auto transform origin-top transition-all duration-300 opacity-0 -translate-y-4"
+  >
     <nav class="flex flex-col p-4 gap-2">
       {navItems.map(item => (
         <a href={item.href} class={`mobile-link px-4 py-3 rounded-2xl text-lg font-bold transition-all ${
@@ -76,6 +90,9 @@ const currentPath = Astro.url.pathname;
   // Řešení: guard přesunut do module-scope proměnné `isInitialized`, která se
   // resetuje při `astro:after-swap` (Astro vymění DOM) a znovu inicializuje
   // při `astro:page-load` (stránka je připravena).
+  //
+  // PŘIDÁNO: aria-expanded toggle pro správnou přístupnost klávesnicových
+  // uživatelů a screen readerů.
   // ─────────────────────────────────────────────────────────────────────────────
 
   let isOpen = false;
@@ -90,6 +107,7 @@ const currentPath = Astro.url.pathname;
 
     // Reset stavu při každé (re)inicializaci — důležité pro View Transitions
     isOpen = false;
+    toggle.setAttribute('aria-expanded', 'false');
     if (lines && lines.length === 2) {
       lines[0].style.transform = 'none';
       lines[1].style.transform = 'none';
@@ -99,6 +117,9 @@ const currentPath = Astro.url.pathname;
 
     const openMenu = () => {
       isOpen = true;
+      // Informujeme screen readery že menu je otevřené
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Zavřít navigační menu');
       menu.classList.remove('hidden');
       // Timeout aby CSS přechod proběhl správně (hidden → visible → animace)
       setTimeout(() => {
@@ -113,6 +134,9 @@ const currentPath = Astro.url.pathname;
 
     const closeMenu = () => {
       isOpen = false;
+      // Informujeme screen readery že menu je zavřené
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Otevřít navigační menu');
       menu.classList.remove('opacity-100', 'translate-y-0');
       menu.classList.add('opacity-0', '-translate-y-4');
       setTimeout(() => {
