@@ -186,15 +186,4 @@ import Divider from '../components/Divider.astro';
   </main>
 </Layout>
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const hero = document.getElementById('hero');
-    if (hero) {
-      let lastWidth = window.innerWidth;
-      const setHeroHeight = () => { hero.style.minHeight = `${window.innerHeight - 80}px`; };
-      setHeroHeight();
-      window.addEventListener('resize', () => { if (window.innerWidth !== lastWidth) { lastWidth = window.innerWidth; setHeroHeight(); } });
-      window.addEventListener('orientationchange', () => { setTimeout(setHeroHeight, 100); });
-    }
-  });
-</script>
+<!-- POZN: Hero height script byl přesunut do Layout.astro (sdílený pro všechny stránky s #hero) -->

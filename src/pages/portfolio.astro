@@ -115,10 +115,9 @@ import Divider from '../components/Divider.astro';
           <div class="w-full border-l-[3px] border-blue-600 pl-4 mb-6 sm:mb-8 py-1">
             <p class="text-[11px] font-bold text-blue-600 uppercase tracking-wider mb-1.5">Výsledek</p>
             <p class="text-zinc-800 font-semibold text-base leading-relaxed">
-              Stabilní pozice <strong class="text-zinc-900">#1 na Googlu</strong> na dotaz <em>„burger Mladá Boleslav“</em> a bezúdržbný chod.
+              Stabilní pozice <strong class="text-zinc-900">#1 na Googlu</strong> na dotaz <em>„burger Mladá Boleslav"</em> a bezúdržbný chod.
             </p>
           </div>
-          <!-- Tlačítko jen na xl (vedle obrazků) -->
           <div class="hidden xl:block">
             <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 shadow-md justify-center group">
               Navštívit web
@@ -127,7 +126,7 @@ import Divider from '../components/Divider.astro';
           </div>
         </div>
 
-        <!-- OBRAZ KY -->
+        <!-- OBRÁZKY -->
         <div class="w-full xl:w-[55%] relative flex flex-col items-start sm:items-center order-2 mt-4 xl:mt-0">
           <div class="relative w-full sm:w-[90%] pb-6 sm:pb-12 pt-2 mb-2 sm:mb-0">
             <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] -z-10"></div>
@@ -153,7 +152,6 @@ import Divider from '../components/Divider.astro';
               </div>
             </div>
           </div>
-          <!-- Tlačítko pod obrazky na mobilu i tabletu (vše pod xl) -->
           <div class="xl:hidden w-full sm:w-[90%] mt-4">
             <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-8 py-4 text-base rounded-full bg-zinc-900 text-white font-bold text-center active:bg-zinc-800 hover:bg-zinc-800 transition-all duration-300 shadow-md group w-full">
               Navštívit web
@@ -191,15 +189,4 @@ import Divider from '../components/Divider.astro';
   .animate-float-slow { animation: float 8s ease-in-out 1s infinite; }
 </style>
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const hero = document.getElementById('hero');
-    if (hero) {
-      let lastWidth = window.innerWidth;
-      const setHeroHeight = () => { hero.style.minHeight = `${window.innerHeight - 80}px`; };
-      setHeroHeight();
-      window.addEventListener('resize', () => { if (window.innerWidth !== lastWidth) { lastWidth = window.innerWidth; setHeroHeight(); } });
-      window.addEventListener('orientationchange', () => { setTimeout(setHeroHeight, 100); });
-    }
-  });
-</script>
+<!-- POZN: Hero height script byl přesunut do Layout.astro (sdílený pro všechny stránky s #hero) -->

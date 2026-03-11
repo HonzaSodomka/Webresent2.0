@@ -57,10 +57,9 @@ const { title } = Astro.props;
 					window.lenis.destroy();
 				}
 
-				// Rychlejší a responzivnější nastavení scrollování (lerp místo pevné duration)
 				window.lenis = new window.Lenis({
-					lerp: 0.15, // 0.1 je default, 0.15 je rychlejší a snappier
-					wheelMultiplier: 1.2, // Kolečko myši teď posune stránku o něco dál
+					lerp: 0.15,
+					wheelMultiplier: 1.2,
 					smoothWheel: true,
 				});
 
@@ -76,12 +75,44 @@ const { title } = Astro.props;
 					entries.forEach(entry => {
 						if (entry.isIntersecting) {
 							entry.target.classList.add('active');
-							obs.unobserve(entry.target); // Zastaví sledování po zobrazení pro lepší výkon
+							obs.unobserve(entry.target);
 						}
 					});
 				}, { threshold: 0.1 });
 
 				document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+				// ─────────────────────────────────────────────────────────────
+				// SDÍLENÝ HERO HEIGHT SCRIPT
+				// Nastavuje minHeight hero sekce podle skutečné výšky headeru,
+				// místo pevných 80px. Funguje na index, portfolio i o-mne.
+				// ─────────────────────────────────────────────────────────────
+				const hero = document.getElementById('hero');
+				if (hero) {
+					let lastWidth = window.innerWidth;
+
+					const setHeroHeight = () => {
+						// Použijeme skutečnou výšku headeru místo pevné konstanty 80px.
+						// Fallback na 80 pro případ, že by header nebyl v DOMu.
+						const headerEl = document.querySelector('header');
+						const headerHeight = headerEl ? headerEl.offsetHeight : 80;
+						hero.style.minHeight = `${window.innerHeight - headerHeight}px`;
+					};
+
+					setHeroHeight();
+
+					window.addEventListener('resize', () => {
+						// Přepočítáme jen při změně šířky (ne při scroll-hide adresního řádku na iOS)
+						if (window.innerWidth !== lastWidth) {
+							lastWidth = window.innerWidth;
+							setHeroHeight();
+						}
+					});
+
+					window.addEventListener('orientationchange', () => {
+						setTimeout(setHeroHeight, 100);
+					});
+				}
 			});
 		</script>
 	</body>

@@ -66,52 +66,77 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  // ─────────────────────────────────────────────────────────────────────────────
+  // OPRAVA: data-init bug při View Transitions
+  //
+  // Původní problém: `toggle.dataset.init = 'true'` se nastavilo na DOM elementu
+  // a při View Transition (astro:page-load) init guard `if (toggle.dataset.init)`
+  // zastavil re-registraci listenerů, takže menu po přechodu stránky přestalo fungovat.
+  //
+  // Řešení: guard přesunut do module-scope proměnné `isInitialized`, která se
+  // resetuje při `astro:after-swap` (Astro vymění DOM) a znovu inicializuje
+  // při `astro:page-load` (stránka je připravena).
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  let isOpen = false;
+
+  function initMobileMenu() {
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
     const lines = toggle?.querySelectorAll('span');
     const links = menu?.querySelectorAll('.mobile-link');
 
-    if (!toggle || !menu || toggle.dataset.init) return;
-    toggle.dataset.init = 'true';
+    if (!toggle || !menu) return;
 
-    let isOpen = false;
+    // Reset stavu při každé (re)inicializaci — důležité pro View Transitions
+    isOpen = false;
+    if (lines && lines.length === 2) {
+      lines[0].style.transform = 'none';
+      lines[1].style.transform = 'none';
+    }
+    menu.classList.add('hidden', 'opacity-0', '-translate-y-4');
+    menu.classList.remove('opacity-100', 'translate-y-0');
 
-    const toggleMenu = () => {
-      isOpen = !isOpen;
-      
-      if (isOpen) {
-        menu.classList.remove('hidden');
-        setTimeout(() => {
-          menu.classList.remove('opacity-0', '-translate-y-4');
-          menu.classList.add('opacity-100', 'translate-y-0');
-        }, 10);
-        
-        if (lines && lines.length === 2) {
-          lines[0].style.transform = 'translateY(4px) rotate(45deg)';
-          lines[1].style.transform = 'translateY(-4px) rotate(-45deg)';
-        }
-      } else {
-        menu.classList.remove('opacity-100', 'translate-y-0');
-        menu.classList.add('opacity-0', '-translate-y-4');
-        
-        setTimeout(() => {
-          menu.classList.add('hidden');
-        }, 300);
-
-        if (lines && lines.length === 2) {
-          lines[0].style.transform = 'none';
-          lines[1].style.transform = 'none';
-        }
+    const openMenu = () => {
+      isOpen = true;
+      menu.classList.remove('hidden');
+      // Timeout aby CSS přechod proběhl správně (hidden → visible → animace)
+      setTimeout(() => {
+        menu.classList.remove('opacity-0', '-translate-y-4');
+        menu.classList.add('opacity-100', 'translate-y-0');
+      }, 10);
+      if (lines && lines.length === 2) {
+        lines[0].style.transform = 'translateY(4px) rotate(45deg)';
+        lines[1].style.transform = 'translateY(-4px) rotate(-45deg)';
       }
     };
 
-    toggle.addEventListener('click', toggleMenu);
+    const closeMenu = () => {
+      isOpen = false;
+      menu.classList.remove('opacity-100', 'translate-y-0');
+      menu.classList.add('opacity-0', '-translate-y-4');
+      setTimeout(() => {
+        menu.classList.add('hidden');
+      }, 300);
+      if (lines && lines.length === 2) {
+        lines[0].style.transform = 'none';
+        lines[1].style.transform = 'none';
+      }
+    };
+
+    toggle.addEventListener('click', () => {
+      isOpen ? closeMenu() : openMenu();
+    });
 
     links?.forEach(link => {
       link.addEventListener('click', () => {
-        if (isOpen) toggleMenu();
+        if (isOpen) closeMenu();
       });
     });
-  });
+  }
+
+  // astro:after-swap = Astro vyměnil DOM (stará stránka pryč, nová nastoupila)
+  // astro:page-load  = stránka je plně připravena (včetně prvního načtení)
+  // Inicializujeme vždy při page-load, čímž pokryjeme jak první load, tak View Transitions.
+  document.addEventListener('astro:page-load', initMobileMenu);
 </script>
