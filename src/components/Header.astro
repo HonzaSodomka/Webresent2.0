@@ -40,8 +40,6 @@ const currentPath = Astro.url.pathname;
     </a>
     
     <!-- Hamburger Menu (Mobile) -->
-    <!-- aria-expanded: oznamuje screen readerům stav menu -->
-    <!-- aria-controls: propojuje button s menu elementem -->
     <button 
       id="menu-toggle" 
       aria-label="Otevřít navigační menu" 
@@ -55,7 +53,6 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Mobile Menu Dropdown -->
-  <!-- role="dialog" + aria-label umožní screen readerům pochopit kontext -->
   <div 
     id="mobile-menu" 
     role="dialog"
@@ -81,31 +78,31 @@ const currentPath = Astro.url.pathname;
 
 <script>
   // ─────────────────────────────────────────────────────────────────────────────
-  // OPRAVA: data-init bug při View Transitions
+  // Module-level proměnné přežijí View Transitions — reset probíhá uvnitř
+  // initMobileMenu(), které se volá při každém astro:page-load.
   //
-  // Původní problém: `toggle.dataset.init = 'true'` se nastavilo na DOM elementu
-  // a při View Transition (astro:page-load) init guard `if (toggle.dataset.init)`
-  // zastavil re-registraci listenerů, takže menu po přechodu stránky přestalo fungovat.
-  //
-  // Řešení: guard přesunut do module-scope proměnné `isInitialized`, která se
-  // resetuje při `astro:after-swap` (Astro vymění DOM) a znovu inicializuje
-  // při `astro:page-load` (stránka je připravena).
-  //
-  // PŘIDÁNO: aria-expanded toggle pro správnou přístupnost klávesnicových
-  // uživatelů a screen readerů.
+  // PŘIDÁNO: Focus trap — klávesnicový uživatel nemůže Tab-em opustit otevřené
+  // menu do pozadí stránky. Escape menu zavře a vrátí fokus na toggle button.
   // ─────────────────────────────────────────────────────────────────────────────
 
   let isOpen = false;
+  let trapHandler: ((e: KeyboardEvent) => void) | null = null;
 
   function initMobileMenu() {
-    const toggle = document.getElementById('menu-toggle');
+    const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
     const menu = document.getElementById('mobile-menu');
     const lines = toggle?.querySelectorAll('span');
     const links = menu?.querySelectorAll('.mobile-link');
 
     if (!toggle || !menu) return;
 
-    // Reset stavu při každé (re)inicializaci — důležité pro View Transitions
+    // Odeber případný starý focus trap handler z předchozí inicializace
+    if (trapHandler) {
+      document.removeEventListener('keydown', trapHandler);
+      trapHandler = null;
+    }
+
+    // Reset stavu při každé (re)inicializaci
     isOpen = false;
     toggle.setAttribute('aria-expanded', 'false');
     if (lines && lines.length === 2) {
@@ -117,11 +114,9 @@ const currentPath = Astro.url.pathname;
 
     const openMenu = () => {
       isOpen = true;
-      // Informujeme screen readery že menu je otevřené
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Zavřít navigační menu');
       menu.classList.remove('hidden');
-      // Timeout aby CSS přechod proběhl správně (hidden → visible → animace)
       setTimeout(() => {
         menu.classList.remove('opacity-0', '-translate-y-4');
         menu.classList.add('opacity-100', 'translate-y-0');
@@ -130,11 +125,52 @@ const currentPath = Astro.url.pathname;
         lines[0].style.transform = 'translateY(4px) rotate(45deg)';
         lines[1].style.transform = 'translateY(-4px) rotate(-45deg)';
       }
+
+      // ── Focus trap ──────────────────────────────────────────────────────────
+      // Sesbíráme všechny focusovatelné prvky uvnitř menu (linky + případná tlačítka).
+      const focusableEls = Array.from(
+        menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+      );
+      const firstEl = focusableEls[0];
+      const lastEl = focusableEls[focusableEls.length - 1];
+
+      // Přesuneme fokus na první položku menu po dokončení animace
+      setTimeout(() => firstEl?.focus(), 50);
+
+      // Odeber starý handler (bezpečnostní pojistka pro případ rychlého re-openu)
+      if (trapHandler) document.removeEventListener('keydown', trapHandler);
+
+      trapHandler = (e: KeyboardEvent) => {
+        // Escape → zavři menu, vrať fokus na toggle button
+        if (e.key === 'Escape') {
+          closeMenu();
+          toggle.focus();
+          return;
+        }
+
+        // Tab → uvězni fokus uvnitř menu
+        if (e.key === 'Tab') {
+          if (e.shiftKey) {
+            // Shift+Tab na prvním prvku → přeskočí na poslední
+            if (document.activeElement === firstEl) {
+              e.preventDefault();
+              lastEl?.focus();
+            }
+          } else {
+            // Tab na posledním prvku → přeskočí na první
+            if (document.activeElement === lastEl) {
+              e.preventDefault();
+              firstEl?.focus();
+            }
+          }
+        }
+      };
+
+      document.addEventListener('keydown', trapHandler);
     };
 
     const closeMenu = () => {
       isOpen = false;
-      // Informujeme screen readery že menu je zavřené
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Otevřít navigační menu');
       menu.classList.remove('opacity-100', 'translate-y-0');
@@ -145,6 +181,12 @@ const currentPath = Astro.url.pathname;
       if (lines && lines.length === 2) {
         lines[0].style.transform = 'none';
         lines[1].style.transform = 'none';
+      }
+
+      // ── Odeber focus trap ───────────────────────────────────────────────────
+      if (trapHandler) {
+        document.removeEventListener('keydown', trapHandler);
+        trapHandler = null;
       }
     };
 
@@ -159,8 +201,5 @@ const currentPath = Astro.url.pathname;
     });
   }
 
-  // astro:after-swap = Astro vyměnil DOM (stará stránka pryč, nová nastoupila)
-  // astro:page-load  = stránka je plně připravena (včetně prvního načtení)
-  // Inicializujeme vždy při page-load, čímž pokryjeme jak první load, tak View Transitions.
   document.addEventListener('astro:page-load', initMobileMenu);
 </script>

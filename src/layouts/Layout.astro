@@ -67,7 +67,6 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 		<Footer />
 
 		<script>
-			// Oprava TypeScript chyby pro objekt window (declare global window)
 			declare global {
 				interface Window {
 					lenis: any;
@@ -75,7 +74,15 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 				}
 			}
 
-			// Inicializace Lenis smooth scrollingu a globálních skriptů
+			// ─────────────────────────────────────────────────────────────────────
+			// OPRAVA: Resize a orientationchange listenery se přidávaly při každé
+			// View Transition znovu, bez odebrání předchozích. Po 5 navigacích
+			// běželo 5 listenerů najednou. Řešení: uložit reference na module
+			// úrovni a před přidáním nového vždy odebrat starý.
+			// ─────────────────────────────────────────────────────────────────────
+			let heroResizeHandler: (() => void) | null = null;
+			let heroOrientationHandler: (() => void) | null = null;
+
 			document.addEventListener('astro:page-load', () => {
 				
 				// Inicializace Lenis
@@ -110,18 +117,26 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 
 				// ─────────────────────────────────────────────────────────────
 				// SDÍLENÝ HERO HEIGHT SCRIPT
-				// Nastavuje minHeight hero sekce podle skutečné výšky headeru,
-				// místo pevných 80px. Funguje na index, portfolio i o-mne.
 				// ─────────────────────────────────────────────────────────────
 				const hero = document.getElementById('hero');
+
+				// Vždy odeber staré listenery před přidáním nových,
+				// aby se po View Transitions nehromadily.
+				if (heroResizeHandler) {
+					window.removeEventListener('resize', heroResizeHandler);
+					heroResizeHandler = null;
+				}
+				if (heroOrientationHandler) {
+					window.removeEventListener('orientationchange', heroOrientationHandler);
+					heroOrientationHandler = null;
+				}
+
 				if (hero) {
 					let lastWidth = window.innerWidth;
 
 					const setHeroHeight = () => {
 						const headerEl = document.querySelector('header');
 						if (headerEl) {
-							// getBoundingClientRect().top zachytí i top-4 offset (16px)
-							// takže dostaneme skutečnou spodní hranu headeru ve viewportu
 							const rect = headerEl.getBoundingClientRect();
 							const headerBottom = rect.top + rect.height;
 							hero.style.minHeight = `${window.innerHeight - headerBottom}px`;
@@ -132,17 +147,19 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 
 					setHeroHeight();
 
-					window.addEventListener('resize', () => {
-						// Přepočítáme jen při změně šířky (ne při scroll-hide adresního řádku na iOS)
+					heroResizeHandler = () => {
 						if (window.innerWidth !== lastWidth) {
 							lastWidth = window.innerWidth;
 							setHeroHeight();
 						}
-					});
+					};
 
-					window.addEventListener('orientationchange', () => {
+					heroOrientationHandler = () => {
 						setTimeout(setHeroHeight, 100);
-					});
+					};
+
+					window.addEventListener('resize', heroResizeHandler);
+					window.addEventListener('orientationchange', heroOrientationHandler);
 				}
 			});
 		</script>

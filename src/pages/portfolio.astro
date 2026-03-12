@@ -143,13 +143,11 @@ import Divider from '../components/Divider.astro';
                 </div>
               </div>
               <div class="w-full aspect-[1842/923] bg-zinc-100 overflow-hidden relative">
-                <!-- OPRAVA: Popisný alt text místo generického "Desktop design" -->
                 <img src="/images/america-pod-vezi-desktop.webp" alt="America Pod Věží – desktop verze webu na míru od Webresent" class="w-full h-full object-cover object-top" loading="lazy" />
               </div>
             </div>
             <div class="w-[32%] sm:w-[28%] max-w-[180px] absolute right-0 sm:right-4 bottom-0 rounded-[1.2rem] sm:rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[4px] sm:border-[8px] border-zinc-900 bg-zinc-900 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-105 hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.3)] z-20 cursor-pointer">
               <div class="w-full aspect-[944/2046] bg-zinc-100 overflow-hidden relative rounded-[0.8rem] sm:rounded-[1.4rem]">
-                <!-- OPRAVA: Popisný alt text místo generického "Mobilní design" -->
                 <img src="/images/america-pod-vezi-mobile.webp" alt="America Pod Věží – mobilní verze webu na míru od Webresent" class="w-full h-full object-cover object-top" loading="lazy" />
               </div>
             </div>
@@ -189,4 +187,15 @@ import Divider from '../components/Divider.astro';
   .animate-float { animation: float 6s ease-in-out infinite; }
   .animate-float-delayed { animation: float 6s ease-in-out 3s infinite; }
   .animate-float-slow { animation: float 8s ease-in-out 1s infinite; }
+
+  /* OPRAVA: prefers-reduced-motion nebyl pokryt pro tyto portfolio-specifické
+     animace. global.css řeší fade-in-up a scroll-reveal, ale .animate-float*
+     jsou definovány lokálně zde a potřebují vlastní media query. */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-delayed,
+    .animate-float-slow {
+      animation: none;
+    }
+  }
 </style>
