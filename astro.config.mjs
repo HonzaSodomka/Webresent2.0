@@ -1,14 +1,20 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://webresent.cz',
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [react(), sitemap()]
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/dekujeme') &&
+        !page.includes('/ochrana-udaju') &&
+        !page.includes('/obchodni-podminky'),
+    })
+  ],
 });

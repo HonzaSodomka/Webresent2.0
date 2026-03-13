@@ -7,6 +7,30 @@ import Divider from '../components/Divider.astro';
   title="O mně — Jan Sodomka, freelance webdesignér | Webresent"
   description="Bc. Jan Sodomka — freelance webdesignér a vývojář z Mladé Boleslavi. Stavím weby od nuly, bez šablon a bez WordPressu."
 >
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jan Sodomka",
+  "honorificPrefix": "Bc.",
+  "jobTitle": "Freelance webdesignér a vývojář",
+  "description": "Stavím weby na míru pro české firmy a živnostníky. Čistý kód, rychlost, technické SEO.",
+  "url": "https://webresent.cz/o-mne",
+  "email": "h.sodomka@seznam.cz",
+  "telephone": "+420604994883",
+  "image": "https://webresent.cz/images/jan-sodomka.webp",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Webresent",
+    "url": "https://webresent.cz"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mladá Boleslav",
+    "addressCountry": "CZ"
+  },
+  "knowsAbout": ["Webdesign", "SEO", "Astro", "Next.js", "React", "Tailwind CSS"]
+})} />
   <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
 
     <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">

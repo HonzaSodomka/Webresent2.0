@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dekujeme
+Disallow: /ochrana-udaju
+Disallow: /obchodni-podminky
+
+Sitemap: https://webresent.cz/sitemap-index.xml
