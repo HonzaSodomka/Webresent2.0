@@ -8,6 +8,7 @@ const navItems = [
 ];
 
 const currentPath = Astro.url.pathname;
+const isObjednavka = currentPath === '/objednavka';
 ---
 
 <header class="fixed top-4 left-0 w-full z-50 px-4 pointer-events-none">
@@ -35,7 +36,14 @@ const currentPath = Astro.url.pathname;
     </nav>
 
     <!-- Call to action button (Desktop) -->
-    <a href="/objednavka" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-zinc-900 text-white text-sm font-bold hover:bg-blue-600 transition-colors shadow-sm hover:shadow">
+    <a
+      href="/objednavka"
+      class={`hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-bold transition-colors shadow-sm ${
+        isObjednavka
+          ? 'bg-blue-600 text-white hover:bg-blue-500'
+          : 'bg-zinc-900 text-white hover:bg-blue-600 hover:shadow'
+      }`}
+    >
       Poptat web
     </a>
     
@@ -69,7 +77,14 @@ const currentPath = Astro.url.pathname;
           {item.label}
         </a>
       ))}
-      <a href="/objednavka" class="mobile-link mt-2 px-4 py-4 rounded-2xl bg-zinc-900 text-white text-center text-lg font-bold hover:bg-blue-600 transition-colors">
+      <a
+        href="/objednavka"
+        class={`mobile-link mt-2 px-4 py-4 rounded-2xl text-center text-lg font-bold transition-colors ${
+          isObjednavka
+            ? 'bg-blue-600 text-white hover:bg-blue-500'
+            : 'bg-zinc-900 text-white hover:bg-blue-600'
+        }`}
+      >
         Poptat web
       </a>
     </nav>
@@ -77,14 +92,6 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  // ─────────────────────────────────────────────────────────────────────────────
-  // Module-level proměnné přežijí View Transitions — reset probíhá uvnitř
-  // initMobileMenu(), které se volá při každém astro:page-load.
-  //
-  // PŘIDÁNO: Focus trap — klávesnicový uživatel nemůže Tab-em opustit otevřené
-  // menu do pozadí stránky. Escape menu zavře a vrátí fokus na toggle button.
-  // ─────────────────────────────────────────────────────────────────────────────
-
   let isOpen = false;
   let trapHandler: ((e: KeyboardEvent) => void) | null = null;
 
@@ -96,13 +103,11 @@ const currentPath = Astro.url.pathname;
 
     if (!toggle || !menu) return;
 
-    // Odeber případný starý focus trap handler z předchozí inicializace
     if (trapHandler) {
       document.removeEventListener('keydown', trapHandler);
       trapHandler = null;
     }
 
-    // Reset stavu při každé (re)inicializaci
     isOpen = false;
     toggle.setAttribute('aria-expanded', 'false');
     if (lines && lines.length === 2) {
@@ -126,38 +131,29 @@ const currentPath = Astro.url.pathname;
         lines[1].style.transform = 'translateY(-4px) rotate(-45deg)';
       }
 
-      // ── Focus trap ──────────────────────────────────────────────────────────
-      // Sesbíráme všechny focusovatelné prvky uvnitř menu (linky + případná tlačítka).
       const focusableEls = Array.from(
         menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
       );
       const firstEl = focusableEls[0];
       const lastEl = focusableEls[focusableEls.length - 1];
 
-      // Přesuneme fokus na první položku menu po dokončení animace
       setTimeout(() => firstEl?.focus(), 50);
 
-      // Odeber starý handler (bezpečnostní pojistka pro případ rychlého re-openu)
       if (trapHandler) document.removeEventListener('keydown', trapHandler);
 
       trapHandler = (e: KeyboardEvent) => {
-        // Escape → zavři menu, vrať fokus na toggle button
         if (e.key === 'Escape') {
           closeMenu();
           toggle.focus();
           return;
         }
-
-        // Tab → uvězni fokus uvnitř menu
         if (e.key === 'Tab') {
           if (e.shiftKey) {
-            // Shift+Tab na prvním prvku → přeskočí na poslední
             if (document.activeElement === firstEl) {
               e.preventDefault();
               lastEl?.focus();
             }
           } else {
-            // Tab na posledním prvku → přeskočí na první
             if (document.activeElement === lastEl) {
               e.preventDefault();
               firstEl?.focus();
@@ -182,8 +178,6 @@ const currentPath = Astro.url.pathname;
         lines[0].style.transform = 'none';
         lines[1].style.transform = 'none';
       }
-
-      // ── Odeber focus trap ───────────────────────────────────────────────────
       if (trapHandler) {
         document.removeEventListener('keydown', trapHandler);
         trapHandler = null;
