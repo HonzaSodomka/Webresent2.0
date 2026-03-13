@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Divider from '../components/Divider.astro';
 ---
 
-<Layout title="Webresent - Reprezentativní weby na míru">
+<Layout title="Webresent - Reprezentativní weby na míru" description="Prémiové weby na míru pro české firmy a živnostníky. Čistý kód, bleskové načítání a technické SEO — bez šablon, bez WordPressu.">
   <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
 
     <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">
@@ -30,11 +30,11 @@ import Divider from '../components/Divider.astro';
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <a href="/portfolio" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-              Ukázky práce
-            </a>
-            <a href="/objednavka" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-white border-2 border-zinc-200 text-zinc-900 font-bold text-center hover:border-zinc-300 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200 transition-all duration-300 hover:-translate-y-0.5">
+            <a href="/objednavka" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-blue-600 text-white font-bold text-center hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
               Nezávazná poptávka
+            </a>
+            <a href="/portfolio" data-astro-prefetch class="px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-white border-2 border-zinc-200 text-zinc-900 font-bold text-center hover:border-zinc-300 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200 transition-all duration-300 hover:-translate-y-0.5">
+              Ukázky práce
             </a>
           </div>
         </div>
@@ -424,7 +424,6 @@ import Divider from '../components/Divider.astro';
     opacity: 0;
     transition: opacity 0.5s ease;
   }
-  /* Spotlight se zobrazuje jen při hover na desktopu — touch zařízení nepodporujeme */
   @media (hover: hover) {
     .group\/wrapper:hover .spotlight-card::before {
       opacity: 1;
@@ -486,7 +485,6 @@ import Divider from '../components/Divider.astro';
 
   document.addEventListener('astro:page-load', () => {
 
-    // ─── Typewriter efekt ─────────────────────────────────────────────────────
     const textElement = document.getElementById('typewriter-text');
     const wrapperElement = document.getElementById('typewriter-wrapper');
 
@@ -527,7 +525,6 @@ import Divider from '../components/Divider.astro';
       typewriterTimer = setTimeout(type, 1000);
     }
 
-    // ─── FAQ Akordeon ─────────────────────────────────────────────────────────
     const detailTimers = new Map<HTMLDetailsElement, ReturnType<typeof setTimeout>>();
 
     function openDetail(detail: HTMLDetailsElement) {
@@ -596,9 +593,6 @@ import Divider from '../components/Divider.astro';
       });
     });
 
-    // ─── Spotlight efekt: pouze desktop (hover: hover media query) ────────────
-    // Touch zařízení spotlight nepodporují — řešeno i přes CSS @media (hover: hover).
-    // JS handler ponecháváme pouze pro mousemove, touch handlery odstraněny.
     const cardsWrapper = document.getElementById('cards-wrapper');
     const cards = document.querySelectorAll<HTMLElement>('.spotlight-card');
 
