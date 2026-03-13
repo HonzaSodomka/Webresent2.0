@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://webresent.cz',
+  trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()]
   },
