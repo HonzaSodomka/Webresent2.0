@@ -99,10 +99,10 @@ import Divider from '../components/Divider.astro';
     </div>
 
     <section class="mt-6 lg:mt-0 fade-in-up" style="animation-delay: 0.2s;">
-      <div class="bg-white border border-zinc-200 rounded-[2rem] p-6 lg:p-10 2xl:p-12 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col xl:flex-row gap-10 lg:gap-16 items-center">
+      <div class="bg-white border border-zinc-200 rounded-[2rem] p-6 lg:p-10 2xl:p-12 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-16 items-center">
         
         <!-- TEXTOVÁ ČÁST -->
-        <div class="w-full xl:w-[45%] flex flex-col items-start relative z-10 order-1">
+        <div class="w-full lg:w-[45%] flex flex-col items-start relative z-10 order-1">
           <h2 class="text-3xl sm:text-4xl 2xl:text-5xl font-extrabold text-zinc-900 mb-6 tracking-tight">America Pod Věží</h2>
           <div class="flex flex-wrap gap-2 mb-6 sm:mb-8">
             <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-bold border border-blue-100">Web na míru</span>
@@ -118,7 +118,7 @@ import Divider from '../components/Divider.astro';
               Stabilní pozice <strong class="text-zinc-900">#1 na Googlu</strong> na dotaz <em>„burger Mladá Boleslav"</em> a bezúdržbný chod.
             </p>
           </div>
-          <div class="hidden xl:block">
+          <div class="hidden lg:block">
             <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 2xl:px-10 2xl:py-4 text-base 2xl:text-lg rounded-full bg-zinc-900 text-white font-bold text-center hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 transition-all duration-300 hover:-translate-y-0.5 shadow-md justify-center group">
               Navštívit web
               <svg class="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
@@ -127,8 +127,8 @@ import Divider from '../components/Divider.astro';
         </div>
 
         <!-- OBRÁZKY -->
-        <div class="w-full xl:w-[55%] relative flex flex-col items-start sm:items-center order-2 mt-4 xl:mt-0">
-          <div class="relative w-full sm:w-[90%] pb-6 sm:pb-12 pt-2 mb-2 sm:mb-0">
+        <div class="w-full lg:w-[55%] relative flex flex-col items-start sm:items-center order-2">
+          <div class="relative w-full sm:w-[90%] pb-6 sm:pb-12 pt-2">
             <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] -z-10" aria-hidden="true"></div>
             <div class="w-[85%] rounded-xl shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] border border-zinc-200/80 bg-white overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.15)] relative z-10 group cursor-pointer">
               <div class="h-8 sm:h-10 bg-zinc-50 border-b border-zinc-200/80 flex items-center px-3 sm:px-4 gap-2 relative" aria-hidden="true">
@@ -152,7 +152,7 @@ import Divider from '../components/Divider.astro';
               </div>
             </div>
           </div>
-          <div class="xl:hidden w-full sm:w-[90%] mt-4">
+          <div class="lg:hidden w-full sm:w-[90%] mt-4">
             <a href="https://americapodvezi.cz" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-8 py-4 text-base rounded-full bg-zinc-900 text-white font-bold text-center active:bg-zinc-800 hover:bg-zinc-800 transition-all duration-300 shadow-md group w-full">
               Navštívit web
               <svg class="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
@@ -188,9 +188,6 @@ import Divider from '../components/Divider.astro';
   .animate-float-delayed { animation: float 6s ease-in-out 3s infinite; }
   .animate-float-slow { animation: float 8s ease-in-out 1s infinite; }
 
-  /* OPRAVA: prefers-reduced-motion nebyl pokryt pro tyto portfolio-specifické
-     animace. global.css řeší fade-in-up a scroll-reveal, ale .animate-float*
-     jsou definovány lokálně zde a potřebují vlastní media query. */
   @media (prefers-reduced-motion: reduce) {
     .animate-float,
     .animate-float-delayed,
