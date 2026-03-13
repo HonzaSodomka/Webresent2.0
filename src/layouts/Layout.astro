@@ -19,30 +19,16 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-		
-		<!-- Lenis Smooth Scroll -->
-		<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 
 		<title>{title} | Webresent</title>
 		<ViewTransitions />
 	</head>
 	<body class="bg-zinc-50 text-zinc-900 font-['Plus_Jakarta_Sans',_sans-serif] antialiased selection:bg-zinc-900 selection:text-zinc-50 pt-20 flex flex-col min-h-screen relative">
 		
-		<!-- ─────────────────────────────────────────────────────────────────────
-		     FOUC FIX: Přidá třídu .js na <html> okamžitě před prvním renderem.
-		     CSS používá .js .scroll-reveal { opacity: 0 } takže bez JS jsou
-		     elementy viditelné (no-JS fallback funguje správně).
-		──────────────────────────────────────────────────────────────────────── -->
+		<!-- FOUC FIX: Přidá třídu .js na <html> okamžitě před prvním renderem. -->
 		<script>document.documentElement.classList.add('js')</script>
 
-		<!-- ─────────────────────────────────────────────────────────────────────
-		     PŘÍSTUPNOST: Skip to content link
-		     Viditelný pouze při focusu klávesnicí (Tab z vrcholu stránky).
-		──────────────────────────────────────────────────────────────────────── -->
+		<!-- PŘÍSTUPNOST: Skip to content link -->
 		<a 
 			href="#main-content" 
 			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[200] focus:px-6 focus:py-3 focus:bg-white focus:text-zinc-900 focus:font-bold focus:rounded-full focus:border focus:border-zinc-300 focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -50,7 +36,7 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 			Přeskočit na hlavní obsah
 		</a>
 
-		<!-- Premium Noise Texture Overlay — čistě dekorativní, skryto před screen readery -->
+		<!-- Premium Noise Texture Overlay -->
 		<div 
 			aria-hidden="true"
 			class="pointer-events-none fixed inset-0 z-[100] opacity-[0.035] mix-blend-overlay" 
@@ -59,7 +45,6 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 
 		<Header />
 
-		<!-- id="main-content" je cíl skip-to-content linku výše -->
 		<div class="flex-grow" id="main-content">
 			<slot />
 		</div>
@@ -67,30 +52,24 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 		<Footer />
 
 		<script>
+			import Lenis from 'lenis';
+
 			declare global {
 				interface Window {
-					lenis: any;
-					Lenis: any;
+					lenis: Lenis;
 				}
 			}
 
-			// ─────────────────────────────────────────────────────────────────────
-			// OPRAVA: Resize a orientationchange listenery se přidávaly při každé
-			// View Transition znovu, bez odebrání předchozích. Po 5 navigacích
-			// běželo 5 listenerů najednou. Řešení: uložit reference na module
-			// úrovni a před přidáním nového vždy odebrat starý.
-			// ─────────────────────────────────────────────────────────────────────
 			let heroResizeHandler: (() => void) | null = null;
 			let heroOrientationHandler: (() => void) | null = null;
 
 			document.addEventListener('astro:page-load', () => {
 				
-				// Inicializace Lenis
 				if (window.lenis) {
 					window.lenis.destroy();
 				}
 
-				window.lenis = new window.Lenis({
+				window.lenis = new Lenis({
 					lerp: 0.15,
 					wheelMultiplier: 1.2,
 					smoothWheel: true,
@@ -103,7 +82,6 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 
 				requestAnimationFrame(raf);
 
-				// Globální Scroll Reveal Intersection Observer
 				const observer = new IntersectionObserver((entries, obs) => {
 					entries.forEach(entry => {
 						if (entry.isIntersecting) {
@@ -115,13 +93,8 @@ const { title, description = 'Webresent - Web, který vás reprezentuje.' } = As
 
 				document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
-				// ─────────────────────────────────────────────────────────────
-				// SDÍLENÝ HERO HEIGHT SCRIPT
-				// ─────────────────────────────────────────────────────────────
 				const hero = document.getElementById('hero');
 
-				// Vždy odeber staré listenery před přidáním nových,
-				// aby se po View Transitions nehromadily.
 				if (heroResizeHandler) {
 					window.removeEventListener('resize', heroResizeHandler);
 					heroResizeHandler = null;
