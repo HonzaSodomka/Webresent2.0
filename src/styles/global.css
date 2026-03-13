@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
 
 /* Lenis Smooth Scroll Recommended CSS */
 html.lenis, html.lenis body {
@@ -48,18 +53,14 @@ html.lenis, html.lenis body {
 
 /* ─────────────────────────────────────────────────────────────────────────────
    PŘÍSTUPNOST: Respektujeme prefers-reduced-motion
-   Pro uživatele s epilepsií, vestibulárními poruchami nebo
-   jen s preferencí klidnějšího UI.
 ───────────────────────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  /* Okamžité zobrazení fade-in-up elementů */
   .fade-in-up {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 
-  /* Okamžité zobrazení scroll-reveal elementů */
   .js .scroll-reveal {
     transition: none !important;
     opacity: 1 !important;
@@ -70,7 +71,6 @@ html.lenis, html.lenis body {
     transform: none;
   }
 
-  /* Globální vypnutí všech ostatních animací a přechodů */
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
