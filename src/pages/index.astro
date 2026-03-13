@@ -4,7 +4,10 @@ import Layout from '../layouts/Layout.astro';
 import Divider from '../components/Divider.astro';
 ---
 
-<Layout title="Webresent - Reprezentativní weby na míru" description="Prémiové weby na míru pro české firmy a živnostníky. Čistý kód, bleskové načítání a technické SEO — bez šablon, bez WordPressu.">
+<Layout
+  title="Weby na míru | Čistý kód, rychlost, SEO — Webresent"
+  description="Prémiové weby na míru pro české firmy a živnostníky. Čistý kód, bleskové načítání a technické SEO — bez šablon, bez WordPressu. Statický web od 9 900 Kč."
+>
   <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
 
     <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">
@@ -52,7 +55,7 @@ import Divider from '../components/Divider.astro';
                   <div class="absolute inset-0 w-full h-full shimmer-effect"></div>
                 </div>
               </div>
-              <p class="text-zinc-900 font-bold text-lg 2xl:text-xl">Zlomky vteřin rozhodují.</p>
+              <p class="text-zinc-900 font-bold text-lg 2xl:text-xl">Zlomky vteřiny rozhodují.</p>
               <p class="text-zinc-500 text-sm mt-1 font-medium">Optimalizovaný kód, který nenechá zákazníka čekat a sníží míru opuštění webu.</p>
             </div>
           </div>
@@ -276,12 +279,26 @@ import Divider from '../components/Divider.astro';
                 </div>
               </div>
               <div class="w-full aspect-[1842/923] bg-zinc-100 overflow-hidden relative">
-                <img src="/images/america-pod-vezi-desktop.webp" alt="America Pod Věží – desktop verze webu na míru od Webresent" class="w-full h-full object-cover object-top" loading="lazy" />
+                <img
+                  src="/images/america-pod-vezi-desktop.webp"
+                  alt="America Pod Věží – desktop verze webu na míru od Webresent"
+                  width="1842"
+                  height="923"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
               </div>
             </div>
             <div class="w-[32%] sm:w-[28%] max-w-[180px] absolute right-0 sm:right-4 bottom-0 rounded-[1.2rem] sm:rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[4px] sm:border-[8px] border-zinc-900 bg-zinc-900 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-105 hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.3)] z-20 cursor-pointer">
               <div class="w-full aspect-[944/2046] bg-zinc-100 overflow-hidden relative rounded-[0.8rem] sm:rounded-[1.4rem]">
-                <img src="/images/america-pod-vezi-mobile.webp" alt="America Pod Věží – mobilní verze webu na míru od Webresent" class="w-full h-full object-cover object-top" loading="lazy" />
+                <img
+                  src="/images/america-pod-vezi-mobile.webp"
+                  alt="America Pod Věží – mobilní verze webu na míru od Webresent"
+                  width="944"
+                  height="2046"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -407,6 +424,65 @@ import Divider from '../components/Divider.astro';
     </section>
 
   </main>
+
+  <!-- ── FAQ Schema — strukturovaná data pro Google rich snippets ───────────── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Jak si na webu bez šablony upravím texty nebo fotky?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pro klienty, kteří chtějí často přidávat obsah, napojím web na moderní redakční systémy (např. Sanity CMS). Dostanete jednoduché a přehledné administrační rozhraní v češtině, kde si sami snadno upravíte cokoliv budete potřebovat. Bez rizika, že byste omylem rozbili design."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Za jak dlouho bude můj nový web hotový?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jednoduché prezentační weby (landing pages) obvykle spouštím do 2 až 3 týdnů od dodání podkladů. U rozsáhlejších projektů s více podstránkami a specifickými funkcemi se bavíme zhruba o 4 až 6 týdnech. Harmonogram je vždy součástí úvodní cenové nabídky."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kolik mě to bude celkově stát?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jednoduchý statický web začíná na 9 900 Kč. Finální cena roste podle toho, co váš web potřebuje. Po úvodní konzultaci dostanete přesnou nabídku šitou na míru vašemu projektu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak funguje platba a co je součástí spolupráce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Návrh webu zpracuji zdarma a bez závazků — nejdřív vidíte, co dostanete, pak se rozhodnete. Platba proběhne až po spuštění hotového webu. Nabízím také měsíční správu webu za paušální poplatek."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Zajistíte mi i doménu, hosting a údržbu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ano. Zprostředkuji registraci správné domény a web nasadím na moderní a bleskově rychlý hosting. O technický chod stránky se můžu starat dlouhodobě v rámci správy webu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Budu potřebovat dodat vlastní texty a fotky?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Texty jsou součástí ceny. Čím víc mi řeknete o svém byznysu a zákaznících, tím lépe budu schopný napsat obsah, který skutečně prodává. Co se týče fotek, vlastní autentické snímky jsou vždy nejlepší volba. Pokud je nemáte, vyřešíme to pomocí kvalitních fotobank."
+          }
+        }
+      ]
+    }
+  </script>
+
 </Layout>
 
 <style>
@@ -532,17 +608,14 @@ import Divider from '../components/Divider.astro';
         clearTimeout(detailTimers.get(detail)!);
         detailTimers.delete(detail);
       }
-
       const content = detail.querySelector<HTMLElement>(':scope > div');
       detail.setAttribute('open', '');
       if (!content) return;
-
       content.style.gridTemplateRows = '0fr';
       content.style.paddingBottom = '0';
       void content.offsetHeight;
       content.style.gridTemplateRows = '1fr';
       content.style.paddingBottom = '1.5rem';
-
       const timer = setTimeout(() => {
         content.style.gridTemplateRows = '';
         content.style.paddingBottom = '';
@@ -556,16 +629,13 @@ import Divider from '../components/Divider.astro';
         clearTimeout(detailTimers.get(detail)!);
         detailTimers.delete(detail);
       }
-
       const content = detail.querySelector<HTMLElement>(':scope > div');
       if (!content) { detail.removeAttribute('open'); return; }
-
       content.style.gridTemplateRows = '1fr';
       content.style.paddingBottom = '1.5rem';
       void content.offsetHeight;
       content.style.gridTemplateRows = '0fr';
       content.style.paddingBottom = '0';
-
       const timer = setTimeout(() => {
         detail.removeAttribute('open');
         content.style.gridTemplateRows = '';
@@ -580,15 +650,12 @@ import Divider from '../components/Divider.astro';
       const summary = targetDetail.querySelector('summary');
       summary?.addEventListener('click', (e) => {
         e.preventDefault();
-
         const isCurrentlyOpen = targetDetail.hasAttribute('open');
-
         faqs.forEach(detail => {
           if (detail !== targetDetail && detail.hasAttribute('open')) {
             closeDetail(detail);
           }
         });
-
         isCurrentlyOpen ? closeDetail(targetDetail) : openDetail(targetDetail);
       });
     });
