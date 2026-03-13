@@ -424,9 +424,11 @@ import Divider from '../components/Divider.astro';
     opacity: 0;
     transition: opacity 0.5s ease;
   }
-  .group\/wrapper:hover .spotlight-card::before,
-  .group\/wrapper.is-touched .spotlight-card::before {
-    opacity: 1;
+  /* Spotlight se zobrazuje jen při hover na desktopu — touch zařízení nepodporujeme */
+  @media (hover: hover) {
+    .group\/wrapper:hover .spotlight-card::before {
+      opacity: 1;
+    }
   }
 
   .speed-bar {
@@ -480,16 +482,6 @@ import Divider from '../components/Divider.astro';
 </style>
 
 <script>
-  // ─────────────────────────────────────────────────────────────────────────────
-  // OPRAVA 1: Typewriter memory leak
-  //
-  // Původní problém: type() je rekurzivní přes setTimeout a nikdy se nezastaví.
-  // Po odchodu ze stránky a návratu zpět běžely dva looopy současně —
-  // texty se přepisovaly navzájem a rychlost se zdvojnásobila.
-  //
-  // Řešení: module-level typewriterTimer. Před každou (re)inicializací
-  // odebere předchozí timer, takže vždy běží nejvýše jeden loop.
-  // ─────────────────────────────────────────────────────────────────────────────
   let typewriterTimer: ReturnType<typeof setTimeout> | null = null;
 
   document.addEventListener('astro:page-load', () => {
@@ -498,7 +490,6 @@ import Divider from '../components/Divider.astro';
     const textElement = document.getElementById('typewriter-text');
     const wrapperElement = document.getElementById('typewriter-wrapper');
 
-    // Vždy zastav předchozí smyčku — i kdyby textElement na téhle stránce nebyl
     if (typewriterTimer !== null) {
       clearTimeout(typewriterTimer);
       typewriterTimer = null;
@@ -530,24 +521,16 @@ import Divider from '../components/Divider.astro';
           typingSpeed = isDeleting ? 30 : 80;
         }
 
-        // Uložíme timer — při příštím page-load ho clearnem
         typewriterTimer = setTimeout(type, typingSpeed);
       }
 
       typewriterTimer = setTimeout(type, 1000);
     }
 
-    // ─── FAQ Akordeon — plynulá animace + ochrana před rychlým dvojklikem ─────
-    //
-    // OPRAVA: Přidána Map pro sledování aktivních timerů na každém <details>.
-    // Rychlý dvojklik způsoboval race condition — nový setTimeout nastartoval
-    // dříve, než předchozí stihl vyčistit inline styly, což vedlo k záškubu.
-    // clearTimeout před každou akcí to eliminuje.
-
+    // ─── FAQ Akordeon ─────────────────────────────────────────────────────────
     const detailTimers = new Map<HTMLDetailsElement, ReturnType<typeof setTimeout>>();
 
     function openDetail(detail: HTMLDetailsElement) {
-      // Zruš případný běžící timer pro tento element (double-click ochrana)
       if (detailTimers.has(detail)) {
         clearTimeout(detailTimers.get(detail)!);
         detailTimers.delete(detail);
@@ -572,7 +555,6 @@ import Divider from '../components/Divider.astro';
     }
 
     function closeDetail(detail: HTMLDetailsElement) {
-      // Zruš případný běžící timer pro tento element (double-click ochrana)
       if (detailTimers.has(detail)) {
         clearTimeout(detailTimers.get(detail)!);
         detailTimers.delete(detail);
@@ -614,37 +596,20 @@ import Divider from '../components/Divider.astro';
       });
     });
 
-    // ─── Spotlight efekt: Desktop + Mobil ────────────────────────────────────
+    // ─── Spotlight efekt: pouze desktop (hover: hover media query) ────────────
+    // Touch zařízení spotlight nepodporují — řešeno i přes CSS @media (hover: hover).
+    // JS handler ponecháváme pouze pro mousemove, touch handlery odstraněny.
     const cardsWrapper = document.getElementById('cards-wrapper');
     const cards = document.querySelectorAll<HTMLElement>('.spotlight-card');
 
     if (cardsWrapper && cards.length > 0) {
-      const applySpotlight = (clientX: number, clientY: number) => {
+      cardsWrapper.addEventListener('mousemove', (e) => {
         cards.forEach(card => {
           const rect = card.getBoundingClientRect();
-          card.style.setProperty('--mouse-x', `${clientX - rect.left}px`);
-          card.style.setProperty('--mouse-y', `${clientY - rect.top}px`);
+          card.style.setProperty('--mouse-x', `${(e as MouseEvent).clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${(e as MouseEvent).clientY - rect.top}px`);
         });
-      };
-
-      cardsWrapper.addEventListener('mousemove', (e) => {
-        applySpotlight((e as MouseEvent).clientX, (e as MouseEvent).clientY);
       });
-
-      cardsWrapper.addEventListener('touchmove', (e) => {
-        const touch = (e as TouchEvent).touches[0];
-        applySpotlight(touch.clientX, touch.clientY);
-      }, { passive: true });
-
-      cardsWrapper.addEventListener('touchstart', (e) => {
-        const touch = (e as TouchEvent).touches[0];
-        applySpotlight(touch.clientX, touch.clientY);
-        cardsWrapper.classList.add('is-touched');
-      }, { passive: true });
-
-      cardsWrapper.addEventListener('touchend', () => {
-        setTimeout(() => cardsWrapper.classList.remove('is-touched'), 600);
-      }, { passive: true });
     }
 
   });
