@@ -558,6 +558,7 @@ import Divider from '../components/Divider.astro';
 
 <script>
   let typewriterTimer: ReturnType<typeof setTimeout> | null = null;
+  let spotlightController: AbortController | null = null;
 
   document.addEventListener('astro:page-load', () => {
 
@@ -663,15 +664,18 @@ import Divider from '../components/Divider.astro';
     const cardsWrapper = document.getElementById('cards-wrapper');
     const cards = document.querySelectorAll<HTMLElement>('.spotlight-card');
 
-    if (cardsWrapper && cards.length > 0) {
+        if (cardsWrapper && cards.length > 0) {
+      if (spotlightController) spotlightController.abort();
+      spotlightController = new AbortController();
       cardsWrapper.addEventListener('mousemove', (e) => {
         cards.forEach(card => {
           const rect = card.getBoundingClientRect();
           card.style.setProperty('--mouse-x', `${(e as MouseEvent).clientX - rect.left}px`);
           card.style.setProperty('--mouse-y', `${(e as MouseEvent).clientY - rect.top}px`);
         });
-      });
+      }, { signal: spotlightController.signal });
     }
+
 
   });
 </script>
