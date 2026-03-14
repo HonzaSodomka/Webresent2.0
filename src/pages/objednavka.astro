@@ -7,6 +7,42 @@ import Layout from '../layouts/Layout.astro';
   title="Nezávazná poptávka webu na míru | Webresent"
   description="Poptejte web na míru. Vyplňte krátký formulář a do 24 hodin se vám ozvu s návrhem řešení a cenou. Nezávazně, zdarma."
 >
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domů",
+      "item": "https://webresent.cz"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Nezávazná poptávka",
+      "item": "https://webresent.cz/objednavka"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://webresent.cz/objednavka",
+  "url": "https://webresent.cz/objednavka",
+  "name": "Nezávazná poptávka webu na míru",
+  "description": "Poptejte web na míru. Vyplňte krátký formulář a do 24 hodin se vám ozvu s návrhem řešení a cenou.",
+  "isPartOf": {
+    "@id": "https://webresent.cz/#website"
+  }
+}
+</script>
   <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden pb-12 lg:pb-20 pt-20 lg:pt-24 relative">
     
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -59,11 +95,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-5">
           <p class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">Nebo mi napište přímo</p>
           <div class="flex flex-col gap-2.5">
-            <a href="mailto:h.sodomka@seznam.cz" class="inline-flex items-center gap-2.5 text-sm font-bold text-zinc-700 hover:text-blue-600 transition-colors group">
+            <a href="mailto:info@webresent.cz" class="inline-flex items-center gap-2.5 text-sm font-bold text-zinc-700 hover:text-blue-600 transition-colors group">
               <span class="w-8 h-8 rounded-full bg-white border border-zinc-200 flex items-center justify-center flex-shrink-0 group-hover:border-blue-200 transition-colors">
                 <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
               </span>
-              h.sodomka@seznam.cz
+              info@webresent.cz
             </a>
             <a href="tel:+420604994883" class="inline-flex items-center gap-2.5 text-sm font-bold text-zinc-700 hover:text-blue-600 transition-colors group">
               <span class="w-8 h-8 rounded-full bg-white border border-zinc-200 flex items-center justify-center flex-shrink-0 group-hover:border-blue-200 transition-colors">
