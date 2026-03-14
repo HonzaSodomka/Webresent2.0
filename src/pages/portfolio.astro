@@ -7,6 +7,27 @@ import Divider from '../components/Divider.astro';
   title="Portfolio — Weby na míru | Webresent"
   description="Ukázky webů na míru od Webresent. Rychlý kód, technické SEO a výsledky, které jdou měřit — podívejte se na reálné projekty."
 >
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domů",
+      "item": "https://webresent.cz"
+    },
+    {
+  "@type": "ListItem",
+  "position": 2,
+  "name": "Portfolio",
+  "item": "https://webresent.cz/portfolio"
+}
+  ]
+}
+</script>
   <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
     
     <section id="hero" class="w-full flex flex-col justify-center relative z-10 py-12 lg:py-0">

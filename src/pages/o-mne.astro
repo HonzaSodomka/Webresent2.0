@@ -7,7 +7,26 @@ import Divider from '../components/Divider.astro';
   title="O mně — Jan Sodomka, freelance webdesignér | Webresent"
   description="Bc. Jan Sodomka — freelance webdesignér a vývojář z Mladé Boleslavi. Stavím weby od nuly, bez šablon a bez WordPressu."
 >
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domů",
+      "item": "https://webresent.cz"
+    },
+    {
+  "@type": "ListItem",
+  "position": 2,
+  "name": "O mně",
+  "item": "https://webresent.cz/o-mne"
+}
+  ]
+}
+</script>
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Person",
@@ -54,8 +73,15 @@ import Divider from '../components/Divider.astro';
             <div class="w-full rounded-[2rem] overflow-hidden border border-zinc-200 shadow-[0_25px_50px_-15px_rgba(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.12)]">
               <!-- OPRAVA: přidán fetchpriority="high" — prohlížeč ví, že je to LCP
                    element a načte ho prioritně, což zlepší LCP skóre v PageSpeed. -->
-              <img src="/images/jan-sodomka.webp" alt="Jan Sodomka" width="920" height="1080"
-     loading="eager" fetchpriority="high" />
+              <img
+  src="/images/jan-sodomka.webp"
+  alt="Jan Sodomka"
+  class="w-full h-full object-cover object-top"
+  width="1179"
+  height="1477"
+  loading="eager"
+  fetchpriority="high"
+/>
             </div>
           </div>
         </div>
@@ -160,31 +186,38 @@ import Divider from '../components/Divider.astro';
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="/icons/astro.svg" alt="Astro" class="w-8 h-8 flex-shrink-0" />
+          <img src="/icons/astro.svg" alt="Astro" role="img"
+     width="32" height="32" class="w-8 h-8 flex-shrink-0" />
           <div><p class="font-bold text-zinc-900 text-sm">Astro</p><p class="text-zinc-400 text-xs font-medium">Statické weby</p></div>
         </div>
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="/icons/nextjs.svg" alt="Next.js" class="w-8 h-8 flex-shrink-0" />
+          <img src="/icons/nextjs.svg" alt="Next.js" role="img"
+     width="32" height="32" class="w-8 h-8 flex-shrink-0" />
           <div><p class="font-bold text-zinc-900 text-sm">Next.js</p><p class="text-zinc-400 text-xs font-medium">Webové aplikace</p></div>
         </div>
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="/icons/react.svg" alt="React" class="w-8 h-8 flex-shrink-0" />
+          <img src="/icons/react.svg" alt="React" role="img"
+     width="32" height="32" class="w-8 h-8 flex-shrink-0" />
           <div><p class="font-bold text-zinc-900 text-sm">React</p><p class="text-zinc-400 text-xs font-medium">UI komponenty</p></div>
         </div>
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="/icons/tailwind.svg" alt="Tailwind CSS" class="w-8 h-8 flex-shrink-0" />
+          <img src="/icons/tailwind.svg" alt="Tailwind CSS" role="img"
+     width="32" height="32" class="w-8 h-8 flex-shrink-0" />
           <div><p class="font-bold text-zinc-900 text-sm">Tailwind</p><p class="text-zinc-400 text-xs font-medium">Stylování</p></div>
         </div>
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="/icons/php.svg" alt="PHP" class="w-8 h-8 flex-shrink-0" />
+          <img src="/icons/php.svg" alt="PHP" role="img"
+     width="32" height="32" class="w-8 h-8 flex-shrink-0" />
           <div><p class="font-bold text-zinc-900 text-sm">PHP</p><p class="text-zinc-400 text-xs font-medium">Backend logika</p></div>
         </div>
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="/icons/mysql.svg" alt="MySQL" class="w-8 h-8 flex-shrink-0" />
+          <img src="/icons/mysql.svg" alt="MySQL" role="img"
+     width="32" height="32" class="w-8 h-8 flex-shrink-0" />
           <div><p class="font-bold text-zinc-900 text-sm">MySQL</p><p class="text-zinc-400 text-xs font-medium">Databáze</p></div>
         </div>
         <div class="bg-white border border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-zinc-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 scroll-reveal">
-          <img src="/icons/git.svg" alt="Git" class="w-8 h-8 flex-shrink-0" />
+          <img src="/icons/git.svg" alt="Git" role="img"
+     width="32" height="32" class="w-8 h-8 flex-shrink-0" />
           <div><p class="font-bold text-zinc-900 text-sm">Git</p><p class="text-zinc-400 text-xs font-medium">Správa kódu</p></div>
         </div>
         <div class="bg-zinc-50 border border-dashed border-zinc-200 rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4 scroll-reveal">
@@ -201,7 +234,7 @@ import Divider from '../components/Divider.astro';
     <section class="pb-16 lg:pb-24 scroll-reveal">
       <div class="flex flex-col items-center justify-center text-center">
         <h3 class="text-2xl md:text-3xl font-extrabold text-zinc-900 mb-4">Zajímá vás, co umím?</h3>
-        <p class="text-zinc-500 font-medium mb-8 max-w-md">Podívejte se na weby, které jsem už postavil — a uvidíte, co můžete čekat.</p>
+        <p class="text-zinc-500 font-medium mb-8 max-w-md">Podívejte se na <a href="/portfolio" class="text-blue-600 font-bold hover:underline">weby, které jsem postavil</a> — nebo rovnou na <a href="/cenik" class="text-blue-600 font-bold hover:underline">ceník tvorby webů na míru</a>.</p>
         <a href="/portfolio" data-astro-prefetch class="px-8 py-4 rounded-full bg-blue-600 text-white font-bold text-lg hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
           Prohlédnout portfolio
         </a>
