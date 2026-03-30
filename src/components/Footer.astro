@@ -1,86 +1,164 @@
 ---
 const year = new Date().getFullYear();
+const nav = [
+  { label: 'Domů',       href: '/' },
+  { label: 'Portfolio',  href: '/portfolio' },
+  { label: 'Ceník',      href: '/cenik' },
+  { label: 'O mně',      href: '/o-mne' },
+  { label: 'Objednávka', href: '/objednavka' },
+];
+const p = Astro.url.pathname;
 ---
+
 <footer class="f">
-  <div class="f__top">
-    <div class="f__left">
-      <a href="/" class="f__logo">WR</a>
-      <p class="f__claim">Weby které vydělávají.</p>
-    </div>
-    <div class="f__right">
-      <a href="mailto:info@webresent.cz" class="f__link">info@webresent.cz</a>
-      <a href="tel:+420604994883" class="f__link">+420 604 994 883</a>
-    </div>
-  </div>
+  <div class="f__inner">
 
-  <div class="f__mid">
-    <nav class="f__nav">
-      <a href="/" class="f__nav-a">Domů</a>
-      <a href="/portfolio" class="f__nav-a">Portfolio</a>
-      <a href="/cenik" class="f__nav-a">Ceník</a>
-      <a href="/o-mne" class="f__nav-a">O mně</a>
-      <a href="/objednavka" class="f__nav-a">Objednávka</a>
-    </nav>
-  </div>
-
-  <div class="f__bottom">
-    <span>&copy; {year} Bc. Jan Sodomka &mdash; Webresent</span>
-    <div class="f__legal">
-      <a href="/ochrana-udaju">Ochrana údajů</a>
-      <a href="/obchodni-podminky">Obchodní podmínky</a>
+    <div class="f__top">
+      <div class="f__brand">
+        <a href="/" class="f__logo">Webresent</a>
+        <p class="f__claim">Weby které vydělávají.</p>
+      </div>
+      <div class="f__contact">
+        <a href="mailto:info@webresent.cz" class="f__link">info@webresent.cz</a>
+        <a href="tel:+420604994883" class="f__link">+420 604 994 883</a>
+      </div>
     </div>
+
+    <div class="f__mid">
+      <nav class="f__nav" aria-label="Patička navigace">
+        {nav.map(item => (
+          <a href={item.href} class={`f__nav-a${p === item.href ? ' f__nav-a--on' : ''}`}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="f__bottom">
+      <span>&copy; {year} Bc. Jan Sodomka &mdash; Webresent</span>
+      <div class="f__legal">
+        <a href="/ochrana-udaju" class="f__legal-a">Ochrana údajů</a>
+        <a href="/obchodni-podminky" class="f__legal-a">Obchodní podmínky</a>
+      </div>
+    </div>
+
   </div>
 </footer>
 
 <style>
+/* Full-width border přes celou šířku (jako header) */
 .f {
   border-top: 1px solid var(--line);
   background: var(--bg);
-  max-width: 1400px; margin: 0 auto;
-  padding: 4rem 2.5rem 2.5rem;
 }
+
+/* Vnořený kontejner zarovná obsah s ostatním layoutem */
+.f__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3.5rem 2.5rem 2rem;
+}
+
+/* ── TOP ─── logo + kontakt */
 .f__top {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  padding-bottom: 3rem; border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--line);
 }
+
 .f__logo {
-  font-size: .75rem; font-weight: 800; letter-spacing: .2em;
-  color: var(--white); text-decoration: none; display: block; margin-bottom: .75rem;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  margin-bottom: .6rem;
   transition: opacity .2s;
 }
 .f__logo:hover { opacity: .4; }
-.f__claim { font-size: .85rem; color: var(--white-3); }
-.f__right { display: flex; flex-direction: column; gap: .5rem; align-items: flex-end; }
+
+.f__claim {
+  font-size: .78rem;
+  color: var(--white-3);
+  letter-spacing: .02em;
+}
+
+.f__contact {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  align-items: flex-end;
+}
+
 .f__link {
-  font-size: .85rem; font-weight: 500; color: var(--white-2);
-  text-decoration: none; transition: color .2s;
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--white-2);
+  text-decoration: none;
+  transition: color .2s;
 }
 .f__link:hover { color: var(--white); }
 
+/* ── MID ─── navigace */
 .f__mid {
-  padding: 2.5rem 0; border-bottom: 1px solid var(--line);
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line);
 }
-.f__nav { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+
+.f__nav {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 .f__nav-a {
-  font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--white-3); text-decoration: none; transition: color .2s;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--white-3);
+  text-decoration: none;
+  transition: color .2s;
 }
 .f__nav-a:hover { color: var(--white); }
+.f__nav-a--on { color: var(--white); }
 
+/* ── BOTTOM ─── copyright + legal */
 .f__bottom {
-  display: flex; justify-content: space-between; align-items: center;
-  padding-top: 2rem; font-size: .72rem; color: var(--white-3);
-  flex-wrap: wrap; gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.8rem;
+  font-size: .7rem;
+  color: var(--white-3);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
-.f__legal { display: flex; gap: 2rem; }
-.f__legal a { color: var(--white-3); text-decoration: none; transition: color .2s; }
-.f__legal a:hover { color: var(--white); }
 
+.f__legal {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.f__legal-a {
+  font-size: .7rem;
+  color: var(--white-3);
+  text-decoration: none;
+  transition: color .2s;
+}
+.f__legal-a:hover { color: var(--white); }
+
+/* ── RESPONSIVE */
 @media (max-width: 640px) {
-  .f { padding: 3rem 1.5rem 2rem; }
+  .f__inner { padding: 2.5rem 1.5rem 1.5rem; }
   .f__top { flex-direction: column; }
-  .f__right { align-items: flex-start; }
+  .f__contact { align-items: flex-start; }
   .f__bottom { flex-direction: column; align-items: flex-start; }
+  .f__nav { gap: 1.4rem; }
 }
 </style>

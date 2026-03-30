@@ -33,11 +33,7 @@ import Divider from '../components/Divider.astro';
     </h1>
 
     <div class="hero__foot reveal" data-delay="0.35s">
-      <p>
-        Cena roste podle toho, co váš web reálně potřebuje.
-        Po konzultaci dostanete přesnou nabídku šitou na míru —
-        pevnou, bez překvapení.
-      </p>
+      <p>Cena roste podle toho, co váš web reálně potřebuje. Po konzultaci dostanete přesnou nabídku šitou na míru — pevnou, bez překvapení.</p>
       <a href="/objednavka" class="hero__cta">Poptat web <span class="arr">→</span></a>
     </div>
   </section>
@@ -139,11 +135,7 @@ import Divider from '../components/Divider.astro';
   <section class="factors">
     <div class="factors__hd reveal">
       <h2 class="factors__title">Co může<br/><em>ovlivnit</em><br/>finální cenu?</h2>
-      <p class="factors__sub">
-        Každý projekt je jiný. Někdo potřebuje jen rychlou vizitku,
-        jiný komplexní portál co ušetří hodiny administrativy.
-        Po konzultaci dostanete vždy přesnou nabídku — vždy rovinu.
-      </p>
+      <p class="factors__sub">Každý projekt je jiný. Někdo potřebuje jen rychlou vizitku, jiný komplexní portál co ušetří hodiny administrativy. Po konzultaci dostanete vždy přesnou nabídku — vždy rovinu.</p>
     </div>
     <dl class="factors__list">
       <div class="fl reveal" data-delay="0s">
@@ -180,11 +172,7 @@ import Divider from '../components/Divider.astro';
     <div class="retainer__l">
       <span class="retainer__tag">Správa &amp; hosting</span>
       <h2 class="retainer__title">Dlouhodobá správa<br/>a údržba webu</h2>
-      <p class="retainer__desc">
-        Vy řešíte byznys, já web. Hosting, bezpečnostní aktualizace,
-        hlídání dostupnosti — všechno běží u mě a vy máte klid.
-        Žádné výpadky, žádná překvapení.
-      </p>
+      <p class="retainer__desc">Vy řešíte byznys, já web. Hosting, bezpečnostní aktualizace, hlídání dostupnosti — všechno běží u mě a vy máte klid. Žádné výpadky, žádná překvapení.</p>
       <ul class="retainer__ul">
         <li>Rychlý hosting na mém serveru</li>
         <li>Pravidelné bezpečnostní aktualizace</li>
@@ -206,10 +194,7 @@ import Divider from '../components/Divider.astro';
   <!-- INCLUDED -->
   <section class="inc">
     <h2 class="inc__h reveal">Tohle dostanete<br/><em>vždy.</em></h2>
-    <p class="inc__sub reveal" data-delay="0.1s">
-      Ať stavíme vizitku nebo e-shop — pod kapotou šlape na 100 %.
-      Žádné kompromisy, žádné příplatky za základní standard.
-    </p>
+    <p class="inc__sub reveal" data-delay="0.1s">Ať stavíme vizitku nebo e-shop — pod kapotou šlape na 100 %. Žádné kompromisy, žádné příplatky za základní standard.</p>
     <ul class="inc__g">
       <li class="ig reveal" data-delay="0s">
         <span class="ig__n">01</span>
@@ -250,10 +235,7 @@ import Divider from '../components/Divider.astro';
   <section class="cta">
     <p class="cta__e reveal">Nejste si jistí, co přesně potřebujete?</p>
     <h2 class="cta__h reveal" data-delay="0.1s">Ozvěte<br/><em>se mi.</em></h2>
-    <p class="cta__sub reveal" data-delay="0.18s">
-      Probereme váš byznys a najdeme řešení.
-      Podívejte se také na <a href="/portfolio">ukázky hotových webů</a>.
-    </p>
+    <p class="cta__sub reveal" data-delay="0.18s">Probereme váš byznys a najdeme řešení. Podívejte se také na <a href="/portfolio">ukázky hotových webů</a>.</p>
     <a href="/objednavka?type=konzultace" class="cta__btn reveal" data-delay="0.26s">
       Poptat nezávazně web <span class="arr">→</span>
     </a>
@@ -266,72 +248,102 @@ import Divider from '../components/Divider.astro';
 .pg { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
 
 /* ── HERO ─────────────────────────────────────────────────── */
+/*
+  Výška = 100vh minus fixní header (64px).
+  Flex column, eye nahoře, nadpis uprostřed, footer dole.
+  Žádný min-height — pevná výška = 1 obrazovka přesně.
+*/
 .hero {
-  /* min-height zajistí dostatek výšky na velký nadpis */
-  min-height: calc(100svh - 64px);
-  padding: 7rem 0 5rem;
+  height: calc(100vh - 64px);
+  padding: 3.5rem 0 3rem;
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 4rem;
+  overflow: hidden;
 }
 
 .hero__eye {
-  font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
   color: var(--white-3);
+  flex-shrink: 0;
 }
 
+/* Nadpis roste aby zaplnil dostupný prostor */
 .hero__h {
-  /* každý span je block — žádný flex-wrap chaos */
   display: block;
-  font-size: clamp(4.5rem, 12vw, 12rem);
+  /* clamp: min 3.5rem, skaluje s výškou viewportu, max 11rem */
+  font-size: clamp(3.8rem, 11vh, 11rem);
   font-weight: 800;
-  line-height: .92;
+  line-height: .9;
   letter-spacing: -.04em;
   color: var(--white);
-  /* flex: 1 aby nadpis "rostl" a footer byl dole */
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .line { display: block; }
 .ital { font-style: italic; color: var(--white-2); }
 
+/* Footer vždy přesně dole, oddělený linkou */
 .hero__foot {
+  flex-shrink: 0;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 3rem;
   flex-wrap: wrap;
-  /* odděleno od nadpisu ale nesmí být překryto */
   padding-top: 2rem;
   border-top: 1px solid var(--line);
 }
 
 .hero__foot p {
-  font-size: 1rem; color: var(--white-2);
-  line-height: 1.7; max-width: 400px;
+  font-size: .95rem;
+  color: var(--white-2);
+  line-height: 1.65;
+  max-width: 420px;
 }
 
 .hero__cta {
   flex-shrink: 0;
-  font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--bg); background: var(--white);
-  text-decoration: none; padding: .9rem 2rem;
-  display: inline-flex; align-items: center; gap: .6rem;
-  transition: opacity .2s; white-space: nowrap;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--white);
+  text-decoration: none;
+  padding: .85rem 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  transition: opacity .2s;
+  white-space: nowrap;
 }
 .hero__cta:hover { opacity: .75; }
 
 /* ── TICKER ───────────────────────────────────────────────── */
 .ticker {
-  overflow: hidden; border-bottom: 1px solid var(--line);
-  padding: 1rem 0; margin: 0 -2.5rem; background: var(--bg-2);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+  margin: 0 -2.5rem;
+  background: var(--bg-2);
 }
 .ticker__t {
-  display: inline-flex; gap: 2rem; white-space: nowrap;
+  display: inline-flex;
+  gap: 2rem;
+  white-space: nowrap;
   animation: tick 32s linear infinite;
-  font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
   color: var(--white-3);
 }
 .dot { opacity: .3; }
@@ -339,15 +351,18 @@ import Divider from '../components/Divider.astro';
 
 /* ── CARDS ────────────────────────────────────────────────── */
 .cards {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
   border: 1px solid var(--line);
   margin: 5rem -2.5rem 0;
 }
 .card {
   background: var(--bg);
   padding: 3rem 2.5rem;
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   transition: background .25s;
 }
 .card:hover { background: var(--bg-2); }
@@ -355,7 +370,9 @@ import Divider from '../components/Divider.astro';
 .card--hi:hover { background: #202020; }
 
 .card__top {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 2rem;
 }
 .card__n { font-size: .65rem; font-weight: 700; letter-spacing: .14em; color: var(--white-3); }
@@ -382,7 +399,8 @@ import Divider from '../components/Divider.astro';
 .card__price { margin-bottom: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
 .card__from { display: block; font-size: .68rem; color: var(--white-3); margin-bottom: .15rem; }
 .card__amt {
-  display: block; font-size: clamp(2rem, 4vw, 2.8rem);
+  display: block;
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--white);
 }
 .card__amt--s { font-size: 1.6rem; }
@@ -417,8 +435,7 @@ import Divider from '../components/Divider.astro';
 /* ── RETAINER ─────────────────────────────────────────────── */
 .retainer {
   display: grid; grid-template-columns: 2fr 1fr; gap: 6rem;
-  align-items: start;
-  padding: 3.5rem;
+  align-items: start; padding: 3.5rem;
   border: 1px solid var(--line);
   background: var(--bg-2);
 }
@@ -478,13 +495,14 @@ import Divider from '../components/Divider.astro';
 .ig p { font-size: .83rem; color: var(--white-2); line-height: 1.65; }
 
 /* ── CTA ──────────────────────────────────────────────────── */
-.cta { padding: 10rem 0; text-align: center; }
+.cta { padding: 6rem 0; text-align: center; }
 .cta__e {
-  font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--white-3); margin-bottom: 1.5rem; display: block;
+  display: block;
+  font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white-3); margin-bottom: 1.5rem;
 }
 .cta__h {
-  font-size: clamp(5rem, 14vw, 12rem); font-weight: 800;
+  font-size: clamp(4.5rem, 13vw, 11rem); font-weight: 800;
   letter-spacing: -.05em; line-height: .88;
   color: var(--white); margin-bottom: 1.5rem;
 }
@@ -493,9 +511,9 @@ import Divider from '../components/Divider.astro';
 .cta__sub a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
 .cta__btn {
   display: inline-flex; align-items: center; gap: .75rem;
-  font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   color: var(--bg); background: var(--white);
-  text-decoration: none; padding: 1.1rem 2.5rem;
+  text-decoration: none; padding: 1rem 2.2rem;
   transition: opacity .2s;
 }
 .cta__btn:hover { opacity: .75; }
@@ -510,17 +528,20 @@ a:hover .arr { transform: translateX(5px); }
   .retainer { grid-template-columns: 1fr; gap: 3rem; }
   .inc__g { grid-template-columns: 1fr 1fr; }
 }
+@media (max-width: 900px) {
+  .hero { height: auto; min-height: calc(100vh - 64px); padding: 3rem 0 2.5rem; }
+}
 @media (max-width: 768px) {
   .inc__g { grid-template-columns: 1fr; }
   .fl { grid-template-columns: 1fr; gap: .4rem; }
-  .hero { min-height: auto; padding: 5rem 0 4rem; gap: 3rem; }
+  .hero__h { font-size: clamp(3.2rem, 12vw, 6rem); }
 }
 @media (max-width: 640px) {
   .pg { padding: 0 1.5rem; }
-  .hero__h { font-size: clamp(3.5rem, 15vw, 5.5rem); }
   .ticker { margin: 0 -1.5rem; }
-  .cta { padding: 6rem 0; }
+  .cta { padding: 4rem 0; }
   .retainer { padding: 2rem 1.5rem; }
+  .hero__foot { gap: 1.5rem; }
 }
 </style>
 
