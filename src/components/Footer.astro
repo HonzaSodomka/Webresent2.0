@@ -1,9 +1,6 @@
 ---
-// src/components/Footer.astro
 const currentYear = new Date().getFullYear();
-
 const navItems = [
-  { label: 'Domů', href: '/' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Ceník', href: '/cenik' },
   { label: 'O mně', href: '/o-mne' },
@@ -11,56 +8,139 @@ const navItems = [
 ];
 ---
 
-<div class="w-full flex justify-center px-4 sm:px-6 pb-4 sm:pb-6">
-  <footer class="w-full bg-zinc-900 border border-zinc-800 rounded-[2rem] shadow-xl overflow-hidden">
-    <div class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 py-8 sm:px-10">
-      
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        
-        <!-- Brand & Name -->
-        <div class="flex flex-col items-center md:items-start">
-          <a href="/" class="text-xl font-bold text-white">
-            Webresent<span class="text-blue-500">.</span>
-          </a>
-          <span class="text-sm font-bold text-zinc-400 mt-0.5 tracking-wide">Bc. Jan Sodomka</span>
-        </div>
+<footer class="site-footer">
+  <div class="site-footer__inner">
 
-        <!-- Horizontal Nav -->
-        <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3">
-          {navItems.map(item => (
-            <a href={item.href} class="text-sm font-semibold text-zinc-400 hover:text-white transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <!-- Contact -->
-        <div class="flex flex-col items-center md:items-end gap-2">
-          <a href="mailto:info@webresent.cz" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-800 border border-zinc-700 text-sm font-bold text-zinc-300 hover:border-blue-500 hover:text-white hover:bg-zinc-700 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
-            <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            info@webresent.cz
-          </a>
-          <a href="tel:+420604994883" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-800 border border-zinc-700 text-sm font-bold text-zinc-300 hover:border-blue-500 hover:text-white hover:bg-zinc-700 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
-            <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-            604 994 883
-          </a>
-        </div>
-
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href="/" class="site-footer__logo">Webresent</a>
+        <p class="site-footer__tagline">Weby, které vydělávají.</p>
       </div>
 
-      <!-- Bottom bar -->
-      <div class="mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium text-zinc-500">
-        <div class="flex items-center gap-4">
-          <p>&copy; {currentYear} Webresent. Všechna práva vyhrazena.</p>
-          <span class="hidden sm:block text-zinc-700">·</span>
-          <span class="hidden sm:block text-zinc-600">IČO: <span class="text-zinc-500">doplňuji</span></span>
-        </div>
-        <div class="flex gap-6">
-          <a href="/ochrana-udaju" class="hover:text-zinc-300 transition-colors">Ochrana údajů</a>
-          <a href="/obchodni-podminky" class="hover:text-zinc-300 transition-colors">Obchodní podmínky</a>
-        </div>
-      </div>
+      <nav class="site-footer__nav" aria-label="Navigace patou">
+        {navItems.map(item => (
+          <a href={item.href} class="site-footer__nav-link">{item.label}</a>
+        ))}
+      </nav>
 
+      <div class="site-footer__contact">
+        <a href="mailto:info@webresent.cz" class="site-footer__contact-link">
+          info@webresent.cz
+        </a>
+        <a href="tel:+420604994883" class="site-footer__contact-link">
+          +420 604 994 883
+        </a>
+      </div>
     </div>
-  </footer>
-</div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; {currentYear} Webresent &mdash; Bc. Jan Sodomka</span>
+      <div class="site-footer__legal">
+        <a href="/ochrana-udaju">Ochrana údajů</a>
+        <a href="/obchodni-podminky">Obchodní podmínky</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid #e4e4e4;
+    background: #f9f9f7;
+    margin-top: 0;
+  }
+  .site-footer__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 4rem;
+    align-items: start;
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .site-footer__logo {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #111;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .site-footer__logo:hover { opacity: 0.6; }
+  .site-footer__tagline {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 400;
+  }
+  .site-footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .site-footer__nav-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .site-footer__nav-link:hover { color: #111; }
+  .site-footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: flex-end;
+  }
+  .site-footer__contact-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .site-footer__contact-link:hover { color: #111; }
+
+  .site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #999;
+    letter-spacing: 0.04em;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .site-footer__legal {
+    display: flex;
+    gap: 2rem;
+  }
+  .site-footer__legal a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .site-footer__legal a:hover { color: #111; }
+
+  @media (max-width: 768px) {
+    .site-footer__top {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 3rem 0 2.5rem;
+    }
+    .site-footer__contact { align-items: flex-start; }
+    .site-footer__bottom { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 600px) {
+    .site-footer__inner { padding: 0 1.25rem; }
+  }
+</style>

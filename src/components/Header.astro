@@ -1,199 +1,242 @@
 ---
-// src/components/Header.astro
 const navItems = [
-  { label: 'Domů', href: '/' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Ceník', href: '/cenik' },
   { label: 'O mně', href: '/o-mne' },
 ];
-
 const currentPath = Astro.url.pathname;
 const isObjednavka = currentPath === '/objednavka';
 ---
 
-<header class="fixed top-4 left-0 w-full z-50 px-4 pointer-events-none">
-  <div class="max-w-4xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md border border-zinc-200/50 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.1)] rounded-full h-16 px-6 pointer-events-auto transition-all duration-300">
-    
-    <!-- Logo -->
-    <a href="/" class="text-xl font-extrabold text-zinc-900 group">
-      Webresent<span class="text-blue-600 transition-colors group-hover:text-blue-500">.</span>
+<header class="site-header">
+  <div class="site-header__inner">
+
+    <a href="/" class="site-header__logo" aria-label="Webresent — domů">
+      Webresent
     </a>
 
-    <!-- Desktop Navigace -->
-    <nav class="hidden md:flex items-center gap-1">
+    <nav class="site-header__nav" aria-label="Hlavní navigace">
       {navItems.map(item => (
-        <a 
-          href={item.href} 
-          class={`px-4 py-2 rounded-full text-sm font-bold transition-all ${
-            currentPath === item.href
-              ? 'text-zinc-900 bg-zinc-100'
-              : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/50'
-          }`}
+        <a
+          href={item.href}
+          class={`site-header__nav-link${currentPath === item.href ? ' site-header__nav-link--active' : ''}`}
         >
           {item.label}
         </a>
       ))}
     </nav>
 
-    <!-- Call to action button (Desktop) -->
     <a
       href="/objednavka"
-      class={`hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-bold transition-colors shadow-sm ${
-        isObjednavka
-          ? 'bg-blue-600 text-white hover:bg-blue-500'
-          : 'bg-zinc-900 text-white hover:bg-blue-600 hover:shadow'
-      }`}
+      class={`site-header__cta${isObjednavka ? ' site-header__cta--active' : ''}`}
     >
       Poptat web
     </a>
-    
-    <!-- Hamburger Menu (Mobile) -->
-    <button 
-      id="menu-toggle" 
-      aria-label="Otevřít navigační menu" 
+
+    <button
+      id="menu-toggle"
+      aria-label="Otevřít menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 relative z-50 bg-zinc-50 rounded-full border border-zinc-200"
+      class="site-header__hamburger"
     >
-      <span class="w-4 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
-      <span class="w-4 h-[2px] bg-zinc-900 rounded-full transition-transform duration-300 origin-center"></span>
+      <span></span>
+      <span></span>
     </button>
   </div>
 
-  <!-- Mobile Menu Dropdown -->
-  <div 
-    id="mobile-menu" 
-    role="navigation"
-    aria-label="Navigační menu"
-    class="hidden absolute top-20 left-4 right-4 bg-white/95 backdrop-blur-xl border border-zinc-200 shadow-2xl rounded-3xl md:hidden overflow-hidden pointer-events-auto transform origin-top transition-all duration-300 opacity-0 -translate-y-4"
-  >
-    <nav class="flex flex-col p-4 gap-2">
+  <div id="mobile-menu" role="navigation" aria-label="Mobilní menu" class="mobile-menu" hidden>
+    <nav class="mobile-menu__nav">
+      <a href="/" class="mobile-menu__link">Domů</a>
       {navItems.map(item => (
-        <a href={item.href} class={`mobile-link px-4 py-3 rounded-2xl text-lg font-bold transition-all ${
-          currentPath === item.href
-            ? 'text-zinc-900 bg-zinc-100'
-            : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'
-        }`}>
-          {item.label}
-        </a>
+        <a href={item.href} class="mobile-menu__link">{item.label}</a>
       ))}
-      <a
-        href="/objednavka"
-        class={`mobile-link mt-2 px-4 py-4 rounded-2xl text-center text-lg font-bold transition-colors ${
-          isObjednavka
-            ? 'bg-blue-600 text-white hover:bg-blue-500'
-            : 'bg-zinc-900 text-white hover:bg-blue-600'
-        }`}
-      >
-        Poptat web
-      </a>
+      <a href="/objednavka" class="mobile-menu__cta">Poptat web →</a>
     </nav>
   </div>
 </header>
 
-<script>
-  let isOpen = false;
-  let trapHandler: ((e: KeyboardEvent) => void) | null = null;
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(249, 249, 247, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .site-header__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .site-header__logo {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #111;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .site-header__logo:hover { opacity: 0.6; }
 
-  function initMobileMenu() {
-    const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
-    const menu = document.getElementById('mobile-menu');
-    const lines = toggle?.querySelectorAll('span');
-    const links = menu?.querySelectorAll('.mobile-link');
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .site-header__nav-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #666;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    transition: color 0.2s ease;
+  }
+  .site-header__nav-link:hover,
+  .site-header__nav-link--active { color: #111; }
 
-    if (!toggle || !menu) return;
-
-    if (trapHandler) {
-      document.removeEventListener('keydown', trapHandler);
-      trapHandler = null;
-    }
-
-    isOpen = false;
-    toggle.setAttribute('aria-expanded', 'false');
-    if (lines && lines.length === 2) {
-      lines[0].style.transform = 'none';
-      lines[1].style.transform = 'none';
-    }
-    menu.classList.add('hidden', 'opacity-0', '-translate-y-4');
-    menu.classList.remove('opacity-100', 'translate-y-0');
-
-    const openMenu = () => {
-      isOpen = true;
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Zavřít navigační menu');
-      menu.classList.remove('hidden');
-      setTimeout(() => {
-        menu.classList.remove('opacity-0', '-translate-y-4');
-        menu.classList.add('opacity-100', 'translate-y-0');
-      }, 10);
-      if (lines && lines.length === 2) {
-        lines[0].style.transform = 'translateY(4px) rotate(45deg)';
-        lines[1].style.transform = 'translateY(-4px) rotate(-45deg)';
-      }
-
-      const focusableEls = Array.from(
-        menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
-      );
-      const firstEl = focusableEls[0];
-      const lastEl = focusableEls[focusableEls.length - 1];
-
-      setTimeout(() => firstEl?.focus(), 50);
-
-      if (trapHandler) document.removeEventListener('keydown', trapHandler);
-
-      trapHandler = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          closeMenu();
-          toggle.focus();
-          return;
-        }
-        if (e.key === 'Tab') {
-          if (e.shiftKey) {
-            if (document.activeElement === firstEl) {
-              e.preventDefault();
-              lastEl?.focus();
-            }
-          } else {
-            if (document.activeElement === lastEl) {
-              e.preventDefault();
-              firstEl?.focus();
-            }
-          }
-        }
-      };
-
-      document.addEventListener('keydown', trapHandler);
-    };
-
-    const closeMenu = () => {
-      isOpen = false;
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Otevřít navigační menu');
-      menu.classList.remove('opacity-100', 'translate-y-0');
-      menu.classList.add('opacity-0', '-translate-y-4');
-      setTimeout(() => {
-        menu.classList.add('hidden');
-      }, 300);
-      if (lines && lines.length === 2) {
-        lines[0].style.transform = 'none';
-        lines[1].style.transform = 'none';
-      }
-      if (trapHandler) {
-        document.removeEventListener('keydown', trapHandler);
-        trapHandler = null;
-      }
-    };
-
-    toggle.addEventListener('click', () => {
-      isOpen ? closeMenu() : openMenu();
-    });
-
-    links?.forEach(link => {
-      link.addEventListener('click', () => {
-        if (isOpen) closeMenu();
-      });
-    });
+  .site-header__cta {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #111;
+    text-decoration: none;
+    padding: 0.6rem 1.4rem;
+    border: 1.5px solid #111;
+    flex-shrink: 0;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .site-header__cta:hover {
+    background: transparent;
+    color: #111;
+  }
+  .site-header__cta--active {
+    background: transparent;
+    color: #111;
   }
 
-  document.addEventListener('astro:page-load', initMobileMenu);
+  .site-header__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .site-header__hamburger span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: #111;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .site-header__hamburger.is-open span:first-child {
+    transform: translateY(3.25px) rotate(45deg);
+  }
+  .site-header__hamburger.is-open span:last-child {
+    transform: translateY(-3.25px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    border-top: 1px solid #e4e4e4;
+    background: #f9f9f7;
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .mobile-menu:not([hidden]) {
+    max-height: 400px;
+  }
+  .mobile-menu__nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu__link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #555;
+    text-decoration: none;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid #e4e4e4;
+    transition: color 0.2s ease;
+  }
+  .mobile-menu__link:hover { color: #111; }
+  .mobile-menu__cta {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    align-self: flex-start;
+  }
+  .mobile-menu__cta:hover { opacity: 0.6; }
+
+  @media (max-width: 768px) {
+    .site-header__nav,
+    .site-header__cta { display: none; }
+    .site-header__hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .site-header__inner { padding: 0 1.25rem; }
+    .mobile-menu__nav { padding: 1.25rem 1.25rem; }
+  }
+</style>
+
+<script>
+  function initHeader() {
+    const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
+    const menu = document.getElementById('mobile-menu') as HTMLElement | null;
+    if (!toggle || !menu) return;
+
+    let open = false;
+
+    const openMenu = () => {
+      open = true;
+      menu.removeAttribute('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Zavřít menu');
+      toggle.classList.add('is-open');
+    };
+    const closeMenu = () => {
+      open = false;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Otevřít menu');
+      toggle.classList.remove('is-open');
+      setTimeout(() => menu.setAttribute('hidden', ''), 350);
+    };
+
+    toggle.addEventListener('click', () => open ? closeMenu() : openMenu());
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (open) closeMenu(); }));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) closeMenu(); });
+  }
+
+  document.addEventListener('astro:page-load', initHeader);
 </script>
