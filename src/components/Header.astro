@@ -1,5 +1,6 @@
 ---
 const navItems = [
+  { label: 'Domů', href: '/' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Ceník', href: '/cenik' },
   { label: 'O mně', href: '/o-mne' },
@@ -47,7 +48,6 @@ const isObjednavka = currentPath === '/objednavka';
 
   <div id="mobile-menu" role="navigation" aria-label="Mobilní menu" class="mobile-menu" hidden>
     <nav class="mobile-menu__nav">
-      <a href="/" class="mobile-menu__link">Domů</a>
       {navItems.map(item => (
         <a href={item.href} class="mobile-menu__link">{item.label}</a>
       ))}
@@ -63,10 +63,10 @@ const isObjednavka = currentPath === '/objednavka';
     left: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(249, 249, 247, 0.92);
+    background: rgba(245, 240, 232, 0.93);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid var(--cream-border);
   }
   .site-header__inner {
     max-width: 1200px;
@@ -82,50 +82,50 @@ const isObjednavka = currentPath === '/objednavka';
     font-size: 1rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    color: #111;
+    color: var(--ink);
     text-decoration: none;
     flex-shrink: 0;
+    transition: opacity 0.2s ease;
   }
-  .site-header__logo:hover { opacity: 0.6; }
+  .site-header__logo:hover { opacity: 0.5; }
 
   .site-header__nav {
     display: flex;
     align-items: center;
-    gap: 0;
   }
   .site-header__nav-link {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #666;
+    color: var(--ink-mid);
     text-decoration: none;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.9rem;
     transition: color 0.2s ease;
   }
   .site-header__nav-link:hover,
-  .site-header__nav-link--active { color: #111; }
+  .site-header__nav-link--active { color: var(--ink); }
 
   .site-header__cta {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #fff;
-    background: #111;
+    color: var(--cream);
+    background: var(--ink);
     text-decoration: none;
     padding: 0.6rem 1.4rem;
-    border: 1.5px solid #111;
+    border: 1.5px solid var(--ink);
     flex-shrink: 0;
     transition: background 0.2s ease, color 0.2s ease;
   }
   .site-header__cta:hover {
     background: transparent;
-    color: #111;
+    color: var(--ink);
   }
   .site-header__cta--active {
     background: transparent;
-    color: #111;
+    color: var(--ink);
   }
 
   .site-header__hamburger {
@@ -145,63 +145,54 @@ const isObjednavka = currentPath === '/objednavka';
     display: block;
     width: 20px;
     height: 1.5px;
-    background: #111;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    background: var(--ink);
+    transition: transform 0.25s ease;
   }
-  .site-header__hamburger.is-open span:first-child {
-    transform: translateY(3.25px) rotate(45deg);
-  }
-  .site-header__hamburger.is-open span:last-child {
-    transform: translateY(-3.25px) rotate(-45deg);
-  }
+  .site-header__hamburger.is-open span:first-child { transform: translateY(3.25px) rotate(45deg); }
+  .site-header__hamburger.is-open span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
 
-  /* Mobile menu */
   .mobile-menu {
-    border-top: 1px solid #e4e4e4;
-    background: #f9f9f7;
-    padding: 0;
+    border-top: 1px solid var(--cream-border);
+    background: var(--cream);
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .mobile-menu:not([hidden]) {
-    max-height: 400px;
-  }
+  .mobile-menu:not([hidden]) { max-height: 420px; }
   .mobile-menu__nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1.5rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
   .mobile-menu__link {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #555;
+    color: var(--ink-mid);
     text-decoration: none;
     padding: 0.9rem 0;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid var(--cream-border);
     transition: color 0.2s ease;
   }
-  .mobile-menu__link:hover { color: #111; }
+  .mobile-menu__link:hover { color: var(--ink); }
   .mobile-menu__cta {
     margin-top: 1.25rem;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #111;
+    color: var(--ink);
     text-decoration: none;
     align-self: flex-start;
+    transition: opacity 0.2s ease;
   }
-  .mobile-menu__cta:hover { opacity: 0.6; }
+  .mobile-menu__cta:hover { opacity: 0.5; }
 
   @media (max-width: 768px) {
-    .site-header__nav,
-    .site-header__cta { display: none; }
+    .site-header__nav, .site-header__cta { display: none; }
     .site-header__hamburger { display: flex; }
   }
   @media (max-width: 600px) {
@@ -215,9 +206,7 @@ const isObjednavka = currentPath === '/objednavka';
     const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
     const menu = document.getElementById('mobile-menu') as HTMLElement | null;
     if (!toggle || !menu) return;
-
     let open = false;
-
     const openMenu = () => {
       open = true;
       menu.removeAttribute('hidden');
@@ -232,11 +221,9 @@ const isObjednavka = currentPath === '/objednavka';
       toggle.classList.remove('is-open');
       setTimeout(() => menu.setAttribute('hidden', ''), 350);
     };
-
     toggle.addEventListener('click', () => open ? closeMenu() : openMenu());
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (open) closeMenu(); }));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) closeMenu(); });
   }
-
   document.addEventListener('astro:page-load', initHeader);
 </script>

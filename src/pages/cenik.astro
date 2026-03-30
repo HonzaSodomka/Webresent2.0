@@ -31,25 +31,25 @@ import Layout from '../layouts/Layout.astro';
     <div class="ticker-wrap" aria-hidden="true">
       <div class="ticker-track">
         <span>Statický web od 9 900 Kč</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>Upravitelný web od 19 900 Kč</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>E-shop & Aplikace individuálně</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>Pevná cena předem</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>Návrh zdarma</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>Statický web od 9 900 Kč</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>Upravitelný web od 19 900 Kč</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>E-shop & Aplikace individuálně</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>Pevná cena předem</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
         <span>Návrh zdarma</span>
-        <span aria-hidden="true">·</span>
+        <span>·</span>
       </div>
     </div>
 
@@ -60,7 +60,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="pricing-row__index">01</div>
         <div class="pricing-row__content">
           <h2 class="pricing-row__name">Statický web</h2>
-          <p class="pricing-row__desc">Ideální digitální vizitka nebo prezentace jedné služby. čistý kód, bleskova é načítání, žádné zbytečné závislosti.</p>
+          <p class="pricing-row__desc">Ideální digitální vizitka nebo prezentace jedné služby. Čistý kód, bleskové načítání, žádné zbytečné závislosti.</p>
           <ul class="pricing-row__features">
             <li>Responzivní design na míru</li>
             <li>Kontaktní formulář</li>
@@ -82,7 +82,7 @@ import Layout from '../layouts/Layout.astro';
           <h2 class="pricing-row__name">Upravitelný web
             <span class="pricing-row__badge">Nejčastější volba</span>
           </h2>
-          <p class="pricing-row__desc">Zlatá střední cesta. Vícestránková prezentace s administrací, kde si sami měníte texty a fotky bez ználosti kódu.</p>
+          <p class="pricing-row__desc">Zlatá střední cesta. Vícestránková prezentace s administrací, kde si sami měníte texty a fotky bez znalosti kódu.</p>
           <ul class="pricing-row__features">
             <li>Vše ze Statického webu</li>
             <li>Systém pro úpravu obsahu (CMS)</li>
@@ -126,12 +126,12 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="included-section__title">V každém projektu</h2>
       </div>
       <ul class="included-list">
-        <li class="included-item reveal"><span class="included-item__num">—</span><span>Bleskové načtítání &amp; optimalizace výkonu</span></li>
-        <li class="included-item reveal"><span class="included-item__num">—</span><span>Responzivita na všech zařízeních</span></li>
-        <li class="included-item reveal"><span class="included-item__num">—</span><span>Technické SEO &amp; strukturovaná data</span></li>
-        <li class="included-item reveal"><span class="included-item__num">—</span><span>Psaní textů v ceně</span></li>
-        <li class="included-item reveal"><span class="included-item__num">—</span><span>Napojení do Google Search Console</span></li>
-        <li class="included-item reveal"><span class="included-item__num">—</span><span>Nasazení na hosting &amp; doména</span></li>
+        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Bleskové načítání & optimalizace výkonu</span></li>
+        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Responzivita na všech zařízeních</span></li>
+        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Technické SEO & strukturovaná data</span></li>
+        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Psaní textů v ceně</span></li>
+        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Napojení do Google Search Console</span></li>
+        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Nasazení na hosting & doména</span></li>
       </ul>
     </section>
 
@@ -171,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="factor-item reveal">
           <span class="factor-item__num">06</span>
           <h3>Dlouhodobá správa</h3>
-          <p>Měsíční paušál za hosting, aktualizace a průběžné üpravy.</p>
+          <p>Měsíční paušál za hosting, aktualizace a průběžné úpravy.</p>
         </div>
       </div>
     </section>
@@ -181,8 +181,7 @@ import Layout from '../layouts/Layout.astro';
       <p class="cenik-cta__sub">Nejste si jisti, co přesně potřebujete?</p>
       <h2 class="cenik-cta__title">Napíšeme si.</h2>
       <a href="/objednavka?type=konzultace" data-astro-prefetch class="cenik-cta__btn">
-        Nezávazná konzultace
-        <span class="cenik-cta__arrow">→</span>
+        Nezávazná konzultace <span class="cenik-cta__arrow">→</span>
       </a>
     </section>
 
@@ -191,115 +190,104 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  /* ── Reset & base ───────────────────────────────────────────── */
   .cenik-main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  /* ── Hero ───────────────────────────────────────────────────── */
+  /* Hero */
   .cenik-hero {
     padding: 8rem 0 6rem;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid var(--cream-border);
   }
   .cenik-hero__label {
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #888;
+    color: var(--ink-soft);
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
   }
-  .cenik-hero__label span {
-    color: #111;
-  }
+  .cenik-hero__label span { color: var(--ink); }
   .cenik-hero__title {
     font-size: clamp(3rem, 8vw, 7rem);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.03em;
-    color: #111;
+    color: var(--ink);
     margin-bottom: 2rem;
   }
   .cenik-hero__sub {
     font-size: 1.1rem;
-    color: #666;
-    font-weight: 400;
+    color: var(--ink-mid);
     line-height: 1.6;
   }
 
-  /* ── Ticker ─────────────────────────────────────────────────── */
+  /* Ticker */
   .ticker-wrap {
     overflow: hidden;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid var(--cream-border);
     padding: 1.25rem 0;
     margin: 0 -2rem;
+    background: var(--cream-light);
   }
   .ticker-track {
     display: inline-flex;
     gap: 3rem;
     white-space: nowrap;
     animation: ticker 22s linear infinite;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #444;
+    color: var(--ink-mid);
   }
   @keyframes ticker {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
 
-  /* ── Pricing rows ───────────────────────────────────────────── */
-  .pricing-section {
-    padding: 0;
-  }
+  /* Pricing rows */
+  .pricing-section { padding: 0; }
   .pricing-row {
     display: grid;
     grid-template-columns: 3rem 1fr auto auto;
     gap: 2rem;
     align-items: start;
     padding: 3.5rem 0;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid var(--cream-border);
     transition: background 0.3s ease;
-    position: relative;
   }
   .pricing-row:hover {
-    background: #f9f9f9;
+    background: var(--cream-light);
     margin: 0 -2rem;
     padding-left: 2rem;
     padding-right: 2rem;
   }
   .pricing-row--featured {
-    background: #111;
+    background: var(--ink);
     margin: 0 -2rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #2e2a26;
   }
-  .pricing-row--featured:hover {
-    background: #1a1a1a;
-    margin: 0 -2rem;
-  }
+  .pricing-row--featured:hover { background: #2a2520; }
   .pricing-row__index {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    color: #aaa;
+    color: var(--ink-soft);
     letter-spacing: 0.1em;
     padding-top: 0.4rem;
   }
-  .pricing-row--featured .pricing-row__index { color: #555; }
-
-  .pricing-row__content { flex: 1; }
+  .pricing-row--featured .pricing-row__index { color: #4a4540; }
   .pricing-row__name {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #111;
+    color: var(--ink);
     letter-spacing: -0.02em;
     margin-bottom: 0.75rem;
     display: flex;
@@ -307,27 +295,24 @@ import Layout from '../layouts/Layout.astro';
     gap: 1rem;
     flex-wrap: wrap;
   }
-  .pricing-row--featured .pricing-row__name { color: #fff; }
-
+  .pricing-row--featured .pricing-row__name { color: var(--cream); }
   .pricing-row__badge {
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    background: #fff;
-    color: #111;
+    background: var(--cream);
+    color: var(--ink);
     padding: 0.25rem 0.65rem;
-    border-radius: 2px;
   }
   .pricing-row__desc {
     font-size: 0.95rem;
-    color: #666;
+    color: var(--ink-mid);
     line-height: 1.6;
     max-width: 480px;
     margin-bottom: 1.25rem;
   }
-  .pricing-row--featured .pricing-row__desc { color: #999; }
-
+  .pricing-row--featured .pricing-row__desc { color: var(--ink-soft); }
   .pricing-row__features {
     list-style: none;
     padding: 0;
@@ -338,61 +323,29 @@ import Layout from '../layouts/Layout.astro';
   }
   .pricing-row__features li {
     font-size: 0.85rem;
-    color: #555;
+    color: var(--ink-mid);
     padding-left: 1rem;
     position: relative;
   }
-  .pricing-row__features li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: #bbb;
-  }
-  .pricing-row--featured .pricing-row__features li { color: #888; }
-  .pricing-row--featured .pricing-row__features li::before { color: #444; }
-
-  .pricing-row__price {
-    text-align: right;
-    padding-top: 0.2rem;
-    white-space: nowrap;
-  }
-  .pricing-row__from {
-    display: block;
-    font-size: 0.75rem;
-    color: #aaa;
-    margin-bottom: 0.2rem;
-    letter-spacing: 0.05em;
-  }
-  .pricing-row__amount {
-    display: block;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #111;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .pricing-row--featured .pricing-row__amount { color: #fff; }
-  .pricing-row__amount--custom {
-    font-size: 1.3rem;
-    font-weight: 700;
-  }
-  .pricing-row__currency {
-    display: block;
-    font-size: 0.85rem;
-    color: #aaa;
-    margin-top: 0.2rem;
-  }
-  .pricing-row--featured .pricing-row__currency { color: #555; }
-
+  .pricing-row__features li::before { content: '—'; position: absolute; left: 0; color: var(--cream-border); }
+  .pricing-row--featured .pricing-row__features li { color: #7a7068; }
+  .pricing-row--featured .pricing-row__features li::before { color: #3a3530; }
+  .pricing-row__price { text-align: right; padding-top: 0.2rem; white-space: nowrap; }
+  .pricing-row__from { display: block; font-size: 0.72rem; color: var(--ink-soft); margin-bottom: 0.2rem; letter-spacing: 0.05em; }
+  .pricing-row__amount { display: block; font-size: 2.2rem; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
+  .pricing-row--featured .pricing-row__amount { color: var(--cream); }
+  .pricing-row__amount--custom { font-size: 1.3rem; font-weight: 700; }
+  .pricing-row__currency { display: block; font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.2rem; }
+  .pricing-row--featured .pricing-row__currency { color: #4a4540; }
   .pricing-row__cta {
     align-self: center;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #111;
+    color: var(--ink);
     text-decoration: none;
-    border: 1.5px solid #111;
+    border: 1.5px solid var(--ink);
     padding: 0.7rem 1.4rem;
     display: inline-flex;
     align-items: center;
@@ -400,191 +353,72 @@ import Layout from '../layouts/Layout.astro';
     transition: background 0.2s ease, color 0.2s ease;
     white-space: nowrap;
   }
-  .pricing-row__cta:hover {
-    background: #111;
-    color: #fff;
-  }
-  .pricing-row--featured .pricing-row__cta {
-    color: #fff;
-    border-color: #fff;
-  }
-  .pricing-row--featured .pricing-row__cta:hover {
-    background: #fff;
-    color: #111;
-  }
+  .pricing-row__cta:hover { background: var(--ink); color: var(--cream); }
+  .pricing-row--featured .pricing-row__cta { color: var(--cream); border-color: var(--cream); }
+  .pricing-row--featured .pricing-row__cta:hover { background: var(--cream); color: var(--ink); }
 
-  /* ── Included ───────────────────────────────────────────────── */
-  .included-section {
-    padding: 6rem 0;
-    border-bottom: 1px solid #e4e4e4;
-  }
-  .included-section__header {
-    display: flex;
-    align-items: baseline;
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-  .included-section__label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #888;
-  }
-  .included-section__title {
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 800;
-    color: #111;
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  .included-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
+  /* Included */
+  .included-section { padding: 6rem 0; border-bottom: 1px solid var(--cream-border); }
+  .included-section__header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3rem; }
+  .included-section__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); }
+  .included-section__title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1; }
+  .included-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; }
   .included-item {
     display: flex;
     align-items: center;
     gap: 1.5rem;
     padding: 1.25rem 0;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid var(--cream-border);
     font-size: 1rem;
     font-weight: 500;
-    color: #333;
+    color: var(--ink);
   }
   .included-item:nth-last-child(-n+2) { border-bottom: none; }
-  .included-item__num {
-    color: #bbb;
-    font-weight: 400;
-    flex-shrink: 0;
-    width: 1.5rem;
-  }
+  .included-item__dash { color: var(--cream-border); font-weight: 400; flex-shrink: 0; width: 1.5rem; }
 
-  /* ── Factors ────────────────────────────────────────────────── */
-  .factors-section {
-    padding: 6rem 0;
-    border-bottom: 1px solid #e4e4e4;
-  }
-  .factors-section__header {
-    margin-bottom: 4rem;
-  }
-  .factors-section__label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #888;
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .factors-section__title {
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 800;
-    color: #111;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-  .factors-section__sub {
-    font-size: 1rem;
-    color: #666;
-    max-width: 480px;
-  }
-  .factors-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid #e4e4e4;
-    border-left: 1px solid #e4e4e4;
-  }
-  .factor-item {
-    padding: 2.5rem 2rem;
-    border-right: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
-  }
-  .factor-item__num {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: #bbb;
-    margin-bottom: 1rem;
-  }
-  .factor-item h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 0.6rem;
-    letter-spacing: -0.01em;
-  }
-  .factor-item p {
-    font-size: 0.875rem;
-    color: #666;
-    line-height: 1.6;
-  }
+  /* Factors */
+  .factors-section { padding: 6rem 0; border-bottom: 1px solid var(--cream-border); }
+  .factors-section__header { margin-bottom: 4rem; }
+  .factors-section__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 1rem; }
+  .factors-section__title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 1rem; }
+  .factors-section__sub { font-size: 1rem; color: var(--ink-mid); max-width: 480px; }
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--cream-border); border-left: 1px solid var(--cream-border); }
+  .factor-item { padding: 2.5rem 2rem; border-right: 1px solid var(--cream-border); border-bottom: 1px solid var(--cream-border); background: var(--cream); transition: background 0.2s ease; }
+  .factor-item:hover { background: var(--cream-light); }
+  .factor-item__num { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; color: var(--ink-soft); margin-bottom: 1rem; }
+  .factor-item h3 { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+  .factor-item p { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.6; }
 
-  /* ── CTA ────────────────────────────────────────────────────── */
-  .cenik-cta {
-    padding: 8rem 0;
-    text-align: center;
-  }
-  .cenik-cta__sub {
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 1rem;
-  }
-  .cenik-cta__title {
-    font-size: clamp(3.5rem, 10vw, 9rem);
-    font-weight: 800;
-    color: #111;
-    letter-spacing: -0.04em;
-    line-height: 0.9;
-    margin-bottom: 3rem;
-  }
+  /* CTA */
+  .cenik-cta { padding: 8rem 0; text-align: center; }
+  .cenik-cta__sub { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1rem; }
+  .cenik-cta__title { font-size: clamp(3.5rem, 10vw, 9rem); font-weight: 800; color: var(--ink); letter-spacing: -0.04em; line-height: 0.9; margin-bottom: 3rem; }
   .cenik-cta__btn {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #111;
+    color: var(--ink);
     text-decoration: none;
-    border: 1.5px solid #111;
+    border: 1.5px solid var(--ink);
     padding: 1rem 2rem;
     transition: background 0.25s ease, color 0.25s ease;
   }
-  .cenik-cta__btn:hover {
-    background: #111;
-    color: #fff;
-  }
-  .cenik-cta__arrow {
-    transition: transform 0.25s ease;
-  }
-  .cenik-cta__btn:hover .cenik-cta__arrow {
-    transform: translateX(4px);
-  }
+  .cenik-cta__btn:hover { background: var(--ink); color: var(--cream); }
+  .cenik-cta__arrow { transition: transform 0.25s ease; }
+  .cenik-cta__btn:hover .cenik-cta__arrow { transform: translateX(4px); }
 
-  /* ── Reveal animations ──────────────────────────────────────── */
+  /* Reveal */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
   .pricing-row.reveal { transform: translateY(20px); }
-  .pricing-row.reveal.is-visible { transform: translateY(0); }
   .included-item.reveal { transform: translateX(-16px); transition-duration: 0.5s; }
   .included-item.reveal.is-visible { transform: translateX(0); }
   .included-item:nth-child(1) { transition-delay: 0s; }
@@ -600,17 +434,14 @@ import Layout from '../layouts/Layout.astro';
   .factor-item:nth-child(5) { transition-delay: 0.28s; }
   .factor-item:nth-child(6) { transition-delay: 0.35s; }
 
-  /* ── Responsive ─────────────────────────────────────────────── */
+  /* Responsive */
   @media (max-width: 900px) {
-    .pricing-row {
-      grid-template-columns: 2.5rem 1fr;
-      grid-template-rows: auto auto auto;
-    }
+    .pricing-row { grid-template-columns: 2.5rem 1fr; grid-template-rows: auto auto auto; }
     .pricing-row__price { grid-column: 2; }
-    .pricing-row__cta   { grid-column: 2; justify-self: start; }
+    .pricing-row__cta { grid-column: 2; justify-self: start; }
     .factors-grid { grid-template-columns: 1fr 1fr; }
     .included-list { grid-template-columns: 1fr; }
-    .included-item:nth-last-child(-n+2) { border-bottom: 1px solid #e4e4e4; }
+    .included-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--cream-border); }
     .included-item:last-child { border-bottom: none; }
   }
   @media (max-width: 600px) {

@@ -5,26 +5,28 @@
 @import "@fontsource/plus-jakarta-sans/700.css";
 @import "@fontsource/plus-jakarta-sans/800.css";
 
-/* Lenis Smooth Scroll Recommended CSS */
-html.lenis, html.lenis body {
-  height: auto;
+/* ── Newspaper / Cream design tokens ───────────────────────────────────────── */
+:root {
+  --cream:       #f5f0e8;   /* hlavní pozadí — teplá krémová */
+  --cream-light: #faf7f2;   /* světlejší plochy, footer */
+  --cream-border:#ddd8ce;   /* linky, bordery */
+  --ink:         #1a1612;   /* hlavní text — teplá černá */
+  --ink-mid:     #5a5248;   /* sekundární text */
+  --ink-soft:    #9a9088;   /* placeholdery, labely */
+  --accent:      #1a1612;   /* akcent = ink, žádná barva navíc */
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+html, body {
+  background-color: var(--cream);
+  color: var(--ink);
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
 
 /* Global Animations */
 .fade-in-up {
@@ -36,11 +38,6 @@ html.lenis, html.lenis body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   FOUC FIX: scroll-reveal elementy se skryjí POUZE pokud JS běží.
-   Třída .js se přidá inline scriptem v Layout.astro hned za <body>.
-   Bez JS třídy jsou elementy viditelné (no-JS fallback).
-───────────────────────────────────────────────────────────────────────────── */
 .js .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -51,30 +48,8 @@ html.lenis, html.lenis body {
   transform: translateY(0);
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   PŘÍSTUPNOST: Respektujeme prefers-reduced-motion
-───────────────────────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .fade-in-up {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .js .scroll-reveal {
-    transition: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  .js .scroll-reveal.active {
-    opacity: 1;
-    transform: none;
-  }
-
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  .fade-in-up { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .js .scroll-reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
