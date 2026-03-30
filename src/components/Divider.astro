@@ -1,10 +1,21 @@
-<div class="site-divider" aria-hidden="true"></div>
+---
+const { label = '' } = Astro.props;
+---
+<div class="divider" aria-hidden="true">
+  {label && <span class="divider__label">{label}</span>}
+</div>
 
 <style>
-  .site-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--cream-border);
-    margin: 5rem 0;
+  .divider {
+    width: 100%; height: 1px;
+    background: var(--c-border);
+    margin: 6rem 0;
+    position: relative;
+  }
+  .divider__label {
+    position: absolute; top: 50%; left: 0;
+    transform: translateY(-50%);
+    font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--c-ink-soft); background: var(--c-bg); padding-right: 1rem;
   }
 </style>

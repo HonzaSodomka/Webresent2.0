@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Divider from '../components/Divider.astro';
 ---
 
 <Layout
   title="Ceník tvorby webů — od 9 900 Kč | Webresent"
-  description="Transparentní ceník tvorby webů na míru. Statický web od 9 900 Kč, firemní web s administrací od 19 900 Kč. Vždy pevná cena předem, bez překvapení."
+  description="Transparentní ceník tvorby webů na míru. Statický web od 9 900 Kč, firemní web s administrací od 19 900 Kč. Vždy pevná cena předem."
 >
 
 <script type="application/ld+json">
@@ -12,461 +13,433 @@ import Layout from '../layouts/Layout.astro';
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Domů", "item": "https://webresent.cz" },
-    { "@type": "ListItem", "position": 2, "name": "Ceník", "item": "https://webresent.cz/cenik" }
+    {"@type":"ListItem","position":1,"name":"Domů","item":"https://webresent.cz"},
+    {"@type":"ListItem","position":2,"name":"Ceník","item":"https://webresent.cz/cenik"}
   ]
 }
 </script>
 
-  <main class="cenik-main">
+<div class="pg">
 
-    <!-- HERO -->
-    <section class="cenik-hero">
-      <div class="cenik-hero__label reveal"><span>02</span> Ceník</div>
-      <h1 class="cenik-hero__title reveal">Kolik stál web,<br/>který vydělává?</h1>
-      <p class="cenik-hero__sub reveal">Transparentní ceny. Žádná překvapení.<br/>Vždy pevná cena předem.</p>
-    </section>
-
-    <!-- TICKER -->
-    <div class="ticker-wrap" aria-hidden="true">
-      <div class="ticker-track">
-        <span>Statický web od 9 900 Kč</span>
-        <span>·</span>
-        <span>Upravitelný web od 19 900 Kč</span>
-        <span>·</span>
-        <span>E-shop & Aplikace individuálně</span>
-        <span>·</span>
-        <span>Pevná cena předem</span>
-        <span>·</span>
-        <span>Návrh zdarma</span>
-        <span>·</span>
-        <span>Statický web od 9 900 Kč</span>
-        <span>·</span>
-        <span>Upravitelný web od 19 900 Kč</span>
-        <span>·</span>
-        <span>E-shop & Aplikace individuálně</span>
-        <span>·</span>
-        <span>Pevná cena předem</span>
-        <span>·</span>
-        <span>Návrh zdarma</span>
-        <span>·</span>
-      </div>
+  <!-- ── HERO ───────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__eyebrow reveal">
+      <span class="hero__num">02</span>
+      <span>Ceník</span>
     </div>
+    <h1 class="hero__title">
+      <span class="hero__title-line reveal" style="--d:.05s">Kolik stál</span>
+      <span class="hero__title-line hero__title-line--serif reveal" style="--d:.18s">web, který</span>
+      <span class="hero__title-line reveal" style="--d:.31s">vydělává?</span>
+    </h1>
+    <p class="hero__sub reveal" style="--d:.44s">
+      Transparentní ceny. Žádná překvapení.<br/>Vždy pevná cena předem, žádné extra položky zpová dvecané.
+    </p>
+  </section>
 
-    <!-- PRICING TABLE -->
-    <section class="pricing-section">
+  <!-- ── TICKER ─────────────────────────────────────────────── -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Statický web od 9 900 Kč</span><span class="ticker__dot">●</span>
+      <span>Upravitelný web od 19 900 Kč</span><span class="ticker__dot">●</span>
+      <span>E-shop & Aplikace individuálně</span><span class="ticker__dot">●</span>
+      <span>Pevná cena předem</span><span class="ticker__dot">●</span>
+      <span>Návrh zdarma</span><span class="ticker__dot">●</span>
+      <span>Statický web od 9 900 Kč</span><span class="ticker__dot">●</span>
+      <span>Upravitelný web od 19 900 Kč</span><span class="ticker__dot">●</span>
+      <span>E-shop & Aplikace individuálně</span><span class="ticker__dot">●</span>
+      <span>Pevná cena předem</span><span class="ticker__dot">●</span>
+      <span>Návrh zdarma</span><span class="ticker__dot">●</span>
+    </div>
+  </div>
 
-      <article class="pricing-row reveal">
-        <div class="pricing-row__index">01</div>
-        <div class="pricing-row__content">
-          <h2 class="pricing-row__name">Statický web</h2>
-          <p class="pricing-row__desc">Ideální digitální vizitka nebo prezentace jedné služby. Čistý kód, bleskové načítání, žádné zbytečné závislosti.</p>
-          <ul class="pricing-row__features">
-            <li>Responzivní design na míru</li>
-            <li>Kontaktní formulář</li>
-            <li>Technické SEO</li>
-            <li>Napojení do Google Search Console</li>
-          </ul>
-        </div>
-        <div class="pricing-row__price">
-          <span class="pricing-row__from">od</span>
-          <span class="pricing-row__amount">9 900</span>
-          <span class="pricing-row__currency">Kč</span>
-        </div>
-        <a href="/objednavka?type=staticky" data-astro-prefetch class="pricing-row__cta">Poptat <span>→</span></a>
-      </article>
+  <!-- ── PRICING ─────────────────────────────────────────────── -->
+  <section class="pricing">
 
-      <article class="pricing-row pricing-row--featured reveal">
-        <div class="pricing-row__index">02</div>
-        <div class="pricing-row__content">
-          <h2 class="pricing-row__name">Upravitelný web
-            <span class="pricing-row__badge">Nejčastější volba</span>
-          </h2>
-          <p class="pricing-row__desc">Zlatá střední cesta. Vícestránková prezentace s administrací, kde si sami měníte texty a fotky bez znalosti kódu.</p>
-          <ul class="pricing-row__features">
-            <li>Vše ze Statického webu</li>
-            <li>Systém pro úpravu obsahu (CMS)</li>
-            <li>Vícestránková architektura</li>
-            <li>Pokročilá SEO příprava</li>
-            <li>Možnost budoucího rozšíření</li>
-          </ul>
-        </div>
-        <div class="pricing-row__price">
-          <span class="pricing-row__from">od</span>
-          <span class="pricing-row__amount">19 900</span>
-          <span class="pricing-row__currency">Kč</span>
-        </div>
-        <a href="/objednavka?type=upravitelny" data-astro-prefetch class="pricing-row__cta">Poptat <span>→</span></a>
-      </article>
-
-      <article class="pricing-row reveal">
-        <div class="pricing-row__index">03</div>
-        <div class="pricing-row__content">
-          <h2 class="pricing-row__name">Aplikace & E-shop</h2>
-          <p class="pricing-row__desc">Komplexní řešení — e-shopy, rezervační systémy, uživatelské portály, API integrace. Cena vždy na míru projektu.</p>
-          <ul class="pricing-row__features">
-            <li>Platební brány & e-commerce logika</li>
-            <li>Uživatelské účty & autentizace</li>
-            <li>Automatizace a API napojení</li>
-            <li>Pokročilé filtrování a funkce</li>
-          </ul>
-        </div>
-        <div class="pricing-row__price">
-          <span class="pricing-row__amount pricing-row__amount--custom">Individuálně</span>
-        </div>
-        <a href="/objednavka?type=aplikace" data-astro-prefetch class="pricing-row__cta">Probrat <span>→</span></a>
-      </article>
-
-    </section>
-
-    <!-- WHAT'S ALWAYS INCLUDED -->
-    <section class="included-section">
-      <div class="included-section__header reveal">
-        <span class="included-section__label">Standard</span>
-        <h2 class="included-section__title">V každém projektu</h2>
+    <article class="pr reveal">
+      <div class="pr__meta">
+        <span class="pr__num">01</span>
+        <span class="pr__tag">Základní</span>
       </div>
-      <ul class="included-list">
-        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Bleskové načítání & optimalizace výkonu</span></li>
-        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Responzivita na všech zařízeních</span></li>
-        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Technické SEO & strukturovaná data</span></li>
-        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Psaní textů v ceně</span></li>
-        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Napojení do Google Search Console</span></li>
-        <li class="included-item reveal"><span class="included-item__dash">—</span><span>Nasazení na hosting & doména</span></li>
-      </ul>
-    </section>
-
-    <!-- CO OVLIVNI CENU -->
-    <section class="factors-section">
-      <div class="factors-section__header reveal">
-        <span class="factors-section__label">Transparentnost</span>
-        <h2 class="factors-section__title">Co ovlivňuje cenu?</h2>
-        <p class="factors-section__sub">Každý projekt je jiný. Po konzultaci dostanete přesnou nabídku šitou na míru.</p>
+      <div class="pr__body">
+        <h2 class="pr__name">Statický web</h2>
+        <p class="pr__desc">Digitální vizitka nebo prezentace jedné služby. Čistý kód, bleskové načítání, žádné zbytečné závislosti.</p>
+        <ul class="pr__list">
+          <li>Responzivní design na míru</li>
+          <li>Kontaktní formulář</li>
+          <li>Technické SEO & Search Console</li>
+          <li>Nasazení na hosting</li>
+        </ul>
       </div>
-      <div class="factors-grid">
-        <div class="factor-item reveal">
-          <span class="factor-item__num">01</span>
-          <h3>Počet podstránek</h3>
-          <p>Jednostránkový web vs. složitá struktura s blogem, ceníkem a případovými studiemi.</p>
-        </div>
-        <div class="factor-item reveal">
-          <span class="factor-item__num">02</span>
-          <h3>Správa obsahu</h3>
-          <p>Zda potřebujete upravovat jen články, nebo celou strukturu webu — bez programování.</p>
-        </div>
-        <div class="factor-item reveal">
-          <span class="factor-item__num">03</span>
-          <h3>Speciální funkce</h3>
-          <p>Interaktivní mapy, rezervační systémy, kalkulace, pokročilé formuláře.</p>
-        </div>
-        <div class="factor-item reveal">
-          <span class="factor-item__num">04</span>
-          <h3>Integrace třetích stran</h3>
-          <p>Napojení na Fakturoid, Mailchimp, platební brány nebo vlastní systémy.</p>
-        </div>
-        <div class="factor-item reveal">
-          <span class="factor-item__num">05</span>
-          <h3>Jazykové mutace</h3>
-          <p>Příprava architektury pro vícejazyčnost (např. CZ / EN).</p>
-        </div>
-        <div class="factor-item reveal">
-          <span class="factor-item__num">06</span>
-          <h3>Dlouhodobá správa</h3>
-          <p>Měsíční paušál za hosting, aktualizace a průběžné úpravy.</p>
-        </div>
+      <div class="pr__price">
+        <span class="pr__from">od</span>
+        <span class="pr__amount" data-target="9900">9 900</span>
+        <span class="pr__cur">Kč</span>
       </div>
-    </section>
+      <a href="/objednavka?type=staticky" class="pr__btn">Poptat <span>→</span></a>
+    </article>
 
-    <!-- CTA -->
-    <section class="cenik-cta reveal">
-      <p class="cenik-cta__sub">Nejste si jisti, co přesně potřebujete?</p>
-      <h2 class="cenik-cta__title">Napíšeme si.</h2>
-      <a href="/objednavka?type=konzultace" data-astro-prefetch class="cenik-cta__btn">
-        Nezávazná konzultace <span class="cenik-cta__arrow">→</span>
-      </a>
-    </section>
+    <article class="pr pr--dark reveal">
+      <div class="pr__meta">
+        <span class="pr__num">02</span>
+        <span class="pr__tag">Nejpopulárnější</span>
+      </div>
+      <div class="pr__body">
+        <h2 class="pr__name">Upravitelný web</h2>
+        <p class="pr__desc">Zlatá střední cesta. Vícestránková prezentace s CMS — texty a fotky měníte sami, bez programování.</p>
+        <ul class="pr__list">
+          <li>Vše ze Statického webu</li>
+          <li>Systém pro úpravu obsahu</li>
+          <li>Vícestránková architektura</li>
+          <li>Pokročilá SEO příprava</li>
+          <li>Možnost budoucího rozšíření</li>
+        </ul>
+      </div>
+      <div class="pr__price">
+        <span class="pr__from">od</span>
+        <span class="pr__amount">19 900</span>
+        <span class="pr__cur">Kč</span>
+      </div>
+      <a href="/objednavka?type=upravitelny" class="pr__btn">Poptat <span>→</span></a>
+    </article>
 
-  </main>
+    <article class="pr reveal">
+      <div class="pr__meta">
+        <span class="pr__num">03</span>
+        <span class="pr__tag">Na míru</span>
+      </div>
+      <div class="pr__body">
+        <h2 class="pr__name">Aplikace & E&#8209;shop</h2>
+        <p class="pr__desc">E-shopy, rezervační systémy, uživatelské portály, API integrace. Komplexní řešení bez kompromisů.</p>
+        <ul class="pr__list">
+          <li>Platební brány & e-commerce logika</li>
+          <li>Uživatelské účty & autentizace</li>
+          <li>Automatizace & API napojení</li>
+          <li>Pokročilé filtrování a funkce</li>
+        </ul>
+      </div>
+      <div class="pr__price">
+        <span class="pr__amount pr__amount--custom">Individuálně</span>
+      </div>
+      <a href="/objednavka?type=aplikace" class="pr__btn">Probrat <span>→</span></a>
+    </article>
+
+  </section>
+
+  <Divider label="Vždy součástí" />
+
+  <!-- ── INCLUDED ────────────────────────────────────────────── -->
+  <section class="included">
+    <header class="included__hd reveal">
+      <h2 class="included__title">V každém<br/><em>projektu.</em></h2>
+      <p class="included__sub">Ať už stavíme vizitku nebo e-shop —<br/>tohle dostáváte vždy.</p>
+    </header>
+    <ul class="included__grid">
+      <li class="ig reveal">
+        <span class="ig__n">01</span>
+        <h3 class="ig__title">Bleskové načtítání</h3>
+        <p class="ig__text">Žádné WordPress s tisícem pluginů. Čistý kód který se načte dřív než stihne klient mrknout.</p>
+      </li>
+      <li class="ig reveal">
+        <span class="ig__n">02</span>
+        <h3 class="ig__title">Plná responzivita</h3>
+        <p class="ig__text">Bezchybný vzhled na každém zařízení — mobil, tablet, 4K monitor.</p>
+      </li>
+      <li class="ig reveal">
+        <span class="ig__n">03</span>
+        <h3 class="ig__title">Technické SEO</h3>
+        <p class="ig__text">Správné titulky, strukturovaná data, napojeni do Search Console. Vyhledávače vás najdou.</p>
+      </li>
+      <li class="ig reveal">
+        <span class="ig__n">04</span>
+        <h3 class="ig__title">Psaní textů</h3>
+        <p class="ig__text">Texty které prodávají — píšu je sám. Není třeba přinášet vlastní copy.</p>
+      </li>
+      <li class="ig reveal">
+        <span class="ig__n">05</span>
+        <h3 class="ig__title">Nasazení & hosting</h3>
+        <p class="ig__text">Dodám hotový web nasazený na rychlém serveru. Není třeba řešit nic dalšího.</p>
+      </li>
+      <li class="ig reveal">
+        <span class="ig__n">06</span>
+        <h3 class="ig__title">Pevná cena</h3>
+        <p class="ig__text">Co se domluvime, to zaplatite. Žádné příplatky za složitost, příjem návrš, nebo extra požadavky.</p>
+      </li>
+    </ul>
+  </section>
+
+  <Divider label="Transparentnost" />
+
+  <!-- ── FACTORS ────────────────────────────────────────────── -->
+  <section class="factors">
+    <div class="factors__hd reveal">
+      <h2 class="factors__title">Co ovlivňuje<br/><em>cenu?</em></h2>
+      <p class="factors__sub">Každý projekt je jiný. Po konzultaci dostanete přesnou nabídku šitou na míru — vždy vám řeknu rovinu.</p>
+    </div>
+    <dl class="factors__list">
+      <div class="fl reveal"><dt class="fl__t">Počet podstránek</dt><dd class="fl__d">Jednostránkový web vs. složitá struktura s blogem a případovkami.</dd></div>
+      <div class="fl reveal"><dt class="fl__t">Správa obsahu</dt><dd class="fl__d">Zda chcete upravovat jen články nebo celou strukturu bez programování.</dd></div>
+      <div class="fl reveal"><dt class="fl__t">Speciální funkce</dt><dd class="fl__d">Mapy, rezervační systémy, pokročilé formuláře, kalkulace.</dd></div>
+      <div class="fl reveal"><dt class="fl__t">Integrace třetích stran</dt><dd class="fl__d">Fakturoid, Mailchimp, platební brány, vlastní systémy.</dd></div>
+      <div class="fl reveal"><dt class="fl__t">Jazykové mutace</dt><dd class="fl__d">Architektura pro vícejazyčnost — CZ / EN a další.</dd></div>
+      <div class="fl reveal"><dt class="fl__t">Dlouhodobá správa</dt><dd class="fl__d">Měsíční paušál za hosting, aktualizace a průběžné úpravy.</dd></div>
+    </dl>
+  </section>
+
+  <Divider />
+
+  <!-- ── CTA ─────────────────────────────────────────────────── -->
+  <section class="cta reveal">
+    <p class="cta__eye">Nejste si jisti co potřebujete?</p>
+    <h2 class="cta__title">Napíšeme<br/><em>si.</em></h2>
+    <a href="/objednavka?type=konzultace" class="cta__btn">
+      Nezávazná konzultace
+      <span class="cta__arr">→</span>
+    </a>
+  </section>
+
+</div>
 
 </Layout>
 
 <style>
-  .cenik-main {
-    max-width: 1200px;
+  .pg {
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
   }
 
-  /* Hero */
-  .cenik-hero {
-    padding: 8rem 0 6rem;
-    border-bottom: 1px solid var(--cream-border);
+  /* ── Hero ────────────────────────────────────────────────── */
+  .hero {
+    padding: 7rem 0 5rem;
+    border-bottom: 1px solid var(--c-border);
   }
-  .cenik-hero__label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  .hero__eyebrow {
+    display: flex; align-items: center; gap: .75rem;
+    font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-ink-soft); margin-bottom: 2.5rem;
   }
-  .cenik-hero__label span { color: var(--ink); }
-  .cenik-hero__title {
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    margin-bottom: 2rem;
+  .hero__num { color: var(--c-red); font-family: var(--f-serif); font-style: italic; font-size: .9rem; }
+  .hero__title {
+    display: flex; flex-direction: column; gap: .1em;
+    margin-bottom: 2.5rem;
   }
-  .cenik-hero__sub {
-    font-size: 1.1rem;
-    color: var(--ink-mid);
-    line-height: 1.6;
+  .hero__title-line {
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 800; line-height: .95; letter-spacing: -.03em;
+    color: var(--c-ink); display: block;
+    transition-delay: var(--d, 0s);
   }
-
-  /* Ticker */
-  .ticker-wrap {
-    overflow: hidden;
-    border-bottom: 1px solid var(--cream-border);
-    padding: 1.25rem 0;
-    margin: 0 -2rem;
-    background: var(--cream-light);
+  .hero__title-line--serif {
+    font-family: var(--f-serif); font-style: italic; font-weight: 700;
+    color: var(--c-red);
   }
-  .ticker-track {
-    display: inline-flex;
-    gap: 3rem;
-    white-space: nowrap;
-    animation: ticker 22s linear infinite;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-mid);
-  }
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+  .hero__sub {
+    font-size: 1.05rem; color: var(--c-ink-mid); line-height: 1.65;
+    max-width: 480px; transition-delay: var(--d, 0s);
   }
 
-  /* Pricing rows */
-  .pricing-section { padding: 0; }
-  .pricing-row {
+  /* ── Ticker ────────────────────────────────────────────────── */
+  .ticker {
+    overflow: hidden; border-bottom: 1px solid var(--c-border);
+    padding: 1.1rem 0; margin: 0 -2.5rem; background: var(--c-bg-soft);
+  }
+  .ticker__track {
+    display: inline-flex; gap: 2.5rem; white-space: nowrap;
+    animation: ticker 24s linear infinite;
+    font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+    color: var(--c-ink-mid);
+  }
+  .ticker__dot { color: var(--c-red); }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── Pricing rows ────────────────────────────────────────────── */
+  .pricing { padding: 0; }
+  .pr {
     display: grid;
-    grid-template-columns: 3rem 1fr auto auto;
-    gap: 2rem;
-    align-items: start;
-    padding: 3.5rem 0;
-    border-bottom: 1px solid var(--cream-border);
-    transition: background 0.3s ease;
-  }
-  .pricing-row:hover {
-    background: var(--cream-light);
-    margin: 0 -2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  .pricing-row--featured {
-    background: var(--ink);
-    margin: 0 -2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    border-bottom: 1px solid #2e2a26;
-  }
-  .pricing-row--featured:hover { background: #2a2520; }
-  .pricing-row__index {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--ink-soft);
-    letter-spacing: 0.1em;
-    padding-top: 0.4rem;
-  }
-  .pricing-row--featured .pricing-row__index { color: #4a4540; }
-  .pricing-row__name {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .pricing-row--featured .pricing-row__name { color: var(--cream); }
-  .pricing-row__badge {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    background: var(--cream);
-    color: var(--ink);
-    padding: 0.25rem 0.65rem;
-  }
-  .pricing-row__desc {
-    font-size: 0.95rem;
-    color: var(--ink-mid);
-    line-height: 1.6;
-    max-width: 480px;
-    margin-bottom: 1.25rem;
-  }
-  .pricing-row--featured .pricing-row__desc { color: var(--ink-soft); }
-  .pricing-row__features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .pricing-row__features li {
-    font-size: 0.85rem;
-    color: var(--ink-mid);
-    padding-left: 1rem;
+    grid-template-columns: 6rem 1fr auto auto;
+    gap: 2.5rem; align-items: center;
+    padding: 3rem 0; border-bottom: 1px solid var(--c-border);
     position: relative;
+    transition: background .25s;
   }
-  .pricing-row__features li::before { content: '—'; position: absolute; left: 0; color: var(--cream-border); }
-  .pricing-row--featured .pricing-row__features li { color: #7a7068; }
-  .pricing-row--featured .pricing-row__features li::before { color: #3a3530; }
-  .pricing-row__price { text-align: right; padding-top: 0.2rem; white-space: nowrap; }
-  .pricing-row__from { display: block; font-size: 0.72rem; color: var(--ink-soft); margin-bottom: 0.2rem; letter-spacing: 0.05em; }
-  .pricing-row__amount { display: block; font-size: 2.2rem; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
-  .pricing-row--featured .pricing-row__amount { color: var(--cream); }
-  .pricing-row__amount--custom { font-size: 1.3rem; font-weight: 700; }
-  .pricing-row__currency { display: block; font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.2rem; }
-  .pricing-row--featured .pricing-row__currency { color: #4a4540; }
-  .pricing-row__cta {
-    align-self: center;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    border: 1.5px solid var(--ink);
-    padding: 0.7rem 1.4rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: background 0.2s ease, color 0.2s ease;
+  .pr::before {
+    content: ''; position: absolute; left: -2.5rem; top: 0; bottom: 0;
+    width: 0; background: var(--c-red);
+    transition: width .3s cubic-bezier(.22,1,.36,1);
+  }
+  .pr:hover::before { width: 3px; }
+  .pr:hover {
+    background: var(--c-bg-soft);
+    margin: 0 -2.5rem; padding-left: 2.5rem; padding-right: 2.5rem;
+  }
+  .pr--dark {
+    background: var(--c-ink);
+    margin: 0 -2.5rem; padding-left: 2.5rem; padding-right: 2.5rem;
+    border-color: #2e2a24;
+  }
+  .pr--dark:hover { background: #231f1a; }
+  .pr--dark::before { background: var(--c-red); }
+
+  .pr__meta {
+    display: flex; flex-direction: column; gap: .4rem;
+  }
+  .pr__num {
+    font-family: var(--f-serif); font-style: italic;
+    font-size: 1.6rem; font-weight: 700; line-height: 1;
+    color: var(--c-border);
+  }
+  .pr--dark .pr__num { color: #3a3530; }
+  .pr__tag {
+    font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--c-ink-soft);
+  }
+  .pr--dark .pr__tag { color: #4a4540; }
+
+  .pr__name {
+    font-size: 1.7rem; font-weight: 700; letter-spacing: -.025em;
+    color: var(--c-ink); margin-bottom: .6rem; line-height: 1.1;
+  }
+  .pr--dark .pr__name { color: var(--c-bg); }
+  .pr__desc {
+    font-size: .9rem; color: var(--c-ink-mid); line-height: 1.6; max-width: 420px; margin-bottom: 1rem;
+  }
+  .pr--dark .pr__desc { color: #7a7068; }
+  .pr__list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+  .pr__list li {
+    font-size: .82rem; color: var(--c-ink-mid); padding-left: 1.1rem; position: relative;
+  }
+  .pr__list li::before { content: '—'; position: absolute; left: 0; color: var(--c-border); }
+  .pr--dark .pr__list li { color: #6a6258; }
+  .pr--dark .pr__list li::before { color: #333; }
+
+  .pr__price { text-align: right; white-space: nowrap; }
+  .pr__from { display: block; font-size: .7rem; color: var(--c-ink-soft); letter-spacing: .05em; margin-bottom: .1rem; }
+  .pr__amount {
+    display: block;
+    font-family: var(--f-serif); font-style: italic;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1;
+    color: var(--c-ink); letter-spacing: -.02em;
+  }
+  .pr--dark .pr__amount { color: var(--c-bg); }
+  .pr__amount--custom { font-size: 1.3rem; font-style: italic; }
+  .pr__cur { display: block; font-size: .8rem; color: var(--c-ink-soft); margin-top: .2rem; }
+  .pr--dark .pr__cur { color: #4a4540; }
+
+  .pr__btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--c-ink); text-decoration: none;
+    border: 1.5px solid var(--c-ink); padding: .7rem 1.4rem;
     white-space: nowrap;
+    transition: background .2s, color .2s, border-color .2s;
   }
-  .pricing-row__cta:hover { background: var(--ink); color: var(--cream); }
-  .pricing-row--featured .pricing-row__cta { color: var(--cream); border-color: var(--cream); }
-  .pricing-row--featured .pricing-row__cta:hover { background: var(--cream); color: var(--ink); }
+  .pr__btn:hover { background: var(--c-red); border-color: var(--c-red); color: #fff; }
+  .pr--dark .pr__btn { color: var(--c-bg); border-color: var(--c-bg); }
+  .pr--dark .pr__btn:hover { background: var(--c-red); border-color: var(--c-red); color: #fff; }
 
-  /* Included */
-  .included-section { padding: 6rem 0; border-bottom: 1px solid var(--cream-border); }
-  .included-section__header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3rem; }
-  .included-section__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); }
-  .included-section__title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1; }
-  .included-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; }
-  .included-item {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--cream-border);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--ink);
+  /* ── Included ─────────────────────────────────────────────── */
+  .included { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
+  .included__title {
+    font-family: var(--f-serif); font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.05; letter-spacing: -.02em;
+    color: var(--c-ink); margin-bottom: 1.5rem;
   }
-  .included-item:nth-last-child(-n+2) { border-bottom: none; }
-  .included-item__dash { color: var(--cream-border); font-weight: 400; flex-shrink: 0; width: 1.5rem; }
-
-  /* Factors */
-  .factors-section { padding: 6rem 0; border-bottom: 1px solid var(--cream-border); }
-  .factors-section__header { margin-bottom: 4rem; }
-  .factors-section__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 1rem; }
-  .factors-section__title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 1rem; }
-  .factors-section__sub { font-size: 1rem; color: var(--ink-mid); max-width: 480px; }
-  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--cream-border); border-left: 1px solid var(--cream-border); }
-  .factor-item { padding: 2.5rem 2rem; border-right: 1px solid var(--cream-border); border-bottom: 1px solid var(--cream-border); background: var(--cream); transition: background 0.2s ease; }
-  .factor-item:hover { background: var(--cream-light); }
-  .factor-item__num { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; color: var(--ink-soft); margin-bottom: 1rem; }
-  .factor-item h3 { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
-  .factor-item p { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.6; }
-
-  /* CTA */
-  .cenik-cta { padding: 8rem 0; text-align: center; }
-  .cenik-cta__sub { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1rem; }
-  .cenik-cta__title { font-size: clamp(3.5rem, 10vw, 9rem); font-weight: 800; color: var(--ink); letter-spacing: -0.04em; line-height: 0.9; margin-bottom: 3rem; }
-  .cenik-cta__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    border: 1.5px solid var(--ink);
-    padding: 1rem 2rem;
-    transition: background 0.25s ease, color 0.25s ease;
+  .included__title em { font-style: italic; color: var(--c-red); }
+  .included__sub { font-size: .95rem; color: var(--c-ink-mid); line-height: 1.6; }
+  .included__grid {
+    list-style: none; padding: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
   }
-  .cenik-cta__btn:hover { background: var(--ink); color: var(--cream); }
-  .cenik-cta__arrow { transition: transform 0.25s ease; }
-  .cenik-cta__btn:hover .cenik-cta__arrow { transform: translateX(4px); }
-
-  /* Reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  .ig {
+    padding: 2rem 2rem 2rem 0; border-bottom: 1px solid var(--c-border);
+    transition-delay: var(--sd, 0s);
   }
-  .reveal.is-visible { opacity: 1; transform: translateY(0); }
-  .pricing-row.reveal { transform: translateY(20px); }
-  .included-item.reveal { transform: translateX(-16px); transition-duration: 0.5s; }
-  .included-item.reveal.is-visible { transform: translateX(0); }
-  .included-item:nth-child(1) { transition-delay: 0s; }
-  .included-item:nth-child(2) { transition-delay: 0.06s; }
-  .included-item:nth-child(3) { transition-delay: 0.12s; }
-  .included-item:nth-child(4) { transition-delay: 0.18s; }
-  .included-item:nth-child(5) { transition-delay: 0.24s; }
-  .included-item:nth-child(6) { transition-delay: 0.30s; }
-  .factor-item:nth-child(1) { transition-delay: 0s; }
-  .factor-item:nth-child(2) { transition-delay: 0.07s; }
-  .factor-item:nth-child(3) { transition-delay: 0.14s; }
-  .factor-item:nth-child(4) { transition-delay: 0.21s; }
-  .factor-item:nth-child(5) { transition-delay: 0.28s; }
-  .factor-item:nth-child(6) { transition-delay: 0.35s; }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .pricing-row { grid-template-columns: 2.5rem 1fr; grid-template-rows: auto auto auto; }
-    .pricing-row__price { grid-column: 2; }
-    .pricing-row__cta { grid-column: 2; justify-self: start; }
-    .factors-grid { grid-template-columns: 1fr 1fr; }
-    .included-list { grid-template-columns: 1fr; }
-    .included-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--cream-border); }
-    .included-item:last-child { border-bottom: none; }
+  .ig:nth-child(even) { padding-left: 2rem; border-left: 1px solid var(--c-border); }
+  .ig:nth-last-child(-n+2) { border-bottom: none; }
+  .ig__n {
+    display: block; font-family: var(--f-serif); font-style: italic;
+    font-size: .9rem; color: var(--c-red); margin-bottom: .75rem;
   }
-  @media (max-width: 600px) {
-    .cenik-main { padding: 0 1.25rem; }
-    .cenik-hero { padding: 5rem 0 4rem; }
-    .pricing-row { grid-template-columns: 1fr; }
-    .pricing-row__index { display: none; }
-    .factors-grid { grid-template-columns: 1fr; }
-    .ticker-wrap { margin: 0 -1.25rem; }
+  .ig__title { font-size: 1rem; font-weight: 700; color: var(--c-ink); margin-bottom: .4rem; letter-spacing: -.01em; }
+  .ig__text { font-size: .85rem; color: var(--c-ink-mid); line-height: 1.6; }
+
+  /* ── Factors ───────────────────────────────────────────────── */
+  .factors { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
+  .factors__title {
+    font-family: var(--f-serif); font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.05; letter-spacing: -.02em;
+    color: var(--c-ink); margin-bottom: 1.5rem;
+  }
+  .factors__title em { font-style: italic; color: var(--c-red); }
+  .factors__sub { font-size: .95rem; color: var(--c-ink-mid); line-height: 1.6; }
+  .factors__list { display: flex; flex-direction: column; }
+  .fl {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    padding: 1.5rem 0; border-bottom: 1px solid var(--c-border);
+    align-items: baseline;
+  }
+  .fl:first-child { border-top: 1px solid var(--c-border); }
+  .fl__t { font-size: .9rem; font-weight: 700; color: var(--c-ink); letter-spacing: -.01em; }
+  .fl__d { font-size: .85rem; color: var(--c-ink-mid); line-height: 1.6; }
+
+  /* ── CTA ───────────────────────────────────────────────────── */
+  .cta { padding: 8rem 0; text-align: center; }
+  .cta__eye {
+    font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c-ink-soft); margin-bottom: 1.5rem;
+  }
+  .cta__title {
+    font-family: var(--f-serif);
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 700; line-height: .9; letter-spacing: -.04em;
+    color: var(--c-ink); margin-bottom: 3rem;
+  }
+  .cta__title em { font-style: italic; color: var(--c-red); }
+  .cta__btn {
+    display: inline-flex; align-items: center; gap: 1rem;
+    font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--c-ink); text-decoration: none;
+    border: 1.5px solid var(--c-ink); padding: 1rem 2.2rem;
+    transition: background .25s, color .25s, border-color .25s;
+  }
+  .cta__btn:hover { background: var(--c-red); border-color: var(--c-red); color: #fff; }
+  .cta__arr { transition: transform .25s; }
+  .cta__btn:hover .cta__arr { transform: translateX(5px); }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .pr { grid-template-columns: 5rem 1fr; grid-template-rows: auto auto auto; }
+    .pr__price { grid-column: 2; text-align: left; }
+    .pr__btn { grid-column: 2; justify-self: start; }
+    .included, .factors { grid-template-columns: 1fr; gap: 3rem; }
+    .included__grid { grid-template-columns: 1fr; }
+    .ig:nth-child(even) { padding-left: 0; border-left: none; }
+    .ig:nth-last-child(-n+2) { border-bottom: 1px solid var(--c-border); }
+    .ig:last-child { border-bottom: none; }
+  }
+  @media (max-width: 640px) {
+    .pg { padding: 0 1.5rem; }
+    .hero { padding: 4.5rem 0 3.5rem; }
+    .pr { grid-template-columns: 1fr; }
+    .pr__meta { display: none; }
+    .ticker { margin: 0 -1.5rem; }
+    .pr::before { left: -1.5rem; }
+    .fl { grid-template-columns: 1fr; gap: .5rem; }
   }
 </style>
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      }),
+      { threshold: 0.08 }
     );
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      (el as HTMLElement).style.transitionDelay = `${i * 0.04}s`;
+      io.observe(el);
+    });
   });
 </script>

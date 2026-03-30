@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = 'Webresent — prémiové weby na míru pro české firmy a živnostníky. Čistý kód, bleskové načítání a technické SEO.',
+  description = 'Webresent — prémiovové weby na míru pro české firmy a živnostníky. Čistý kód, bleskové načítání a technické SEO.',
   noindex = false,
   ogImage = '/images/og-image.jpg',
 } = Astro.props;
@@ -24,26 +24,19 @@ const ogImageURL = new URL(ogImage, siteURL).href;
 ---
 
 <!doctype html>
-<html lang="cs" class="scroll-smooth">
+<html lang="cs">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-
     <link rel="canonical" href={canonicalURL} />
-
     {noindex && <meta name="robots" content="noindex, follow" />}
-
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#2563eb" />
-
+    <meta name="theme-color" content="#f4efe6" />
     <title>{title}</title>
-
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
@@ -51,12 +44,14 @@ const ogImageURL = new URL(ogImage, siteURL).href;
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:locale" content="cs_CZ" />
     <meta property="og:site_name" content="Webresent" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
-
+    <!-- Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
     <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -66,7 +61,7 @@ const ogImageURL = new URL(ogImage, siteURL).href;
             "@id": "https://webresent.cz/#website",
             "url": "https://webresent.cz",
             "name": "Webresent",
-            "description": "Prémiové weby na míru pro české firmy a živnostníky."
+            "description": "Pémovové weby na míru pro české firmy a živnostníky."
           },
           {
             "@type": ["LocalBusiness", "ProfessionalService"],
@@ -75,79 +70,37 @@ const ogImageURL = new URL(ogImage, siteURL).href;
             "url": "https://webresent.cz",
             "telephone": "+420604994883",
             "email": "info@webresent.cz",
-            "description": "Prémiové weby na míru pro české firmy a živnostníky. Čistý kód, bleskové načítání a technické SEO.",
-            "founder": {
-              "@type": "Person",
-              "name": "Jan Sodomka",
-              "honorificPrefix": "Bc."
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "Česká republika"
-            },
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Mladá Boleslav",
-              "addressCountry": "CZ"
-            },
-            "priceRange": "9 900 Kč – 50 000 Kč",
-            "knowsLanguage": ["cs", "en"],
-            "sameAs": ["https://github.com/HonzaSodomka"]
+            "founder": { "@type": "Person", "name": "Jan Sodomka", "honorificPrefix": "Bc." },
+            "areaServed": { "@type": "Country", "name": "Česká republika" },
+            "address": { "@type": "PostalAddress", "addressLocality": "Mladá Boleslav", "addressCountry": "CZ" },
+            "priceRange": "9 900 Kč – 50 000 Kč"
           }
         ]
       }
     </script>
-
     <ClientRouter />
   </head>
-  <body class="bg-zinc-50 text-zinc-900 font-['Plus_Jakarta_Sans',_sans-serif] antialiased selection:bg-zinc-900 selection:text-zinc-50 pt-20 flex flex-col min-h-screen relative">
-
+  <body style="padding-top: 65px; display: flex; flex-direction: column; min-height: 100vh;">
     <script>document.documentElement.classList.add('js')</script>
 
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[200] focus:px-6 focus:py-3 focus:bg-white focus:text-zinc-900 focus:font-bold focus:rounded-full focus:border focus:border-zinc-300 focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-    >
+    <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
       Přeskočit na hlavní obsah
     </a>
 
-    <div
-      aria-hidden="true"
-      class="pointer-events-none fixed inset-0 z-[100] opacity-[0.035] mix-blend-overlay"
-      style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);">
-    </div>
+    <!-- Grain overlay -->
+    <div aria-hidden="true" style="pointer-events:none;position:fixed;inset:0;z-index:200;opacity:0.03;mix-blend-mode:multiply;background-image:url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.75\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E');"></div>
 
     <Header />
-
-    <div class="flex-grow" id="main-content">
-      <slot />
-    </div>
-
+    <div style="flex:1" id="main-content"><slot /></div>
     <Footer />
 
     <script>
       import Lenis from 'lenis';
 
-      let heroResizeHandler: (() => void) | null = null;
-      let heroOrientationHandler: (() => void) | null = null;
-
       document.addEventListener('astro:page-load', () => {
-
-        if ((window as any).lenis) {
-          (window as any).lenis.destroy();
-        }
-
-        (window as any).lenis = new Lenis({
-          lerp: 0.15,
-          wheelMultiplier: 1.2,
-          smoothWheel: true,
-        });
-
-        function raf(time: number) {
-          (window as any).lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
-
+        if ((window as any).lenis) (window as any).lenis.destroy();
+        (window as any).lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1.1, smoothWheel: true });
+        const raf = (t: number) => { (window as any).lenis.raf(t); requestAnimationFrame(raf); };
         requestAnimationFrame(raf);
 
         const observer = new IntersectionObserver((entries, obs) => {
@@ -158,49 +111,18 @@ const ogImageURL = new URL(ogImage, siteURL).href;
             }
           });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
         const hero = document.getElementById('hero');
-
-        if (heroResizeHandler) {
-          window.removeEventListener('resize', heroResizeHandler);
-          heroResizeHandler = null;
-        }
-        if (heroOrientationHandler) {
-          window.removeEventListener('orientationchange', heroOrientationHandler);
-          heroOrientationHandler = null;
-        }
-
         if (hero) {
-          let lastWidth = window.innerWidth;
-
-          const setHeroHeight = () => {
-            const headerEl = document.querySelector('header');
-            if (headerEl) {
-              const rect = headerEl.getBoundingClientRect();
-              const headerBottom = rect.top + rect.height;
-              hero.style.minHeight = `${window.innerHeight - headerBottom}px`;
-            } else {
-              hero.style.minHeight = `${window.innerHeight - 80}px`;
-            }
+          const setH = () => {
+            const h = document.querySelector('header') as HTMLElement;
+            hero.style.minHeight = h
+              ? `${window.innerHeight - h.getBoundingClientRect().height}px`
+              : `${window.innerHeight - 65}px`;
           };
-
-          setHeroHeight();
-
-          heroResizeHandler = () => {
-            if (window.innerWidth !== lastWidth) {
-              lastWidth = window.innerWidth;
-              setHeroHeight();
-            }
-          };
-
-          heroOrientationHandler = () => {
-            setTimeout(setHeroHeight, 100);
-          };
-
-          window.addEventListener('resize', heroResizeHandler);
-          window.addEventListener('orientationchange', heroOrientationHandler);
+          setH();
+          window.addEventListener('resize', setH);
         }
       });
     </script>

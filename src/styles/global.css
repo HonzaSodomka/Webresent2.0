@@ -5,20 +5,34 @@
 @import "@fontsource/plus-jakarta-sans/700.css";
 @import "@fontsource/plus-jakarta-sans/800.css";
 
-/* ── Newspaper / Cream design tokens ───────────────────────────────────────── */
+/* Playfair Display via Google Fonts — loaded in Layout.astro <head> */
+
+/* ── Design tokens ────────────────────────────────────────────────── */
 :root {
-  --cream:       #f5f0e8;   /* hlavní pozadí — teplá krémová */
-  --cream-light: #faf7f2;   /* světlejší plochy, footer */
-  --cream-border:#ddd8ce;   /* linky, bordery */
-  --ink:         #1a1612;   /* hlavní text — teplá černá */
-  --ink-mid:     #5a5248;   /* sekundární text */
-  --ink-soft:    #9a9088;   /* placeholdery, labely */
-  --accent:      #1a1612;   /* akcent = ink, žádná barva navíc */
+  --c-bg:       #f4efe6;
+  --c-bg-soft:  #ede8df;
+  --c-border:   #d9d3c7;
+  --c-ink:      #1c1712;
+  --c-ink-mid:  #5c5248;
+  --c-ink-soft: #9c9088;
+  --c-red:      #c8392b;
+  --c-red-dark: #a02d21;
+  --f-serif:    'Playfair Display', Georgia, serif;
+  --f-sans:     'Plus Jakarta Sans', sans-serif;
 }
 
-html, body {
-  background-color: var(--cream);
-  color: var(--ink);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--f-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--c-bg);
+  min-height: 100vh;
 }
 
 /* Lenis */
@@ -28,28 +42,39 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 
-/* Global Animations */
+/* ── Reveal ──────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeInUp { to { opacity: 1; transform: none; } }
 
 .js .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.js .scroll-reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
+.js .scroll-reveal.active { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-in-up { animation: none !important; opacity: 1 !important; transform: none !important; }
-  .js .scroll-reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
-  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .reveal, .fade-in-up, .js .scroll-reveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

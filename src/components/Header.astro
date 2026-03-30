@@ -1,229 +1,140 @@
 ---
 const navItems = [
-  { label: 'Domů', href: '/' },
+  { label: 'Domů',      href: '/' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Ceník', href: '/cenik' },
-  { label: 'O mně', href: '/o-mne' },
+  { label: 'Ceník',    href: '/cenik' },
+  { label: 'O mně',    href: '/o-mne' },
 ];
-const currentPath = Astro.url.pathname;
-const isObjednavka = currentPath === '/objednavka';
+const path = Astro.url.pathname;
 ---
 
-<header class="site-header">
-  <div class="site-header__inner">
+<header class="sh">
+  <div class="sh__inner">
+    <a href="/" class="sh__logo">Webresent</a>
 
-    <a href="/" class="site-header__logo" aria-label="Webresent — domů">
-      Webresent
-    </a>
-
-    <nav class="site-header__nav" aria-label="Hlavní navigace">
+    <nav class="sh__nav" aria-label="Hlavní navigace">
       {navItems.map(item => (
-        <a
-          href={item.href}
-          class={`site-header__nav-link${currentPath === item.href ? ' site-header__nav-link--active' : ''}`}
-        >
+        <a href={item.href}
+           class={`sh__link${path === item.href ? ' sh__link--on' : ''}`}>
           {item.label}
         </a>
       ))}
     </nav>
 
-    <a
-      href="/objednavka"
-      class={`site-header__cta${isObjednavka ? ' site-header__cta--active' : ''}`}
-    >
+    <a href="/objednavka" class={`sh__cta${path === '/objednavka' ? ' sh__cta--on' : ''}`}>
       Poptat web
     </a>
 
-    <button
-      id="menu-toggle"
-      aria-label="Otevřít menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-      class="site-header__hamburger"
-    >
-      <span></span>
-      <span></span>
+    <button id="hbg" class="sh__hbg" aria-label="Menu" aria-expanded="false" aria-controls="mob">
+      <span></span><span></span>
     </button>
   </div>
 
-  <div id="mobile-menu" role="navigation" aria-label="Mobilní menu" class="mobile-menu" hidden>
-    <nav class="mobile-menu__nav">
-      {navItems.map(item => (
-        <a href={item.href} class="mobile-menu__link">{item.label}</a>
-      ))}
-      <a href="/objednavka" class="mobile-menu__cta">Poptat web →</a>
-    </nav>
-  </div>
+  <nav id="mob" class="sh__mob" hidden aria-label="Mobilní navigace">
+    {navItems.map(item => (
+      <a href={item.href} class="sh__mob-link">{item.label}</a>
+    ))}
+    <a href="/objednavka" class="sh__mob-cta">Poptat web →</a>
+  </nav>
 </header>
 
 <style>
-  .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(245, 240, 232, 0.93);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--cream-border);
+  .sh {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    background: rgba(244,239,230,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--c-border);
   }
-  .site-header__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+  .sh__inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 2.5rem;
+    height: 65px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
   }
-  .site-header__logo {
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    text-decoration: none;
-    flex-shrink: 0;
-    transition: opacity 0.2s ease;
+  .sh__logo {
+    font-family: var(--f-serif); font-style: italic; font-weight: 700;
+    font-size: 1.25rem; color: var(--c-ink); text-decoration: none; flex-shrink: 0;
+    letter-spacing: -0.01em; transition: opacity .2s;
   }
-  .site-header__logo:hover { opacity: 0.5; }
+  .sh__logo:hover { opacity: .55; }
 
-  .site-header__nav {
-    display: flex;
-    align-items: center;
+  .sh__nav { display: flex; align-items: center; gap: 0; }
+  .sh__link {
+    font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--c-ink-mid); text-decoration: none; padding: .4rem 1rem;
+    transition: color .2s; position: relative;
   }
-  .site-header__nav-link {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-mid);
-    text-decoration: none;
-    padding: 0.4rem 0.9rem;
-    transition: color 0.2s ease;
-  }
-  .site-header__nav-link:hover,
-  .site-header__nav-link--active { color: var(--ink); }
-
-  .site-header__cta {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--cream);
-    background: var(--ink);
-    text-decoration: none;
-    padding: 0.6rem 1.4rem;
-    border: 1.5px solid var(--ink);
-    flex-shrink: 0;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .site-header__cta:hover {
-    background: transparent;
-    color: var(--ink);
-  }
-  .site-header__cta--active {
-    background: transparent;
-    color: var(--ink);
+  .sh__link:hover { color: var(--c-ink); }
+  .sh__link--on { color: var(--c-red); }
+  .sh__link--on::after {
+    content: ''; position: absolute; bottom: -1px; left: 1rem; right: 1rem;
+    height: 1px; background: var(--c-red);
   }
 
-  .site-header__hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    width: 36px;
-    height: 36px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+  .sh__cta {
+    font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--c-bg); background: var(--c-ink); border: 1.5px solid var(--c-ink);
+    text-decoration: none; padding: .55rem 1.4rem; flex-shrink: 0;
+    transition: background .2s, color .2s, border-color .2s;
   }
-  .site-header__hamburger span {
-    display: block;
-    width: 20px;
-    height: 1.5px;
-    background: var(--ink);
-    transition: transform 0.25s ease;
-  }
-  .site-header__hamburger.is-open span:first-child { transform: translateY(3.25px) rotate(45deg); }
-  .site-header__hamburger.is-open span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
+  .sh__cta:hover { background: var(--c-red); border-color: var(--c-red); }
+  .sh__cta--on { background: transparent; color: var(--c-ink); }
 
-  .mobile-menu {
-    border-top: 1px solid var(--cream-border);
-    background: var(--cream);
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  .sh__hbg {
+    display: none; flex-direction: column; gap: 5px;
+    width: 36px; height: 36px; justify-content: center; align-items: center;
+    background: none; border: none; cursor: pointer;
   }
-  .mobile-menu:not([hidden]) { max-height: 420px; }
-  .mobile-menu__nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.5rem 2rem;
-    display: flex;
-    flex-direction: column;
+  .sh__hbg span { display: block; width: 20px; height: 1.5px; background: var(--c-ink); transition: transform .25s; }
+  .sh__hbg.open span:first-child { transform: translateY(3.25px) rotate(45deg); }
+  .sh__hbg.open span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
+
+  .sh__mob {
+    border-top: 1px solid var(--c-border); background: var(--c-bg);
+    overflow: hidden; max-height: 0;
+    transition: max-height .35s cubic-bezier(.22,1,.36,1);
   }
-  .mobile-menu__link {
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-mid);
-    text-decoration: none;
-    padding: 0.9rem 0;
-    border-bottom: 1px solid var(--cream-border);
-    transition: color 0.2s ease;
+  .sh__mob:not([hidden]) { max-height: 440px; }
+  .sh__mob { display: flex; flex-direction: column; padding: 0 2.5rem; }
+  .sh__mob[hidden] { display: none; }
+  .sh__mob:not([hidden]) { display: flex; }
+  .sh__mob-link {
+    font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--c-ink-mid); text-decoration: none;
+    padding: .9rem 0; border-bottom: 1px solid var(--c-border); transition: color .2s;
   }
-  .mobile-menu__link:hover { color: var(--ink); }
-  .mobile-menu__cta {
-    margin-top: 1.25rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    align-self: flex-start;
-    transition: opacity 0.2s ease;
+  .sh__mob-link:hover { color: var(--c-ink); }
+  .sh__mob-cta {
+    font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--c-red); text-decoration: none; padding: 1.1rem 0; transition: opacity .2s;
   }
-  .mobile-menu__cta:hover { opacity: 0.5; }
+  .sh__mob-cta:hover { opacity: .6; }
 
   @media (max-width: 768px) {
-    .site-header__nav, .site-header__cta { display: none; }
-    .site-header__hamburger { display: flex; }
+    .sh__nav, .sh__cta { display: none; }
+    .sh__hbg { display: flex; }
   }
-  @media (max-width: 600px) {
-    .site-header__inner { padding: 0 1.25rem; }
-    .mobile-menu__nav { padding: 1.25rem 1.25rem; }
+  @media (max-width: 500px) {
+    .sh__inner { padding: 0 1.5rem; }
+    .sh__mob { padding: 0 1.5rem; }
   }
 </style>
 
 <script>
-  function initHeader() {
-    const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
-    const menu = document.getElementById('mobile-menu') as HTMLElement | null;
-    if (!toggle || !menu) return;
+  function init() {
+    const btn = document.getElementById('hbg') as HTMLButtonElement | null;
+    const mob = document.getElementById('mob') as HTMLElement | null;
+    if (!btn || !mob) return;
     let open = false;
-    const openMenu = () => {
-      open = true;
-      menu.removeAttribute('hidden');
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Zavřít menu');
-      toggle.classList.add('is-open');
+    const toggle = () => {
+      open = !open;
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Zavřít menu' : 'Menu');
+      if (open) { mob.removeAttribute('hidden'); }
+      else { setTimeout(() => mob.setAttribute('hidden',''), 350); }
     };
-    const closeMenu = () => {
-      open = false;
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Otevřít menu');
-      toggle.classList.remove('is-open');
-      setTimeout(() => menu.setAttribute('hidden', ''), 350);
-    };
-    toggle.addEventListener('click', () => open ? closeMenu() : openMenu());
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (open) closeMenu(); }));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) closeMenu(); });
+    btn.addEventListener('click', toggle);
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if(open) toggle(); }));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && open) toggle(); });
   }
-  document.addEventListener('astro:page-load', initHeader);
+  document.addEventListener('astro:page-load', init);
 </script>
