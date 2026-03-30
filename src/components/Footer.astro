@@ -16,7 +16,7 @@ const p = Astro.url.pathname;
     <div class="f__top">
       <div class="f__brand">
         <a href="/" class="f__logo">Webresent</a>
-        <p class="f__claim">Weby které vydělávají.</p>
+        <p class="f__claim">Web, který vás reprezentuje.</p>
       </div>
       <div class="f__contact">
         <a href="mailto:info@webresent.cz" class="f__link">info@webresent.cz</a>
@@ -25,7 +25,7 @@ const p = Astro.url.pathname;
     </div>
 
     <div class="f__mid">
-      <nav class="f__nav" aria-label="Patička navigace">
+      <nav class="f__nav" aria-label="Patčka navigace">
         {nav.map(item => (
           <a href={item.href} class={`f__nav-a${p === item.href ? ' f__nav-a--on' : ''}`}>
             {item.label}
@@ -46,20 +46,17 @@ const p = Astro.url.pathname;
 </footer>
 
 <style>
-/* Full-width border přes celou šířku (jako header) */
 .f {
   border-top: 1px solid var(--line);
   background: var(--bg);
 }
 
-/* Vnořený kontejner zarovná obsah s ostatním layoutem */
 .f__inner {
   max-width: 1400px;
   margin: 0 auto;
   padding: 3.5rem 2.5rem 2rem;
 }
 
-/* ── TOP ─── logo + kontakt */
 .f__top {
   display: flex;
   justify-content: space-between;
@@ -70,7 +67,7 @@ const p = Astro.url.pathname;
 }
 
 .f__logo {
-  font-size: .8rem;
+  font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: .16em;
   text-transform: uppercase;
@@ -104,7 +101,6 @@ const p = Astro.url.pathname;
 }
 .f__link:hover { color: var(--white); }
 
-/* ── MID ─── navigace */
 .f__mid {
   padding: 2rem 0;
   border-bottom: 1px solid var(--line);
@@ -128,7 +124,6 @@ const p = Astro.url.pathname;
 .f__nav-a:hover { color: var(--white); }
 .f__nav-a--on { color: var(--white); }
 
-/* ── BOTTOM ─── copyright + legal */
 .f__bottom {
   display: flex;
   justify-content: space-between;
@@ -153,7 +148,6 @@ const p = Astro.url.pathname;
 }
 .f__legal-a:hover { color: var(--white); }
 
-/* ── RESPONSIVE */
 @media (max-width: 640px) {
   .f__inner { padding: 2.5rem 1.5rem 1.5rem; }
   .f__top { flex-direction: column; }

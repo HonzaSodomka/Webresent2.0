@@ -196,11 +196,6 @@ import Divider from '../components/Divider.astro';
 <style>
 .pg { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
 
-/* ── HERO ─────────────────────────────────────────────────── */
-/*
-  Výška se nastavuje JS v Layout.astro přes hero.style.minHeight.
-  Grid: eye (auto) / tělo (1fr) / ceny-foot (auto)
-*/
 .hero {
   padding: 2.5rem 0;
   border-bottom: 1px solid var(--line);
@@ -219,7 +214,6 @@ import Divider from '../components/Divider.astro';
   align-self: start;
 }
 
-/* Tělo: nadpis + podtext + CTA — vertikálně vystupovat */
 .hero__body {
   align-self: center;
   display: flex;
@@ -235,10 +229,7 @@ import Divider from '../components/Divider.astro';
   letter-spacing: -.04em;
   color: var(--white);
 }
-.hero__h em {
-  font-style: italic;
-  color: var(--white-2);
-}
+.hero__h em { font-style: italic; color: var(--white-2); }
 
 .hero__sub {
   font-size: clamp(.95rem, 1.4vw, 1.15rem);
@@ -266,18 +257,11 @@ import Divider from '../components/Divider.astro';
   transition: opacity .2s;
   white-space: nowrap;
 }
-.hero__cta--primary {
-  color: var(--bg);
-  background: var(--white);
-}
+.hero__cta--primary { color: var(--bg); background: var(--white); }
 .hero__cta--primary:hover { opacity: .75; }
-.hero__cta--ghost {
-  color: var(--white);
-  border: 1px solid var(--line);
-}
+.hero__cta--ghost { color: var(--white); border: 1px solid var(--line); }
 .hero__cta--ghost:hover { border-color: var(--white-3); }
 
-/* Ceny dole — odděleny linkou */
 .hero__foot {
   align-self: end;
   display: flex;
@@ -287,22 +271,10 @@ import Divider from '../components/Divider.astro';
   padding-top: 2rem;
   border-top: 1px solid var(--line);
 }
-.hero__foot-item {
-  font-size: .78rem;
-  color: var(--white-3);
-  letter-spacing: .02em;
-}
-.hero__foot-item strong {
-  color: var(--white-2);
-  font-weight: 600;
-}
-.hero__foot-dot {
-  color: var(--white-3);
-  opacity: .3;
-  font-size: .8rem;
-}
+.hero__foot-item { font-size: .78rem; color: var(--white-3); letter-spacing: .02em; }
+.hero__foot-item strong { color: var(--white-2); font-weight: 600; }
+.hero__foot-dot { color: var(--white-3); opacity: .3; font-size: .8rem; }
 
-/* ── CARDS ────────────────────────────────────────────────── */
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -333,7 +305,6 @@ import Divider from '../components/Divider.astro';
 .card__btn { display: inline-flex; align-items: center; gap: .5rem; align-self: flex-start; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--white); text-decoration: none; border: 1px solid var(--white-3); padding: .7rem 1.4rem; transition: border-color .2s; }
 .card__btn:hover { border-color: var(--white); }
 
-/* ── FACTORS ──────────────────────────────────────────────── */
 .factors { display: grid; grid-template-columns: 1fr 2fr; gap: 8rem; align-items: start; }
 .factors__title { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -.035em; line-height: .95; color: var(--white); margin-bottom: 1.5rem; }
 .factors__title em { font-style: italic; color: var(--white-2); }
@@ -344,7 +315,6 @@ import Divider from '../components/Divider.astro';
 .fl dt { font-size: .9rem; font-weight: 700; color: var(--white); letter-spacing: -.01em; }
 .fl dd { font-size: .85rem; color: var(--white-2); line-height: 1.6; }
 
-/* ── RETAINER ─────────────────────────────────────────────── */
 .retainer { display: grid; grid-template-columns: 2fr 1fr; gap: 6rem; align-items: start; padding: 3.5rem; border: 1px solid var(--line); background: var(--bg-2); }
 .retainer__tag { display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white-3); border: 1px solid var(--line); padding: .2rem .7rem; margin-bottom: 1.5rem; }
 .retainer__title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--white); margin-bottom: 1.2rem; }
@@ -358,7 +328,6 @@ import Divider from '../components/Divider.astro';
 .retainer__btn { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--white); text-decoration: none; border: 1px solid var(--white-3); padding: .7rem 1.4rem; transition: border-color .2s; }
 .retainer__btn:hover { border-color: var(--white); }
 
-/* ── INCLUDED ─────────────────────────────────────────────── */
 .inc__h { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; letter-spacing: -.04em; line-height: .92; color: var(--white); margin-bottom: 1.5rem; }
 .inc__h em { font-style: italic; color: var(--white-2); }
 .inc__sub { font-size: 1rem; color: var(--white-2); line-height: 1.65; max-width: 560px; margin-bottom: 4rem; }
@@ -369,8 +338,7 @@ import Divider from '../components/Divider.astro';
 .ig h3 { font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; letter-spacing: -.01em; }
 .ig p { font-size: .83rem; color: var(--white-2); line-height: 1.65; }
 
-/* ── CTA ──────────────────────────────────────────────────── */
-.cta { padding: 6rem 0; text-align: center; }
+.cta { padding: 0; text-align: center; }
 .cta__e { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--white-3); margin-bottom: 1.5rem; }
 .cta__h { font-size: clamp(4.5rem, 13vw, 11rem); font-weight: 800; letter-spacing: -.05em; line-height: .88; color: var(--white); margin-bottom: 1.5rem; }
 .cta__h em { font-style: italic; color: var(--white-2); }
@@ -382,7 +350,6 @@ import Divider from '../components/Divider.astro';
 .arr { transition: transform .25s; display: inline-block; }
 a:hover .arr { transform: translateX(5px); }
 
-/* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .cards { grid-template-columns: 1fr; margin: 4rem 0 0; }
   .factors { grid-template-columns: 1fr; gap: 3rem; }
@@ -397,7 +364,7 @@ a:hover .arr { transform: translateX(5px); }
 }
 @media (max-width: 640px) {
   .pg { padding: 0 1.5rem; }
-  .cta { padding: 4rem 0; }
+  .cta { padding: 0; }
   .retainer { padding: 2rem 1.5rem; }
   .hero__foot { gap: 1rem; }
   .hero__ctas { flex-direction: column; }
