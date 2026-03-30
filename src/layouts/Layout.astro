@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = 'Webresent — prémiovové weby na míru pro české firmy a živnostníky. Čistý kód, bleskové načítání a technické SEO.',
+  description = 'Webresent — weby které vydělávají. Na míru, bez kompromisů.',
   noindex = false,
   ogImage = '/images/og-image.jpg',
 } = Astro.props;
@@ -22,109 +22,101 @@ const siteURL = 'https://webresent.cz';
 const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
 const ogImageURL = new URL(ogImage, siteURL).href;
 ---
-
 <!doctype html>
 <html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#f4efe6" />
-    <title>{title}</title>
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageURL} />
-    <meta property="og:locale" content="cs_CZ" />
-    <meta property="og:site_name" content="Webresent" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageURL} />
-    <!-- Playfair Display -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "https://webresent.cz/#website",
-            "url": "https://webresent.cz",
-            "name": "Webresent",
-            "description": "Pémovové weby na míru pro české firmy a živnostníky."
-          },
-          {
-            "@type": ["LocalBusiness", "ProfessionalService"],
-            "@id": "https://webresent.cz/#business",
-            "name": "Webresent",
-            "url": "https://webresent.cz",
-            "telephone": "+420604994883",
-            "email": "info@webresent.cz",
-            "founder": { "@type": "Person", "name": "Jan Sodomka", "honorificPrefix": "Bc." },
-            "areaServed": { "@type": "Country", "name": "Česká republika" },
-            "address": { "@type": "PostalAddress", "addressLocality": "Mladá Boleslav", "addressCountry": "CZ" },
-            "priceRange": "9 900 Kč – 50 000 Kč"
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0e0e0e" />
+  <title>{title}</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:locale" content="cs_CZ" />
+  <meta property="og:site_name" content="Webresent" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
+  <script is:inline type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebSite", "@id": "https://webresent.cz/#website", "url": "https://webresent.cz", "name": "Webresent" },
+      { "@type": ["LocalBusiness","ProfessionalService"], "@id": "https://webresent.cz/#business",
+        "name": "Webresent", "url": "https://webresent.cz",
+        "telephone": "+420604994883", "email": "info@webresent.cz",
+        "founder": { "@type": "Person", "name": "Jan Sodomka", "honorificPrefix": "Bc." },
+        "areaServed": { "@type": "Country", "name": "Česká republika" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Mladá Boleslav", "addressCountry": "CZ" },
+        "priceRange": "9 900 Kč – 50 000 Kč" }
+    ]
+  }</script>
+  <ClientRouter />
+</head>
+<body style="padding-top:64px; display:flex; flex-direction:column; min-height:100vh;">
+  <script>document.documentElement.classList.add('js')</script>
+
+  <!-- custom cursor -->
+  <div class="cursor" id="cur"></div>
+
+  <a href="#main-content" style="position:absolute;left:-9999px">Přeskočit na obsah</a>
+
+  <Header />
+  <div style="flex:1" id="main-content"><slot /></div>
+  <Footer />
+
+  <script>
+    import Lenis from 'lenis';
+
+    document.addEventListener('astro:page-load', () => {
+      // Lenis
+      if ((window as any).lenis) (window as any).lenis.destroy();
+      (window as any).lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1.0, smoothWheel: true });
+      const raf = (t: number) => { (window as any).lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+
+      // Reveal
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).style.transitionDelay = (e.target as HTMLElement).dataset.delay || '0s';
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
           }
-        ]
+        });
+      }, { threshold: 0.06 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      // Scroll-reveal legacy
+      const io2 = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.scroll-reveal').forEach(el => io2.observe(el));
+
+      // Custom cursor
+      const cur = document.getElementById('cur');
+      if (cur && window.matchMedia('(pointer: fine)').matches) {
+        document.addEventListener('mousemove', e => {
+          cur.style.left = e.clientX + 'px';
+          cur.style.top  = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+          el.addEventListener('mouseenter', () => cur.classList.add('cursor--big'));
+          el.addEventListener('mouseleave', () => cur.classList.remove('cursor--big'));
+        });
+      } else if (cur) {
+        cur.style.display = 'none';
       }
-    </script>
-    <ClientRouter />
-  </head>
-  <body style="padding-top: 65px; display: flex; flex-direction: column; min-height: 100vh;">
-    <script>document.documentElement.classList.add('js')</script>
-
-    <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-      Přeskočit na hlavní obsah
-    </a>
-
-    <!-- Grain overlay -->
-    <div aria-hidden="true" style="pointer-events:none;position:fixed;inset:0;z-index:200;opacity:0.03;mix-blend-mode:multiply;background-image:url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.75\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E');"></div>
-
-    <Header />
-    <div style="flex:1" id="main-content"><slot /></div>
-    <Footer />
-
-    <script>
-      import Lenis from 'lenis';
-
-      document.addEventListener('astro:page-load', () => {
-        if ((window as any).lenis) (window as any).lenis.destroy();
-        (window as any).lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1.1, smoothWheel: true });
-        const raf = (t: number) => { (window as any).lenis.raf(t); requestAnimationFrame(raf); };
-        requestAnimationFrame(raf);
-
-        const observer = new IntersectionObserver((entries, obs) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active');
-              obs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-
-        const hero = document.getElementById('hero');
-        if (hero) {
-          const setH = () => {
-            const h = document.querySelector('header') as HTMLElement;
-            hero.style.minHeight = h
-              ? `${window.innerHeight - h.getBoundingClientRect().height}px`
-              : `${window.innerHeight - 65}px`;
-          };
-          setH();
-          window.addEventListener('resize', setH);
-        }
-      });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>

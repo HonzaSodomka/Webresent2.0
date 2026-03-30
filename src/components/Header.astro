@@ -1,140 +1,123 @@
 ---
-const navItems = [
+const nav = [
   { label: 'Domů',      href: '/' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Ceník',    href: '/cenik' },
   { label: 'O mně',    href: '/o-mne' },
 ];
-const path = Astro.url.pathname;
+const p = Astro.url.pathname;
 ---
-
-<header class="sh">
-  <div class="sh__inner">
-    <a href="/" class="sh__logo">Webresent</a>
-
-    <nav class="sh__nav" aria-label="Hlavní navigace">
-      {navItems.map(item => (
-        <a href={item.href}
-           class={`sh__link${path === item.href ? ' sh__link--on' : ''}`}>
-          {item.label}
-        </a>
+<header class="h">
+  <div class="h__i">
+    <a href="/" class="h__logo">WR</a>
+    <nav class="h__nav" aria-label="Navigace">
+      {nav.map(item => (
+        <a href={item.href} class={`h__a${p === item.href ? ' h__a--on' : ''}`}>{item.label}</a>
       ))}
     </nav>
-
-    <a href="/objednavka" class={`sh__cta${path === '/objednavka' ? ' sh__cta--on' : ''}`}>
-      Poptat web
-    </a>
-
-    <button id="hbg" class="sh__hbg" aria-label="Menu" aria-expanded="false" aria-controls="mob">
+    <a href="/objednavka" class={`h__cta${p === '/objednavka' ? ' h__cta--on' : ''}`}>Poptat web</a>
+    <button id="hbg" class="h__hbg" aria-label="Menu" aria-expanded="false">
       <span></span><span></span>
     </button>
   </div>
-
-  <nav id="mob" class="sh__mob" hidden aria-label="Mobilní navigace">
-    {navItems.map(item => (
-      <a href={item.href} class="sh__mob-link">{item.label}</a>
+  <nav id="mob" class="h__mob" hidden>
+    {nav.map(item => (
+      <a href={item.href} class="h__mob-a">{item.label}</a>
     ))}
-    <a href="/objednavka" class="sh__mob-cta">Poptat web →</a>
+    <a href="/objednavka" class="h__mob-cta">Poptat web →</a>
   </nav>
 </header>
 
 <style>
-  .sh {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-    background: rgba(244,239,230,0.94);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--c-border);
-  }
-  .sh__inner {
-    max-width: 1280px; margin: 0 auto; padding: 0 2.5rem;
-    height: 65px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
-  }
-  .sh__logo {
-    font-family: var(--f-serif); font-style: italic; font-weight: 700;
-    font-size: 1.25rem; color: var(--c-ink); text-decoration: none; flex-shrink: 0;
-    letter-spacing: -0.01em; transition: opacity .2s;
-  }
-  .sh__logo:hover { opacity: .55; }
+.h {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  background: rgba(14,14,14,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.h__i {
+  max-width: 1400px; margin: 0 auto; padding: 0 2.5rem;
+  height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.h__logo {
+  font-size: .8rem; font-weight: 800; letter-spacing: .18em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+  transition: opacity .2s;
+}
+.h__logo:hover { opacity: .4; }
 
-  .sh__nav { display: flex; align-items: center; gap: 0; }
-  .sh__link {
-    font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--c-ink-mid); text-decoration: none; padding: .4rem 1rem;
-    transition: color .2s; position: relative;
-  }
-  .sh__link:hover { color: var(--c-ink); }
-  .sh__link--on { color: var(--c-red); }
-  .sh__link--on::after {
-    content: ''; position: absolute; bottom: -1px; left: 1rem; right: 1rem;
-    height: 1px; background: var(--c-red);
-  }
+.h__nav { display: flex; align-items: center; }
+.h__a {
+  font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--white-3); text-decoration: none; padding: .4rem 1rem;
+  transition: color .2s;
+}
+.h__a:hover { color: var(--white); }
+.h__a--on { color: var(--white); }
 
-  .sh__cta {
-    font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--c-bg); background: var(--c-ink); border: 1.5px solid var(--c-ink);
-    text-decoration: none; padding: .55rem 1.4rem; flex-shrink: 0;
-    transition: background .2s, color .2s, border-color .2s;
-  }
-  .sh__cta:hover { background: var(--c-red); border-color: var(--c-red); }
-  .sh__cta--on { background: transparent; color: var(--c-ink); }
+.h__cta {
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--bg); background: var(--white);
+  text-decoration: none; padding: .55rem 1.4rem; flex-shrink: 0;
+  transition: opacity .2s;
+}
+.h__cta:hover { opacity: .75; }
+.h__cta--on { background: transparent; color: var(--white); outline: 1px solid var(--line); }
 
-  .sh__hbg {
-    display: none; flex-direction: column; gap: 5px;
-    width: 36px; height: 36px; justify-content: center; align-items: center;
-    background: none; border: none; cursor: pointer;
-  }
-  .sh__hbg span { display: block; width: 20px; height: 1.5px; background: var(--c-ink); transition: transform .25s; }
-  .sh__hbg.open span:first-child { transform: translateY(3.25px) rotate(45deg); }
-  .sh__hbg.open span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
+.h__hbg {
+  display: none; flex-direction: column; gap: 5px;
+  width: 36px; height: 36px; justify-content: center; align-items: center;
+  background: none; border: none; cursor: none;
+}
+.h__hbg span { display: block; width: 20px; height: 1px; background: var(--white); transition: transform .25s; }
+.h__hbg.open span:first-child { transform: translateY(3px) rotate(45deg); }
+.h__hbg.open span:last-child  { transform: translateY(-3px) rotate(-45deg); }
 
-  .sh__mob {
-    border-top: 1px solid var(--c-border); background: var(--c-bg);
-    overflow: hidden; max-height: 0;
-    transition: max-height .35s cubic-bezier(.22,1,.36,1);
-  }
-  .sh__mob:not([hidden]) { max-height: 440px; }
-  .sh__mob { display: flex; flex-direction: column; padding: 0 2.5rem; }
-  .sh__mob[hidden] { display: none; }
-  .sh__mob:not([hidden]) { display: flex; }
-  .sh__mob-link {
-    font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--c-ink-mid); text-decoration: none;
-    padding: .9rem 0; border-bottom: 1px solid var(--c-border); transition: color .2s;
-  }
-  .sh__mob-link:hover { color: var(--c-ink); }
-  .sh__mob-cta {
-    font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--c-red); text-decoration: none; padding: 1.1rem 0; transition: opacity .2s;
-  }
-  .sh__mob-cta:hover { opacity: .6; }
+.h__mob {
+  border-top: 1px solid var(--line); background: var(--bg);
+  overflow: hidden; max-height: 0;
+  transition: max-height .4s cubic-bezier(.22,1,.36,1);
+  display: flex; flex-direction: column; padding: 0 2.5rem;
+}
+.h__mob[hidden] { display: none; }
+.h__mob:not([hidden]) { display: flex; max-height: 440px; }
+.h__mob-a {
+  font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--white-3); text-decoration: none;
+  padding: 1rem 0; border-bottom: 1px solid var(--line); transition: color .2s;
+}
+.h__mob-a:hover { color: var(--white); }
+.h__mob-cta {
+  font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--white); text-decoration: none; padding: 1.2rem 0;
+}
 
-  @media (max-width: 768px) {
-    .sh__nav, .sh__cta { display: none; }
-    .sh__hbg { display: flex; }
-  }
-  @media (max-width: 500px) {
-    .sh__inner { padding: 0 1.5rem; }
-    .sh__mob { padding: 0 1.5rem; }
-  }
+@media (max-width: 768px) {
+  .h__nav, .h__cta { display: none; }
+  .h__hbg { display: flex; }
+}
+@media (max-width: 500px) {
+  .h__i { padding: 0 1.5rem; }
+  .h__mob { padding: 0 1.5rem; }
+}
 </style>
 
 <script>
-  function init() {
-    const btn = document.getElementById('hbg') as HTMLButtonElement | null;
-    const mob = document.getElementById('mob') as HTMLElement | null;
-    if (!btn || !mob) return;
-    let open = false;
-    const toggle = () => {
-      open = !open;
-      btn.classList.toggle('open', open);
-      btn.setAttribute('aria-expanded', String(open));
-      btn.setAttribute('aria-label', open ? 'Zavřít menu' : 'Menu');
-      if (open) { mob.removeAttribute('hidden'); }
-      else { setTimeout(() => mob.setAttribute('hidden',''), 350); }
-    };
-    btn.addEventListener('click', toggle);
-    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if(open) toggle(); }));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && open) toggle(); });
-  }
-  document.addEventListener('astro:page-load', init);
+function init() {
+  const btn = document.getElementById('hbg') as HTMLButtonElement|null;
+  const mob = document.getElementById('mob') as HTMLElement|null;
+  if (!btn || !mob) return;
+  let open = false;
+  const toggle = () => {
+    open = !open;
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) mob.removeAttribute('hidden');
+    else setTimeout(() => mob.setAttribute('hidden',''), 400);
+  };
+  btn.addEventListener('click', toggle);
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if(open) toggle(); }));
+  document.addEventListener('keydown', e => { if (e.key==='Escape' && open) toggle(); });
+}
+document.addEventListener('astro:page-load', init);
 </script>

@@ -4,90 +4,85 @@ import Divider from '../components/Divider.astro';
 ---
 
 <Layout
-  title="Ceník tvorby webů — od 9 900 Kč | Webresent"
-  description="Transparentní ceník tvorby webů na míru. Statický web od 9 900 Kč, firemní web s administrací od 19 900 Kč. Vždy pevná cena předem."
+  title="Ceník | Webresent"
+  description="Transparentní ceník tvorby webů na míru. Statický web od 9 900 Kč, upravitelný od 19 900 Kč."
 >
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Domů","item":"https://webresent.cz"},
-    {"@type":"ListItem","position":2,"name":"Ceník","item":"https://webresent.cz/cenik"}
-  ]
-}
-</script>
-
 <div class="pg">
 
-  <!-- ── HERO ───────────────────────────────────────────────── -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero__eyebrow reveal">
-      <span class="hero__num">02</span>
-      <span>Ceník</span>
-    </div>
-    <h1 class="hero__title">
-      <span class="hero__title-line reveal" style="--d:.05s">Kolik stál</span>
-      <span class="hero__title-line hero__title-line--serif reveal" style="--d:.18s">web, který</span>
-      <span class="hero__title-line reveal" style="--d:.31s">vydělává?</span>
+    <p class="hero__eye reveal">Ceník &mdash; 02</p>
+    <h1 class="hero__h">
+      <span class="reveal" data-delay="0s">Kolik</span>
+      <span class="reveal" data-delay="0.08s">stál</span>
+      <span class="reveal ital" data-delay="0.16s">dobrý</span>
+      <span class="reveal" data-delay="0.24s">web?</span>
     </h1>
-    <p class="hero__sub reveal" style="--d:.44s">
-      Transparentní ceny. Žádná překvapení.<br/>Vždy pevná cena předem, žádné extra položky zpová dvecané.
-    </p>
+    <div class="hero__foot reveal" data-delay="0.3s">
+      <p>Pevná cena předem.<br/>Vždy.</p>
+      <a href="/objednavka" class="hero__cta">Poptat web <span class="arr">→</span></a>
+    </div>
   </section>
 
-  <!-- ── TICKER ─────────────────────────────────────────────── -->
+  <!-- TICKER -->
   <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span>Statický web od 9 900 Kč</span><span class="ticker__dot">●</span>
-      <span>Upravitelný web od 19 900 Kč</span><span class="ticker__dot">●</span>
-      <span>E-shop & Aplikace individuálně</span><span class="ticker__dot">●</span>
-      <span>Pevná cena předem</span><span class="ticker__dot">●</span>
-      <span>Návrh zdarma</span><span class="ticker__dot">●</span>
-      <span>Statický web od 9 900 Kč</span><span class="ticker__dot">●</span>
-      <span>Upravitelný web od 19 900 Kč</span><span class="ticker__dot">●</span>
-      <span>E-shop & Aplikace individuálně</span><span class="ticker__dot">●</span>
-      <span>Pevná cena předem</span><span class="ticker__dot">●</span>
-      <span>Návrh zdarma</span><span class="ticker__dot">●</span>
+    <div class="ticker__t">
+      <span>Statický web</span><span class="dot">/</span>
+      <span>od 9 900 Kč</span><span class="dot">/</span>
+      <span>Upravitelný web</span><span class="dot">/</span>
+      <span>od 19 900 Kč</span><span class="dot">/</span>
+      <span>E-shop & Aplikace</span><span class="dot">/</span>
+      <span>Individuálně</span><span class="dot">/</span>
+      <span>Statický web</span><span class="dot">/</span>
+      <span>od 9 900 Kč</span><span class="dot">/</span>
+      <span>Upravitelný web</span><span class="dot">/</span>
+      <span>od 19 900 Kč</span><span class="dot">/</span>
+      <span>E-shop & Aplikace</span><span class="dot">/</span>
+      <span>Individuálně</span><span class="dot">/</span>
     </div>
   </div>
 
-  <!-- ── PRICING ─────────────────────────────────────────────── -->
+  <!-- PRICING -->
   <section class="pricing">
 
-    <article class="pr reveal">
-      <div class="pr__meta">
-        <span class="pr__num">01</span>
-        <span class="pr__tag">Základní</span>
+    <article class="pr reveal" data-delay="0s">
+      <div class="pr__l">
+        <span class="pr__n">01</span>
+        <div>
+          <h2 class="pr__name">Statický<br/>web</h2>
+          <p class="pr__tag">Základní</p>
+        </div>
       </div>
-      <div class="pr__body">
-        <h2 class="pr__name">Statický web</h2>
-        <p class="pr__desc">Digitální vizitka nebo prezentace jedné služby. Čistý kód, bleskové načítání, žádné zbytečné závislosti.</p>
-        <ul class="pr__list">
+      <div class="pr__mid">
+        <p class="pr__desc">Digitální vizitka nebo prezentace jedné služby. Bleskové načtítání, čistý kód, žádné zbytečné závislosti.</p>
+        <ul class="pr__ul">
           <li>Responzivní design na míru</li>
           <li>Kontaktní formulář</li>
           <li>Technické SEO & Search Console</li>
           <li>Nasazení na hosting</li>
         </ul>
       </div>
-      <div class="pr__price">
-        <span class="pr__from">od</span>
-        <span class="pr__amount" data-target="9900">9 900</span>
-        <span class="pr__cur">Kč</span>
+      <div class="pr__r">
+        <div class="pr__price">
+          <span class="pr__from">od</span>
+          <span class="pr__amt">9 900</span>
+          <span class="pr__kc">Kč</span>
+        </div>
+        <a href="/objednavka?type=staticky" class="pr__btn">Poptat <span class="arr">→</span></a>
       </div>
-      <a href="/objednavka?type=staticky" class="pr__btn">Poptat <span>→</span></a>
     </article>
 
-    <article class="pr pr--dark reveal">
-      <div class="pr__meta">
-        <span class="pr__num">02</span>
-        <span class="pr__tag">Nejpopulárnější</span>
+    <article class="pr pr--hi reveal" data-delay="0.06s">
+      <div class="pr__l">
+        <span class="pr__n">02</span>
+        <div>
+          <h2 class="pr__name">Upravitelný<br/>web</h2>
+          <p class="pr__tag">Nejpopulárnější</p>
+        </div>
       </div>
-      <div class="pr__body">
-        <h2 class="pr__name">Upravitelný web</h2>
-        <p class="pr__desc">Zlatá střední cesta. Vícestránková prezentace s CMS — texty a fotky měníte sami, bez programování.</p>
-        <ul class="pr__list">
+      <div class="pr__mid">
+        <p class="pr__desc">Vícestránková prezentace s CMS. Měníte texty a fotky sami &mdash; bez programování.</p>
+        <ul class="pr__ul">
           <li>Vše ze Statického webu</li>
           <li>Systém pro úpravu obsahu</li>
           <li>Vícestránková architektura</li>
@@ -95,351 +90,235 @@ import Divider from '../components/Divider.astro';
           <li>Možnost budoucího rozšíření</li>
         </ul>
       </div>
-      <div class="pr__price">
-        <span class="pr__from">od</span>
-        <span class="pr__amount">19 900</span>
-        <span class="pr__cur">Kč</span>
+      <div class="pr__r">
+        <div class="pr__price">
+          <span class="pr__from">od</span>
+          <span class="pr__amt">19 900</span>
+          <span class="pr__kc">Kč</span>
+        </div>
+        <a href="/objednavka?type=upravitelny" class="pr__btn">Poptat <span class="arr">→</span></a>
       </div>
-      <a href="/objednavka?type=upravitelny" class="pr__btn">Poptat <span>→</span></a>
     </article>
 
-    <article class="pr reveal">
-      <div class="pr__meta">
-        <span class="pr__num">03</span>
-        <span class="pr__tag">Na míru</span>
+    <article class="pr reveal" data-delay="0.12s">
+      <div class="pr__l">
+        <span class="pr__n">03</span>
+        <div>
+          <h2 class="pr__name">Aplikace &amp;<br/>E&#8209;shop</h2>
+          <p class="pr__tag">Na míru</p>
+        </div>
       </div>
-      <div class="pr__body">
-        <h2 class="pr__name">Aplikace & E&#8209;shop</h2>
-        <p class="pr__desc">E-shopy, rezervační systémy, uživatelské portály, API integrace. Komplexní řešení bez kompromisů.</p>
-        <ul class="pr__list">
-          <li>Platební brány & e-commerce logika</li>
+      <div class="pr__mid">
+        <p class="pr__desc">E-shopy, rezervační systémy, uživatelské portály. Komplexní řešení bez kompromisů.</p>
+        <ul class="pr__ul">
+          <li>Platební brány & e-commerce</li>
           <li>Uživatelské účty & autentizace</li>
-          <li>Automatizace & API napojení</li>
-          <li>Pokročilé filtrování a funkce</li>
+          <li>API integrace</li>
+          <li>Pokročilé funkce na míru</li>
         </ul>
       </div>
-      <div class="pr__price">
-        <span class="pr__amount pr__amount--custom">Individuálně</span>
+      <div class="pr__r">
+        <div class="pr__price">
+          <span class="pr__amt pr__amt--s">Individuálně</span>
+        </div>
+        <a href="/objednavka?type=aplikace" class="pr__btn">Probrat <span class="arr">→</span></a>
       </div>
-      <a href="/objednavka?type=aplikace" class="pr__btn">Probrat <span>→</span></a>
     </article>
 
   </section>
 
   <Divider label="Vždy součástí" />
 
-  <!-- ── INCLUDED ────────────────────────────────────────────── -->
-  <section class="included">
-    <header class="included__hd reveal">
-      <h2 class="included__title">V každém<br/><em>projektu.</em></h2>
-      <p class="included__sub">Ať už stavíme vizitku nebo e-shop —<br/>tohle dostáváte vždy.</p>
-    </header>
-    <ul class="included__grid">
-      <li class="ig reveal">
-        <span class="ig__n">01</span>
-        <h3 class="ig__title">Bleskové načtítání</h3>
-        <p class="ig__text">Žádné WordPress s tisícem pluginů. Čistý kód který se načte dřív než stihne klient mrknout.</p>
-      </li>
-      <li class="ig reveal">
-        <span class="ig__n">02</span>
-        <h3 class="ig__title">Plná responzivita</h3>
-        <p class="ig__text">Bezchybný vzhled na každém zařízení — mobil, tablet, 4K monitor.</p>
-      </li>
-      <li class="ig reveal">
-        <span class="ig__n">03</span>
-        <h3 class="ig__title">Technické SEO</h3>
-        <p class="ig__text">Správné titulky, strukturovaná data, napojeni do Search Console. Vyhledávače vás najdou.</p>
-      </li>
-      <li class="ig reveal">
-        <span class="ig__n">04</span>
-        <h3 class="ig__title">Psaní textů</h3>
-        <p class="ig__text">Texty které prodávají — píšu je sám. Není třeba přinášet vlastní copy.</p>
-      </li>
-      <li class="ig reveal">
-        <span class="ig__n">05</span>
-        <h3 class="ig__title">Nasazení & hosting</h3>
-        <p class="ig__text">Dodám hotový web nasazený na rychlém serveru. Není třeba řešit nic dalšího.</p>
-      </li>
-      <li class="ig reveal">
-        <span class="ig__n">06</span>
-        <h3 class="ig__title">Pevná cena</h3>
-        <p class="ig__text">Co se domluvime, to zaplatite. Žádné příplatky za složitost, příjem návrš, nebo extra požadavky.</p>
-      </li>
+  <!-- INCLUDED -->
+  <section class="inc">
+    <h2 class="inc__h reveal">V&nbsp;každém<br/>projektu.</h2>
+    <ul class="inc__g">
+      <li class="ig reveal" data-delay="0s"><span class="ig__n">01</span><h3>Bleskové načtítání</h3><p>Žádný WordPress. Čistý kód který se načte dřív než klient stihne mrknout.</p></li>
+      <li class="ig reveal" data-delay="0.07s"><span class="ig__n">02</span><h3>Plná responzivita</h3><p>Bezchybný vzhled na každém zařízení — mobil, tablet, 4K.</p></li>
+      <li class="ig reveal" data-delay="0.14s"><span class="ig__n">03</span><h3>Technické SEO</h3><p>Strukturovaná data, napojeni do Search Console. Vyhledávače vás najdou.</p></li>
+      <li class="ig reveal" data-delay="0.21s"><span class="ig__n">04</span><h3>Texty v ceně</h3><p>Píšu texty sám. Není třeba přinášet vlastní copy.</p></li>
+      <li class="ig reveal" data-delay="0.28s"><span class="ig__n">05</span><h3>Nasazení & hosting</h3><p>Web nasazený na rychlém serveru. Není třeba řešit nic dalšího.</p></li>
+      <li class="ig reveal" data-delay="0.35s"><span class="ig__n">06</span><h3>Pevná cena</h3><p>Co se domluvime, to zaplatite. Žádné příplatky, překvapení nebo skryté položky.</p></li>
     </ul>
-  </section>
-
-  <Divider label="Transparentnost" />
-
-  <!-- ── FACTORS ────────────────────────────────────────────── -->
-  <section class="factors">
-    <div class="factors__hd reveal">
-      <h2 class="factors__title">Co ovlivňuje<br/><em>cenu?</em></h2>
-      <p class="factors__sub">Každý projekt je jiný. Po konzultaci dostanete přesnou nabídku šitou na míru — vždy vám řeknu rovinu.</p>
-    </div>
-    <dl class="factors__list">
-      <div class="fl reveal"><dt class="fl__t">Počet podstránek</dt><dd class="fl__d">Jednostránkový web vs. složitá struktura s blogem a případovkami.</dd></div>
-      <div class="fl reveal"><dt class="fl__t">Správa obsahu</dt><dd class="fl__d">Zda chcete upravovat jen články nebo celou strukturu bez programování.</dd></div>
-      <div class="fl reveal"><dt class="fl__t">Speciální funkce</dt><dd class="fl__d">Mapy, rezervační systémy, pokročilé formuláře, kalkulace.</dd></div>
-      <div class="fl reveal"><dt class="fl__t">Integrace třetích stran</dt><dd class="fl__d">Fakturoid, Mailchimp, platební brány, vlastní systémy.</dd></div>
-      <div class="fl reveal"><dt class="fl__t">Jazykové mutace</dt><dd class="fl__d">Architektura pro vícejazyčnost — CZ / EN a další.</dd></div>
-      <div class="fl reveal"><dt class="fl__t">Dlouhodobá správa</dt><dd class="fl__d">Měsíční paušál za hosting, aktualizace a průběžné úpravy.</dd></div>
-    </dl>
   </section>
 
   <Divider />
 
-  <!-- ── CTA ─────────────────────────────────────────────────── -->
-  <section class="cta reveal">
-    <p class="cta__eye">Nejste si jisti co potřebujete?</p>
-    <h2 class="cta__title">Napíšeme<br/><em>si.</em></h2>
-    <a href="/objednavka?type=konzultace" class="cta__btn">
-      Nezávazná konzultace
-      <span class="cta__arr">→</span>
+  <!-- CTA -->
+  <section class="cta">
+    <p class="cta__e reveal">Nejste si jistí co potřebujete?</p>
+    <h2 class="cta__h reveal" data-delay="0.1s">Napíšeme<br/><em>si.</em></h2>
+    <a href="/objednavka?type=konzultace" class="cta__btn reveal" data-delay="0.2s">
+      Nezávazná konzultace <span class="arr">→</span>
     </a>
   </section>
 
 </div>
-
 </Layout>
 
 <style>
-  .pg {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 2.5rem;
-  }
+.pg { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
 
-  /* ── Hero ────────────────────────────────────────────────── */
-  .hero {
-    padding: 7rem 0 5rem;
-    border-bottom: 1px solid var(--c-border);
-  }
-  .hero__eyebrow {
-    display: flex; align-items: center; gap: .75rem;
-    font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--c-ink-soft); margin-bottom: 2.5rem;
-  }
-  .hero__num { color: var(--c-red); font-family: var(--f-serif); font-style: italic; font-size: .9rem; }
-  .hero__title {
-    display: flex; flex-direction: column; gap: .1em;
-    margin-bottom: 2.5rem;
-  }
-  .hero__title-line {
-    font-size: clamp(3.5rem, 9vw, 8rem);
-    font-weight: 800; line-height: .95; letter-spacing: -.03em;
-    color: var(--c-ink); display: block;
-    transition-delay: var(--d, 0s);
-  }
-  .hero__title-line--serif {
-    font-family: var(--f-serif); font-style: italic; font-weight: 700;
-    color: var(--c-red);
-  }
-  .hero__sub {
-    font-size: 1.05rem; color: var(--c-ink-mid); line-height: 1.65;
-    max-width: 480px; transition-delay: var(--d, 0s);
-  }
+/* HERO */
+.hero { padding: 8rem 0 6rem; border-bottom: 1px solid var(--line); }
+.hero__eye {
+  font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white-3); margin-bottom: 3rem;
+}
+.hero__h {
+  display: flex; flex-wrap: wrap; gap: .08em;
+  font-size: clamp(5rem, 13vw, 13rem);
+  font-weight: 800; line-height: .92; letter-spacing: -.04em;
+  color: var(--white); margin-bottom: 4rem;
+}
+.hero__h .ital { font-style: italic; color: var(--white-2); }
+.hero__foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+}
+.hero__foot p { font-size: 1rem; color: var(--white-2); line-height: 1.5; }
+.hero__cta {
+  font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--bg); background: var(--white);
+  text-decoration: none; padding: .9rem 2rem;
+  display: inline-flex; align-items: center; gap: .6rem;
+  transition: opacity .2s;
+}
+.hero__cta:hover { opacity: .75; }
 
-  /* ── Ticker ────────────────────────────────────────────────── */
-  .ticker {
-    overflow: hidden; border-bottom: 1px solid var(--c-border);
-    padding: 1.1rem 0; margin: 0 -2.5rem; background: var(--c-bg-soft);
-  }
-  .ticker__track {
-    display: inline-flex; gap: 2.5rem; white-space: nowrap;
-    animation: ticker 24s linear infinite;
-    font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
-    color: var(--c-ink-mid);
-  }
-  .ticker__dot { color: var(--c-red); }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* TICKER */
+.ticker {
+  overflow: hidden; border-bottom: 1px solid var(--line);
+  padding: 1rem 0; margin: 0 -2.5rem; background: var(--bg-2);
+}
+.ticker__t {
+  display: inline-flex; gap: 2rem; white-space: nowrap;
+  animation: tick 30s linear infinite;
+  font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--white-3);
+}
+.dot { color: var(--white-3); opacity: .4; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* ── Pricing rows ────────────────────────────────────────────── */
-  .pricing { padding: 0; }
-  .pr {
-    display: grid;
-    grid-template-columns: 6rem 1fr auto auto;
-    gap: 2.5rem; align-items: center;
-    padding: 3rem 0; border-bottom: 1px solid var(--c-border);
-    position: relative;
-    transition: background .25s;
-  }
-  .pr::before {
-    content: ''; position: absolute; left: -2.5rem; top: 0; bottom: 0;
-    width: 0; background: var(--c-red);
-    transition: width .3s cubic-bezier(.22,1,.36,1);
-  }
-  .pr:hover::before { width: 3px; }
-  .pr:hover {
-    background: var(--c-bg-soft);
-    margin: 0 -2.5rem; padding-left: 2.5rem; padding-right: 2.5rem;
-  }
-  .pr--dark {
-    background: var(--c-ink);
-    margin: 0 -2.5rem; padding-left: 2.5rem; padding-right: 2.5rem;
-    border-color: #2e2a24;
-  }
-  .pr--dark:hover { background: #231f1a; }
-  .pr--dark::before { background: var(--c-red); }
+/* PRICING */
+.pricing { padding: 0; }
+.pr {
+  display: grid; grid-template-columns: 12rem 1fr auto;
+  gap: 3rem; align-items: center;
+  padding: 3.5rem 0; border-bottom: 1px solid var(--line);
+  transition: background .2s;
+}
+.pr:hover { background: var(--bg-2); margin: 0 -2.5rem; padding-left: 2.5rem; padding-right: 2.5rem; }
+.pr--hi { background: var(--bg-3); margin: 0 -2.5rem; padding-left: 2.5rem; padding-right: 2.5rem; }
+.pr--hi:hover { background: #202020; }
 
-  .pr__meta {
-    display: flex; flex-direction: column; gap: .4rem;
-  }
-  .pr__num {
-    font-family: var(--f-serif); font-style: italic;
-    font-size: 1.6rem; font-weight: 700; line-height: 1;
-    color: var(--c-border);
-  }
-  .pr--dark .pr__num { color: #3a3530; }
-  .pr__tag {
-    font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--c-ink-soft);
-  }
-  .pr--dark .pr__tag { color: #4a4540; }
+.pr__l { display: flex; align-items: flex-start; gap: 1.5rem; }
+.pr__n {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+  color: var(--white-3); padding-top: .35rem; flex-shrink: 0;
+}
+.pr__name {
+  font-size: 1.5rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.1;
+  color: var(--white); margin-bottom: .35rem;
+}
+.pr__tag {
+  font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--white-3);
+}
+.pr__desc { font-size: .9rem; color: var(--white-2); line-height: 1.6; margin-bottom: 1rem; max-width: 400px; }
+.pr__ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+.pr__ul li { font-size: .82rem; color: var(--white-3); padding-left: 1rem; position: relative; }
+.pr__ul li::before { content: '—'; position: absolute; left: 0; }
 
-  .pr__name {
-    font-size: 1.7rem; font-weight: 700; letter-spacing: -.025em;
-    color: var(--c-ink); margin-bottom: .6rem; line-height: 1.1;
-  }
-  .pr--dark .pr__name { color: var(--c-bg); }
-  .pr__desc {
-    font-size: .9rem; color: var(--c-ink-mid); line-height: 1.6; max-width: 420px; margin-bottom: 1rem;
-  }
-  .pr--dark .pr__desc { color: #7a7068; }
-  .pr__list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
-  .pr__list li {
-    font-size: .82rem; color: var(--c-ink-mid); padding-left: 1.1rem; position: relative;
-  }
-  .pr__list li::before { content: '—'; position: absolute; left: 0; color: var(--c-border); }
-  .pr--dark .pr__list li { color: #6a6258; }
-  .pr--dark .pr__list li::before { color: #333; }
+.pr__r { text-align: right; }
+.pr__price { margin-bottom: 1.5rem; }
+.pr__from { display: block; font-size: .68rem; color: var(--white-3); letter-spacing: .05em; margin-bottom: .15rem; }
+.pr__amt {
+  display: block; font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--white);
+}
+.pr__amt--s { font-size: 1.4rem; letter-spacing: -.02em; }
+.pr__kc { display: block; font-size: .75rem; color: var(--white-3); margin-top: .2rem; }
+.pr__btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--white); text-decoration: none;
+  border: 1px solid var(--white-3); padding: .65rem 1.4rem;
+  transition: border-color .2s, color .2s;
+  white-space: nowrap;
+}
+.pr__btn:hover { border-color: var(--white); color: var(--white); }
 
-  .pr__price { text-align: right; white-space: nowrap; }
-  .pr__from { display: block; font-size: .7rem; color: var(--c-ink-soft); letter-spacing: .05em; margin-bottom: .1rem; }
-  .pr__amount {
-    display: block;
-    font-family: var(--f-serif); font-style: italic;
-    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1;
-    color: var(--c-ink); letter-spacing: -.02em;
-  }
-  .pr--dark .pr__amount { color: var(--c-bg); }
-  .pr__amount--custom { font-size: 1.3rem; font-style: italic; }
-  .pr__cur { display: block; font-size: .8rem; color: var(--c-ink-soft); margin-top: .2rem; }
-  .pr--dark .pr__cur { color: #4a4540; }
+/* INCLUDED */
+.inc { display: grid; grid-template-columns: 1fr 2fr; gap: 8rem; align-items: start; }
+.inc__h {
+  font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800;
+  letter-spacing: -.04em; line-height: .95; color: var(--white);
+  position: sticky; top: 96px;
+}
+.inc__g {
+  list-style: none; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.ig {
+  padding: 2.5rem 2rem 2.5rem 0; border-bottom: 1px solid var(--line);
+}
+.ig:nth-child(even) { padding-left: 2rem; border-left: 1px solid var(--line); padding-right: 0; }
+.ig:nth-last-child(-n+2) { border-bottom: none; }
+.ig__n {
+  display: block; font-size: .65rem; font-weight: 700; letter-spacing: .14em;
+  color: var(--white-3); margin-bottom: 1rem;
+}
+.ig h3 { font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: .4rem; letter-spacing: -.01em; }
+.ig p { font-size: .83rem; color: var(--white-2); line-height: 1.65; }
 
-  .pr__btn {
-    display: inline-flex; align-items: center; gap: .5rem;
-    font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--c-ink); text-decoration: none;
-    border: 1.5px solid var(--c-ink); padding: .7rem 1.4rem;
-    white-space: nowrap;
-    transition: background .2s, color .2s, border-color .2s;
-  }
-  .pr__btn:hover { background: var(--c-red); border-color: var(--c-red); color: #fff; }
-  .pr--dark .pr__btn { color: var(--c-bg); border-color: var(--c-bg); }
-  .pr--dark .pr__btn:hover { background: var(--c-red); border-color: var(--c-red); color: #fff; }
+/* CTA */
+.cta { padding: 10rem 0; text-align: center; }
+.cta__e {
+  font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white-3); margin-bottom: 1.5rem;
+}
+.cta__h {
+  font-size: clamp(5rem, 14vw, 12rem); font-weight: 800;
+  letter-spacing: -.05em; line-height: .88;
+  color: var(--white); margin-bottom: 3.5rem;
+}
+.cta__h em { font-style: italic; color: var(--white-2); }
+.cta__btn {
+  display: inline-flex; align-items: center; gap: .75rem;
+  font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--bg); background: var(--white);
+  text-decoration: none; padding: 1.1rem 2.5rem;
+  transition: opacity .2s;
+}
+.cta__btn:hover { opacity: .75; }
 
-  /* ── Included ─────────────────────────────────────────────── */
-  .included { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
-  .included__title {
-    font-family: var(--f-serif); font-size: clamp(2.2rem, 5vw, 4rem);
-    font-weight: 700; line-height: 1.05; letter-spacing: -.02em;
-    color: var(--c-ink); margin-bottom: 1.5rem;
-  }
-  .included__title em { font-style: italic; color: var(--c-red); }
-  .included__sub { font-size: .95rem; color: var(--c-ink-mid); line-height: 1.6; }
-  .included__grid {
-    list-style: none; padding: 0;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-  }
-  .ig {
-    padding: 2rem 2rem 2rem 0; border-bottom: 1px solid var(--c-border);
-    transition-delay: var(--sd, 0s);
-  }
-  .ig:nth-child(even) { padding-left: 2rem; border-left: 1px solid var(--c-border); }
-  .ig:nth-last-child(-n+2) { border-bottom: none; }
-  .ig__n {
-    display: block; font-family: var(--f-serif); font-style: italic;
-    font-size: .9rem; color: var(--c-red); margin-bottom: .75rem;
-  }
-  .ig__title { font-size: 1rem; font-weight: 700; color: var(--c-ink); margin-bottom: .4rem; letter-spacing: -.01em; }
-  .ig__text { font-size: .85rem; color: var(--c-ink-mid); line-height: 1.6; }
+.arr { transition: transform .25s; }
+a:hover .arr { transform: translateX(5px); }
 
-  /* ── Factors ───────────────────────────────────────────────── */
-  .factors { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
-  .factors__title {
-    font-family: var(--f-serif); font-size: clamp(2.2rem, 5vw, 4rem);
-    font-weight: 700; line-height: 1.05; letter-spacing: -.02em;
-    color: var(--c-ink); margin-bottom: 1.5rem;
-  }
-  .factors__title em { font-style: italic; color: var(--c-red); }
-  .factors__sub { font-size: .95rem; color: var(--c-ink-mid); line-height: 1.6; }
-  .factors__list { display: flex; flex-direction: column; }
-  .fl {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-    padding: 1.5rem 0; border-bottom: 1px solid var(--c-border);
-    align-items: baseline;
-  }
-  .fl:first-child { border-top: 1px solid var(--c-border); }
-  .fl__t { font-size: .9rem; font-weight: 700; color: var(--c-ink); letter-spacing: -.01em; }
-  .fl__d { font-size: .85rem; color: var(--c-ink-mid); line-height: 1.6; }
-
-  /* ── CTA ───────────────────────────────────────────────────── */
-  .cta { padding: 8rem 0; text-align: center; }
-  .cta__eye {
-    font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--c-ink-soft); margin-bottom: 1.5rem;
-  }
-  .cta__title {
-    font-family: var(--f-serif);
-    font-size: clamp(4rem, 12vw, 10rem);
-    font-weight: 700; line-height: .9; letter-spacing: -.04em;
-    color: var(--c-ink); margin-bottom: 3rem;
-  }
-  .cta__title em { font-style: italic; color: var(--c-red); }
-  .cta__btn {
-    display: inline-flex; align-items: center; gap: 1rem;
-    font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--c-ink); text-decoration: none;
-    border: 1.5px solid var(--c-ink); padding: 1rem 2.2rem;
-    transition: background .25s, color .25s, border-color .25s;
-  }
-  .cta__btn:hover { background: var(--c-red); border-color: var(--c-red); color: #fff; }
-  .cta__arr { transition: transform .25s; }
-  .cta__btn:hover .cta__arr { transform: translateX(5px); }
-
-  /* ── Responsive ─────────────────────────────────────────────── */
-  @media (max-width: 960px) {
-    .pr { grid-template-columns: 5rem 1fr; grid-template-rows: auto auto auto; }
-    .pr__price { grid-column: 2; text-align: left; }
-    .pr__btn { grid-column: 2; justify-self: start; }
-    .included, .factors { grid-template-columns: 1fr; gap: 3rem; }
-    .included__grid { grid-template-columns: 1fr; }
-    .ig:nth-child(even) { padding-left: 0; border-left: none; }
-    .ig:nth-last-child(-n+2) { border-bottom: 1px solid var(--c-border); }
-    .ig:last-child { border-bottom: none; }
-  }
-  @media (max-width: 640px) {
-    .pg { padding: 0 1.5rem; }
-    .hero { padding: 4.5rem 0 3.5rem; }
-    .pr { grid-template-columns: 1fr; }
-    .pr__meta { display: none; }
-    .ticker { margin: 0 -1.5rem; }
-    .pr::before { left: -1.5rem; }
-    .fl { grid-template-columns: 1fr; gap: .5rem; }
-  }
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .pr { grid-template-columns: 10rem 1fr; grid-template-rows: auto auto; }
+  .pr__r { grid-column: 2; text-align: left; display: flex; align-items: center; gap: 2rem; }
+  .pr__price { margin-bottom: 0; }
+  .inc { grid-template-columns: 1fr; gap: 4rem; }
+  .inc__h { position: static; }
+}
+@media (max-width: 768px) {
+  .inc__g { grid-template-columns: 1fr; }
+  .ig:nth-child(even) { padding-left: 0; border-left: none; }
+  .ig:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .ig:last-child { border-bottom: none; }
+}
+@media (max-width: 640px) {
+  .pg { padding: 0 1.5rem; }
+  .hero { padding: 5rem 0 4rem; }
+  .hero__h { font-size: clamp(3.5rem, 16vw, 6rem); }
+  .pr { grid-template-columns: 1fr; }
+  .pr__l { flex-direction: column; gap: .5rem; }
+  .pr__n { display: none; }
+  .pr__r { grid-column: 1; text-align: left; }
+  .ticker { margin: 0 -1.5rem; }
+  .cta { padding: 6rem 0; }
+}
 </style>
-
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-      }),
-      { threshold: 0.08 }
-    );
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      (el as HTMLElement).style.transitionDelay = `${i * 0.04}s`;
-      io.observe(el);
-    });
-  });
-</script>
