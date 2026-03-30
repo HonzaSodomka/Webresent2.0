@@ -249,17 +249,17 @@ import Divider from '../components/Divider.astro';
 
 /* ── HERO ─────────────────────────────────────────────────── */
 /*
-  Výška = 100vh minus fixní header (64px).
-  Flex column, eye nahoře, nadpis uprostřed, footer dole.
-  Žádný min-height — pevná výška = 1 obrazovka přesně.
+  3-řádkový grid: eye (auto) / nadpis (1fr) / foot (auto)
+  Nadpis skaluje vw — roste do šířky, ne výšky → žádné prázdno.
+  line-height .88 → slova těsně u sebe.
 */
 .hero {
   height: calc(100vh - 64px);
-  padding: 3.5rem 0 3rem;
+  padding: 2.5rem 0 2.5rem;
   border-bottom: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0;
   overflow: hidden;
 }
 
@@ -269,30 +269,30 @@ import Divider from '../components/Divider.astro';
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--white-3);
-  flex-shrink: 0;
+  align-self: start;
 }
 
-/* Nadpis roste aby zaplnil dostupný prostor */
+/*
+  font-size: clamp(min, vw-preferred, max)
+  Na 1400px wide → 10vw = 140px — text vyplní šířku hezky.
+  align-self: end → text sedí dole ve svém řádku, těsně nad footerem.
+*/
 .hero__h {
-  display: block;
-  /* clamp: min 3.5rem, skaluje s výškou viewportu, max 11rem */
-  font-size: clamp(3.8rem, 11vh, 11rem);
+  font-size: clamp(4rem, 10vw, 10.5rem);
   font-weight: 800;
-  line-height: .9;
+  line-height: .88;
   letter-spacing: -.04em;
   color: var(--white);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-self: end;
+  padding-bottom: 2.5rem;
 }
 
 .line { display: block; }
 .ital { font-style: italic; color: var(--white-2); }
 
-/* Footer vždy přesně dole, oddělený linkou */
+/* Footer — vždy dole, oddělený linkou */
 .hero__foot {
-  flex-shrink: 0;
+  align-self: end;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -303,10 +303,10 @@ import Divider from '../components/Divider.astro';
 }
 
 .hero__foot p {
-  font-size: .95rem;
+  font-size: .92rem;
   color: var(--white-2);
   line-height: 1.65;
-  max-width: 420px;
+  max-width: 400px;
 }
 
 .hero__cta {
@@ -528,13 +528,21 @@ a:hover .arr { transform: translateX(5px); }
   .retainer { grid-template-columns: 1fr; gap: 3rem; }
   .inc__g { grid-template-columns: 1fr 1fr; }
 }
+/* Na tabletách přepneme na auto výšku */
 @media (max-width: 900px) {
-  .hero { height: auto; min-height: calc(100vh - 64px); padding: 3rem 0 2.5rem; }
+  .hero {
+    height: auto;
+    min-height: calc(100vh - 64px);
+    grid-template-rows: auto 1fr auto;
+    padding: 2.5rem 0;
+    gap: 2rem;
+  }
+  .hero__h { align-self: center; padding-bottom: 0; }
 }
 @media (max-width: 768px) {
   .inc__g { grid-template-columns: 1fr; }
   .fl { grid-template-columns: 1fr; gap: .4rem; }
-  .hero__h { font-size: clamp(3.2rem, 12vw, 6rem); }
+  .hero__h { font-size: clamp(3rem, 13vw, 6rem); }
 }
 @media (max-width: 640px) {
   .pg { padding: 0 1.5rem; }
@@ -542,6 +550,7 @@ a:hover .arr { transform: translateX(5px); }
   .cta { padding: 4rem 0; }
   .retainer { padding: 2rem 1.5rem; }
   .hero__foot { gap: 1.5rem; }
+  .hero__foot p { font-size: .85rem; }
 }
 </style>
 
