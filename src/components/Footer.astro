@@ -49,6 +49,7 @@ const p = Astro.url.pathname;
 .f {
   border-top: 1px solid var(--line);
   background: var(--bg);
+  margin-top: 5rem;
 }
 
 .f__inner {
@@ -149,6 +150,7 @@ const p = Astro.url.pathname;
 .f__legal-a:hover { color: var(--white); }
 
 @media (max-width: 640px) {
+  .f { margin-top: 3rem; }
   .f__inner { padding: 2.5rem 1.5rem 1.5rem; }
   .f__top { flex-direction: column; }
   .f__contact { align-items: flex-start; }

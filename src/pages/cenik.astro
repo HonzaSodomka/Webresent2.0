@@ -23,19 +23,19 @@ import Divider from '../components/Divider.astro';
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <p class="hero__eye reveal">Transparentní ceník &mdash; 02</p>
+    <p class="hero__eye a-hero" style="--d:0s">Transparentní ceník &mdash; 02</p>
 
     <div class="hero__body">
-      <h1 class="hero__h reveal" data-delay="0.05s">
+      <h1 class="hero__h a-hero" style="--d:.1s">
         Kolik stojí<br/>
         <em>dobrý web?</em>
       </h1>
-      <p class="hero__sub reveal" data-delay="0.15s">
+      <p class="hero__sub a-hero" style="--d:.22s">
         Cena roste podle toho, co váš web reálně potřebuje.
         Po konzultaci dostanete přesnou nabídku šitou na míru —
         pevnou, bez překvapení.
       </p>
-      <div class="hero__ctas reveal" data-delay="0.25s">
+      <div class="hero__ctas a-hero" style="--d:.34s">
         <a href="/objednavka" class="hero__cta hero__cta--primary">
           Poptat web <span class="arr">→</span>
         </a>
@@ -45,7 +45,7 @@ import Divider from '../components/Divider.astro';
       </div>
     </div>
 
-    <div class="hero__foot reveal" data-delay="0.35s">
+    <div class="hero__foot a-hero" style="--d:.46s">
       <span class="hero__foot-item">Statický web <strong>od 9&nbsp;900&nbsp;Kč</strong></span>
       <span class="hero__foot-dot" aria-hidden="true">/</span>
       <span class="hero__foot-item">Upravitelný web <strong>od 19&nbsp;900&nbsp;Kč</strong></span>
@@ -56,8 +56,7 @@ import Divider from '../components/Divider.astro';
 
   <!-- PRICING CARDS -->
   <section class="cards">
-
-    <div class="card reveal" data-delay="0s">
+    <div class="card" data-anim="scale-in" data-delay="0s">
       <div class="card__top">
         <span class="card__n">01</span>
         <span class="card__tag">Základní</span>
@@ -79,7 +78,7 @@ import Divider from '../components/Divider.astro';
       <a href="/objednavka?type=staticky" class="card__btn">Mám zájem <span class="arr">→</span></a>
     </div>
 
-    <div class="card card--hi reveal" data-delay="0.08s">
+    <div class="card card--hi" data-anim="scale-in" data-delay="0.1s">
       <div class="card__top">
         <span class="card__n">02</span>
         <span class="card__badge">Nejpopulárnější</span>
@@ -101,7 +100,7 @@ import Divider from '../components/Divider.astro';
       <a href="/objednavka?type=upravitelny" class="card__btn">Chci web na míru <span class="arr">→</span></a>
     </div>
 
-    <div class="card reveal" data-delay="0.16s">
+    <div class="card" data-anim="scale-in" data-delay="0.2s">
       <div class="card__top">
         <span class="card__n">03</span>
         <span class="card__tag">Na míru</span>
@@ -120,30 +119,29 @@ import Divider from '../components/Divider.astro';
       </div>
       <a href="/objednavka?type=aplikace" class="card__btn">Probrat projekt <span class="arr">→</span></a>
     </div>
-
   </section>
 
   <Divider label="Co ovlivňuje cenu" />
 
   <section class="factors">
-    <div class="factors__hd reveal">
+    <div class="factors__hd" data-anim="fade-left">
       <h2 class="factors__title">Co může<br/><em>ovlivnit</em><br/>finální cenu?</h2>
       <p class="factors__sub">Každý projekt je jiný. Někdo potřebuje jen rychlou vizitku, jiný komplexní portál co ušetří hodiny administrativy. Po konzultaci dostanete vždy přesnou nabídku — vždy rovinu.</p>
     </div>
     <dl class="factors__list">
-      <div class="fl reveal" data-delay="0s"><dt>Počet podstránek</dt><dd>Rozdíl mezi jednostránkovým webem a webem s blogem, ceníkem a případovými studiemi.</dd></div>
-      <div class="fl reveal" data-delay="0.06s"><dt>Možnost upravovat obsah</dt><dd>Jestli potřebujete měnit jen články, nebo celou strukturu webu — bez vývojáře.</dd></div>
-      <div class="fl reveal" data-delay="0.12s"><dt>Jazykové mutace</dt><dd>Příprava vícejazyčné architektury pro přepínání mezi jazyky (např. CZ&nbsp;/&nbsp;EN).</dd></div>
-      <div class="fl reveal" data-delay="0.18s"><dt>Specifické funkce</dt><dd>Interaktivní mapy, rezervační formuláře, kalkulačky nebo pokročilé filtry.</dd></div>
-      <div class="fl reveal" data-delay="0.24s"><dt>Napojení třetích stran</dt><dd>Integrace fakturačních systémů (Fakturoid), e-mailových nástrojů (Mailchimp) a dalších API.</dd></div>
-      <div class="fl reveal" data-delay="0.30s"><dt>Dlouhodobá správa</dt><dd>Zda web předám do vašich rukou, nebo se o provoz, aktualizace a bezpečnost budu starat sám.</dd></div>
+      <div class="fl" data-anim="fade-right" data-delay="0s"><dt>Počet podstránek</dt><dd>Rozdíl mezi jednostránkovým webem a webem s blogem, ceníkem a případovými studiemi.</dd></div>
+      <div class="fl" data-anim="fade-right" data-delay="0.07s"><dt>Možnost upravovat obsah</dt><dd>Jestli potřebujete měnit jen články, nebo celou strukturu webu — bez vývojáře.</dd></div>
+      <div class="fl" data-anim="fade-right" data-delay="0.14s"><dt>Jazykové mutace</dt><dd>Příprava vícejazyčné architektury pro přepínání mezi jazyky (např. CZ&nbsp;/&nbsp;EN).</dd></div>
+      <div class="fl" data-anim="fade-right" data-delay="0.21s"><dt>Specifické funkce</dt><dd>Interaktivní mapy, rezervační formuláře, kalkulačky nebo pokročilé filtry.</dd></div>
+      <div class="fl" data-anim="fade-right" data-delay="0.28s"><dt>Napojení třetích stran</dt><dd>Integrace fakturačních systémů (Fakturoid), e-mailových nástrojů (Mailchimp) a dalších API.</dd></div>
+      <div class="fl" data-anim="fade-right" data-delay="0.35s"><dt>Dlouhodobá správa</dt><dd>Zda web předám do vašich rukou, nebo se o provoz, aktualizace a bezpečnost budu starat sám.</dd></div>
     </dl>
   </section>
 
   <Divider label="Volitelný doplněk" />
 
-  <section class="retainer reveal">
-    <div class="retainer__l">
+  <section class="retainer">
+    <div class="retainer__l" data-anim="fade-left">
       <span class="retainer__tag">Správa &amp; hosting</span>
       <h2 class="retainer__title">Dlouhodobá správa<br/>a údržba webu</h2>
       <p class="retainer__desc">Vy řešíte byznys, já web. Hosting, bezpečnostní aktualizace, hlídání dostupnosti — všechno běží u mě a vy máte klid.</p>
@@ -155,7 +153,7 @@ import Divider from '../components/Divider.astro';
         <li>Drobné úpravy obsahu na vyžádání</li>
       </ul>
     </div>
-    <div class="retainer__r">
+    <div class="retainer__r" data-anim="fade-right" data-delay="0.1s">
       <span class="retainer__label">Měsíční paušál</span>
       <span class="retainer__price">Individuálně</span>
       <p class="retainer__note">Cena závisí na velikosti webu, nárokách na server a rozsahu podpory.</p>
@@ -166,15 +164,15 @@ import Divider from '../components/Divider.astro';
   <Divider label="Standard každého projektu" />
 
   <section class="inc">
-    <h2 class="inc__h reveal">Tohle dostanete<br/><em>vždy.</em></h2>
-    <p class="inc__sub reveal" data-delay="0.1s">Ať stavíme vizitku nebo e-shop — pod kapotou šlape na 100 %. Žádné kompromisy, žádné příplatky za základní standard.</p>
+    <h2 class="inc__h" data-anim="fade-up">Tohle dostanete<br/><em>vždy.</em></h2>
+    <p class="inc__sub" data-anim="fade-up" data-delay="0.1s">Ať stavíme vizitku nebo e-shop — pod kapotou šlape na 100 %. Žádné kompromisy, žádné příplatky za základní standard.</p>
     <ul class="inc__g">
-      <li class="ig reveal" data-delay="0s"><span class="ig__n">01</span><h3>Rychlé načítání</h3><p>Žádné WordPress šablony s tucty pluginů. Čistý kód — váš web se načte dřív, než zákazník stihne mrknout.</p></li>
-      <li class="ig reveal" data-delay="0.07s"><span class="ig__n">02</span><h3>Plná responzivita</h3><p>Většina zákazníků vás hledá na mobilu v tramvaji. Web bude vypadat a fungovat perfektně na každém displeji.</p></li>
-      <li class="ig reveal" data-delay="0.14s"><span class="ig__n">03</span><h3>Technické SEO</h3><p>Správné titulky, strukturovaná data, napojení do Google Search Console. Vyhledávače vás najdou a budou vás brát vážně.</p></li>
-      <li class="ig reveal" data-delay="0.21s"><span class="ig__n">04</span><h3>Texty v ceně</h3><p>Copywriting je součástí každého projektu. Nemusíte přinášet vlastní texty — napíšu je sám, tak aby prodávaly.</p></li>
-      <li class="ig reveal" data-delay="0.28s"><span class="ig__n">05</span><h3>Nasazení &amp; hosting</h3><p>Hotový web nasadím na rychlý server. Neřešíte domény, FTP ani konfiguraci — web je hned v provozu.</p></li>
-      <li class="ig reveal" data-delay="0.35s"><span class="ig__n">06</span><h3>Pevná cena</h3><p>Co se domluvíme, to zaplatíte. Žádné příplatky za složitost, žádné skryté položky na faktuře.</p></li>
+      <li class="ig" data-anim="scale-in" data-delay="0s"><span class="ig__n">01</span><h3>Rychlé načítání</h3><p>Žádné WordPress šablony s tucty pluginů. Čistý kód — váš web se načte dřív, než zákazník stihne mrknout.</p></li>
+      <li class="ig" data-anim="scale-in" data-delay="0.07s"><span class="ig__n">02</span><h3>Plná responzivita</h3><p>Většina zákazníků vás hledá na mobilu v tramvaji. Web bude vypadat a fungovat perfektně na každém displeji.</p></li>
+      <li class="ig" data-anim="scale-in" data-delay="0.14s"><span class="ig__n">03</span><h3>Technické SEO</h3><p>Správné titulky, strukturovaná data, napojení do Google Search Console. Vyhledávače vás najdou a budou vás brát vážně.</p></li>
+      <li class="ig" data-anim="scale-in" data-delay="0.21s"><span class="ig__n">04</span><h3>Texty v ceně</h3><p>Copywriting je součástí každého projektu. Nemusíte přinášet vlastní texty — napíšu je sám, tak aby prodávaly.</p></li>
+      <li class="ig" data-anim="scale-in" data-delay="0.28s"><span class="ig__n">05</span><h3>Nasazení &amp; hosting</h3><p>Hotový web nasadím na rychlý server. Neřešíte domény, FTP ani konfiguraci — web je hned v provozu.</p></li>
+      <li class="ig" data-anim="scale-in" data-delay="0.35s"><span class="ig__n">06</span><h3>Pevná cena</h3><p>Co se domluvíme, to zaplatíte. Žádné příplatky za složitost, žádné skryté položky na faktuře.</p></li>
     </ul>
   </section>
 
@@ -182,10 +180,10 @@ import Divider from '../components/Divider.astro';
 
   <!-- CTA -->
   <section class="cta">
-    <p class="cta__e reveal">Nejste si jistí, co přesně potřebujete?</p>
-    <h2 class="cta__h reveal" data-delay="0.1s">Ozvěte<br/><em>se mi.</em></h2>
-    <p class="cta__sub reveal" data-delay="0.18s">Probereme váš byznys a najdeme řešení. Podívejte se také na <a href="/portfolio">ukázky hotových webů</a>.</p>
-    <a href="/objednavka?type=konzultace" class="cta__btn reveal" data-delay="0.26s">
+    <p class="cta__e" data-anim="fade-up">Nejste si jistí, co přesně potřebujete?</p>
+    <h2 class="cta__h" data-anim="fade-up" data-delay="0.1s">Ozvěte<br/><em>se mi.</em></h2>
+    <p class="cta__sub" data-anim="fade-up" data-delay="0.2s">Probereme váš byznys a najdeme řešení. Podívejte se také na <a href="/portfolio">ukázky hotových webů</a>.</p>
+    <a href="/objednavka?type=konzultace" class="cta__btn" data-anim="scale-in" data-delay="0.3s">
       Poptat nezávazně web <span class="arr">→</span>
     </a>
   </section>
@@ -196,12 +194,12 @@ import Divider from '../components/Divider.astro';
 <style>
 .pg { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
 
+/* ── HERO ── */
 .hero {
   padding: 2.5rem 0;
   border-bottom: 1px solid var(--line);
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 0;
   overflow: hidden;
 }
 
@@ -238,24 +236,13 @@ import Divider from '../components/Divider.astro';
   max-width: 560px;
 }
 
-.hero__ctas {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+.hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 .hero__cta {
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: .9rem 2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  transition: opacity .2s;
-  white-space: nowrap;
+  font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; text-decoration: none;
+  padding: .9rem 2rem; display: inline-flex; align-items: center;
+  gap: .6rem; transition: opacity .2s; white-space: nowrap;
 }
 .hero__cta--primary { color: var(--bg); background: var(--white); }
 .hero__cta--primary:hover { opacity: .75; }
@@ -264,24 +251,62 @@ import Divider from '../components/Divider.astro';
 
 .hero__foot {
   align-self: end;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  padding-top: 2rem;
-  border-top: 1px solid var(--line);
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  padding-top: 2rem; border-top: 1px solid var(--line);
 }
 .hero__foot-item { font-size: .78rem; color: var(--white-3); letter-spacing: .02em; }
 .hero__foot-item strong { color: var(--white-2); font-weight: 600; }
 .hero__foot-dot { color: var(--white-3); opacity: .3; font-size: .8rem; }
 
+/* ── HERO ENTRANCE (CSS anim, okamžité při loadu) ── */
+.a-hero {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: aHero .9s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes aHero {
+  to { opacity: 1; transform: none; }
+}
+
+/* ── SCROLL ANIMATIONS ── */
+/*
+  Nastaví počáteční stav podle data-anim.
+  JS přidá .in-view až element vstoupí do viewportu.
+*/
+[data-anim] {
+  will-change: opacity, transform;
+}
+[data-anim="fade-up"] {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+}
+[data-anim="fade-left"] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+}
+[data-anim="fade-right"] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+}
+[data-anim="scale-in"] {
+  opacity: 0;
+  transform: scale(.96) translateY(20px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+}
+[data-anim].in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── CARDS ── */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin: 5rem -2.5rem 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line); margin: 5rem -2.5rem 0;
 }
 .card { background: var(--bg); padding: 3rem 2.5rem; display: flex; flex-direction: column; transition: background .25s; }
 .card:hover { background: var(--bg-2); }
@@ -305,6 +330,7 @@ import Divider from '../components/Divider.astro';
 .card__btn { display: inline-flex; align-items: center; gap: .5rem; align-self: flex-start; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--white); text-decoration: none; border: 1px solid var(--white-3); padding: .7rem 1.4rem; transition: border-color .2s; }
 .card__btn:hover { border-color: var(--white); }
 
+/* ── FACTORS ── */
 .factors { display: grid; grid-template-columns: 1fr 2fr; gap: 8rem; align-items: start; }
 .factors__title { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -.035em; line-height: .95; color: var(--white); margin-bottom: 1.5rem; }
 .factors__title em { font-style: italic; color: var(--white-2); }
@@ -315,6 +341,7 @@ import Divider from '../components/Divider.astro';
 .fl dt { font-size: .9rem; font-weight: 700; color: var(--white); letter-spacing: -.01em; }
 .fl dd { font-size: .85rem; color: var(--white-2); line-height: 1.6; }
 
+/* ── RETAINER ── */
 .retainer { display: grid; grid-template-columns: 2fr 1fr; gap: 6rem; align-items: start; padding: 3.5rem; border: 1px solid var(--line); background: var(--bg-2); }
 .retainer__tag { display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white-3); border: 1px solid var(--line); padding: .2rem .7rem; margin-bottom: 1.5rem; }
 .retainer__title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--white); margin-bottom: 1.2rem; }
@@ -328,6 +355,7 @@ import Divider from '../components/Divider.astro';
 .retainer__btn { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--white); text-decoration: none; border: 1px solid var(--white-3); padding: .7rem 1.4rem; transition: border-color .2s; }
 .retainer__btn:hover { border-color: var(--white); }
 
+/* ── INCLUDED ── */
 .inc__h { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; letter-spacing: -.04em; line-height: .92; color: var(--white); margin-bottom: 1.5rem; }
 .inc__h em { font-style: italic; color: var(--white-2); }
 .inc__sub { font-size: 1rem; color: var(--white-2); line-height: 1.65; max-width: 560px; margin-bottom: 4rem; }
@@ -338,6 +366,7 @@ import Divider from '../components/Divider.astro';
 .ig h3 { font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; letter-spacing: -.01em; }
 .ig p { font-size: .83rem; color: var(--white-2); line-height: 1.65; }
 
+/* ── CTA ── */
 .cta { padding: 0; text-align: center; }
 .cta__e { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--white-3); margin-bottom: 1.5rem; }
 .cta__h { font-size: clamp(4.5rem, 13vw, 11rem); font-weight: 800; letter-spacing: -.05em; line-height: .88; color: var(--white); margin-bottom: 1.5rem; }
@@ -350,6 +379,7 @@ import Divider from '../components/Divider.astro';
 .arr { transition: transform .25s; display: inline-block; }
 a:hover .arr { transform: translateX(5px); }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 1100px) {
   .cards { grid-template-columns: 1fr; margin: 4rem 0 0; }
   .factors { grid-template-columns: 1fr; gap: 3rem; }
@@ -361,30 +391,46 @@ a:hover .arr { transform: translateX(5px); }
   .fl { grid-template-columns: 1fr; gap: .4rem; }
   .hero__h { font-size: clamp(2.8rem, 11vw, 5rem); }
   .hero__body { padding: 2rem 0; gap: 1.5rem; }
+  /* Na mobilu fade-left/right -> fade-up aby to nepřetečlo */
+  [data-anim="fade-left"], [data-anim="fade-right"] {
+    transform: translateY(36px);
+  }
 }
 @media (max-width: 640px) {
   .pg { padding: 0 1.5rem; }
-  .cta { padding: 0; }
   .retainer { padding: 2rem 1.5rem; }
   .hero__foot { gap: 1rem; }
   .hero__ctas { flex-direction: column; }
   .hero__cta { text-align: center; justify-content: center; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .a-hero, [data-anim] {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 </style>
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach(e => {
+    const els = document.querySelectorAll<HTMLElement>('[data-anim]');
+    if (!els.length) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
         if (e.isIntersecting) {
           const el = e.target as HTMLElement;
-          el.style.transitionDelay = el.dataset.delay || '0s';
-          el.classList.add('is-visible');
+          const delay = el.dataset.delay || '0s';
+          el.style.transitionDelay = delay;
+          el.classList.add('in-view');
           io.unobserve(el);
         }
-      }),
-      { threshold: 0.06 }
-    );
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach(el => io.observe(el));
   });
 </script>
