@@ -55,9 +55,9 @@ const ogImageURL = new URL(ogImage, siteURL).href;
         "name": "Webresent", "url": "https://webresent.cz",
         "telephone": "+420604994883", "email": "info@webresent.cz",
         "founder": { "@type": "Person", "name": "Jan Sodomka", "honorificPrefix": "Bc." },
-        "areaServed": { "@type": "Country", "name": "Česká republika" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Mladá Boleslav", "addressCountry": "CZ" },
-        "priceRange": "9 900 Kč – 50 000 Kč" }
+        "areaServed": { "@type": "Country", "name": "\u010cesk\u00e1 republika" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Mlad\u00e1 Boleslav", "addressCountry": "CZ" },
+        "priceRange": "9 900 K\u010d \u2013 50 000 K\u010d" }
     ]
   }</script>
   <ClientRouter />
@@ -65,10 +65,8 @@ const ogImageURL = new URL(ogImage, siteURL).href;
 <body style="padding-top:64px; display:flex; flex-direction:column; min-height:100vh;">
   <script>document.documentElement.classList.add('js')</script>
 
-  <!-- custom cursor -->
   <div class="cursor" id="cur"></div>
-
-  <a href="#main-content" style="position:absolute;left:-9999px">Přeskočit na obsah</a>
+  <a href="#main-content" style="position:absolute;left:-9999px">P\u0159esko\u010dit na obsah</a>
 
   <Header />
   <div style="flex:1" id="main-content"><slot /></div>
@@ -76,6 +74,9 @@ const ogImageURL = new URL(ogImage, siteURL).href;
 
   <script>
     import Lenis from 'lenis';
+
+    let _heroResize: (() => void) | null = null;
+    let _heroOrient: (() => void) | null = null;
 
     document.addEventListener('astro:page-load', () => {
       // Lenis
@@ -115,6 +116,25 @@ const ogImageURL = new URL(ogImage, siteURL).href;
         });
       } else if (cur) {
         cur.style.display = 'none';
+      }
+
+      // Hero dynamic height
+      if (_heroResize) { window.removeEventListener('resize', _heroResize); _heroResize = null; }
+      if (_heroOrient) { window.removeEventListener('orientationchange', _heroOrient); _heroOrient = null; }
+
+      const hero = document.getElementById('hero');
+      if (hero) {
+        let lastW = window.innerWidth;
+        const setH = () => {
+          const hdr = document.querySelector('header');
+          const offset = hdr ? hdr.getBoundingClientRect().bottom : 64;
+          hero.style.minHeight = (window.innerHeight - offset) + 'px';
+        };
+        setH();
+        _heroResize = () => { if (window.innerWidth !== lastW) { lastW = window.innerWidth; setH(); } };
+        _heroOrient = () => setTimeout(setH, 100);
+        window.addEventListener('resize', _heroResize);
+        window.addEventListener('orientationchange', _heroOrient);
       }
     });
   </script>
