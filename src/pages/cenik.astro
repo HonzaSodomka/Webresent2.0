@@ -1,11 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Divider from '../components/Divider.astro';
 ---
 
 <Layout
-  title="Ceník tvorby webů — od 9 900 Kč | Webresent"
-  description="Transparentní ceník tvorby webů na míru. Statický web od 9 900 Kč, firemní web s administrací od 19 900 Kč. Vždy pevná cena předem, bez překvapení."
+  title="Ceník tvorby webů — od 9 900 Kč | Webresent"
+  description="Transparentní ceník tvorby webů na míru. Statický web od 9 900 Kč, firemní web s administrací od 19 900 Kč. Vždy pevná cena předem, bez překvapení."
 >
 
 <script type="application/ld+json">
@@ -13,355 +12,615 @@ import Divider from '../components/Divider.astro';
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Domů",
-      "item": "https://webresent.cz"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Ceník",
-      "item": "https://webresent.cz/cenik"
-    }
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": "https://webresent.cz" },
+    { "@type": "ListItem", "position": 2, "name": "Ceník", "item": "https://webresent.cz/cenik" }
   ]
 }
 </script>
 
-  <main class="max-w-6xl 2xl:max-w-7xl mx-auto px-6 overflow-hidden">
+  <main class="cenik-main">
 
-    <!-- HERO SECTION -->
-    <section class="w-full flex flex-col items-center justify-center text-center pt-24 pb-16 lg:pt-32 lg:pb-24 fade-in-up">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm 2xl:text-base font-semibold text-blue-700 mb-6 2xl:mb-8">
-        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-        Transparentní ceník
-      </div>
-      <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter text-zinc-900 leading-[0.95] mb-6 2xl:mb-8 max-w-4xl">
-        Ceník tvorby webů na míru —<br class="hidden sm:block" />
-        <span class="text-blue-600">investice, která se vrátí.</span>
-      </h1>
-      <p class="text-lg md:text-xl 2xl:text-[1.25rem] text-zinc-600 max-w-2xl leading-relaxed font-medium">
-        Cena roste podle toho, co váš web reálně potřebuje. Po úvodní konzultaci dostanete vždy přesnou a finální nabídku šitou na míru vašemu byznysu.
-      </p>
+    <!-- HERO -->
+    <section class="cenik-hero">
+      <div class="cenik-hero__label reveal"><span>02</span> Ceník</div>
+      <h1 class="cenik-hero__title reveal">Kolik stál web,<br/>který vydělává?</h1>
+      <p class="cenik-hero__sub reveal">Transparentní ceny. Žádná překvapení.<br/>Vždy pevná cena předem.</p>
     </section>
 
-    <!-- PRICING CARDS -->
-    <section class="relative w-full max-w-5xl mx-auto">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full max-h-[500px] bg-blue-600/10 blur-[100px] rounded-full z-0 pointer-events-none"></div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center relative z-10">
-
-        <!-- KARTA 1 -->
-        <div class="pricing-card pricing-card--left bg-white border border-zinc-200 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-shadow,transform duration-500 flex flex-col h-full">
-          <h3 class="text-xl lg:text-2xl font-bold text-zinc-900 mb-2">Statický web</h3>
-          <p class="text-zinc-500 text-sm mb-6 h-auto min-h-[40px]">Ideální jako digitální vizitka podniku nebo pro prezentaci jedné služby.</p>
-          <div class="mb-6 flex items-end">
-            <span class="text-zinc-400 font-medium mr-1 mb-1">od</span>
-            <span class="text-3xl lg:text-4xl font-extrabold text-zinc-900">9 900</span>
-            <span class="text-zinc-500 font-medium mb-1"> Kč</span>
-          </div>
-          <ul class="flex flex-col gap-4 mb-8 flex-1">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-600 text-sm font-medium">Bleskové načítání kódu</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-600 text-sm font-medium">Moderní a čistý design</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-600 text-sm font-medium">Základní kontaktní formulář</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-zinc-300 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
-              <span class="text-zinc-400 text-sm font-medium line-through">Systém pro úpravu obsahu</span>
-            </li>
-          </ul>
-          <a href="/objednavka?type=staticky" data-astro-prefetch class="w-full py-3.5 rounded-full bg-zinc-50 border border-zinc-200 text-zinc-900 font-bold text-center hover:bg-zinc-100 hover:border-zinc-300 transition-all mt-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200">
-            Mám zájem
-          </a>
-        </div>
-
-        <!-- KARTA 2 (střední, zvýrazněná) -->
-        <div class="pricing-card pricing-card--center bg-zinc-900 border border-zinc-800 rounded-[2rem] p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] lg:scale-105 hover:-translate-y-2 lg:hover:scale-[1.07] transition-all duration-500 flex flex-col h-full relative overflow-hidden">
-          <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-600 to-blue-400"></div>
-          <div class="inline-flex self-start px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold rounded-md uppercase tracking-wider mb-4">
-            Nejčastější volba
-          </div>
-          <h3 class="text-2xl lg:text-3xl font-bold text-white mb-2">Upravitelný web</h3>
-          <p class="text-zinc-400 text-sm mb-6 h-auto min-h-[40px]">Zlatá střední cesta. Prezentace, kde si sami měníte texty i fotky.</p>
-          <div class="mb-6 flex items-end">
-            <span class="text-zinc-400 font-medium mr-1 mb-1">od</span>
-            <span class="text-4xl lg:text-5xl font-extrabold text-white">19 900</span>
-            <span class="text-zinc-400 font-medium mb-1"> Kč</span>
-          </div>
-          <ul class="flex flex-col gap-4 mb-8 flex-1">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-200 text-sm font-medium">Jednoduchá editace webu</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-200 text-sm font-medium">Vícestránková struktura</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-200 text-sm font-medium">Pokročilá technická SEO příprava</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-200 text-sm font-medium">Možnost budoucího rozšíření</span>
-            </li>
-          </ul>
-          <a href="/objednavka?type=upravitelny" data-astro-prefetch class="w-full py-4 rounded-full bg-blue-600 text-white font-bold text-center hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all mt-auto transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 focus:ring-offset-zinc-900">
-            Chci web na míru
-          </a>
-        </div>
-
-        <!-- KARTA 3 -->
-        <div class="pricing-card pricing-card--right bg-white border border-zinc-200 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-shadow,transform duration-500 flex flex-col h-full">
-          <h3 class="text-xl lg:text-2xl font-bold text-zinc-900 mb-2">Aplikace & E-shop</h3>
-          <p class="text-zinc-500 text-sm mb-6 h-auto min-h-[40px]">Rozsáhlá řešení se složitou logikou, účty uživatelů nebo API napojeními.</p>
-          <div class="mb-6 flex items-end h-[40px] lg:h-[48px]">
-            <span class="text-3xl lg:text-4xl font-extrabold text-zinc-900">Individuálně</span>
-          </div>
-          <ul class="flex flex-col gap-4 mb-8 flex-1">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-600 text-sm font-medium">Napojení na platební brány</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-600 text-sm font-medium">Automatizace procesů</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-600 text-sm font-medium">Filtrování a pokročilé funkce</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              <span class="text-zinc-600 text-sm font-medium">Integrace třetích stran (API)</span>
-            </li>
-          </ul>
-          <a href="/objednavka?type=aplikace" data-astro-prefetch class="w-full py-3.5 rounded-full bg-zinc-50 border border-zinc-200 text-zinc-900 font-bold text-center hover:bg-zinc-100 hover:border-zinc-300 transition-all mt-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200">
-            Probrat projekt
-          </a>
-        </div>
-
+    <!-- TICKER -->
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Statický web od 9 900 Kč</span>
+        <span aria-hidden="true">·</span>
+        <span>Upravitelný web od 19 900 Kč</span>
+        <span aria-hidden="true">·</span>
+        <span>E-shop & Aplikace individuálně</span>
+        <span aria-hidden="true">·</span>
+        <span>Pevná cena předem</span>
+        <span aria-hidden="true">·</span>
+        <span>Návrh zdarma</span>
+        <span aria-hidden="true">·</span>
+        <span>Statický web od 9 900 Kč</span>
+        <span aria-hidden="true">·</span>
+        <span>Upravitelný web od 19 900 Kč</span>
+        <span aria-hidden="true">·</span>
+        <span>E-shop & Aplikace individuálně</span>
+        <span aria-hidden="true">·</span>
+        <span>Pevná cena předem</span>
+        <span aria-hidden="true">·</span>
+        <span>Návrh zdarma</span>
+        <span aria-hidden="true">·</span>
       </div>
+    </div>
+
+    <!-- PRICING TABLE -->
+    <section class="pricing-section">
+
+      <article class="pricing-row reveal">
+        <div class="pricing-row__index">01</div>
+        <div class="pricing-row__content">
+          <h2 class="pricing-row__name">Statický web</h2>
+          <p class="pricing-row__desc">Ideální digitální vizitka nebo prezentace jedné služby. čistý kód, bleskova é načítání, žádné zbytečné závislosti.</p>
+          <ul class="pricing-row__features">
+            <li>Responzivní design na míru</li>
+            <li>Kontaktní formulář</li>
+            <li>Technické SEO</li>
+            <li>Napojení do Google Search Console</li>
+          </ul>
+        </div>
+        <div class="pricing-row__price">
+          <span class="pricing-row__from">od</span>
+          <span class="pricing-row__amount">9 900</span>
+          <span class="pricing-row__currency">Kč</span>
+        </div>
+        <a href="/objednavka?type=staticky" data-astro-prefetch class="pricing-row__cta">Poptat <span>→</span></a>
+      </article>
+
+      <article class="pricing-row pricing-row--featured reveal">
+        <div class="pricing-row__index">02</div>
+        <div class="pricing-row__content">
+          <h2 class="pricing-row__name">Upravitelný web
+            <span class="pricing-row__badge">Nejčastější volba</span>
+          </h2>
+          <p class="pricing-row__desc">Zlatá střední cesta. Vícestránková prezentace s administrací, kde si sami měníte texty a fotky bez ználosti kódu.</p>
+          <ul class="pricing-row__features">
+            <li>Vše ze Statického webu</li>
+            <li>Systém pro úpravu obsahu (CMS)</li>
+            <li>Vícestránková architektura</li>
+            <li>Pokročilá SEO příprava</li>
+            <li>Možnost budoucího rozšíření</li>
+          </ul>
+        </div>
+        <div class="pricing-row__price">
+          <span class="pricing-row__from">od</span>
+          <span class="pricing-row__amount">19 900</span>
+          <span class="pricing-row__currency">Kč</span>
+        </div>
+        <a href="/objednavka?type=upravitelny" data-astro-prefetch class="pricing-row__cta">Poptat <span>→</span></a>
+      </article>
+
+      <article class="pricing-row reveal">
+        <div class="pricing-row__index">03</div>
+        <div class="pricing-row__content">
+          <h2 class="pricing-row__name">Aplikace & E-shop</h2>
+          <p class="pricing-row__desc">Komplexní řešení — e-shopy, rezervační systémy, uživatelské portály, API integrace. Cena vždy na míru projektu.</p>
+          <ul class="pricing-row__features">
+            <li>Platební brány & e-commerce logika</li>
+            <li>Uživatelské účty & autentizace</li>
+            <li>Automatizace a API napojení</li>
+            <li>Pokročilé filtrování a funkce</li>
+          </ul>
+        </div>
+        <div class="pricing-row__price">
+          <span class="pricing-row__amount pricing-row__amount--custom">Individuálně</span>
+        </div>
+        <a href="/objednavka?type=aplikace" data-astro-prefetch class="pricing-row__cta">Probrat <span>→</span></a>
+      </article>
+
     </section>
 
-    <Divider />
+    <!-- WHAT'S ALWAYS INCLUDED -->
+    <section class="included-section">
+      <div class="included-section__header reveal">
+        <span class="included-section__label">Standard</span>
+        <h2 class="included-section__title">V každém projektu</h2>
+      </div>
+      <ul class="included-list">
+        <li class="included-item reveal"><span class="included-item__num">—</span><span>Bleskové načtítání &amp; optimalizace výkonu</span></li>
+        <li class="included-item reveal"><span class="included-item__num">—</span><span>Responzivita na všech zařízeních</span></li>
+        <li class="included-item reveal"><span class="included-item__num">—</span><span>Technické SEO &amp; strukturovaná data</span></li>
+        <li class="included-item reveal"><span class="included-item__num">—</span><span>Psaní textů v ceně</span></li>
+        <li class="included-item reveal"><span class="included-item__num">—</span><span>Napojení do Google Search Console</span></li>
+        <li class="included-item reveal"><span class="included-item__num">—</span><span>Nasazení na hosting &amp; doména</span></li>
+      </ul>
+    </section>
 
-    <!-- CO URČUJE CENU? -->
-    <section class="max-w-5xl mx-auto">
-      <div class="bg-zinc-50 border border-zinc-200 rounded-[2rem] p-8 lg:p-12">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-zinc-900 mb-6">Co může ovlivnit finální cenu webu?</h2>
-        <p class="text-zinc-600 mb-8 max-w-3xl leading-relaxed">
-          Každý projekt je unikátní. Někdo potřebuje jen rychlou vizitku, jiný chce komplexní portál, který mu ušetří hodiny administrativy. Zde jsou nejčastější prvky, které do tvorby ceny vstupují:
-        </p>
-        <div class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-          <ul class="space-y-4">
-            <li class="price-factor flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-              </div>
-              <div>
-                <strong class="text-zinc-900 block text-sm mb-1">Počet unikátních podstránek</strong>
-                <span class="text-zinc-600 text-sm">Rozdíl mezi jednostránkovým webem a webem s blogem, ceníkem a případovkami.</span>
-              </div>
-            </li>
-            <li class="price-factor flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-              </div>
-              <div>
-                <strong class="text-zinc-900 block text-sm mb-1">Možnost upravovat obsah</strong>
-                <span class="text-zinc-600 text-sm">Zda potřebujete sami upravovat pouze články, nebo naprosto celou strukturu webu.</span>
-              </div>
-            </li>
-            <li class="price-factor flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-              </div>
-              <div>
-                <strong class="text-zinc-900 block text-sm mb-1">Jazykové mutace</strong>
-                <span class="text-zinc-600 text-sm">Příprava architektury pro přepínání jazyků (např. CZ / EN).</span>
-              </div>
-            </li>
-          </ul>
-          <ul class="space-y-4">
-            <li class="price-factor flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-              </div>
-              <div>
-                <strong class="text-zinc-900 block text-sm mb-1">Specifické funkce</strong>
-                <span class="text-zinc-600 text-sm">Interaktivní mapy, pokročilé kalkulačky, nebo složitější rezervační formuláře.</span>
-              </div>
-            </li>
-            <li class="price-factor flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-              </div>
-              <div>
-                <strong class="text-zinc-900 block text-sm mb-1">Napojení třetích stran</strong>
-                <span class="text-zinc-600 text-sm">Integrace fakturačního systému (Fakturoid), automatizace e-mailů (Mailchimp) aj.</span>
-              </div>
-            </li>
-            <li class="price-factor flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
-              </div>
-              <div>
-                <strong class="text-zinc-900 block text-sm mb-1">Dlouhodobá správa webu</strong>
-                <span class="text-zinc-600 text-sm">Zda web po dokončení předám do vašich rukou, nebo se o jeho chod a aktualizace budu starat já.</span>
-              </div>
-            </li>
-          </ul>
+    <!-- CO OVLIVNI CENU -->
+    <section class="factors-section">
+      <div class="factors-section__header reveal">
+        <span class="factors-section__label">Transparentnost</span>
+        <h2 class="factors-section__title">Co ovlivňuje cenu?</h2>
+        <p class="factors-section__sub">Každý projekt je jiný. Po konzultaci dostanete přesnou nabídku šitou na míru.</p>
+      </div>
+      <div class="factors-grid">
+        <div class="factor-item reveal">
+          <span class="factor-item__num">01</span>
+          <h3>Počet podstránek</h3>
+          <p>Jednostránkový web vs. složitá struktura s blogem, ceníkem a případovými studiemi.</p>
+        </div>
+        <div class="factor-item reveal">
+          <span class="factor-item__num">02</span>
+          <h3>Správa obsahu</h3>
+          <p>Zda potřebujete upravovat jen články, nebo celou strukturu webu — bez programování.</p>
+        </div>
+        <div class="factor-item reveal">
+          <span class="factor-item__num">03</span>
+          <h3>Speciální funkce</h3>
+          <p>Interaktivní mapy, rezervační systémy, kalkulace, pokročilé formuláře.</p>
+        </div>
+        <div class="factor-item reveal">
+          <span class="factor-item__num">04</span>
+          <h3>Integrace třetích stran</h3>
+          <p>Napojení na Fakturoid, Mailchimp, platební brány nebo vlastní systémy.</p>
+        </div>
+        <div class="factor-item reveal">
+          <span class="factor-item__num">05</span>
+          <h3>Jazykové mutace</h3>
+          <p>Příprava architektury pro vícejazyčnost (např. CZ / EN).</p>
+        </div>
+        <div class="factor-item reveal">
+          <span class="factor-item__num">06</span>
+          <h3>Dlouhodobá správa</h3>
+          <p>Měsíční paušál za hosting, aktualizace a průběžné üpravy.</p>
         </div>
       </div>
     </section>
 
-    <Divider />
-
-    <!-- MĚSÍČNÍ SPRÁVA -->
-    <section class="max-w-5xl mx-auto scroll-reveal">
-      <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-white border border-blue-200 rounded-[2rem] p-8 lg:p-10 shadow-[0_15px_40px_-15px_rgba(37,99,235,0.1)] relative overflow-hidden">
-        <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-50 rounded-full blur-3xl -z-10"></div>
-        <div class="w-full lg:w-2/3">
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 bg-blue-50 border border-blue-100 text-[10px] font-bold text-blue-600 rounded-md uppercase tracking-wider mb-4">
-            Volitelný doplněk
-          </div>
-          <h2 class="text-2xl md:text-3xl font-extrabold text-zinc-900 mb-4">Dlouhodobá správa a údržba</h2>
-          <p class="text-zinc-600 mb-6 leading-relaxed">
-            Vy se staráte o byznys, já o to, aby web bezchybně běžel. Neřešíte výpadky, bezpečnostní rizika ani technické problémy.
-          </p>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-blue-500"></div><span class="text-sm font-medium text-zinc-700">Rychlý hosting na mém serveru</span></div>
-            <div class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-blue-500"></div><span class="text-sm font-medium text-zinc-700">Bezpečnostní aktualizace</span></div>
-            <div class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-blue-500"></div><span class="text-sm font-medium text-zinc-700">Aktivní hlídání dostupnosti</span></div>
-            <div class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-blue-500"></div><span class="text-sm font-medium text-zinc-700">Podpora při problémech</span></div>
-          </div>
-        </div>
-        <div class="w-full lg:w-1/3 flex flex-col items-start lg:items-center justify-center p-6 bg-zinc-50 border border-zinc-200 rounded-2xl relative z-10">
-          <span class="text-zinc-500 text-sm font-medium mb-1">Měsíční paušál</span>
-          <div class="flex items-end mb-4">
-            <span class="text-2xl lg:text-3xl font-extrabold text-zinc-900">Individuálně</span>
-          </div>
-          <p class="text-xs text-zinc-500 text-left lg:text-center leading-relaxed">*Cena se odvíjí od velikosti webu, náročnosti na server a rozsahu podpory.</p>
-        </div>
-      </div>
-    </section>
-
-    <Divider />
-
-    <!-- CO JE ZAHRNUTO -->
-    <section class="max-w-5xl mx-auto">
-      <div class="text-center mb-12 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4 tracking-tight">Co je zahrnuto v každém webu?</h2>
-        <p class="text-lg text-zinc-600 max-w-2xl mx-auto">Ať už stavíme jednoduchou vizitku nebo e-shop, pod kapotou to šlape na 100&nbsp;%. Tohle je standard každého mého projektu.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <div class="feature-card bg-zinc-50 border border-zinc-200 rounded-3xl p-8 hover:border-zinc-300 hover:shadow-md transition-all duration-300">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl border border-blue-100 shadow-sm flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-zinc-900 mb-2">Bleskové načítání</h3>
-          <p class="text-zinc-600 text-sm leading-relaxed">Žádné pomalé WordPress šablony s tisícem pluginů. Píšu čistý kód, takže se váš web načte dřív, než zákazník stihne mrknout.</p>
-        </div>
-        <div class="feature-card bg-zinc-50 border border-zinc-200 rounded-3xl p-8 hover:border-zinc-300 hover:shadow-md transition-all duration-300">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl border border-blue-100 shadow-sm flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/><path d="M10 19v-3.96 3.15"/><path d="M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-zinc-900 mb-2">Plná responzivita</h3>
-          <p class="text-zinc-600 text-sm leading-relaxed">Většina uživatelů si vaši službu hledá na mobilu cestou v tramvaji. Váš web bude vypadat a fungovat bezchybně na každém displeji.</p>
-        </div>
-        <div class="feature-card bg-zinc-50 border border-zinc-200 rounded-3xl p-8 hover:border-zinc-300 hover:shadow-md transition-all duration-300">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl border border-blue-100 shadow-sm flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-zinc-900 mb-2">Základní viditelnost</h3>
-          <p class="text-zinc-600 text-sm leading-relaxed">Nasazení správných titulků a napojení do Google Search Console, aby o vás vyhledávače věděly a klienti vás mohli najít podle jména.</p>
-        </div>
-      </div>
-    </section>
-
-    <Divider />
-
-    <!-- BOTTOM CTA -->
-    <section class="pb-16 lg:pb-24 scroll-reveal">
-      <div class="flex flex-col items-center justify-center">
-        <h3 class="text-2xl md:text-3xl font-extrabold text-zinc-900 mb-4 text-center">Nejste si jistí, co přesně potřebujete?</h3>
-        <p class="text-zinc-500 font-medium text-center mb-8 max-w-md">Ozvěte se mi. Probereme váš byznys a najdeme řešení. Podívejte se také na <a href="/portfolio" class="text-blue-600 font-bold hover:underline">ukázky hotových webů</a>.</p>
-        <a href="/objednavka?type=konzultace" data-astro-prefetch class="px-8 py-4 rounded-full bg-blue-600 text-white font-bold text-lg hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_20px_rgba(37,99,235,0.2)] focus:outline-none focus:ring-4 focus:ring-blue-500/50">
-          Poptat nezávazně web
-        </a>
-      </div>
+    <!-- CTA -->
+    <section class="cenik-cta reveal">
+      <p class="cenik-cta__sub">Nejste si jisti, co přesně potřebujete?</p>
+      <h2 class="cenik-cta__title">Napíšeme si.</h2>
+      <a href="/objednavka?type=konzultace" data-astro-prefetch class="cenik-cta__btn">
+        Nezávazná konzultace
+        <span class="cenik-cta__arrow">→</span>
+      </a>
     </section>
 
   </main>
+
 </Layout>
 
 <style>
-  /* ── Pricing cards: slide in from sides ───────────────────────────── */
-  .pricing-card {
+  /* ── Reset & base ───────────────────────────────────────────── */
+  .cenik-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── Hero ───────────────────────────────────────────────────── */
+  .cenik-hero {
+    padding: 8rem 0 6rem;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .cenik-hero__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .cenik-hero__label span {
+    color: #111;
+  }
+  .cenik-hero__title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #111;
+    margin-bottom: 2rem;
+  }
+  .cenik-hero__sub {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* ── Ticker ─────────────────────────────────────────────────── */
+  .ticker-wrap {
+    overflow: hidden;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 1.25rem 0;
+    margin: 0 -2rem;
+  }
+  .ticker-track {
+    display: inline-flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: ticker 22s linear infinite;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #444;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── Pricing rows ───────────────────────────────────────────── */
+  .pricing-section {
+    padding: 0;
+  }
+  .pricing-row {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto auto;
+    gap: 2rem;
+    align-items: start;
+    padding: 3.5rem 0;
+    border-bottom: 1px solid #e4e4e4;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+  .pricing-row:hover {
+    background: #f9f9f9;
+    margin: 0 -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .pricing-row--featured {
+    background: #111;
+    margin: 0 -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-bottom: 1px solid #333;
+  }
+  .pricing-row--featured:hover {
+    background: #1a1a1a;
+    margin: 0 -2rem;
+  }
+  .pricing-row__index {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #aaa;
+    letter-spacing: 0.1em;
+    padding-top: 0.4rem;
+  }
+  .pricing-row--featured .pricing-row__index { color: #555; }
+
+  .pricing-row__content { flex: 1; }
+  .pricing-row__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .pricing-row--featured .pricing-row__name { color: #fff; }
+
+  .pricing-row__badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: #fff;
+    color: #111;
+    padding: 0.25rem 0.65rem;
+    border-radius: 2px;
+  }
+  .pricing-row__desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 480px;
+    margin-bottom: 1.25rem;
+  }
+  .pricing-row--featured .pricing-row__desc { color: #999; }
+
+  .pricing-row__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .pricing-row__features li {
+    font-size: 0.85rem;
+    color: #555;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .pricing-row__features li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #bbb;
+  }
+  .pricing-row--featured .pricing-row__features li { color: #888; }
+  .pricing-row--featured .pricing-row__features li::before { color: #444; }
+
+  .pricing-row__price {
+    text-align: right;
+    padding-top: 0.2rem;
+    white-space: nowrap;
+  }
+  .pricing-row__from {
+    display: block;
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.05em;
+  }
+  .pricing-row__amount {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .pricing-row--featured .pricing-row__amount { color: #fff; }
+  .pricing-row__amount--custom {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .pricing-row__currency {
+    display: block;
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 0.2rem;
+  }
+  .pricing-row--featured .pricing-row__currency { color: #555; }
+
+  .pricing-row__cta {
+    align-self: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    border: 1.5px solid #111;
+    padding: 0.7rem 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+  .pricing-row__cta:hover {
+    background: #111;
+    color: #fff;
+  }
+  .pricing-row--featured .pricing-row__cta {
+    color: #fff;
+    border-color: #fff;
+  }
+  .pricing-row--featured .pricing-row__cta:hover {
+    background: #fff;
+    color: #111;
+  }
+
+  /* ── Included ───────────────────────────────────────────────── */
+  .included-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .included-section__header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .included-section__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .included-section__title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .included-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .included-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #e4e4e4;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+  }
+  .included-item:nth-last-child(-n+2) { border-bottom: none; }
+  .included-item__num {
+    color: #bbb;
+    font-weight: 400;
+    flex-shrink: 0;
+    width: 1.5rem;
+  }
+
+  /* ── Factors ────────────────────────────────────────────────── */
+  .factors-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .factors-section__header {
+    margin-bottom: 4rem;
+  }
+  .factors-section__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #888;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .factors-section__title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .factors-section__sub {
+    font-size: 1rem;
+    color: #666;
+    max-width: 480px;
+  }
+  .factors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+  }
+  .factor-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .factor-item__num {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #bbb;
+    margin-bottom: 1rem;
+  }
+  .factor-item h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+  .factor-item p {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ── CTA ────────────────────────────────────────────────────── */
+  .cenik-cta {
+    padding: 8rem 0;
+    text-align: center;
+  }
+  .cenik-cta__sub {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 1rem;
+  }
+  .cenik-cta__title {
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin-bottom: 3rem;
+  }
+  .cenik-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    border: 1.5px solid #111;
+    padding: 1rem 2rem;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .cenik-cta__btn:hover {
+    background: #111;
+    color: #fff;
+  }
+  .cenik-cta__arrow {
+    transition: transform 0.25s ease;
+  }
+  .cenik-cta__btn:hover .cenik-cta__arrow {
+    transform: translateX(4px);
+  }
+
+  /* ── Reveal animations ──────────────────────────────────────── */
+  .reveal {
     opacity: 0;
-    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .pricing-card--left  { transform: translateX(-60px); }
-  .pricing-card--center { transform: translateY(40px); }
-  .pricing-card--right { transform: translateX(60px); }
-
-  .pricing-card.is-visible {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
-  }
-  /* Stagger delays */
-  .pricing-card--left.is-visible  { transition-delay: 0s; }
-  .pricing-card--center.is-visible { transition-delay: 0.15s; }
-  .pricing-card--right.is-visible  { transition-delay: 0.3s; }
-
-  /* Keep hover transforms working after animation */
-  .pricing-card--center.is-visible {
-    transform: translateX(0) translateY(0) scale(1.05);
-  }
-  @media (max-width: 768px) {
-    .pricing-card--left,
-    .pricing-card--right {
-      transform: translateY(40px);
-    }
-  }
-
-  /* ── Feature cards: staggered fade up ────────────────────────────── */
-  .feature-card {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .feature-card.is-visible {
+  .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
-  .feature-card:nth-child(1) { transition-delay: 0s; }
-  .feature-card:nth-child(2) { transition-delay: 0.12s; }
-  .feature-card:nth-child(3) { transition-delay: 0.24s; }
+  .pricing-row.reveal { transform: translateY(20px); }
+  .pricing-row.reveal.is-visible { transform: translateY(0); }
+  .included-item.reveal { transform: translateX(-16px); transition-duration: 0.5s; }
+  .included-item.reveal.is-visible { transform: translateX(0); }
+  .included-item:nth-child(1) { transition-delay: 0s; }
+  .included-item:nth-child(2) { transition-delay: 0.06s; }
+  .included-item:nth-child(3) { transition-delay: 0.12s; }
+  .included-item:nth-child(4) { transition-delay: 0.18s; }
+  .included-item:nth-child(5) { transition-delay: 0.24s; }
+  .included-item:nth-child(6) { transition-delay: 0.30s; }
+  .factor-item:nth-child(1) { transition-delay: 0s; }
+  .factor-item:nth-child(2) { transition-delay: 0.07s; }
+  .factor-item:nth-child(3) { transition-delay: 0.14s; }
+  .factor-item:nth-child(4) { transition-delay: 0.21s; }
+  .factor-item:nth-child(5) { transition-delay: 0.28s; }
+  .factor-item:nth-child(6) { transition-delay: 0.35s; }
 
-  /* ── Price factor rows: slide in from left ────────────────────────── */
-  .price-factor {
-    opacity: 0;
-    transform: translateX(-24px);
-    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .pricing-row {
+      grid-template-columns: 2.5rem 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .pricing-row__price { grid-column: 2; }
+    .pricing-row__cta   { grid-column: 2; justify-self: start; }
+    .factors-grid { grid-template-columns: 1fr 1fr; }
+    .included-list { grid-template-columns: 1fr; }
+    .included-item:nth-last-child(-n+2) { border-bottom: 1px solid #e4e4e4; }
+    .included-item:last-child { border-bottom: none; }
   }
-  .price-factor.is-visible {
-    opacity: 1;
-    transform: translateX(0);
+  @media (max-width: 600px) {
+    .cenik-main { padding: 0 1.25rem; }
+    .cenik-hero { padding: 5rem 0 4rem; }
+    .pricing-row { grid-template-columns: 1fr; }
+    .pricing-row__index { display: none; }
+    .factors-grid { grid-template-columns: 1fr; }
+    .ticker-wrap { margin: 0 -1.25rem; }
   }
-  .price-factor:nth-child(1) { transition-delay: 0s; }
-  .price-factor:nth-child(2) { transition-delay: 0.1s; }
-  .price-factor:nth-child(3) { transition-delay: 0.2s; }
 </style>
 
 <script>
@@ -375,11 +634,8 @@ import Divider from '../components/Divider.astro';
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
-
-    document
-      .querySelectorAll('.pricing-card, .feature-card, .price-factor')
-      .forEach((el) => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   });
 </script>
