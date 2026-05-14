@@ -3,1379 +3,1113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IBM SPSS Modeler — Příprava na zkoušku</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Data Mining & SPSS Modeler – Zkouškový kvíz</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #080c14;
-    --surface: #0f1520;
-    --surface2: #141c2e;
-    --border: rgba(255,255,255,0.07);
-    --text: #e8eaf0;
-    --muted: #6b7280;
-    --accent: #4f8ef7;
-    --accent2: #a78bfa;
-    --correct: #34d399;
-    --wrong: #f87171;
-    --correct-bg: rgba(52,211,153,0.08);
-    --wrong-bg: rgba(248,113,113,0.08);
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2330;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --warn: #f85149;
+    --gold: #e3b341;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --radius: 8px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
     background: var(--bg);
     color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
     min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 32px;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 40px 20px 60px;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-
-  /* Ambient background */
-  body::before {
-    content: '';
-    position: fixed;
-    top: -30%;
-    left: -20%;
-    width: 70%;
-    height: 70%;
-    background: radial-gradient(ellipse, rgba(79,142,247,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    bottom: -20%;
-    right: -15%;
-    width: 60%;
-    height: 60%;
-    background: radial-gradient(ellipse, rgba(167,139,250,0.05) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .shell {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 780px;
-  }
-
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 40px;
-    animation: fadeDown 0.6s ease both;
-  }
-  .header-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+  .logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
     color: var(--accent);
-    margin-bottom: 14px;
+    background: rgba(88,166,255,.1);
+    border: 1px solid rgba(88,166,255,.3);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
   }
-  .header h1 {
-    font-family: 'Lora', serif;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 600;
-    color: #fff;
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
-  .header p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    font-weight: 300;
-  }
-
-  /* Progress */
-  .progress-wrap {
-    margin-bottom: 28px;
-    animation: fadeDown 0.6s 0.1s ease both;
-  }
-  .progress-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin-bottom: 10px;
-    font-weight: 400;
-  }
-  .progress-track {
-    height: 3px;
+  header h1 { font-size: 18px; font-weight: 600; flex: 1; }
+  .progress-wrap { display: flex; align-items: center; gap: 12px; }
+  .progress-bar {
+    width: 160px; height: 6px;
     background: var(--border);
-    border-radius: 99px;
-    overflow: hidden;
+    border-radius: 3px; overflow: hidden;
   }
   .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 99px;
-    transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    height: 100%; background: var(--accent);
+    border-radius: 3px;
+    transition: width .4s ease;
     width: 0%;
   }
+  #progress-text { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
 
-  /* Card */
-  .card {
+  /* ── Layout ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  /* ── Section headings ── */
+  .section-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin: 40px 0 20px;
+  }
+
+  /* ── Question card ── */
+  .q-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 36px 40px;
-    animation: fadeUp 0.5s ease both;
-    position: relative;
-    overflow: hidden;
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    transition: border-color .2s;
   }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(79,142,247,0.3), transparent);
-  }
+  .q-card.answered { border-color: var(--border); }
+  .q-card.correct  { border-color: var(--accent2); background: rgba(63,185,80,.05); }
+  .q-card.wrong    { border-color: var(--warn);    background: rgba(248,81,73,.05); }
 
-  .category-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    background: rgba(167,139,250,0.1);
-    border: 1px solid rgba(167,139,250,0.2);
-    border-radius: 99px;
-    padding: 4px 12px;
-    margin-bottom: 20px;
+  .q-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; color: var(--muted);
+    margin-bottom: 6px;
   }
+  .q-text { font-weight: 600; font-size: 15px; margin-bottom: 16px; }
 
-  .question-text {
-    font-family: 'Lora', serif;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    line-height: 1.65;
-    color: #f0f2f8;
-    margin-bottom: 28px;
-    font-weight: 400;
-  }
-
-  /* Options */
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    list-style: none;
-  }
-
-  .option {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
+  .options { display: grid; gap: 8px; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 10px;
     background: var(--surface2);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 18px;
+    border-radius: 6px;
+    padding: 10px 14px;
     cursor: pointer;
-    transition: all 0.18s ease;
-    font-size: 0.92rem;
+    transition: background .15s, border-color .15s;
+    font-size: 14px;
+  }
+  .opt:hover { background: #1f2937; border-color: var(--accent); }
+  .opt.selected { border-color: var(--accent); background: rgba(88,166,255,.1); }
+  .opt.correct  { border-color: var(--accent2) !important; background: rgba(63,185,80,.15) !important; }
+  .opt.wrong    { border-color: var(--warn)   !important; background: rgba(248,81,73,.12)  !important; }
+  .opt.reveal-correct { border-color: var(--accent2) !important; background: rgba(63,185,80,.08) !important; }
+
+  .opt-letter {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    min-width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 4px;
+    background: var(--border); color: var(--muted);
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .opt.selected .opt-letter { background: var(--accent); color: #000; }
+  .opt.correct  .opt-letter { background: var(--accent2); color: #000; }
+  .opt.wrong    .opt-letter { background: var(--warn);    color: #fff; }
+  .opt.reveal-correct .opt-letter { background: var(--accent2); color: #000; }
+
+  .feedback {
+    display: none;
+    margin-top: 12px;
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 6px;
     line-height: 1.5;
-    color: #c8cbd6;
-    font-weight: 400;
-    user-select: none;
   }
-  .option:hover {
-    background: rgba(79,142,247,0.07);
-    border-color: rgba(79,142,247,0.25);
-    color: #e8eaf0;
-    transform: translateX(3px);
-  }
-  .option-key {
-    flex-shrink: 0;
-    width: 26px;
-    height: 26px;
-    border-radius: 7px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    letter-spacing: 0;
-    transition: all 0.18s ease;
-    margin-top: 1px;
-  }
-  .option:hover .option-key {
-    background: rgba(79,142,247,0.15);
-    border-color: rgba(79,142,247,0.3);
-    color: var(--accent);
-  }
+  .feedback.show { display: block; }
+  .feedback.ok  { background: rgba(63,185,80,.12);  border-left: 3px solid var(--accent2); color: #7ee787; }
+  .feedback.err { background: rgba(248,81,73,.12);  border-left: 3px solid var(--warn);    color: #ff7b72; }
 
-  /* Answered states */
-  .option.correct {
-    background: var(--correct-bg);
-    border-color: rgba(52,211,153,0.3);
-    color: #e0faf3;
-    cursor: default;
-    transform: none;
-  }
-  .option.correct .option-key {
-    background: rgba(52,211,153,0.15);
-    border-color: rgba(52,211,153,0.4);
-    color: var(--correct);
-  }
-  .option.wrong {
-    background: var(--wrong-bg);
-    border-color: rgba(248,113,113,0.3);
-    color: #fde8e8;
-    cursor: default;
-    transform: none;
-  }
-  .option.wrong .option-key {
-    background: rgba(248,113,113,0.15);
-    border-color: rgba(248,113,113,0.4);
-    color: var(--wrong);
-  }
-  .option.disabled {
-    opacity: 0.45;
-    cursor: default;
-    transform: none;
-  }
-  .option.disabled:hover {
-    background: var(--surface2);
-    border-color: var(--border);
-    color: #c8cbd6;
-  }
-
-  /* Explanation */
-  .explanation {
-    margin-top: 20px;
-    padding: 16px 20px;
-    background: rgba(79,142,247,0.05);
-    border: 1px solid rgba(79,142,247,0.15);
-    border-radius: 12px;
-    font-size: 0.875rem;
-    line-height: 1.65;
-    color: #a8b4cc;
+  /* ── Results panel ── */
+  #results {
     display: none;
-  }
-  .explanation.show { display: block; animation: fadeUp 0.3s ease; }
-  .explanation strong { color: var(--accent); font-weight: 500; }
-
-  /* Next button */
-  .next-btn {
-    margin-top: 24px;
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none;
-    border-radius: 12px;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    display: none;
-    transition: opacity 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
-  }
-  .next-btn.show { display: block; animation: fadeUp 0.3s ease; }
-  .next-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-  .next-btn:active { transform: translateY(0); }
-
-  /* Score feedback */
-  .score-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 99px;
-    margin-top: 20px;
-    font-weight: 500;
-  }
-  .score-chip.good { background: rgba(52,211,153,0.1); color: var(--correct); border: 1px solid rgba(52,211,153,0.2); }
-  .score-chip.bad { background: rgba(248,113,113,0.1); color: var(--wrong); border: 1px solid rgba(248,113,113,0.2); }
-
-  /* Intro screen */
-  #intro {
-    text-align: center;
-    animation: fadeUp 0.6s ease both;
-  }
-  .intro-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 32px 0;
-  }
-  .stat-box {
-    background: var(--surface2);
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 12px;
-  }
-  .stat-num {
-    font-family: 'Lora', serif;
-    font-size: 2rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 4px;
-  }
-  .stat-label {
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-  .topics-list {
-    text-align: left;
-    margin: 28px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .topic-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: #9aa3b4;
-  }
-  .topic-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent2);
-    flex-shrink: 0;
-  }
-  .start-btn {
-    width: 100%;
-    padding: 17px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none;
-    border-radius: 14px;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
-  }
-  .start-btn:hover { opacity: 0.88; transform: translateY(-2px); }
-
-  /* Result screen */
-  #result {
-    display: none;
+    border-radius: var(--radius);
+    padding: 36px;
     text-align: center;
-    animation: fadeUp 0.5s ease;
+    margin-top: 40px;
   }
-  .result-score-ring {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    margin: 32px auto;
-  }
-  .result-score-ring svg {
-    transform: rotate(-90deg);
-    width: 100%;
-    height: 100%;
-  }
-  .ring-bg { fill: none; stroke: var(--surface2); stroke-width: 10; }
-  .ring-fill {
-    fill: none;
-    stroke: url(#ringGrad);
-    stroke-width: 10;
-    stroke-linecap: round;
-    stroke-dasharray: 440;
-    stroke-dashoffset: 440;
-    transition: stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1);
-  }
-  .ring-label {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  .ring-label .big {
-    font-family: 'Lora', serif;
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: #fff;
+  #results.show { display: block; }
+  .score-big {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 64px; font-weight: 600;
     line-height: 1;
   }
-  .ring-label .small {
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-  .result-msg {
-    font-family: 'Lora', serif;
-    font-size: 1.3rem;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-  .result-sub {
-    color: var(--muted);
-    font-size: 0.9rem;
-    font-weight: 300;
-    margin-bottom: 32px;
-  }
-  .category-results {
-    text-align: left;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-  }
-  .cat-result-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.87rem;
-  }
-  .cat-result-row:last-child { border-bottom: none; }
-  .cat-result-name { color: #c0c8d8; }
-  .cat-mini-bar {
-    flex: 1;
-    max-width: 120px;
-    height: 4px;
-    background: var(--border);
-    border-radius: 99px;
-    margin: 0 16px;
-    overflow: hidden;
-  }
-  .cat-mini-fill {
-    height: 100%;
-    border-radius: 99px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-  }
-  .cat-result-score { color: var(--muted); font-size: 0.82rem; }
-  .restart-btn {
-    width: 100%;
-    padding: 15px;
-    background: transparent;
-    border: 1px solid rgba(79,142,247,0.3);
-    border-radius: 12px;
-    color: var(--accent);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
+  .score-big.pass { color: var(--accent2); }
+  .score-big.fail { color: var(--warn); }
+  .score-label { color: var(--muted); margin-top: 8px; font-size: 14px; }
+  .score-msg { margin-top: 20px; font-size: 16px; font-weight: 600; }
+
+  #results-btn {
+    margin-top: 28px;
+    background: var(--accent);
+    color: #000;
+    border: none; border-radius: 6px;
+    padding: 12px 28px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px; font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.02em;
+    transition: opacity .2s;
   }
-  .restart-btn:hover { background: rgba(79,142,247,0.08); border-color: var(--accent); }
+  #results-btn:hover { opacity: .85; }
 
-  /* Animations */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-16px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* ── Sticky submit ── */
+  .submit-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(13,17,23,.92);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .unanswered-note { color: var(--muted); font-size: 13px; }
+  #submit-btn {
+    background: var(--accent2);
+    color: #000;
+    border: none; border-radius: 6px;
+    padding: 10px 26px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px; font-weight: 700;
+    cursor: pointer; transition: opacity .2s;
   }
+  #submit-btn:hover { opacity: .85; }
+  #submit-btn:disabled { opacity: .4; cursor: not-allowed; }
 
-  .hidden { display: none !important; }
-
-  @media (max-width: 560px) {
-    .card { padding: 24px 22px; }
-    .topics-list { grid-template-columns: 1fr; }
-    .intro-stats { grid-template-columns: repeat(3,1fr); gap: 8px; }
-    .stat-num { font-size: 1.5rem; }
+  .tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    padding: 2px 7px; border-radius: 20px;
+    margin-bottom: 6px;
   }
+  .tag-concept { background: rgba(88,166,255,.15); color: var(--accent); border: 1px solid rgba(88,166,255,.3); }
+  .tag-modeler { background: rgba(63,185,80,.15);  color: var(--accent2); border: 1px solid rgba(63,185,80,.3); }
+  .tag-algo    { background: rgba(227,179,65,.15);  color: var(--gold);   border: 1px solid rgba(227,179,65,.3); }
 </style>
 </head>
 <body>
-<div class="shell">
 
-  <div class="header">
-    <div class="header-label">IBM SPSS Modeler</div>
-    <h1>Příprava na zkoušku</h1>
-    <p>Kompletní přehled látky — Data Mining, CRISP-DM, uzly, algoritmy</p>
+<header>
+  <div class="logo">SPSS MODELER</div>
+  <h1>Data Mining — zkouškový kvíz</h1>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+    <span id="progress-text">0 / 0</span>
   </div>
+</header>
 
-  <!-- INTRO -->
-  <div class="card" id="intro">
-    <div class="intro-stats">
-      <div class="stat-box">
-        <div class="stat-num">75</div>
-        <div class="stat-label">otázek</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">8</div>
-        <div class="stat-label">témat</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">4</div>
-        <div class="stat-label">možnosti</div>
-      </div>
-    </div>
-    <div class="topics-list">
-      <div class="topic-item"><div class="topic-dot"></div>Základy Data Miningu</div>
-      <div class="topic-item"><div class="topic-dot"></div>CRISP-DM metodologie</div>
-      <div class="topic-item"><div class="topic-dot"></div>Uzly IBM SPSS Modeler</div>
-      <div class="topic-item"><div class="topic-dot"></div>Klasifikace a regrese</div>
-      <div class="topic-item"><div class="topic-dot"></div>Hodnocení modelů &amp; ROC</div>
-      <div class="topic-item"><div class="topic-dot"></div>Rozhodovací stromy</div>
-      <div class="topic-item"><div class="topic-dot"></div>Asociační pravidla</div>
-      <div class="topic-item"><div class="topic-dot"></div>Shluková analýza</div>
-    </div>
-    <button class="start-btn" onclick="startQuiz()">Začít kvíz</button>
+<div class="container" id="quiz-container">
+  <!-- generated by JS -->
+  <div id="results">
+    <div class="score-big" id="score-big">0%</div>
+    <div class="score-label" id="score-label"></div>
+    <div class="score-msg" id="score-msg"></div>
+    <button id="results-btn" onclick="restartQuiz()">Zkusit znovu (přemíchat pořadí)</button>
   </div>
+</div>
 
-  <!-- QUIZ -->
-  <div id="quiz" class="hidden">
-    <div class="progress-wrap">
-      <div class="progress-meta">
-        <span id="prog-label">Otázka 1 z 75</span>
-        <span id="prog-score">Skóre: 0</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="prog-fill"></div>
-      </div>
-    </div>
-    <div class="card" id="q-card">
-      <div class="category-badge" id="q-cat">Kategorie</div>
-      <div class="question-text" id="q-text">Načítám...</div>
-      <ul class="options" id="q-options"></ul>
-      <div class="explanation" id="q-explanation"></div>
-      <button class="next-btn" id="next-btn" onclick="nextQuestion()">Další otázka →</button>
-    </div>
-  </div>
-
-  <!-- RESULT -->
-  <div class="card" id="result">
-    <div class="category-badge">Výsledky</div>
-    <div class="result-score-ring">
-      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#4f8ef7"/>
-            <stop offset="100%" stop-color="#a78bfa"/>
-          </linearGradient>
-        </defs>
-        <circle class="ring-bg" cx="80" cy="80" r="70"/>
-        <circle class="ring-fill" id="ring-fill" cx="80" cy="80" r="70"/>
-      </svg>
-      <div class="ring-label">
-        <div class="big" id="ring-pct">0%</div>
-        <div class="small" id="ring-raw">0/0</div>
-      </div>
-    </div>
-    <div class="result-msg" id="result-msg">—</div>
-    <div class="result-sub" id="result-sub">—</div>
-    <div class="category-results" id="cat-results"></div>
-    <button class="restart-btn" onclick="startQuiz()">Zkusit znovu (otázky se zamíchají)</button>
-  </div>
-
+<div class="submit-bar">
+  <span class="unanswered-note" id="unanswered-note">Zodpověz všechny otázky</span>
+  <button id="submit-btn" onclick="submitQuiz()" disabled>Vyhodnotit</button>
 </div>
 
 <script>
-const QUESTIONS = [
-  // ── ZÁKLADY DATA MININGU ──────────────────────────────────────────────
-  {cat:"Základy Data Miningu", q:"Co je data mining?",
-   o:["Proces ručního zadávání dat do databáze.",
-      "Proces hledání užitečných vzorů, vztahů a pravidel v datech pro popis, vysvětlení nebo predikci.",
-      "Způsob ukládání velkých objemů dat v cloudovém úložišti.",
-      "Výhradně statistická metoda testování hypotéz."],
-   c:1, e:"Data mining = dolování znalostí z dat. Klíčové je, že výsledkem jsou použitelné vzory a pravidla — ne jen tabulky nebo grafy."},
-
-  {cat:"Základy Data Miningu", q:"Je pravdivé tvrzení, že data mining odhalí v datech vše podstatné?",
-   o:["Ano, správný algoritmus vždy najde vše důležité.",
-      "Ano, pokud jsou data dostatečně velká.",
-      "Ne — výsledek závisí na kvalitě dat, správné formulaci problému a vhodné metodě.",
-      "Ano, moderní AI algoritmy jsou v tomto bezchybné."],
-   c:2, e:"Data mining není kouzelná hůlka. Garbage in = garbage out. Špatně formulovaný problém nebo nekvalitní data dají bezcenné výsledky, bez ohledu na algoritmus."},
-
-  {cat:"Základy Data Miningu", q:"Je pravdivé tvrzení, že data mining je totéž co modelování?",
-   o:["Ano, modelování a data mining jsou synonyma.",
-      "Ne — modelování je jen jedna fáze; DM zahrnuje i porozumění problému, přípravu dat, vyhodnocení a nasazení.",
-      "Ano, ale jen v kontextu IBM SPSS Modeler.",
-      "Ne — data mining vůbec modelování neobsahuje."],
-   c:1, e:"Modelování je srdce DM, ale celý proces zahrnuje fáze jako pochopení byznysu, přípravu dat a nasazení (viz CRISP-DM)."},
-
-  {cat:"Základy Data Miningu", q:"Je pravdivé tvrzení, že data mining pracuje pouze s obrovskými datovými množinami?",
-   o:["Ano, méně než milion záznamů nestačí.",
-      "Ano, DM je synonymum pro Big Data.",
-      "Ne — lze ho použít i na menších datech, pokud mají dostatečnou informační hodnotu.",
-      "Ano, jinak výsledky nejsou statisticky validní."],
-   c:2, e:"Velikost dat není podmínkou. Podstatná je informační hodnota. Na malém, ale dobře připraveném datasetu lze postavit silný model."},
-
-  {cat:"Základy Data Miningu", q:"Jaký je základní rozdíl mezi data miningem a klasickou statistikou?",
-   o:["Statistika pracuje s čísly, DM výhradně s textem.",
-      "Statistika klade důraz na testování hypotéz a inference; DM se zaměřuje na predikci, hledání vzorů a praktické nasazení.",
-      "Žádný rozdíl — jde o totéž, jen jiný název.",
-      "DM se používá jen v IT, statistika jen v akademickém prostředí."],
-   c:1, e:"Statistika se ptá 'proč?' a testuje hypotézy. DM se ptá 'co se stane?' a nasazuje prediktivní modely do praxe."},
-
-  {cat:"Základy Data Miningu", q:"Co je CRM a jaké DM úlohy se v něm typicky řeší?",
-   o:["Customer Resource Management — správa serverů a IT zdrojů.",
-      "Customer Relationship Management — segmentace zákazníků, predikce odchodu, odezva na kampaň, cross-sell a up-sell.",
-      "Centralized Record Mining — těžba dat z centrálních databází.",
-      "Customer Revenue Model — modelování finančních toků firmy."],
-   c:1, e:"CRM = řízení vztahů se zákazníky. DM v CRM řeší typicky: kdo odejde (churn), kdo zareaguje na kampaň, komu nabídnout další produkt (cross-sell)."},
-
-  {cat:"Základy Data Miningu", q:"Jaký je rozdíl mezi klasifikací, predikcí (regresí) a seskupováním?",
-   o:["Klasifikace predikuje číslo, regrese kategorii, seskupování hledá vzory v textu.",
-      "Klasifikace predikuje kategorii (např. odejde/neodejde); regrese predikuje číslo (např. výše útraty); seskupování hledá přirozené skupiny bez cílové proměnné.",
-      "Jsou to synonyma pro totéž.",
-      "Klasifikace a regrese jsou bez učitele, seskupování je s učitelem."],
-   c:1, e:"Klíčový rozdíl: klasifikace i regrese jsou s učitelem (mají target), seskupování je bez učitele — jen hledá strukturu v datech."},
-
-  {cat:"Základy Data Miningu", q:"Jaký je rozdíl mezi strojovým učením s učitelem a bez učitele?",
-   o:["Učení s učitelem potřebuje výpočetně výkonnější hardware.",
-      "Učení s učitelem používá cílovou proměnnou (target field); bez učitele ji nemá a hledá strukturu v datech samo.",
-      "Učení bez učitele je vždy přesnější, protože není ovlivněno chybami v labelu.",
-      "Učení s učitelem se používá pro K-Means, bez učitele pro C&RT."],
-   c:1, e:"S učitelem (supervised): víme, co chceme předpovědět — máme labely. Bez učitele (unsupervised): žádné labely, algoritmus sám hledá skupiny nebo vzory (K-Means, Apriori)."},
-
-  {cat:"Základy Data Miningu", q:"Co je vstupní proměnná (prediktor, nezávislá proměnná)?",
-   o:["Proměnná, kterou chceme předpovědět.",
-      "Proměnná, podle které model odhaduje hodnotu cílové proměnné.",
-      "Proměnná, která identifikuje každý záznam jedinečným ID.",
-      "Proměnná obsahující pouze chybějící hodnoty."],
-   c:1, e:"Prediktor = vstup modelu. Cílová proměnná = výstup. V uzlu Type nastavíš roli jako 'Input' pro prediktory a 'Target' pro cílovou proměnnou."},
-
-  {cat:"Základy Data Miningu", q:"Kde se všude uplatňuje data mining?",
-   o:["Výhradně v bankovnictví a pojišťovnictví.",
-      "Pouze v e-commerce a marketingu.",
-      "V marketingu, bankovnictví, pojišťovnictví, retailu, telekomunikacích, zdravotnictví, výrobě i veřejné správě.",
-      "Pouze tam, kde jsou data větší než 1 TB."],
-   c:2, e:"DM je průřezová disciplína. Všude, kde jsou data a rozhodnutí, se dá DM uplatnit — od detekce podvodů až po predikci poruch strojů."},
-
-  // ── CRISP-DM ──────────────────────────────────────────────────────────
-  {cat:"CRISP-DM", q:"Proč a kdy vznikla metodologie CRISP-DM?",
-   o:["V roce 2005 jako náhrada za agile metodologii v IT projektech.",
-      "V letech 1996–1997 jako snaha vytvořit standardní a opakovatelný postup pro DM napříč obory; stály u toho firmy ISL, Teradata, Daimler, NCR a OHRA.",
-      "V roce 2010, kdy Google publikoval interní metodiku analýzy dat.",
-      "V roce 1990 jako reakce na vznik jazyka SQL."],
-   c:1, e:"CRISP-DM vznikl jako průmyslový konsenzus — žádný standard neexistoval a každý projekt se řešil jinak. Dnes je stále nejpoužívanějším frameworkem pro DM projekty."},
-
-  {cat:"CRISP-DM", q:"Z jakých 6 fází se skládá CRISP-DM a co se v nich řeší?",
-   o:["Import, Čištění, Transformace, Modelování, Vizualizace, Report.",
-      "Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, Deployment.",
-      "Sběr, Analýza, Design, Vývoj, Testování, Nasazení.",
-      "Definice, Měření, Analýza, Zlepšení, Kontrola, Udržení."],
-   c:1, e:"Pamatuj si: BU-DU-DP-M-E-D. Business → Data porozumění → Příprava dat → Model → Evaluace → Nasazení. Proces je iterativní, ne lineární."},
-
-  {cat:"CRISP-DM", q:"Co se řeší ve fázi Business Understanding?",
-   o:["Výběr algoritmů a nastavení hyperparametrů.",
-      "Čištění dat a tvorba nových proměnných.",
-      "Pochopení obchodního cíle, přeformulování do DM úlohy a plánování projektu.",
-      "Vizualizace výsledků pro management."],
-   c:2, e:"Nejdůležitější fáze! Pokud špatně pochopíš byznys cíl, celý zbytek projektu jde správným směrem do špatného výsledku."},
-
-  {cat:"CRISP-DM", q:"Co se řeší ve fázi Data Preparation?",
-   o:["Výběr finálního modelu a jeho nasazení.",
-      "Čištění dat, řešení chybějících hodnot, tvorba nových proměnných a sestavení finální datové matice.",
-      "Průzkum dat a hodnocení jejich kvality.",
-      "Interpretace výsledků modelu."],
-   c:1, e:"Data Preparation typicky zabere 60–80 % celého projektu. Jde o nejméně glamour, ale nejkritičtější fázi — špatně připravená data = špatný model."},
-
-  {cat:"CRISP-DM", q:"Co se řeší ve fázi Evaluation?",
-   o:["Nasazení modelu do produkce.",
-      "Výběr algoritmů k trénování.",
-      "Ověření, zda model opravdu řeší původní byznys cíl; rozhodnutí o nasazení.",
-      "Sběr nových dat pro budoucí re-trénování."],
-   c:2, e:"Evaluation je víc než jen přesnost modelu — ptáme se: 'Odpovídá model na otázku, kterou jsme si položili v Business Understanding?'"},
-
-  // ── UZLY IBM SPSS MODELER ─────────────────────────────────────────────
-  {cat:"Uzly SPSS Modeler", q:"K čemu slouží uzel Type a kde ho najdeš?",
-   o:["Filtruje záznamy podle textové podmínky; najdeš ho v paletě Record Ops.",
-      "Nastavuje role a typy polí (Input, Target, typ měření); najdeš ho v paletě Field Ops.",
-      "Importuje data ve formátu .sav; najdeš ho v paletě Sources.",
-      "Vizualizuje rozložení proměnných; najdeš ho v paletě Outputs."],
-   c:1, e:"Uzel Type je zásadní — bez správně nastavených rolí model neví, co má predikovat. Vždy nastav Target a zkontroluj typ měření (Continuous vs. Nominal/Flag)."},
-
-  {cat:"Uzly SPSS Modeler", q:"Jaký je rozdíl mezi uzly Select a Filter?",
-   o:["Select i Filter dělají totéž — oba filtrují řádky.",
-      "Select filtruje řádky (záznamy) podle podmínky; Filter vybírá nebo přejmenuje sloupce (pole).",
-      "Filter filtruje řádky, Select vybírá sloupce.",
-      "Select agreguje data, Filter je třídí."],
-   c:1, e:"Pamatuj: Select = řádky (WHERE v SQL), Filter = sloupce (SELECT v SQL). Záměna je nejčastější začátečnická chyba v Modeleru."},
-
-  {cat:"Uzly SPSS Modeler", q:"Co dělá uzel Aggregate?",
-   o:["Připojuje nové záznamy pod existující datovou matici.",
-      "Spojuje dvě datové matice podle klíčového pole.",
-      "Seskupí záznamy podle vybraných polí a vypočítá agregované hodnoty (součet, průměr, počet apod.).",
-      "Odstraňuje duplicitní záznamy."],
-   c:2, e:"Aggregate = GROUP BY v SQL. Typický příklad: z transakčních dat agreguj celkovou útratu a počet nákupů za zákazníka pro jednu modelovací matici."},
-
-  {cat:"Uzly SPSS Modeler", q:"Co dělá uzel Merge a čím se liší od uzlu Append?",
-   o:["Merge i Append dělají totéž.",
-      "Merge spojuje datové matice horizontálně (JOIN podle klíče); Append připojuje záznamy vertikálně (přidává řádky pod sebe).",
-      "Merge přidává řádky, Append spojuje sloupce.",
-      "Merge slouží k agregaci, Append k třídění."],
-   c:1, e:"Merge = JOIN (přidává sloupce ze dvou tabulek dle klíče), Append = UNION (přidává řádky z druhé tabulky pod první). Základní SQL koncepty."},
-
-  {cat:"Uzly SPSS Modeler", q:"K čemu slouží uzel Partition?",
-   o:["Rozdělí jeden long text do více sloupců.",
-      "Rozdělí datovou matici na trénovací, testovací a volitelně validační část.",
-      "Rozdělí stream do několika paralelních větví.",
-      "Rozdělí kategorickou proměnnou na binární indikátory."],
-   c:1, e:"Partition přidá do dat nové pole, které náhodně přiřadí každý záznam do train/test (nebo train/test/validation). Bez toho nelze férově vyhodnotit model."},
-
-  {cat:"Uzly SPSS Modeler", q:"K čemu slouží uzel Balance a kdy je jeho použití důležité?",
-   o:["Balancuje výkon výpočetního clusteru.",
-      "Srovnává dva různé modely na stejných datech.",
-      "Vyváží zastoupení tříd cílové proměnné — důležité, když je jedna třída výrazně v menšině (nevyvážená data).",
-      "Odstraňuje odlehlé hodnoty ze spojitých proměnných."],
-   c:2, e:"Pokud máš 98 % 'neodejde' a 2 % 'odejde', model se naučí říkat vždy 'neodejde' s 98% přesností — ale odejdoucí zákazníky přesto nenajde. Balance to řeší."},
-
-  {cat:"Uzly SPSS Modeler", q:"Co dělá uzel SetToFlag a pro jaký typ proměnných se používá?",
-   o:["Označí záznamy s chybějícími hodnotami jako 'flag'.",
-      "Převede kategoriální (nominální) hodnoty na sadu binárních indikátorových proměnných 0/1 (dummy variables).",
-      "Nastaví binární příznak pro záznamy splňující podmínku.",
-      "Standardizuje číselné proměnné na hodnoty 0 nebo 1."],
-   c:1, e:"SetToFlag = one-hot encoding. Kategoriální pole 'Barva' s hodnotami {Červená, Modrá, Zelená} se rozloží na tři binární pole. Nutné před lineární regresí."},
-
-  {cat:"Uzly SPSS Modeler", q:"K čemu slouží uzel Data Audit?",
-   o:["Audituje přístupová práva k datovým zdrojům.",
-      "Poskytuje rychlý přehled kvality dat — statistiky, rozložení hodnot, počty chybějících hodnot a extrémy pro každé pole.",
-      "Automaticky opravuje všechny chyby a odlehlé hodnoty.",
-      "Exportuje zprávu o kvalitě dat do PDF."],
-   c:1, e:"Data Audit = tvůj první krok po načtení dat. Okamžitě vidíš histogramy, základní statistiky a procento chybějících hodnot pro každý sloupec."},
-
-  {cat:"Uzly SPSS Modeler", q:"K čemu slouží uzel Feature Selection?",
-   o:["Vybírá vhodné vizualizace pro reportovací část projektu.",
-      "Automaticky vybírá důležité prediktory — odstraní nezákladní pole (konstanty, příliš mnoho NaN) a seřadí zbývající podle vlivu na target.",
-      "Filtruje záznamy s extrémními hodnotami.",
-      "Vybírá nejlepší algoritmus pro danou úlohu."],
-   c:1, e:"Feature Selection řeší 'curse of dimensionality'. Se stovkami sloupců by modely trvaly věčně. FS zahodí neužitečné a seřadí zbývající — šetří čas a zlepšuje model."},
-
-  {cat:"Uzly SPSS Modeler", q:"K čemu slouží uzel Auto Classifier?",
-   o:["Automaticky přiřadí záznamy do předdefinovaných kategorií.",
-      "Automaticky vyzkouší a porovná více klasifikačních algoritmů naráz pro nominální nebo binární cíl.",
-      "Automaticky hledá optimální počet shluků.",
-      "Převádí regresní úlohu na klasifikační."],
-   c:1, e:"Auto Classifier = benchmarking na jedno kliknutí. Spustí naráz C&RT, CHAID, logistickou regresi atd., porovná je dle zvolené metriky a doporučí vítěze."},
-
-  {cat:"Uzly SPSS Modeler", q:"Jaký je rozdíl mezi zdrojovými uzly Var File, Statistics File a User Input?",
-   o:["Jsou zaměnitelné, liší se jen ikonou.",
-      "Var File načte data z textového souboru (.csv/.txt); Statistics File ze .sav souboru SPSS; User Input umožní ručně zadat nebo vytvořit testovací data přímo v Modeleru.",
-      "Var File je pro databázová data, Statistics File pro Excel.",
-      "User Input se používá jen pro export, ne import."],
-   c:1, e:"Znát rozdíl mezi zdrojovými uzly je základ. SAV soubor si navíc pamatuje metadata (typy, popisky), zatímco CSV je holý text."},
-
-  {cat:"Uzly SPSS Modeler", q:"Umí Modeler část streamu automaticky převést na SQL dotaz (SQL pushback)? Jak to poznáš?",
-   o:["Ne, všechna data musí být stažena do paměti počítače.",
-      "Ano, ale musí se to naprogramovat ručně v Pythonu.",
-      "Ano, u podporovaných operací (Select, Aggregate apod.) Modeler vykonání přesune na databázový server — uzly se vizuálně odliší; sledovatelné i v diagnostice.",
-      "Ano, ale funguje jen pro export dat, ne pro čtení."],
-   c:2, e:"SQL pushback = výkon. Místo stahování milionů řádků do RAM provede databázový server filtrování/agregaci sám a Modeleru pošle jen výsledek. Šetří čas i paměť."},
-
-  {cat:"Uzly SPSS Modeler", q:"Jakým uzlem zobrazíš vztah dvou číselných proměnných? A rozložení jedné číselné proměnné?",
-   o:["Vztah: Histogram; Rozložení: Plot.",
-      "Vztah: Distribution; Rozložení: Bar Chart.",
-      "Vztah: Plot (bodový graf); Rozložení: Histogram.",
-      "Oboje: Data Audit."],
-   c:2, e:"Plot = scatter plot pro dvě číselné proměnné. Histogram = distribuce jedné číselné. Distribution = distribuce jedné kategoriální. Znát správný graf je základ."},
-
-  {cat:"Uzly SPSS Modeler", q:"V jakém grafu zobrazíš rozložení kategoriální proměnné?",
-   o:["Histogram.",
-      "Plot (bodový graf).",
-      "Sloupcový graf (Bar chart) nebo Distribution uzel.",
-      "Box plot."],
-   c:2, e:"Histogram je pro spojitá čísla (věk, příjem). Pro kategorie (pohlaví, kraj, produkt) použij Distribution nebo Bar chart — ukážou četnosti jednotlivých kategorií."},
-
-  // ── KLASIFIKACE A REGRESE ─────────────────────────────────────────────
-  {cat:"Klasifikace a regrese", q:"Jaký je rozdíl mezi klasifikační a regresní úlohou?",
-   o:["Klasifikace je vždy přesnější než regrese.",
-      "Klasifikační úloha predikuje kategorii (nominální/binární cíl); regresní úloha predikuje číselnou hodnotu (spojitý cíl).",
-      "Regrese se používá bez učitele, klasifikace s učitelem.",
-      "V Modeleru nejde regresní úlohu řešit."],
-   c:1, e:"Klasifikace: 'Odejde zákazník? Ano/Ne.' Regrese: 'Kolik utratí zákazník? 1500 Kč.' Typ cílové proměnné určuje typ úlohy."},
-
-  {cat:"Klasifikace a regrese", q:"K jakým typům úloh se hodí algoritmus C&RT?",
-   o:["Výhradně pro klasifikaci.",
-      "Výhradně pro regresi.",
-      "Pro oba typy — klasifikaci (kategoriální cíl) i regresi (číselný cíl).",
-      "Výhradně pro shlukování."],
-   c:2, e:"C&RT = Classification and Regression Trees. Jak název říká, funguje pro oboje. V Modeleru ho proto použiješ na binární, nominální i spojitý target."},
-
-  {cat:"Klasifikace a regrese", q:"Co musíš provést s kategoriálními prediktory před použitím lineární regrese?",
-   o:["Nic, lineární regrese kategoriální proměnné zpracuje automaticky.",
-      "Musíš je smazat — lineární regrese kategoriální proměnné nepodporuje vůbec.",
-      "Musíš je převést na indikátorové (dummy) proměnné pomocí uzlu SetToFlag, protože lineární regrese pracuje pouze s čísly.",
-      "Stačí je zakódovat jako 1, 2, 3... dle abecedního pořadí."],
-   c:2, e:"Lineární regrese = čistá matematika s čísly. Kategorii 'Barva: Červená/Modrá' nejde dosadit do rovnice. SetToFlag ji rozloží na Barva_Červená (0/1) a Barva_Modrá (0/1)."},
-
-  {cat:"Klasifikace a regrese", q:"Jakými dvěma metrikami hodnotíš kvalitu regresního modelu?",
-   o:["Accuracy a F1 score.",
-      "AUC-ROC a sensitivity.",
-      "MAE (Mean Absolute Error) a koeficient korelace.",
-      "Lift a gain."],
-   c:2, e:"MAE = průměrná odchylka predikce od skutečnosti v reálných jednotkách (chceme co nejmenší). Koeficient korelace = jak silná je lineární vazba (chceme co nejblíže 1)."},
-
-  {cat:"Klasifikace a regrese", q:"Jakých hodnot nabývá MAE a koeficient korelace? Které hodnoty značí lepší model?",
-   o:["MAE: -1 až 1 (blíže 0 = lepší); korelace: 0 až ∞ (větší = lepší).",
-      "MAE: 0 až ∞ (nižší = lepší); korelace: -1 až 1 (pro regresní model blíže 1 = lepší).",
-      "MAE: 0 až 100 % (vyšší = lepší); korelace: 0 až 1 (blíže 0 = lepší).",
-      "Obě metriky nabývají hodnot 0 až 1; u obou chceme hodnotu 1."],
-   c:1, e:"MAE = 0 by byl dokonalý model (žádná chyba). Korelace = 1 znamená perfektní lineární shodu. V praxi hledáme nízké MAE a vysokou pozitivní korelaci."},
-
-  {cat:"Klasifikace a regrese", q:"Jaké dvě proměnné klasifikační stromy typicky přidávají do datové matice?",
-   o:["ID záznamu a datum predikce.",
-      "Predikovanou třídu (label) a její odhadovanou pravděpodobnost (confidence).",
-      "Chybové skóre a vzdálenost od centroidu.",
-      "Pořadí záznamu a příslušnost do trénovací/testovací množiny."],
-   c:1, e:"Tyto dvě proměnné jsou klíčové pro práci s výsledky: predikovaná třída pro přímé rozhodnutí a pravděpodobnost pro seřazení zákazníků dle rizika a ladění prahu."},
-
-  // ── HODNOCENÍ MODELŮ ──────────────────────────────────────────────────
-  {cat:"Hodnocení modelů", q:"Co je matice záměn (confusion matrix) a k čemu slouží?",
-   o:["Graf zobrazující rozložení predikovaných hodnot.",
-      "Tabulka porovnávající skutečné a predikované třídy — slouží k hodnocení klasifikačního modelu.",
-      "Matice korelací mezi prediktory.",
-      "Tabulka hyper-parametrů algoritmu."],
-   c:1, e:"Matice záměn je základní nástroj hodnocení klasifikátoru. Ze čtyř políček (TP, TN, FP, FN) odvodíš všechny klíčové metriky — accuracy, sensitivity, specificity, precision."},
-
-  {cat:"Hodnocení modelů", q:"Jaké případy jsou na diagonále matice záměn?",
-   o:["Chybně klasifikované případy (FP a FN).",
-      "Správně klasifikované případy (TP a TN).",
-      "Záznamy s chybějícími hodnotami.",
-      "Záznamy v testovací množině."],
-   c:1, e:"Diagonála = shoda predikce a skutečnosti = správná rozhodnutí modelu. Mimo diagonálu jsou chyby — falešné poplachy (FP) a přehlédnuté případy (FN)."},
-
-  {cat:"Hodnocení modelů", q:"Co je chyba prvního druhu (False Positive)?",
-   o:["Model přehlédne skutečně pozitivní případ a označí ho jako negativní.",
-      "Model označí negativní případ jako pozitivní — falešný poplach.",
-      "Chyba při importu dat.",
-      "Nesprávně nastavená role proměnné v uzlu Type."],
-   c:1, e:"FP = falešný poplach. Příklad: protipožární systém spustí alarm při připáleném toastu. Nebo model zamítne půjčku bonitnímu klientovi."},
-
-  {cat:"Hodnocení modelů", q:"Co je chyba druhého druhu (False Negative)?",
-   o:["Model označí negativní případ jako pozitivní.",
-      "Chyba v konfiguraci algoritmu.",
-      "Model označí skutečně pozitivní případ jako negativní — přehlédnutí.",
-      "Záměna trénovací a testovací množiny."],
-   c:2, e:"FN = přehlédnutí. Příklad: detekce podvodů přehlédne skutečný podvod. Nebo lékařský screening nezachytí vážnou nemoc. Tato chyba bývá dražší!"},
-
-  {cat:"Hodnocení modelů", q:"Jak lze penalizovat model za chybu druhého druhu v Modeleru?",
-   o:["Zvýšením počtu epochů trénování.",
-      "Změnou zdrojových dat za větší dataset.",
-      "Nastavením misclassification costs nebo úpravou rozhodovacího prahu (cut-off).",
-      "Použitím jiného zdrojového uzlu."],
-   c:2, e:"Misclassification costs = říkáš modelu 'FN je 5× horší než FP, ber to v potaz'. Nebo snížíš cut-off práh (např. z 0.5 na 0.3), čímž model více inklinuje k označení případu jako pozitivní."},
-
-  {cat:"Hodnocení modelů", q:"Co je senzitivita (sensitivity / recall)?",
-   o:["Podíl všech správně klasifikovaných záznamů z celku.",
-      "Podíl skutečně negativních, které model správně označil.",
-      "Podíl skutečně pozitivních případů, které model správně zachytil: TP / (TP + FN).",
-      "Pravděpodobnost, že predikce je správná."],
-   c:2, e:"Senzitivita = 'Jak dobře model nachází to, co hledáme?' Z 1000 skutečně nemocných zachytil model 900 → senzitivita 90 %. Klíčová metrika tam, kde je FN velmi drahý."},
-
-  {cat:"Hodnocení modelů", q:"Co je specificita (specificity)?",
-   o:["Podíl správně zachycených pozitivních případů.",
-      "Podíl skutečně negativních případů, které model správně označil jako negativní: TN / (TN + FP).",
-      "Přesnost modelu na trénovacích datech.",
-      "Průměrná absolutní chyba modelu."],
-   c:1, e:"Specificita = 'Jak dobře model neoznačuje zdravé jako nemocné?' Z 9000 zdravých označil 8910 správně jako zdravé → specificita 99 %. Klíčová, kde je FP velmi drahý."},
-
-  {cat:"Hodnocení modelů", q:"Vysvětli pojmy TP, TN, FP, FN z matice záměn.",
-   o:["TP: správná negativa, TN: správná pozitiva, FP: chybná negativa, FN: chybná pozitiva.",
-      "TP: správně označená pozitiva, TN: správně označená negativa, FP: falešně označená pozitiva, FN: přehlédnutá skutečná pozitiva.",
-      "Všechny čtyři jsou typy chyb modelu.",
-      "TP a TN jsou chyby, FP a FN jsou správné predikce."],
-   c:1, e:"TP = správně 'Ano'; TN = správně 'Ne'; FP = chybně 'Ano' (skutečně Ne); FN = chybně 'Ne' (skutečně Ano). Vše ostatní — accuracy, precision, recall — z toho odvodíš."},
-
-  {cat:"Hodnocení modelů", q:"K čemu slouží ROC křivka a co potřebuješ k její sestrojení?",
-   o:["Ukazuje rozložení predikovaných hodnot; potřebuješ jen průměr.",
-      "Hodnotí diskriminační schopnost klasifikátoru napříč všemi prahy; potřebuješ skutečnou třídu a predikovanou pravděpodobnost (skóre) modelu.",
-      "Ukazuje závislost loss funkce na počtu iterací trénování.",
-      "Porovnává výkon dvou regresních modelů; potřebuješ MAE obou."],
-   c:1, e:"ROC = Receiver Operating Characteristic. Osa Y = senzitivita (TPR), osa X = míra FP (FPR). Čím blíže je křivka levému hornímu rohu, tím lepší model. AUC = plocha pod křivkou."},
-
-  {cat:"Hodnocení modelů", q:"Jak poznáš podle grafu zisku (Gains chart) kvalitu modelu?",
-   o:["Čím níže je křivka pod diagonálou, tím lepší model.",
-      "Křivka musí být rovná horizontální čára.",
-      "Čím výše je křivka nad diagonálou (náhodným modelem) a čím rychleji roste v prvních decilech, tím je model lepší.",
-      "Kvalita modelu se z gains chartu nedá odečíst."],
-   c:2, e:"Gains chart: seřadíš zákazníky dle pravděpodobnosti predikce a podíváš se, kolik % skutečných 'pozitivních' zachytíš v top 10/20/30 %. Dobrý model dominantně převyšuje náhodnou linii."},
-
-  {cat:"Hodnocení modelů", q:"Jakými uzly v Modeleru zobrazíš matici záměn, ROC křivku nebo gains chart?",
-   o:["Uzly Plot a Histogram.",
-      "Uzlem Data Audit.",
-      "Uzly Analysis nebo Evaluation napojené za klasifikační model.",
-      "Uzlem Auto Classifier."],
-   c:2, e:"Po natrénování klasifikačního modelu napoj uzel Analysis nebo Evaluation — tam najdeš matici záměn, ROC, gains chart i další metriky."},
-
-  // ── ROZHODOVACÍ STROMY ────────────────────────────────────────────────
-  {cat:"Rozhodovací stromy", q:"Jak funguje obecný princip rozhodovacích stromů?",
-   o:["Strom iterativně přiřazuje záznamy k nejbližšímu centroidu.",
-      "Strom v každém uzlu vybírá nejlepší rozdělení dat podle prediktoru tak, aby vzniklé skupiny byly co nejčistější vzhledem k cílové proměnné.",
-      "Strom hledá asociační pravidla v transakcích.",
-      "Strom kóduje data do binárního formátu pro rychlejší výpočet."],
-   c:1, e:"Rozhodovací strom = řada otázek 'Ano/Ne'. V každém uzlu se ptá: 'Které rozdělení nejlépe oddělí třídy?' Míra čistoty se měří Gini indexem nebo entropií."},
-
-  {cat:"Rozhodovací stromy", q:"Jak se liší binární rozhodovací strom od obecného?",
-   o:["Binární strom pracuje jen s binárními (0/1) daty.",
-      "Binární strom dělí každý uzel vždy na dvě větve; obecný strom může vytvořit více větví z jednoho uzlu.",
-      "Obecný strom je vždy přesnější.",
-      "Binární strom se používá jen pro regresi."],
-   c:1, e:"C&RT je binární strom. CHAID je obecný — může rozdělit uzel na 3 a více větví naráz (např. 3 věkové skupiny). Víc větví ≠ lepší model — záleží na kontextu."},
-
-  {cat:"Rozhodovací stromy", q:"Jaké typy klasifikačních stromů znáš? Které se typicky používá ve výuce?",
-   o:["Pouze C&RT a lineární regrese.",
-      "K-Means a TwoStep.",
-      "C&RT, CHAID, QUEST, C5.0, Tree-AS, Random Trees — ve výuce nejčastěji C&RT.",
-      "Apriori, CARMA a K-Means."],
-   c:2, e:"C&RT = základ. Je pochopitelný, vizualizovatelný a funguje pro klasifikaci i regresi. CHAID je oblíbený v marketingu (přirozené větvení). C5.0 je rychlý pro velká data."},
-
-  {cat:"Rozhodovací stromy", q:"Kdy se zastaví růst rozhodovacího stromu?",
-   o:["Po přesně 100 iteracích.",
-      "Nikdy — roste, dokud ho manuálně nezastavíš.",
-      "Při splnění stopping rules: dosažení max. hloubky, dostatečná čistota uzlů, příliš málo záznamů na další štěpení, nebo zlepšení pod minimální práh.",
-      "Při dosažení 100% přesnosti na trénovacích datech."],
-   c:2, e:"Stopping rules zabraňují přeučení. Typicky nastavíš max. hloubku stromu (depth) a min. počet záznamů v listovém uzlu. Bez toho strom 'se naučí nazpaměť' každý záznam."},
-
-  {cat:"Rozhodovací stromy", q:"Jak poznáš, že je rozhodovací strom přeučený (overfitting)?",
-   o:["Má špatný výkon jak na trénovacích, tak testovacích datech.",
-      "Nelze ho vizualizovat.",
-      "Má výborný výkon na trénovacích datech, ale výrazně horší na testovacích datech.",
-      "Strom má méně než 3 úrovně hloubky."],
-   c:2, e:"Přeučení = strom se 'naučil nazpaměť' trénovací data včetně šumu a výjimek. Na nových datech pak selhává. Řešení: pruning, max depth, min. records v uzlu."},
-
-  {cat:"Rozhodovací stromy", q:"Co je Pruning (ořezávání stromu)?",
-   o:["Odstranění záznamů s odlehlými hodnotami.",
-      "Záměrné zjednodušování/ořezávání větví stromu, které jsou příliš specifické, za účelem snížení přeučení.",
-      "Normalizace číselných proměnných.",
-      "Sloučení dvou listových uzlů do jednoho."],
-   c:1, e:"Pruning = 'oholení' stromu. Odstraní větve, které na trénovacích datech zlepšovaly přesnost jen minimálně, ale na nových datech způsobovaly přeučení. Výsledek je jednodušší, obecnější strom."},
-
-  {cat:"Rozhodovací stromy", q:"Co je Boosting?",
-   o:["Technika zvyšující výkon hardwaru při trénování.",
-      "Standardizace proměnných na rozsah 0–1.",
-      "Metoda ensemble learningu, která sekvenčně staví slabé modely — každý další se více soustředí na záznamy, kde předchozí chyboval.",
-      "Navýšení počtu záznamů v menšinové třídě kopírováním."],
-   c:2, e:"Boosting (AdaBoost, Gradient Boosting) = orchestra slabých modelů. Každý nový model se 'učí z chyb' předchozího. Výsledek je silnější než jakýkoliv jednotlivý model."},
-
-  // ── ASOCIAČNÍ PRAVIDLA ────────────────────────────────────────────────
-  {cat:"Asociační pravidla", q:"Co jsou transakční data?",
-   o:["Data o bankovních převodech v cizí měně.",
-      "Data, kde jeden záznam reprezentuje jednu položku a více řádků se stejným ID dohromady tvoří jednu transakci (nákup).",
-      "Data vytvořená uživatelem ručně pomocí User Input.",
-      "Data bez cílové proměnné určená výhradně ke shlukování."],
-   c:1, e:"Příklad: účtenka č. 123 obsahuje Chleba, Pivo, Pleny — to jsou 3 řádky v transakčních datech se stejným ID transakce. Apriori z takových dat hledá, co se kupuje společně."},
-
-  {cat:"Asociační pravidla", q:"Jakým uzlem restrukturalizuješ transakční data na indikátorové proměnné před Apriori?",
-   o:["Uzlem Aggregate.",
-      "Uzlem Partition.",
-      "Uzlem SetToFlag.",
-      "Uzlem Filter."],
-   c:2, e:"SetToFlag transformuje transakční formát (řádek = 1 položka) na wide formát (řádek = 1 transakce, sloupec = 1 položka, hodnota = 0/1). Teprve pak může Apriori pracovat."},
-
-  {cat:"Asociační pravidla", q:"Jaké uzly v Modeleru generují asociační pravidla a čím se liší?",
-   o:["K-Means a TwoStep — oba hledají vzory v datech.",
-      "Apriori hledá časté itemsety a z nich tvoří pravidla; CARMA je pokročilejší přístup pro asociační pravidla v transakčních datech.",
-      "C&RT a CHAID — oba jsou stromové algoritmy.",
-      "Feature Selection a Auto Classifier."],
-   c:1, e:"Apriori = klasický algoritmus pro market basket analysis. CARMA je rychlejší varianta, která zvládá i postupný (streaming) přístup k datům. Oba jsou v paletě Modeling."},
-
-  {cat:"Asociační pravidla", q:"Vysvětli pojmy antecedent a consequent na příkladu pravidla 'Pleny → Pivo'.",
-   o:["Antecedent = Pivo (co se kupuje následně); Consequent = Pleny (co spouští nákup).",
-      "Antecedent = Pleny (levá strana, podmínka); Consequent = Pivo (pravá strana, předpovídaná položka).",
-      "Antecedent je podpora pravidla, Consequent jeho spolehlivost.",
-      "Oba pojmy jsou synonyma pro 'položka v pravidle'."],
-   c:1, e:"Čteme: 'Kdo koupí Pleny (antecedent), pravděpodobně koupí i Pivo (consequent).' Antecedent = levá strana (IF), Consequent = pravá strana (THEN)."},
-
-  {cat:"Asociační pravidla", q:"Co je Confidence (spolehlivost) asociačního pravidla?",
-   o:["Jak často se antecedent vyskytuje v celé databázi.",
-      "Poměr pravidla ku náhodné pravděpodobnosti.",
-      "Podmíněná pravděpodobnost: P(Consequent | Antecedent) — s jakou pravděpodobností nastane pravá strana, pokud nastala levá.",
-      "Minimální podpora nutná pro generování pravidla."],
-   c:2, e:"Confidence 75 % u pravidla 'Pleny → Pivo' znamená: ze všech transakcí obsahujících Pleny, 75 % obsahovalo také Pivo. Je to podmíněná pravděpodobnost."},
-
-  {cat:"Asociační pravidla", q:"Spočítej Lift pravidla A → B, pokud nepodmíněná pravděpodobnost B je 39 % a Confidence je 75 %.",
-   o:["0,39 / 0,75 = 0,52",
-      "0,75 × 0,39 = 0,29",
-      "0,75 + 0,39 = 1,14",
-      "0,75 / 0,39 ≈ 1,92"],
-   c:3, e:"Lift = Confidence / P(Consequent) = 0,75 / 0,39 ≈ 1,92. Lift > 1 = pravidlo je zajímavé (A zvyšuje pravděpodobnost B). Lift = 1 = nezávislost. Lift < 1 = A snižuje pravděpodobnost B."},
-
-  {cat:"Asociační pravidla", q:"Vysvětli princip algoritmu Apriori.",
-   o:["Apriori iterativně přiřazuje transakce k nejbližšímu centroidu.",
-      "Apriori nejprve hledá časté jednoprvkové množiny, z nich skládá větší kandidáty a nečasté průběžně zahazuje. Z častých množin splňujících min. support pak generuje pravidla splňující min. confidence.",
-      "Apriori seřadí položky dle frekvence a pomocí greedy algoritmu tvoří pravidla.",
-      "Apriori je stromový algoritmus pro asociační analýzu."],
-   c:1, e:"Klíčová vlastnost: pokud {A} není frekventovaná, pak žádná nadmnožina {A, B} nemůže být frekventovaná. Díky tomu Apriori nemusí testovat triliony kombinací."},
-
-  {cat:"Asociační pravidla", q:"Jak vysvětlíš na příkladu pravidlo 'Pleny → Pivo'? Jde o příčinnost?",
-   o:["Ano — koupě plen přímo způsobuje touhu po pivu.",
-      "Ne — pravidlo popisuje pouze spoluvýskyt (korelaci), ne příčinu. Pivo a pleny nakupují často tatínci s malými dětmi, ale jeden nezpůsobuje druhý.",
-      "Ano — zákazník nejprve koupí pivo a to ho přiměje koupit pleny.",
-      "Ano, ale jen pokud je Lift > 2."],
-   c:1, e:"Asociační pravidla = korelace, NIKOLI kauzalita. Důvod spoluvýskytu musíš interpretovat sám (znalost byznysu). Statistika ti řekne 'co', ne 'proč'."},
-
-  // ── SHLUKOVÁ ANALÝZA ──────────────────────────────────────────────────
-  {cat:"Shluková analýza", q:"Co je shluková analýza (clustering) a k čemu se používá?",
-   o:["Metoda predikce kategoriální cílové proměnné.",
-      "Metoda hledání přirozených skupin podobných objektů bez cílové proměnné; používá se například k segmentaci zákazníků nebo detekci anomálií.",
-      "Způsob výběru nejdůležitějších prediktorů.",
-      "Technika pro zvýšení výpočetního výkonu."],
-   c:1, e:"Clustering = unsupervised learning. Neříkáš algoritmu 'co hledáš' — on sám hledá skupiny. Klasická aplikace: segmentace zákazníků, kde předem nevíš, kolik segmentů existuje."},
-
-  {cat:"Shluková analýza", q:"Co musíš udělat s daty před nasazením do shlukovacích algoritmů?",
-   o:["Nic speciálního, algoritmus si s daty poradí sám.",
-      "Vyčistit data, řešit chybějící hodnoty, vybrat relevantní proměnné a standardizovat číselné proměnné.",
-      "Převést všechna data do binárního formátu pomocí SetToFlag.",
-      "Vytvořit cílovou proměnnou a použít Partition."],
-   c:1, e:"Standardizace je klíčová! Pokud věk (rozsah 20–70) smícháš s příjmem (20000–80000), eukleidovská vzdálenost bude záviset téměř výhradně na příjmu. Z-score to srovná."},
-
-  {cat:"Shluková analýza", q:"Co je standardizace a proč se provádí před shlukovací analýzou? Uveď příklady.",
-   o:["Převod dat do binárního formátu; provádí se pro urychlení výpočtu.",
-      "Převod proměnných na srovnatelné měřítko, aby proměnné s velkým rozsahem nedominovaly vzdálenosti. Příklady: z-score (průměr 0, směrodatná odchylka 1), min-max škálování (0 až 1).",
-      "Přiřazení váhy každé proměnné dle její důležitosti.",
-      "Nahrazení chybějících hodnot průměrem."],
-   c:1, e:"Z-score: (x - průměr) / směrodatná odchylka. Min-max: (x - min) / (max - min). Obě metody zajistí, že žádná proměnná nepřeváží ostatní jen kvůli jiné jednotce měření."},
-
-  {cat:"Shluková analýza", q:"Co je metrika vzdálenosti a jaké typy znáš?",
-   o:["Metrika je způsob hodnocení kvality modelu; typy: accuracy, AUC, MAE.",
-      "Metrika je způsob měření vzdálenosti nebo podobnosti mezi záznamy; pro číselná data: eukleidovská, manhattanská (Manhattanská/city-block), Minkowského.",
-      "Metrika je počet shluků; typy: 2, 3, 5, 10.",
-      "Metrika je normalizační technika; typy: z-score, min-max."],
-   c:1, e:"Eukleidovská = přímá vzdálenost ('vzdušnou čarou'). Manhattanská = součet absolutních rozdílů ('pohyb po šachovnici'). Minkowského = generalizace obou. Výběr metriky ovlivňuje tvar nalezených shluků."},
-
-  {cat:"Shluková analýza", q:"Kdy se používají koeficienty asociace místo vzdálenostních metrik a jaké znáš?",
-   o:["Pro velká numerická data, když eukleidovská vzdálenost je příliš pomalá.",
-      "Pro kategoriální data, kde klasické vzdálenosti nedávají smysl; příklady: Jaccardův koeficient, Simple Matching Coefficient.",
-      "Pro binární data; příklady: Pearsonova korelace, Spearmanovo pořadí.",
-      "Pro textová data; příklady: cosine similarity a TF-IDF."],
-   c:1, e:"Pro binární nebo kategoriální data nemá eukleidovská vzdálenost smysl. Jaccard = počet společných atributů / celkový počet atributů. Simple Matching = včetně shod na '0'."},
-
-  {cat:"Shluková analýza", q:"Do jaké kategorie patří algoritmus K-Means?",
-   o:["Hierarchické shlukování.",
-      "Hustotní shlukování (density-based).",
-      "Nehierarchické partiční shlukování.",
-      "Modelové shlukování (model-based)."],
-   c:2, e:"K-Means = partiční algoritmus. Výsledek je plochá (non-hierarchická) struktura — záznamy jsou přiřazeny přímo k jednému ze K shluků. Neexistuje hierarchická struktura jako u dendrogramu."},
-
-  {cat:"Shluková analýza", q:"Vysvětli princip algoritmu K-Means.",
-   o:["K-Means hledá asociační pravidla v transakčních datech.",
-      "K-Means iterativně přiřazuje záznamy k nejbližšímu ze K centroidů, poté přepočítá polohu centroidů jako průměr přiřazených bodů — opakuje, dokud se přiřazení nemění.",
-      "K-Means hierarchicky slučuje nejbližší dvojice objektů.",
-      "K-Means hledá shluky jako oblasti vysoké hustoty dat."],
-   c:1, e:"Algoritmus: 1) náhodně rozmísti K centroidů, 2) přiřaď každý bod k nejbližšímu centroidu, 3) přepočítej centroidy jako průměr, 4) opakuj dokud se nic nemění. Jednoduchý, ale citlivý na K a počáteční pozice."},
-
-  {cat:"Shluková analýza", q:"V čem se liší uzly K-Means a TwoStep v Modeleru?",
-   o:["K-Means je pro regresi, TwoStep pro klasifikaci.",
-      "K-Means pracuje hlavně s číselnými proměnnými a vyžaduje zadání K předem; TwoStep zvládá mix datových typů (číselné i kategoriální) a umí optimální počet shluků odhadnout automaticky.",
-      "TwoStep je starší verze K-Means.",
-      "K-Means je rychlejší, ale méně přesný než TwoStep."],
-   c:1, e:"TwoStep je sofistikovanější: 1. fáze vytvoří pre-shluky, 2. fáze je sloučí. Automaticky odhaduje K pomocí AIC/BIC. Používej TwoStep, když máš mix datových typů nebo nevíš, kolik shluků zvolit."},
-
-  {cat:"Shluková analýza", q:"Co je dendrogram a z jakých částí se skládá?",
-   o:["Graf zobrazující ROC křivky více modelů naráz.",
-      "Stromový graf výsledků hierarchického shlukování; tvoří ho listy (jednotlivé objekty), větve, uzly spojení a osa vzdálenosti/podobnosti.",
-      "Vizualizace rozhodovacího stromu v Modeleru.",
-      "Graf zobrazující závislost počtu shluků na SSE."],
-   c:1, e:"Dendrogram čteš zdola nahoru: listy = jednotlivé záznamy, spoje = kdy se sloučily do shluku. Výška spoje = vzdálenost při sloučení. Horizontálním řezem dendrogramu určíš počet shluků."},
-
-  {cat:"Shluková analýza", q:"Jaké metody určování vzdálenosti shluků se používají při hierarchickém shlukování?",
-   o:["Eukleidovská, manhattanská, Minkowského a cosinová.",
-      "Single linkage (nejbližší soused), Complete linkage (nejvzdálenější soused), Average linkage (průměr) a Wardova metoda (minimalizace vnitroskupinové variance).",
-      "Jaccard, Simple Matching, Pearson a Spearman.",
-      "K-Means, TwoStep, DBSCAN a EM algoritmus."],
-   c:1, e:"Metody linkage určují, jak měřit vzdálenost mezi dvěma SHLUKY (ne body). Wardova metoda dává typicky nejkompaktnější, stejně velké shluky — proto je nejoblíbenější v praxi."},
-
-  {cat:"Shluková analýza", q:"Jaký trik se používá při hledání anomálií pomocí K-Means?",
-   o:["Nastaví se K=2 a anomálie jsou záznamy v menším shluku.",
-      "Nastaví se vysoký počet shluků (např. 20) a hledají se velmi malé shluky nebo záznamy s velkou vzdáleností od centroidu svého shluku.",
-      "Anomálie jsou záznamy, které K-Means nedokáže přiřadit žádnému shluku.",
-      "K-Means se spustí 100× a záznamy, které vždy mění shluk, jsou anomálie."],
-   c:1, e:"Trick: anomálie jsou 'divné' záznamy — nepatří nikam. Pokud vynutíš mnoho shluků, extrémní případy (podvody, výrobní defekty) padnou do shluků o 1–3 záznamech. Nebo mají velkou vzdálenost od svého centroidu."},
-
-  // ── EXTRA UZLY & POKROČILÉ ─────────────────────────────────────────────
-  {cat:"Uzly SPSS Modeler", q:"K čemu slouží uzel Sample?",
-   o:["Standardizuje číselné proměnné.",
-      "Vybere vzorek dat — náhodnou podmnožinu záznamů z datasetu.",
-      "Přidá do dat náhodné číslo jako nový sloupec.",
-      "Spustí model na části dat pro rychlý odhad."],
-   c:1, e:"Sample = náhodný výběr řádků. Hodí se pro rychlý průzkum na velkých datech, nebo pro přípravu testovacích scénářů bez nutnosti ručního výběru."},
-
-  {cat:"Uzly SPSS Modeler", q:"Co umožňuje formát .sav oproti běžnému .csv?",
-   o:["Je to čistý textový formát, snadno editovatelný v Notepadu.",
-      "Ukládá nejen data, ale i metadata: popisky proměnných a hodnot, typy měření, definice chybějících hodnot a formáty.",
-      "Lze ho přímo nahrát do relační databáze bez ovladačů.",
-      "Podporuje ho výhradně MS Excel."],
-   c:1, e:"SAV = nativní formát SPSS. Nesou si metadata sebou — typy proměnných (Nominal/Continuous), popisky hodnot (1=Muž, 2=Žena) apod. CSV je holý text bez kontextu."},
-
-  {cat:"Uzly SPSS Modeler", q:"Lze v IBM SPSS Modeler psát skripty? Jaké jazyky podporuje?",
-   o:["Ne, Modeler neumožňuje žádné skriptování.",
-      "Ano — podporuje Python scripting a automatizaci; ve starších verzích také Jython a legacy skriptování.",
-      "Ano, ale výhradně JavaScript.",
-      "Ano, výhradně R a SQL."],
-   c:1, e:"Python je dnes zlatý standard pro automatizaci v Modeleru — opakované spuštění streamu pro 12 měsíců, parametrizace, vlastní algoritmy přes scikit-learn. Starší verze používaly Jython."},
-
-  {cat:"Uzly SPSS Modeler", q:"Co je třeba připravit pro využití Database Node (import z databáze)?",
-   o:["Nainstalovat MS Excel a nastavit DDE propojení.",
-      "Připravit ODBC připojení (ovladač, přístupové údaje, práva) a znát strukturu cílových tabulek.",
-      "Zapnout Python scripting a importovat knihovnu pandas.",
-      "Stáhnout data do CSV a teprve pak importovat přes Var File."],
-   c:1, e:"Database node = přímý přístup k DB (Oracle, SQL Server, PostgreSQL...). Potřebuješ nastavený ODBC zdroj v OS, přihlašovací údaje, práva ke čtení a znát schéma databáze."},
-
-  {cat:"Uzly SPSS Modeler", q:"Jakým uzlem provedete export dat z Modeleru do databáze?",
-   o:["Uzlem Var File s přepnutím na write mode.",
-      "Uzlem Database Export.",
-      "Uzlem Statistics File — pokud je výstup .sav.",
-      "Uzlem Table — zobrazí výsledky a umožní export."],
-   c:1, e:"Database Export = zrcadlo Database Source. Výsledky streamu (predikce, skóre) zapíšeš přímo do tabulky v DB, odkud je pak mohou číst produkční systémy."},
-
-  {cat:"Uzly SPSS Modeler", q:"Co se skrývá za pojmem trénovací a testovací množina dat?",
-   o:["Trénovací = velká, testovací = malá část dat pro vizualizaci.",
-      "Trénovací množina slouží k naučení modelu; testovací k nezávislému ověření jeho kvality na datech, která model při tréninku neviděl.",
-      "Obě množiny jsou totožné — liší se jen názvem.",
-      "Testovací množina slouží k trénování, trénovací k ověření."],
-   c:1, e:"Klíčové: testovací data model nikdy 'neviděl'. Jen tak ověříš, zda model generalizuje, nebo pouze 'nazpaměť' zná trénovací data (overfitting)."},
-
-  {cat:"Uzly SPSS Modeler", q:"Jakým uzlem vygeneruješ sadu testovacích dat nebo rozdělíš dataset na train/test?",
-   o:["Uzlem Aggregate — agreguje data do testovací sady.",
-      "Uzlem User Input (ruční zadání testovacích dat) nebo uzlem Partition (automatické rozdělení na train/test).",
-      "Uzlem Sort — seřadí data a vezme první polovinu jako test.",
-      "Uzlem Filter — vyfiltruje testovací záznamy."],
-   c:1, e:"Partition = standardní způsob rozdělení v Modeleru. Přidá pole s hodnotami 'Training'/'Testing'. User Input je pro ruční vytvoření malého testovacího scénáře."},
-
-  // ── ZÁVĚREČNÉ OBTÍŽNĚJŠÍ ──────────────────────────────────────────────
-  {cat:"Hodnocení modelů", q:"Co je to korelační koeficient v kontextu regresního modelu a jak ho interpretovat?",
-   o:["Měří sílu nelineárního vztahu; 0 = perfektní model.",
-      "Měří sílu lineárního vztahu mezi predikcí a skutečností; hodnoty -1 až 1, přičemž pro regresní model je blíže 1 = lepší model.",
-      "Je to totéž co MAE, jen v jiných jednotkách.",
-      "Měří, jak rychle model konverguje."],
-   c:1, e:"Korelace 0,95 = predikce a skutečné hodnoty se velmi shodují. Korelace 0,5 = slabý model. Záporná korelace u regresního modelu signalizuje vážný problém."},
-
-  {cat:"Asociační pravidla", q:"Jaký je minimální počet parametrů, které nastavíš při spuštění algoritmu Apriori?",
-   o:["Žádné — Apriori funguje plně automaticky.",
-      "Pouze počet pravidel.",
-      "Minimálně minimální support (podpora) a minimální confidence (spolehlivost).",
-      "Pouze počet iterací."],
-   c:2, e:"Support = jak často se antecedent vyskytuje v datech (filtruje vzácné kombinace). Confidence = spolehlivost pravidla. Tyto dva prahy určují, kolik pravidel Apriori vygeneruje."},
-
-  {cat:"Rozhodovací stromy", q:"Co je Random Forest a jak se liší od jednoho rozhodovacího stromu?",
-   o:["Random Forest je rozhodovací strom s náhodně inicializovanými váhami.",
-      "Random Forest je soubor (ensemble) mnoha rozhodovacích stromů trénovaných na náhodných podmnožinách dat a proměnných; finální predikce je hlasováním/průměrem.",
-      "Random Forest je algoritmus pro shlukování.",
-      "Random Forest je obchodní název pro C&RT v IBM SPSS."],
-   c:1, e:"Jeden strom je citlivý na šum v datech. Stovky stromů trénovaných na různých podmnožinách (bagging) jsou odolnější — chyby se vzájemně vyruší. Random Trees v Modeleru je právě toto."},
-
-  {cat:"Shluková analýza", q:"Jaké typy shlukovacích algoritmů znáš?",
-   o:["Klasifikační, regresní, asociační a shlukové.",
-      "Hierarchické (dendrogram), partiční (K-Means), hustotní (DBSCAN), modelové (EM) a grid-based.",
-      "Single, Complete, Average a Ward — to jsou čtyři typy.",
-      "Supervised, Unsupervised a Semi-supervised."],
-   c:1, e:"Hierarchické (agglomerative/divisive), Partiční (K-Means, K-Medoids), Hustotní (DBSCAN — odolné vůči outlierům), Modelové (EM/Gaussian Mixture) a dalších. Každý typ hledá jiný 'tvar' shluku."},
-
-  {cat:"Základy Data Miningu", q:"Jaké DM úlohy typicky řeší finanční instituce?",
-   o:["Výhradně vizualizaci finančních dat.",
-      "Scoring (hodnocení klientů), odhad nesplácení, detekce podvodů, AML (praní špinavých peněz), segmentace klientů a doporučení produktů.",
-      "Pouze segmentaci zákazníků a cross-sell.",
-      "Výhradně analýzu sentimentu v zákaznických recenzích."],
-   c:1, e:"Banky jsou jedni z největších uživatelů DM. Credit scoring (odhadne, zda klient splácí), fraud detection (zachytí podvodné transakce v reálném čase) a AML jsou typické high-stakes DM aplikace."},
-
-  {cat:"Klasifikace a regrese", q:"Co je koeficient determinace R² a k čemu slouží v regresi?",
-   o:["Je to totéž co korelační koeficient.",
-      "Udává, jaký podíl variability cílové proměnné model vysvětluje; R²=1 = model vysvětluje vše, R²=0 = model nevysvětluje nic.",
-      "Je to metrika pro klasifikační modely.",
-      "Udává průměrnou absolutní chybu v procentech."],
-   c:1, e:"R² = korelace². Pokud R²=0,85, model vysvětluje 85 % variability v cílové proměnné. Zbývajících 15 % je nevysvětlená variabilita (šum nebo chybějící prediktory)."},
-
-  {cat:"CRISP-DM", q:"Je CRISP-DM proces lineární nebo iterativní? Proč?",
-   o:["Lineární — každá fáze se provede jednou a postoupíš dál.",
-      "Iterativní — výsledky pozdějších fází tě mohou vrátit zpět (např. modelování ukáže, že potřebuješ jiné proměnné, a vrátíš se do Data Preparation).",
-      "Paralelní — všechny fáze probíhají současně.",
-      "Náhodný — pořadí fází nezáleží."],
-   c:1, e:"CRISP-DM je záměrně iterativní. V praxi se na konci modelování téměř vždy vrátíš do přípravy dat. Nebo Evaluation ukáže, že jsi špatně pochopil byznys problém. To je v pořádku."},
-
-  {cat:"Uzly SPSS Modeler", q:"Jakého typu je cílová proměnná u binární klasifikační úlohy? A u vícetrídní klasifikace?",
-   o:["Binární: spojitá číselná; Vícetrídní: ordinální.",
-      "Binární: flag/binární (dvě hodnoty, např. 0/1); Vícetrídní: nominální (tři a více kategoriálních hodnot).",
-      "Obě jsou výhradně číselné.",
-      "Binární: nominální; Vícetrídní: spojitá."],
-   c:1, e:"V uzlu Type nastavíš: binární cíl jako Flag nebo Nominal se dvěma hodnotami; vícetrídní jako Nominal. Správné nastavení typu je podmínkou, aby algoritmus věděl, jaký typ úlohy řeší."},
-
-  {cat:"Hodnocení modelů", q:"Jak se spočítá Accuracy (přesnost) modelu z matice záměn?",
-   o:["Accuracy = TP / (TP + FP)",
-      "Accuracy = (TP + TN) / (TP + TN + FP + FN)",
-      "Accuracy = TN / (TN + FN)",
-      "Accuracy = TP / (TP + FN)"],
-   c:1, e:"Accuracy = podíl správně klasifikovaných záznamů z celku. Pozor: na nevyvážených datech (99 % negativních) může být Accuracy 99 % i pro zcela zbytečný model — proto používáme i sensitivity a specificity."},
-
-  {cat:"Rozhodovací stromy", q:"Co je CHAID a čím se liší od C&RT?",
-   o:["CHAID je totéž jako C&RT, jen pod jiným názvem.",
-      "CHAID (Chi-squared Automatic Interaction Detection) je víceúrovňový strom — dělí uzly na více než 2 větve naráz; používá chi-kvadrát test pro výběr splitů. C&RT je binární strom.",
-      "CHAID se používá výhradně pro regresi, C&RT pro klasifikaci.",
-      "CHAID je rychlejší verze C&RT pro velká data."],
-   c:1, e:"CHAID = oblíbený v průzkumné analýze a marketingu (přirozené větvení, snadno čitelné). C&RT = binární stromy s pruningem, dobré pro přesné predikce. Oba jsou v Modeleru."},
-
-  {cat:"Shluková analýza", q:"Jaký je rozdíl mezi vzdáleností eukleidovskou a manhattanskou?",
-   o:["Eukleidovská = pohyb po šachovnici; Manhattanská = přímá vzdálenost vzdušnou čarou.",
-      "Jsou totožné pro dvourozměrná data.",
-      "Eukleidovská = přímá vzdálenost 'vzdušnou čarou' (√Σ(xᵢ-yᵢ)²); Manhattanská = součet absolutních rozdílů po osách Σ|xᵢ-yᵢ| (pohyb po šachovnici/ulicích).",
-      "Manhattanská je vždy větší než eukleidovská."],
-   c:2, e:"Eukleidovská = Pythagorova věta ve vícerozměrném prostoru. Manhattanská = počítáš bloky jako v New Yorku. Manhattanská je robustnější vůči outlierům a hodí se pro vysokorozměrná data."},
-];
-
-let shuffled = [];
-let current = 0;
-let score = 0;
-let catScores = {};
-let answered = false;
-
+const ALL_QUESTIONS = [
+
+/* ═══════════════ ZÁKLADNÍ POJMY ═══════════════ */
+{s:"Základní pojmy DM", tag:"concept",
+ q:"Co je datamining?",
+ a:["Proces dolování znalostí z velkého množství dat pomocí statistických a algoritmických metod.",
+    "Ruční vyhledávání informací v databázích bez použití algoritmů.",
+    "Technologie pro zálohování databází v cloudovém prostředí.",
+    "Výhradně vizualizační technika pro zobrazení struktury dat."],
+ c:0, exp:"DM = automatizované hledání skrytých vzorů, závislostí a znalostí v datech."},
+
+{s:"Základní pojmy DM", tag:"concept",
+ q:"Co se skrývá pod zkratkou CRM?",
+ a:["Customer Relationship Management – řízení vztahů se zákazníky.",
+    "Core Resource Module – modul pro správu zdrojů.",
+    "Centralized Record Mining – centralizované dolování záznamů.",
+    "Certified Risk Model – certifikovaný model rizik."],
+ c:0, exp:"CRM = Customer Relationship Management, systém pro správu vztahů se zákazníky."},
+
+{s:"Základní pojmy DM", tag:"concept",
+ q:"Jaké typy DM úloh patří typicky do portfolia CRM?",
+ a:["Predikce odchodu zákazníků (churn), křížový prodej, segmentace zákazníků, skóring.",
+    "Diagnóza nemocí, predikce počasí, detekce podvodů v letecké dopravě.",
+    "Komprimace dat, šifrování databází, migrace dat mezi systémy.",
+    "Výhradně tvorba reportů a dashboardů bez prediktivní složky."],
+ c:0, exp:"CRM typicky zahrnuje churn prediction, cross-sell/upsell, segmentaci, scoringové modely."},
+
+{s:"Základní pojmy DM", tag:"concept",
+ q:"Jaké DM úlohy řeší obvykle finanční instituce?",
+ a:["Detekce podvodů, hodnocení úvěrového rizika (credit scoring), předpověď defaultu.",
+    "Analýza sentimentu v sociálních sítích a segmentace trhu s hudbou.",
+    "Optimalizace logistických tras a predikce počasí.",
+    "Výhradně predikce ceny akcií bez jiných aplikací."],
+ c:0, exp:"Banky a pojišťovny: credit scoring, fraud detection, predikce defaultu, praní špinavých peněz."},
+
+{s:"Základní pojmy DM", tag:"concept",
+ q:"Je pravdivé tvrzení, že DM odhalí v datech VŠE podstatné?",
+ a:["Ne – DM může přehlédnout vzory nebo produkovat falešné závislosti, výsledky závisí na kvalitě dat a volbě algoritmu.",
+    "Ano – pokud algoritmus běží dostatečně dlouho, odhalí všechny skryté vzory.",
+    "Ano – moderní algoritmy garantují 100% nalezení všech závislostí.",
+    "Ne – DM vůbec neumí odhalovat vzory, slouží jen k vizualizaci."],
+ c:0, exp:"DM má omezení: závisí na datech, výběru algoritmů, definici problému. Výsledky je nutné interpretovat."},
+
+{s:"Základní pojmy DM", tag:"concept",
+ q:"Je pravdivé tvrzení, že DM pracuje POUZE s obrovskými datovými množinami?",
+ a:["Ne – DM lze aplikovat i na menší datasety, i když větší data obecně zlepšují kvalitu modelů.",
+    "Ano – DM je definován minimálně milionem záznamů, jinak nejde o DM.",
+    "Ano – bez big data nejsou výsledky DM statisticky relevantní.",
+    "Ne – DM se používá výhradně na datasety s méně než 1000 záznamy."],
+ c:0, exp:"Velikost dat není definičním znakem DM. Důležitá je relevance dat, ne jen jejich množství."},
+
+{s:"Základní pojmy DM", tag:"concept",
+ q:"Je pravdivé tvrzení, že DM JE modelování?",
+ a:["Pouze zčásti – modelování je jedna fáze DM procesu, ale DM zahrnuje i přípravu dat, hodnocení a nasazení.",
+    "Ano – DM a modelování jsou synonyma a označují totéž.",
+    "Ne – DM a modelování jsou zcela odlišné disciplíny bez překryvu.",
+    "Ano – modelování je jediná smysluplná část celého DM procesu."],
+ c:0, exp:"Dle CRISP-DM je modelování jen jedna z 6 fází. DM zahrnuje datové porozumění, přípravu, nasazení atd."},
+
+/* ═══════════════ CRISP-DM ═══════════════ */
+{s:"Metodologie CRISP-DM", tag:"concept",
+ q:"Kdy a proč vznikla metodologie CRISP-DM a kdo stál u jejího vzniku?",
+ a:["Vznikla v roce 1996, iniciovala ji konsorcium firem SPSS, NCR, DaimlerChrysler a OHRA – potřeba standardního procesu pro DM projekty.",
+    "Vznikla v roce 2005, vytvořila ji výhradně IBM jako interní metodiku pro SPSS.",
+    "Vznikla v roce 1980 jako akademický standard MIT pro statistickou analýzu.",
+    "Vznikla v roce 2010, iniciovala ji Google jako framework pro machine learning projekty."],
+ c:0, exp:"CRISP-DM 1.0 byl vydán v roce 1999 (projekt startoval ~1996). Zakladatelé: SPSS, NCR, DaimlerChrysler, OHRA."},
+
+{s:"Metodologie CRISP-DM", tag:"concept",
+ q:"Která z možností SPRÁVNĚ vyjmenovává 6 fází CRISP-DM?",
+ a:["Business Understanding → Data Understanding → Data Preparation → Modeling → Evaluation → Deployment",
+    "Data Collection → Cleaning → Visualization → Modeling → Testing → Production",
+    "Problem Definition → ETL → Statistics → ML → Validation → Reporting",
+    "Requirements → Design → Development → Testing → Deployment → Maintenance"],
+ c:0, exp:"6 fází CRISP-DM: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, Deployment."},
+
+{s:"Metodologie CRISP-DM", tag:"concept",
+ q:"Co řeší fáze 'Business Understanding' v CRISP-DM?",
+ a:["Definice cílů projektu z pohledu byznysu, převod na DM úlohu, plán projektu.",
+    "Strojové učení modelů a ladění hyperparametrů.",
+    "Čištění a transformace dat pro modelování.",
+    "Nasazení finálního modelu do produkčního prostředí."],
+ c:0, exp:"Business Understanding: co chceme dosáhnout z pohledu byznysu, jaká je DM úloha, jaká jsou kritéria úspěchu."},
+
+{s:"Metodologie CRISP-DM", tag:"concept",
+ q:"Co řeší fáze 'Data Preparation' v CRISP-DM?",
+ a:["Čištění dat, tvorba nových proměnných, výběr relevantních atributů, formátování pro modelování.",
+    "Trénování a ladění finálních prediktivních modelů.",
+    "Nasazení modelu do produkce a monitoring výsledků.",
+    "Statistická analýza výsledků modelu a tvorba závěrečné zprávy."],
+ c:0, exp:"Data Preparation: čistění, transformace, odvozené proměnné, výběr záznamů – příprava pro modelovací fázi."},
+
+{s:"Metodologie CRISP-DM", tag:"concept",
+ q:"Jaký je základní rozdíl mezi dataminingem a statistikou?",
+ a:["DM je primárně zaměřen na predikci a hledání vzorů (explorativní), statistika na testování hypotéz a kauzalitu.",
+    "Statistika pracuje s daty, DM pouze s textem a obrázky.",
+    "DM a statistika jsou totéž – liší se jen název.",
+    "Statistika je automatizovaná, DM vyžaduje ruční analýzu každého záznamu."],
+ c:0, exp:"DM: discovery-driven, prediktivní, velká data. Statistika: hypotézy, kauzalita, matematické odvozování."},
+
+/* ═══════════════ PROMĚNNÉ ═══════════════ */
+{s:"Typy proměnných a úloh", tag:"concept",
+ q:"Co je vstupní proměnná (prediktor, nezávislá proměnná)?",
+ a:["Proměnná, která vstupuje do modelu jako vstup a slouží k předpovídání výstupní proměnné.",
+    "Proměnná, kterou se model snaží předpovědět (cíl).",
+    "Proměnná obsahující ID záznamu bez analytické hodnoty.",
+    "Proměnná, která se generuje automaticky jako výstup algoritmu."],
+ c:0, exp:"Prediktor = input field = nezávislá proměnná – to, co vkládáme do modelu jako vstup."},
+
+{s:"Typy proměnných a úloh", tag:"concept",
+ q:"Co je výstupní/cílová proměnná (target field)?",
+ a:["Proměnná, kterou se model snaží předpovědět nebo vysvětlit.",
+    "Proměnná obsahující výsledky transformací a agregací vstupních dat.",
+    "Libovolná vstupní proměnná vybraná analytikem jako hlavní.",
+    "Proměnná generovaná v uzlu Type jako sekundární výstup."],
+ c:0, exp:"Target field = cílová proměnná = dependent variable – to, co chceme predikovat."},
+
+{s:"Typy proměnných a úloh", tag:"concept",
+ q:"Jaký je rozdíl mezi klasifikační a regresní úlohou?",
+ a:["Klasifikace předpovídá kategoriální třídu (např. ano/ne), regrese předpovídá číselnou hodnotu (např. cena).",
+    "Regrese třídí záznamy do skupin, klasifikace předpovídá čísla.",
+    "Klasifikace pracuje pouze s textovými daty, regrese pouze s časovými řadami.",
+    "Oba typy jsou totožné, liší se pouze názvem v různých programovacích jazycích."],
+ c:0, exp:"Klasifikace → diskrétní kategorie (churn: ano/ne). Regrese → spojitá číselná hodnota (cena, příjem)."},
+
+{s:"Typy proměnných a úloh", tag:"concept",
+ q:"Jakého typu je cílová proměnná u regresní úlohy?",
+ a:["Spojitá číselná proměnná (scale/continuous).",
+    "Binární proměnná s hodnotami 0 a 1.",
+    "Nominální kategoriální proměnná.",
+    "Ordinální proměnná s omezeným počtem pořadí."],
+ c:0, exp:"Regrese: target = scale/continuous. Klasifikace: target = nominal/flag (kategorie)."},
+
+{s:"Typy proměnných a úloh", tag:"concept",
+ q:"Jaký je rozdíl mezi strojovým učením BEZ UČITELE a UČENÍM S UČITELEM?",
+ a:["Učení s učitelem má cílovou proměnnou (labeled data), učení bez učitele nemá – hledá vzory samo.",
+    "Učení bez učitele potřebuje experta, který opravuje každý výsledek; s učitelem běží automaticky.",
+    "Učení s učitelem funguje pouze na číselných datech, bez učitele pouze na textu.",
+    "Učení bez učitele je rychlejší, protože používá méně dat; s učitelem potřebuje miliony záznamů."],
+ c:0, exp:"Supervised = labeled data + target field (klasifikace, regrese). Unsupervised = no labels (clustering, AR)."},
+
+{s:"Typy proměnných a úloh", tag:"concept",
+ q:"Co je klasifikace? Uveďte příklad úlohy a vhodný algoritmus.",
+ a:["Přiřazení záznamu do předem definované kategorie; příklad: predikce odchodu zákazníka (ano/ne), algoritmus: C&RT, C5.0.",
+    "Predikce číselné hodnoty; příklad: odhad příjmu zákazníka, algoritmus: lineární regrese.",
+    "Seskupení podobných záznamů; příklad: segmentace zákazníků, algoritmus: K-Means.",
+    "Hledání pravidel 'pokud-pak'; příklad: analýza nákupního košíku, algoritmus: Apriori."],
+ c:0, exp:"Klasifikace = supervised, diskrétní target. Vhodné algos: C&RT, C5.0, CHAID, Logistická regrese."},
+
+{s:"Typy proměnných a úloh", tag:"concept",
+ q:"Co je seskupování (clustering)? Příklad úlohy a algoritmus.",
+ a:["Rozdělení dat do skupin podobných objektů bez předem dané třídy; příklad: segmentace zákazníků, algoritmus: K-Means.",
+    "Přiřazení záznamu do předem definované kategorie; příklad: spam/ne-spam, algoritmus: C5.0.",
+    "Predikce spojité hodnoty; příklad: odhad ceny nemovitosti, algoritmus: lineární regrese.",
+    "Hledání vztahů mezi položkami v transakcích; příklad: analýza košíku, algoritmus: Apriori."],
+ c:0, exp:"Clustering = unsupervised. K-Means, Two Step, Kohonen. Výstup: přiřazení do shluku (cluster ID)."},
+
+/* ═══════════════ SPSS MODELER – UZLY ═══════════════ */
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel TYPE v SPSS Modeler?",
+ a:["Definuje role a měrné úrovně proměnných (input/target/ID, nominal/scale/flag...).",
+    "Importuje data ze souborů různých typů (CSV, Excel, SAV).",
+    "Rozděluje datovou množinu na trénovací a testovací část.",
+    "Transformuje číselné proměnné na kategoriální pomocí binningu."],
+ c:0, exp:"Type uzel: nastavení role (Input/Target/Both/None/ID) a storage/measurement level."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel PARTITION?",
+ a:["Rozděluje datovou sadu na trénovací, testovací (a volitelně validační) podmnožinu.",
+    "Filtruje záznamy podle zadané podmínky (např. věk > 30).",
+    "Sloučí dva datové toky horizontálně (přidání sloupců).",
+    "Agreguje záznamy a počítá průměry nebo součty."],
+ c:0, exp:"Partition: přidá sloupec s rozdělením na Train/Test/(Validation). Nastavuje se jako %)."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel BALANCE?",
+ a:["Vyrovná rozložení cílové proměnné – zvýší zastoupení minoritní třídy (oversampling/undersampling).",
+    "Seřadí záznamy podle zadané proměnné vzestupně nebo sestupně.",
+    "Sloučí záznamy ze dvou datových zdrojů do jednoho toku.",
+    "Zobrazí statistiky jako minimum, maximum, průměr pro každou proměnnou."],
+ c:0, exp:"Balance: přidá nebo odebere záznamy konkrétních tříd pro vyvážení cílové proměnné."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel SELECT?",
+ a:["Filtruje záznamy (řádky) podle zadané podmínky – vrátí pouze záznamy splňující podmínku.",
+    "Vybere podmnožinu sloupců (proměnných) pro další analýzu.",
+    "Agreguje záznamy na základě seskupovacího klíče.",
+    "Zobrazí náhodný vzorek dat pro vizuální kontrolu."],
+ c:0, exp:"Select = filtr řádků podle podmínky (condition). Filter = filtr sloupců (polí)."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel FILTER?",
+ a:["Vybírá, přejmenuje nebo odstraní sloupce (pole/proměnné) z datového toku.",
+    "Filtruje záznamy podle logické podmínky (ekvivalent WHERE v SQL).",
+    "Sloučí dva datové toky vertikálně (přidání řádků).",
+    "Transformuje hodnoty proměnných pomocí matematických funkcí."],
+ c:0, exp:"Filter: správa polí/sloupců – zahrnout, vyloučit, přejmenovat. Select: správa řádků."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel MERGE?",
+ a:["Sloučí záznamy ze dvou a více datových toků horizontálně (připojí sloupce) na základě klíče.",
+    "Vertikálně spojí záznamy (přidá řádky) z více datových toků.",
+    "Odstraní duplicitní záznamy z datového toku.",
+    "Rozdělí datový tok do dvou větví podle podmínky."],
+ c:0, exp:"Merge = JOIN (horizontální spojení – přidání sloupců podle klíče). Append = UNION (vertikální – přidání řádků)."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel APPEND?",
+ a:["Vertikálně spojí záznamy z více datových toků (přidá řádky) – ekvivalent UNION.",
+    "Horizontálně sloučí datové toky na základě klíčového pole (JOIN).",
+    "Vypočítá agregované statistiky a přidá je jako nové sloupce.",
+    "Zobrazí výsledky modelu v tabulkovém formátu."],
+ c:0, exp:"Append = UNION. Merge = JOIN. Append přidává řádky, Merge přidává sloupce."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel DATA AUDIT?",
+ a:["Poskytuje souhrnnou statistiku pro všechny proměnné: missing values, odlehlé hodnoty, histogram, statistiky.",
+    "Exportuje data do auditovatelného log souboru pro compliance účely.",
+    "Hledá duplicitní záznamy a reportuje je pro ruční opravu.",
+    "Validuje datové typy proti předem definovanému schématu."],
+ c:0, exp:"Data Audit: přehledný profil celého datasetu – distribuce, chybějící hodnoty, odlehlé hodnoty."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel FEATURE SELECTION?",
+ a:["Identifikuje a seřadí prediktory podle jejich důležitosti/relevance pro cílovou proměnnou.",
+    "Automaticky vytváří nové odvozené proměnné z existujících dat.",
+    "Rozděluje datovou množinu na trénovací a testovací část.",
+    "Zobrazuje korelační matici mezi všemi proměnnými."],
+ c:0, exp:"Feature Selection: ranking prediktorů → pomůže vybrat relevantní vstupy a vyloučit šum."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel AUTO CLASSIFIER?",
+ a:["Automaticky zkouší více klasifikačních algoritmů a porovná jejich výsledky – vybere nejlepší.",
+    "Automaticky generuje klasifikační stromy bez nutnosti nastavení parametrů.",
+    "Klasifikuje záznamy do předdefinovaných tříd pomocí pravidel zadaných uživatelem.",
+    "Exportuje výsledky klasifikace do databáze automaticky po dokončení."],
+ c:0, exp:"Auto Classifier: benchmark více modelů (C&RT, C5.0, CHAID, LR...) a seřadí je dle zvolené metriky."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Jakým uzlem zobrazíte v Modeleru VZTAH DVOU ČÍSELNÝCH PROMĚNNÝCH?",
+ a:["Uzel Plot (scatter plot / bodový graf).",
+    "Uzel Distribution (sloupcový graf kategorií).",
+    "Uzel Histogram (rozdělení jedné číselné proměnné).",
+    "Uzel Matrix (matice záměn pro evaluaci modelu)."],
+ c:0, exp:"Plot = scatter plot pro dvě nebo více spojitých proměnných. Histogram = jedna numerická proměnná."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Na jaký typ proměnné použijete vizualizaci HISTOGRAM?",
+ a:["Číselná (spojitá / scale) proměnná.",
+    "Nominální kategoriální proměnná.",
+    "Binární (flag) proměnná.",
+    "Textová proměnná."],
+ c:0, exp:"Histogram: rozdělení číselné (scale) proměnné. Distribution: rozložení kategoriální (nominal/flag) proměnné."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Na jaký typ proměnné použijete vizualizaci DISTRIBUTION?",
+ a:["Kategoriální (nominální, ordinální, flag) proměnná.",
+    "Výhradně binární proměnné s hodnotami 0/1.",
+    "Pouze číselné proměnné se zápornou škálou.",
+    "Textové proměnné a identifikátory."],
+ c:0, exp:"Distribution = sloupcový graf pro kategorii. Histogram = bar/area chart pro numeriku."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel SETTOFLAG?",
+ a:["Restrukturalizuje kategoriální proměnnou na sadu binárních (0/1) indikátorových proměnných (one-hot encoding).",
+    "Nastavuje všechny chybějící hodnoty na speciální příznak (flag).",
+    "Označí záznamy, které jsou odlehlými hodnotami, binárním příznakem.",
+    "Konvertuje číselné proměnné na ordinální kategorie pomocí binningu."],
+ c:0, exp:"SetToFlag: one-hot encoding. Každá kategorie → vlastní binární proměnná. Nutné pro asociační pravidla."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Jakým uzlem v Modeleru IMPORTUJETE data z databáze?",
+ a:["Uzel Database (zdrojový uzel).",
+    "Uzel Statistics File (pro SPSS .sav soubory).",
+    "Uzel User Input (pro manuální zadání dat).",
+    "Uzel Varfile (pro data ve formátu .dat)."],
+ c:0, exp:"Database source node: připojení přes ODBC/databázový driver, lze i zadávat SQL dotazy."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Jakým uzlem v Modeleru EXPORTUJETE data do databáze?",
+ a:["Database export node (výstupní uzel Database).",
+    "Statistics Export node (pro export do SPSS formátu).",
+    "Flat File node (pro export do textového souboru).",
+    "Table node (zobrazí data, ale neexportuje je do DB)."],
+ c:0, exp:"Database export uzel: zapíše záznamy do tabulky v připojené databázi."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Jaký formát souboru .SAV (Statistics File) umožňuje oproti běžnému CSV?",
+ a:["Ukládá metadata: typy proměnných, popisky hodnot (value labels), měrné úrovně, chybějící hodnoty.",
+    "Automaticky komprimuje data na desetinu velikosti CSV.",
+    "Umožňuje ukládat pouze numerická data s vyšší přesností než CSV.",
+    "Podporuje ukládání obrázků a multimédií spolu s daty."],
+ c:0, exp:".sav: SPSS nativní formát – zachovává metadata, popisky, typy. CSV: čistý text bez metadat."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Lze v SPSS Modeler psát skripty a jaké jazyky podporuje?",
+ a:["Ano – Modeler podporuje skriptování v jazyce Python a proprietární skriptovací jazyk Modeler (CLEM scripting).",
+    "Ne – Modeler je čistě grafický nástroj bez možnosti skriptování.",
+    "Ano – pouze jazyk R, Python není podporován.",
+    "Ano – výhradně SQL pro datové transformace, jiné jazyky ne."],
+ c:0, exp:"Modeler: Python skripty, CLEM (výrazový jazyk pro transformace), v novějších verzích i R integrace."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"K čemu slouží uzel SAMPLE?",
+ a:["Vybere náhodný vzorek záznamů z datového toku (náhodné podvzorkování).",
+    "Rozdělí data na trénovací a testovací část v poměru 80:20.",
+    "Agreguje záznamy do vzorků podle skupinového klíče.",
+    "Generuje syntetická testovací data na základě distribuce vstupních dat."],
+ c:0, exp:"Sample: náhodný výběr podmnožiny záznamů. Partition: rozdělení na train/test."},
+
+{s:"SPSS Modeler – uzly", tag:"modeler",
+ q:"Jakým uzlem lze generovat SADU TESTOVACÍCH DAT v Modeleru?",
+ a:["Uzel User Input (manuální zadání) nebo simulační uzel Simulation Generate.",
+    "Uzel Sample v kombinaci s uzlem Partition.",
+    "Uzel Data Audit v exportním módu.",
+    "Uzel Balance nastavený na generování nových záznamů."],
+ c:0, exp:"User Input: ruční zadání testovacích dat. Simulation Generate: generuje data dle distribučních parametrů."},
+
+/* ═══════════════ LINEÁRNÍ REGRESE & C&RT ═══════════════ */
+{s:"Modely a hodnocení kvality", tag:"algo",
+ q:"K jakým typům DM úloh se hodí algoritmus C&RT?",
+ a:["Klasifikace (kategoriální target) i regrese (numerický target) – jde o rozhodovací strom.",
+    "Výhradně ke shlukové analýze bez cílové proměnné.",
+    "Pouze k asociačním pravidlům v transakcních datech.",
+    "Výhradně k časové řadě a predikci budoucích hodnot."],
+ c:0, exp:"C&RT (Classification and Regression Tree): umí oba typy – záleží na typu cílové proměnné."},
+
+{s:"Modely a hodnocení kvality", tag:"algo",
+ q:"Jaké DVA PARAMETRY jste používali pro hodnocení kvality modelu LINEÁRNÍ REGRESE?",
+ a:["Koeficient korelace (R nebo R²) a průměrná absolutní chyba (MAE).",
+    "Accuracy a AUC (Area Under Curve).",
+    "Precision a Recall (přesnost a úplnost).",
+    "Gini koeficient a KS statistika."],
+ c:0, exp:"Pro regresi: R (korelace), MAE (střední absolutní chyba). Pro klasifikaci: accuracy, AUC, Gini..."},
+
+{s:"Modely a hodnocení kvality", tag:"algo",
+ q:"Jakých hodnot může nabývat koeficient korelace a co naznačuje lepší model?",
+ a:["Hodnoty od -1 do +1; hodnoty blízké +1 nebo -1 naznačují silný vztah – lepší model.",
+    "Hodnoty od 0 do ∞; čím vyšší, tím horší model (větší rozptyl).",
+    "Hodnoty od 0 do 100 %; 100 % = perfektní model, 0 % = náhodný model.",
+    "Hodnoty od 0 do 1; hodnota 0 = perfektní, hodnota 1 = nejhorší možný model."],
+ c:0, exp:"Pearsonův r ∈ ⟨-1, 1⟩. |r| → 1: silná závislost (dobrý model). r ≈ 0: slabá závislost."},
+
+{s:"Modely a hodnocení kvality", tag:"algo",
+ q:"Jakých hodnot může nabývat MAE (průměrná absolutní chyba)?",
+ a:["Hodnoty ≥ 0; MAE = 0 je perfektní model, čím vyšší MAE, tím horší model.",
+    "Hodnoty od -1 do +1; záporná MAE naznačuje systematické nadhodnocení.",
+    "Hodnoty od 0 do 100 %; interpretace v procentech odchylky.",
+    "Hodnoty od 0 do 1; MAE > 0.5 vždy signalizuje přeučený model."],
+ c:0, exp:"MAE ≥ 0. MAE = 0: bez chyby. Čím nižší MAE, tím lepší model. Interpretace závisí na škále targetu."},
+
+{s:"Modely a hodnocení kvality", tag:"algo",
+ q:"Co jsme museli provést za operace s datovou maticí, abychom mohli použít lineární regresi? Jakého typu proměnné se to týkalo?",
+ a:["Kategoriální proměnné jsme museli převést na binární indikátory (dummy/flag proměnné) – lineární regrese vyžaduje numerické vstupy.",
+    "Číselné proměnné jsme museli standardizovat (z-score) – lineární regrese neumí pracovat s různými škálami.",
+    "Bylo nutné odstranit všechny záznamy s chybějícími hodnotami – lineární regrese chybějící hodnoty nepodporuje vůbec.",
+    "Bylo nutné log-transformovat všechny proměnné – lineární regrese vyžaduje logaritmické škálování."],
+ c:0, exp:"Dummy coding: nominální proměnné → sada binárních proměnných (SetToFlag nebo Reclassify). Regrese neumí přímo pracovat s kategoriemi."},
+
+/* ═══════════════ ROZHODOVACÍ STROMY ═══════════════ */
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Jaké TYPY klasifikačních stromů znáte? Které jste použili v Modeleru?",
+ a:["C&RT, C5.0, CHAID, QUEST – v Modeleru běžně C&RT a CHAID.",
+    "K-Means, Two Step, Kohonen – v Modeleru Two Step.",
+    "Apriori, GRI, Sequence – v Modeleru Apriori.",
+    "Linear Regression, Logistic Regression – v Modeleru Linear."],
+ c:0, exp:"Stromové algos: C&RT, C5.0, CHAID, QUEST, Random Forest (jako ensemble). V Modeleru: C&RT, CHAID, C5.0."},
+
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Jak se liší BINÁRNÍ a OBECNÝ rozhodovací strom?",
+ a:["Binární strom má v každém uzlu právě 2 větve, obecný strom může mít více větví (multiway split).",
+    "Binární strom lze použít pouze pro binární cílovou proměnnou, obecný pro více tříd.",
+    "Obecný strom pracuje výhradně s numerickými prediktory, binární s kategoriálními.",
+    "Binární strom provádí přísnější pruning, obecný strom pruning nepodporuje."],
+ c:0, exp:"Binární: každý uzel → 2 děti (C&RT). Obecný: každý uzel → n dětí, jeden split na kategorii (CHAID)."},
+
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Vysvětlete obecný princip rozhodovacích stromů.",
+ a:["Rekurzivní rozdělování dat: v každém uzlu se vybere prediktor a práh, který nejlépe rozdělí záznamy podle cílové proměnné.",
+    "Záznamy se seskupují do shluků na základě vzdálenosti od centroidu bez cílové proměnné.",
+    "Model se trénuje iterativním snižováním váhovaných chyb (gradient descent).",
+    "Pravděpodobnosti tříd se odhadují z podmíněných pravděpodobností dle Bayesovy věty."],
+ c:0, exp:"DT: top-down recursive partitioning. Kritéria dělení: Gini impurity, entropy/information gain, χ²."},
+
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Kdy se ZASTAVÍ RŮST rozhodovacího stromu?",
+ a:["Při dosažení maximální hloubky, minimálního počtu záznamů v uzlu, nebo když dělení nezlepší čistotu uzlu.",
+    "Vždy po přesně 10 iteracích bez ohledu na data.",
+    "Jakmile přesnost na testovací sadě překročí 95 %.",
+    "Pouze na základě explicitního pokynu uživatele – strom jinak roste donekonečna."],
+ c:0, exp:"Stopping criteria: max depth, min records in node, min improvement in impurity. Pak následuje pruning."},
+
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Jak poznáte, že je rozhodovací strom PŘEUČENÝ (overfitting)?",
+ a:["Přesnost na trénovacích datech je výrazně vyšší než na testovacích – model si 'zapamatoval' trénovací data.",
+    "Přesnost na testovacích datech je výrazně vyšší než na trénovacích.",
+    "Strom má méně než 5 listových uzlů.",
+    "MAE na trénovacích datech je vyšší než 0.5."],
+ c:0, exp:"Overfitting: train accuracy >> test accuracy. Strom je příliš komplexní a nezobecňuje."},
+
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Co je PRUNING (prořezávání) u rozhodovacích stromů?",
+ a:["Zpětné ořezání větví stromu, které nepřinášejí dostatečné zlepšení – snižuje overfitting.",
+    "Technika pro zrychlení trénování odebráním redundantních prediktorů před výstavbou stromu.",
+    "Sloučení listových uzlů stejné třídy do jednoho uzlu pro vizuální zjednodušení.",
+    "Proces odstranění chybějících hodnot před trénováním stromu."],
+ c:0, exp:"Pruning: post-training simplification. Odstraní uzly, jejichž přínos je menší než cost-complexity threshold."},
+
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Co je BOOSTING?",
+ a:["Ensemblová technika: sekvenční trénování slabých modelů, každý se zaměří na chyby předchozího.",
+    "Technická metoda pro zrychlení trénování neuronových sítí pomocí GPU.",
+    "Metoda pro zvýšení velikosti trénovacího datasetu syntetickým generováním vzorků.",
+    "Způsob normalizace vstupních proměnných pro zlepšení konvergence modelu."],
+ c:0, exp:"Boosting: AdaBoost, Gradient Boosting, XGBoost. Iterativně opravuje chyby – silný ensemble ze slabých learnerů."},
+
+{s:"Rozhodovací stromy", tag:"algo",
+ q:"Jaké DVě proměnné přidávají klasifikační stromy do datové matice v Modeleru? Vysvětlete jejich význam.",
+ a:["$R-<target>: predikovaná třída (label), $RC-<target>: spolehlivost predikce (confidence/pravděpodobnost).",
+    "$MEAN-<target>: průměr predikované hodnoty, $STD-<target>: směrodatná odchylka predikce.",
+    "$SEGMENT: číslo listu stromu, $DEPTH: hloubka uzlu, na který byl záznam přiřazen.",
+    "$TRAIN: označení trénovacího záznamu, $TEST: označení testovacího záznamu."],
+ c:0, exp:"$R-target = predicted class. $RC-target = confidence (pravděpodobnost dané třídy). Analogicky $XR/$XRC u jiných modelů."},
+
+/* ═══════════════ MATICE ZÁMĚN & HODNOCENÍ ═══════════════ */
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Co je a k čemu se používá MATICE ZÁMĚN (Confusion Matrix)?",
+ a:["Tabulka srovnávající skutečné třídy s predikovanými třídami – umožňuje hodnotit přesnost klasifikátoru.",
+    "Matice korelací mezi prediktory pro detekci multikolinearity.",
+    "Tabulka zobrazující váhy jednotlivých prediktorů v rozhodovacím stromu.",
+    "Graf zobrazující rozložení chybějících hodnot v datové matici."],
+ c:0, exp:"Confusion matrix: řádky = skutečné třídy, sloupce = predikované třídy. Diagonála = správné predikce."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Jaké případy najdeme NA DIAGONÁLE matice záměn?",
+ a:["Správně klasifikované případy – TP (True Positive) a TN (True Negative).",
+    "Špatně klasifikované případy – FP a FN.",
+    "Záznamy, u kterých model odmítl predikovat (nízká confidence).",
+    "Průměrné pravděpodobnosti tříd pro každou kombinaci skutečné a predikované třídy."],
+ c:0, exp:"Diagonála: správné predikce (TP + TN). Mimo diagonálu: chyby (FP + FN)."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Co je CHYBA PRVNÍHO DRUHU (Type I Error)?",
+ a:["False Positive – model predikuje pozitivní třídu, ale skutečnost je negativní (falešný poplach).",
+    "False Negative – model predikuje negativní třídu, ale skutečnost je pozitivní (přehlédnutý případ).",
+    "Přeučení modelu způsobené příliš malým trénovacím datasetem.",
+    "Systematická odchylka způsobená nevyváženou cílovou proměnnou."],
+ c:0, exp:"Chyba I. druhu = FP. Chyba II. druhu = FN. V medicíně: FP = zdravý diagnostikován jako nemocný."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Co je CHYBA DRUHÉHO DRUHU (Type II Error)?",
+ a:["False Negative – model predikuje negativní třídu, ale skutečnost je pozitivní (přehlédnutý případ).",
+    "False Positive – model predikuje pozitivní, ale skutečnost je negativní (falešný poplach).",
+    "Podhodnocení spolehlivosti modelu (confidence) na trénovacích datech.",
+    "Overfitting způsobený příliš komplexním stromem."],
+ c:0, exp:"FN = chyba II. druhu. V detekci podvodů: FN = reálný podvod označen jako 'v pořádku'."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Co je SENZITIVITA (Recall / True Positive Rate)?",
+ a:["Podíl správně identifikovaných pozitivních případů ze všech skutečně pozitivních: TP / (TP + FN).",
+    "Podíl správně identifikovaných negativních případů ze všech skutečně negativních: TN / (TN + FP).",
+    "Podíl správných predikcí ze všech predikcí: (TP + TN) / (TP + TN + FP + FN).",
+    "Podíl správně predikovaných pozitivních z predikovaných pozitivních: TP / (TP + FP)."],
+ c:0, exp:"Senzitivita = Recall = TPR = TP/(TP+FN). Jak dobře zachytíme všechny skutečně pozitivní?"},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Co je SPECIFIČNOST (Specificity / True Negative Rate)?",
+ a:["Podíl správně identifikovaných negativních případů ze všech skutečně negativních: TN / (TN + FP).",
+    "Podíl správně identifikovaných pozitivních případů ze všech skutečně pozitivních: TP / (TP + FN).",
+    "Podíl správných predikcí: (TP + TN) / celkový počet.",
+    "Podíl predikovaných pozitivních, které jsou skutečně pozitivní: TP / (TP + FP)."],
+ c:0, exp:"Specifičnost = TNR = TN/(TN+FP). Schopnost správně identifikovat negativní případy."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"K čemu slouží ROC křivka a co musíte znát pro její sestrojení?",
+ a:["Zobrazuje trade-off mezi TPR a FPR při různých prahových hodnotách; potřebujeme TP, FP, TN, FN pro každý práh.",
+    "Zobrazuje závislost přesnosti modelu na velikosti trénovacího datasetu.",
+    "Ukazuje distribuci predikovaných pravděpodobností pro každou třídu.",
+    "Srovnává hodnoty MAE a korelace pro různé konfiguraci hyperparametrů."],
+ c:0, exp:"ROC: osa X = FPR (1-specifičnost), osa Y = TPR (senzitivita). AUC = plocha pod křivkou, ideálně = 1."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Jakým uzlem v Modeleru zobrazíte GRAF ZISKU a ROC křivku?",
+ a:["Uzel Analysis nebo Evaluation (v sekci Output uzly).",
+    "Uzel Distribution (v sekci Graphs).",
+    "Uzel Data Audit (v sekci Output uzly).",
+    "Uzel Feature Selection (v sekci Field Operations)."],
+ c:0, exp:"Evaluation uzel: gain chart, lift chart, ROC/AUC. Analysis uzel: confusion matrix, přesnost."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Proč je důležité mít VYVÁŽENOU cílovou proměnnou?",
+ a:["Nevyvážená data způsobují, že model se naučí predikovat majoritní třídu a ignoruje minoritní třídu.",
+    "Vyvážení je nutné proto, aby algoritmus mohl rychleji konvergovat numericky.",
+    "Vyvážení zabrání overfittingu tím, že sníží počet trénovacích záznamů.",
+    "Vyvážení je vyžadováno výhradně u regresních úloh, u klasifikace není nutné."],
+ c:0, exp:"Imbalanced data: model s 95 % negativních záznamů dosáhne 95 % accuracy bez učení čehokoliv užitečného."},
+
+{s:"Matice záměn a hodnocení modelů", tag:"algo",
+ q:"Jak poznám podle GRAFU ZISKU (Gain Chart) kvalitu modelu?",
+ a:["Čím strmější je křivka zisku (rychleji zachycuje pozitivní případy při malém procentu kontaktů), tím lepší model.",
+    "Čím plošší a blíže základní diagonále, tím lepší model – naznačuje rovnoměrné rozložení.",
+    "Graf zisku ukazuje pouze absolutní počty, ne relativní kvalitu modelu.",
+    "Nejlepší model je ten, jehož křivka zisku protíná základní linii na hodnotě 50 %."],
+ c:0, exp:"Gain chart: ideální model = strmá křivka. Baseline (náhodný model) = diagonála. Čím výše nad diagonálou, tím lépe."},
+
+/* ═══════════════ ASOCIAČNÍ PRAVIDLA ═══════════════ */
+{s:"Asociační pravidla", tag:"algo",
+ q:"Co jsou TRANSAKČNÍ DATA?",
+ a:["Data popisující sady položek zakoupených (nebo jinak spojených) v rámci jedné transakce (nákupu, návštěvy...).",
+    "Data o finančních transakcích – pohybech na bankovních účtech.",
+    "Časové řady zachycující změny stavu systému v čase.",
+    "Záznamy o přístupu uživatelů do informačního systému (logy)."],
+ c:0, exp:"Transakční data: řádek = transakce, sloupec = přítomnost/nepřítomnost položky. Základ pro Market Basket Analysis."},
+
+{s:"Asociační pravidla", tag:"algo",
+ q:"Vysvětlete pojmy ANTECEDENT a CONSEQUENT na příkladu.",
+ a:["Antecedent = podmínka (LHS): {Pečivo, Mléko} → Consequent = závěr (RHS): {Máslo}. Pokud zákazník koupí pečivo a mléko, koupí i máslo.",
+    "Antecedent = výsledek pravidla, consequent = podmínka, která pravidlo spouští.",
+    "Antecedent = minimální podpora, consequent = minimální spolehlivost pravidla.",
+    "Antecedent = zákazník, consequent = transakce v databázi."],
+ c:0, exp:"AR: Antecedent (IF) → Consequent (THEN). Lift, Confidence, Support měří kvalitu pravidla."},
+
+{s:"Asociační pravidla", tag:"algo",
+ q:"Co je CONFIDENCE (spolehlivost) asociačního pravidla? Vysvětlete na příkladu.",
+ a:["Pravděpodobnost, že zákazník koupí consequent za podmínky, že koupil antecedent: P(B|A) = P(A∩B)/P(A).",
+    "Procentuální podíl transakcí, ve kterých se vyskytuje jak antecedent, tak consequent, z celkového počtu transakcí.",
+    "Poměr confidence pravidla k pravděpodobnosti nákupu consequentu bez podmínek.",
+    "Minimální počet transakcí, ve kterých se musí pravidlo vyskytovat, aby bylo považováno za frekventované."],
+ c:0, exp:"Confidence = P(B|A). Příklad: 75 % zákazníků, kteří koupili pečivo, koupilo i máslo."},
+
+{s:"Asociační pravidla", tag:"algo",
+ q:"Spočítejte LIFT pravidla: Alkohol ← Pečivo & Mražené. P(Alkohol) = 39 %, Confidence = 75 %.",
+ a:["Lift = 75 % / 39 % ≈ 1,92 – pravidlo je 1,92× lepší než náhodný výběr.",
+    "Lift = 39 % / 75 % ≈ 0,52 – pravidlo je slabší než náhodný výběr.",
+    "Lift = 75 % × 39 % ≈ 29,25 % – vyjadřuje absolutní pravděpodobnost nákupu.",
+    "Lift = (75 % + 39 %) / 2 ≈ 57 % – průměrná pravděpodobnost."],
+ c:0, exp:"Lift = Confidence / P(Consequent) = 0.75 / 0.39 ≈ 1.92. Lift > 1: pozitivní závislost."},
+
+{s:"Asociační pravidla", tag:"algo",
+ q:"Vysvětlete princip algoritmu APRIORI.",
+ a:["Iterativně generuje frekventované množiny: začíná 1-položkovými, rozšiřuje o 1 a prořezává nefrekventované podmnožiny (antimonotonicity).",
+    "Rekurzivně rozděluje záznamy podle nejlepšího prediktoru, dokud nejsou listy čisté.",
+    "Iterativně přemísťuje centroidy shluků, dokud se jejich poloha nestabilizuje.",
+    "Trénuje sérii slabých modelů, kde každý opravuje chyby předchozího (boosting)."],
+ c:0, exp:"Apriori: Lk-1 → Lk. Klíčová vlastnost: podmnožina frekventované množiny musí být také frekventovaná."},
+
+{s:"Asociační pravidla", tag:"algo",
+ q:"Které modelovací uzly generují ASOCIAČNÍ PRAVIDLA v Modeleru a čím se liší?",
+ a:["Apriori (hledá všechna pravidla nad prahem podpory/spolehlivosti) a GRI/Association Rules (efektivnější pro velká data, podporuje více formátů).",
+    "K-Means a Two Step – oba hledají asociace mezi proměnnými.",
+    "C&RT a CHAID – generují pravidla z rozhodovacích stromů.",
+    "Linear Regression a Logistic Regression – generují lineární asociační pravidla."],
+ c:0, exp:"Apriori: klasický basket analysis. GRI (General Rule Induction): rychlejší, zvládne i tabulárními daty (ne jen transakcemi)."},
+
+/* ═══════════════ SHLUKOVÁ ANALÝZA ═══════════════ */
+{s:"Shluková analýza", tag:"algo",
+ q:"Co je shluková analýza a k čemu se používá?",
+ a:["Unsupervised metoda rozdělující záznamy do skupin (shluků) tak, aby záznamy ve skupině byly si navzájem podobné a od ostatních skupin odlišné.",
+    "Supervised metoda třídění záznamů do předem definovaných kategorií na základě labeled dat.",
+    "Statistická metoda pro testování hypotéz o rozdílech mezi skupinami populace.",
+    "Technika pro redukci dimenzionality dat odstraněním korelovaných proměnných."],
+ c:0, exp:"Clustering: unsupervised, žádný target. Cíl: homogenní uvnitř, heterogenní navenek."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Co musíme udělat s daty PŘED nasazením do shlukovacích algoritmů?",
+ a:["Standardizovat (normalizovat) numerické proměnné, aby proměnné s větší škálou nedominovaly výsledku.",
+    "Odstranit všechny kategoriální proměnné – shlukovací algoritmy pracují výhradně s numerickými daty.",
+    "Seřadit záznamy vzestupně podle všech proměnných.",
+    "Vytvořit dummy proměnné pro všechny kategoriální hodnoty pomocí SetToFlag uzlu."],
+ c:0, exp:"Standardizace: z-score, min-max, rozsah [0,1]. Bez standardizace dominuje proměnná s velkou škálou (např. příjem vs věk)."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Co je STANDARDIZACE hodnot a proč se provádí v shlukovací analýze?",
+ a:["Transformace hodnot na srovnatelnou škálu (např. z-score), aby měly všechny proměnné stejný vliv na výpočet vzdálenosti.",
+    "Proces odstranění odlehlých hodnot z datasetu před analýzou.",
+    "Nastavení chybějících hodnot na průměr proměnné.",
+    "Transformace šikmých distribucí pomocí logaritmu pro zajištění normality."],
+ c:0, exp:"Z-score: (x - mean) / std. Min-max: (x - min) / (max - min). Výsledek: srovnatelné škály."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Co je METRIKA v kontextu shlukové analýzy?",
+ a:["Funkce měřící vzdálenost (nebo nepodobnost) mezi dvěma záznamy – např. Euklidovská, Manhattanská vzdálenost.",
+    "Ukazatel kvality modelu jako MAE nebo koeficient korelace.",
+    "Míra homogenity shluku vyjádřená jako podíl rozptylu uvnitř a mezi shluky.",
+    "Parametr algoritmu K-Means definující počet shluků k."],
+ c:0, exp:"Metriky vzdálenosti pro číselná data: Euklides, Manhattan, Minkowski, Chebyshev."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Kdy se používají KOEFICIENTY ASOCIACE při shlukování?",
+ a:["Při práci s binárními (0/1) nebo kategoriálními proměnnými, kde metrické vzdálenosti nemají smysl.",
+    "Výhradně u numerických proměnných pro měření lineárního vztahu.",
+    "Při práci s transakčními daty pro nalezení asociačních pravidel.",
+    "Jako alternativa k dendrogramu pro vizualizaci podobnosti."],
+ c:0, exp:"Pro binární/nominální atributy: Jaccardův index, Dice koeficient, Simple Matching Coefficient."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Co je DENDROGRAM a z jakých částí se skládá?",
+ a:["Stromový diagram hierarchického shlukování: listy = objekty, vnitřní uzly = sloučení shluků, výška uzlu = vzdálenost sloučení.",
+    "Graf zobrazující rozložení prediktorů v klasifikačním stromu a jejich prahové hodnoty.",
+    "Vizualizace korelační matice prediktorů ve formě stromové struktury.",
+    "Diagram zobrazující vývoj centroidů shluků v průběhu iterací K-Means."],
+ c:0, exp:"Dendrogram: hierarchická struktura. Horizontálním řezem v různé výšce = různý počet shluků."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Do jaké kategorie patří algoritmus K-MEANS?",
+ a:["Partitivní (nerační) shlukovací algoritmus – rozdělí data do přesně k shluků.",
+    "Hierarchický agglomerativní algoritmus – buduje dendrogram zdola nahoru.",
+    "Hustotní (density-based) algoritmus – hledá shluky jako oblasti vysoké hustoty.",
+    "Pravděpodobnostní model – přiřazuje záznamy do shluků na základě pravděpodobnosti."],
+ c:0, exp:"K-Means: partitivní, iterativní, musí znát k předem. Two Step: hierarchický + K-Means. DBSCAN: hustotní."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Vysvětlete princip algoritmu K-MEANS.",
+ a:["1. Náhodně inicializuj k centroidů. 2. Přiřaď každý záznam k nejbližšímu centroidu. 3. Přepočítej centroidy. 4. Opakuj 2-3, dokud se centroidy nemění.",
+    "1. Začni s každým záznamem jako vlastní shluk. 2. Iterativně slučuj dva nejbližší shluky. 3. Opakuj do jednoho shluku.",
+    "1. Seřaď záznamy. 2. Přiřaď do k shluků rovnoměrně. 3. Vypočti střední hodnoty a shlukuj.",
+    "1. Vypočti korelační matici. 2. Identifikuj skupiny korelovaných proměnných. 3. Přiřaď záznamy."],
+ c:0, exp:"K-Means: E-step (přiřazení k nejbližšímu centroidu), M-step (přepočet centroidu). Konverguje lokálně."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"V čem se liší uzel K-MEANS a TWO STEP v Modeleru, pokud jde o počet shluků?",
+ a:["K-Means vyžaduje zadání počtu shluků k předem; Two Step dokáže počet shluků určit automaticky.",
+    "Two Step vyžaduje zadání k předem; K-Means určuje počet shluků automaticky.",
+    "Oba uzly vyžadují zadání k předem, liší se pouze v kritériu pro výpočet vzdálenosti.",
+    "Oba uzly určují k automaticky, ale Two Step podporuje více metrik vzdálenosti."],
+ c:0, exp:"K-Means: k zadáno pevně. Two Step: automatická detekce k pomocí BIC nebo AIC kritéria."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Jaké METODY určování podobnosti shluků se používají při HIERARCHICKÉM shlukování?",
+ a:["Single linkage (nejbližší soused), Complete linkage (nejdál soused), Average linkage, Ward's method.",
+    "Euklidovská a Manhattanská vzdálenost – tyto metody se používají výhradně v hierarchickém shlukování.",
+    "K-Means centroidy, medioid, BIC kritérium.",
+    "Gini impurity, entropy, χ² test – přenesené z rozhodovacích stromů."],
+ c:0, exp:"Linkage metody: Single, Complete, Average, Centroid, Ward (minimalizuje rozptyl uvnitř shluků)."},
+
+{s:"Shluková analýza", tag:"algo",
+ q:"Jaký TRIK byl použit při hledání ANOMÁLIÍ pomocí K-Means?",
+ a:["Záznamy s velkou vzdáleností od svého centroidu byly označeny jako anomálie – jsou 'nejhůře pasující' do svého shluku.",
+    "Anomálie se hledaly v nejmenším shluku – předpokládalo se, že malý shluk = anomálie.",
+    "Model K-Means byl trénován výhradně na negativních záznamech, anomálie = pozitivní třída.",
+    "Záznamy přiřazené do shluku č. 1 byly automaticky označeny jako anomálie."],
+ c:0, exp:"Anomaly detection: záznamy s highest distance to cluster center jsou podezřelé. Modeler má i Anomaly Detection uzel."},
+
+/* ═══════════════ NÁSTROJE & JAZYKY ═══════════════ */
+{s:"Nástroje a jazyky", tag:"concept",
+ q:"Jaké programovací jazyky jsou nejpopulárnější pro DM, ML a AI?",
+ a:["Python a R (Python dominuje – scikit-learn, TensorFlow, PyTorch; R: statistická analýza).",
+    "Java a C++ – tyto jazyky jsou standardem pro produkční ML systémy.",
+    "SQL a SAS – výhradně tyto dva jazyky pokrývají celé DM portfolio.",
+    "JavaScript a PHP – populární díky webovým frameworkům pro vizualizaci dat."],
+ c:0, exp:"Python: #1 pro DM/ML/AI. R: statistika. SQL: databáze. SAS: enterprise analytics. Julia: emerging."},
+
+{s:"Nástroje a jazyky", tag:"concept",
+ q:"Jaké dataminingové NÁSTROJE znáte?",
+ a:["IBM SPSS Modeler, RapidMiner, KNIME, Weka, SAS Enterprise Miner, Python (scikit-learn), R.",
+    "Excel, PowerPoint, Access – tyto nástroje jsou standardem pro datamining v praxi.",
+    "MySQL, PostgreSQL, MongoDB – databázové systémy jsou základní DM nástroje.",
+    "Tableau, Power BI, Looker – vizualizační nástroje jsou hlavními DM nástroji."],
+ c:0, exp:"DM toolkity: IBM SPSS Modeler, RapidMiner, KNIME (open source), Weka, SAS EM, Azure ML Studio."},
+
+{s:"Nástroje a jazyky", tag:"concept",
+ q:"Kde se všude dá DM uplatnit? (Uveďte oblasti)",
+ a:["Finance (fraud, credit), CRM (churn, segmentace), medicína (diagnóza), e-commerce (doporučení), výroba (prediktivní údržba), telco, pojišťovnictví.",
+    "Výhradně v bankovnictví a pojišťovnictví – ostatní odvětví DM nevyužívají.",
+    "Pouze v oblasti e-commerce a sociálních sítí pro analýzu uživatelského chování.",
+    "DM se uplatňuje jen ve výzkumu a akademické sféře, ne v komerční praxi."],
+ c:0, exp:"DM je průřezová disciplína: finance, zdravotnictví, retail, telco, výroba, HR, sport, vláda..."},
+
+/* ═══════════════ TRÉNOVACÍ / TESTOVACÍ MNOŽINA ═══════════════ */
+{s:"Trénovací a testovací data", tag:"modeler",
+ q:"Co je TRÉNOVACÍ a TESTOVACÍ množina dat?",
+ a:["Trénovací: data pro učení modelu. Testovací: nezávislá data pro ověření generalizace modelu na neviděných datech.",
+    "Trénovací: velká datová sada pro ukládání. Testovací: malá sada pro vizualizaci výsledků.",
+    "Jsou to synonyma – oba termíny označují celý dataset použitý pro modelování.",
+    "Trénovací: historická data. Testovací: aktuální produkční data pro scoring."],
+ c:0, exp:"Train: model se učí. Test: nezávislé hodnocení – simuluje výkon na nových, neviděných datech."},
+
+{s:"Trénovací a testovací data", tag:"modeler",
+ q:"Jak v SPSS Modeleru ROZDĚLÍTE množinu dat na trénovací a testovací?",
+ a:["Uzlem Partition – přidá pole Partition označující záznamy jako Training nebo Testing (v zadaném poměru).",
+    "Uzlem Select – dvakrát aplikovaný s inverzními podmínkami na každou větev streamu.",
+    "Uzlem Sample nastavením různých vzorkovacích poměrů pro každou větev.",
+    "Uzlem Balance s nastavením 70 % pro trénovací a 30 % pro testovací záznamy."],
+ c:0, exp:"Partition uzel: standardní způsob. Přidá pole $Partition. Hodnoty: 1_Training, 2_Testing (3_Validation volitelně)."},
+
+]; // end ALL_QUESTIONS
+
+// ── Shuffle helper ──
 function shuffle(arr) {
-  let a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
+  for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  return a;
+  return arr;
 }
 
-function startQuiz() {
-  shuffled = shuffle(QUESTIONS).map(q => {
-    const pairs = q.o.map((opt, i) => ({ text: opt, correct: i === q.c }));
-    const sp = shuffle(pairs);
-    return {
-      cat: q.cat,
-      q: q.q,
-      o: sp.map(p => p.text),
-      c: sp.findIndex(p => p.correct),
-      e: q.e
-    };
-  });
-  current = 0;
-  score = 0;
-  catScores = {};
-  shuffled.forEach(q => {
-    if (!catScores[q.cat]) catScores[q.cat] = { right: 0, total: 0 };
-    catScores[q.cat].total++;
+// ── Build quiz ──
+let questions = [];
+let answered  = 0;
+
+function buildQuiz() {
+  questions = ALL_QUESTIONS.map(q => {
+    // Shuffle options and track new correct index
+    const indices = [0, 1, 2, 3];
+    shuffle(indices);
+    const newAnswers = indices.map(i => q.a[i]);
+    const newCorrect = indices.indexOf(q.c);
+    return { ...q, a: newAnswers, c: newCorrect, _orig: q };
   });
 
-  document.getElementById('intro').classList.add('hidden');
-  document.getElementById('result').style.display = 'none';
-  document.getElementById('quiz').classList.remove('hidden');
-  loadQuestion();
+  // Group by section
+  const sections = {};
+  questions.forEach((q, i) => {
+    if (!sections[q.s]) sections[q.s] = [];
+    sections[q.s].push({ q, idx: i });
+  });
+
+  const container = document.getElementById('quiz-container');
+  const resultsEl = document.getElementById('results');
+
+  // Clear old content (keep results div)
+  Array.from(container.children).forEach(c => {
+    if (c.id !== 'results') c.remove();
+  });
+
+  answered = 0;
+  updateProgress();
+
+  Object.entries(sections).forEach(([secName, items]) => {
+    const sec = document.createElement('div');
+    sec.innerHTML = `<div class="section-title">${secName}</div>`;
+    items.forEach(({ q, idx }) => {
+      sec.appendChild(buildCard(q, idx));
+    });
+    container.insertBefore(sec, resultsEl);
+  });
+
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('unanswered-note').textContent = `Zodpověz všechny otázky (0 / ${questions.length})`;
+  resultsEl.classList.remove('show');
+  updateProgress();
 }
 
-const KEYS = ['A','B','C','D'];
+const LETTERS = ['A', 'B', 'C', 'D'];
 
-function loadQuestion() {
-  answered = false;
-  const q = shuffled[current];
-  document.getElementById('q-cat').textContent = q.cat;
-  document.getElementById('q-text').textContent = q.q;
-  document.getElementById('q-explanation').classList.remove('show');
-  document.getElementById('next-btn').classList.remove('show');
-
-  const ul = document.getElementById('q-options');
-  ul.innerHTML = '';
-  q.o.forEach((opt, i) => {
-    const li = document.createElement('li');
-    li.className = 'option';
-    li.innerHTML = `<span class="option-key">${KEYS[i]}</span><span>${opt}</span>`;
-    li.onclick = () => selectAnswer(i);
-    ul.appendChild(li);
-  });
-
-  const pct = (current / shuffled.length) * 100;
-  document.getElementById('prog-fill').style.width = pct + '%';
-  document.getElementById('prog-label').textContent = `Otázka ${current + 1} z ${shuffled.length}`;
-  document.getElementById('prog-score').textContent = `Skóre: ${score}`;
-
-  // Animate card
-  const card = document.getElementById('q-card');
-  card.style.animation = 'none';
-  void card.offsetWidth;
-  card.style.animation = 'fadeUp 0.35s ease both';
+function buildCard(q, idx) {
+  const card = document.createElement('div');
+  card.className = 'q-card';
+  card.id = `q-${idx}`;
+  const tagClass = q.tag === 'modeler' ? 'tag-modeler' : q.tag === 'algo' ? 'tag-algo' : 'tag-concept';
+  const tagLabel = q.tag === 'modeler' ? 'MODELER' : q.tag === 'algo' ? 'ALGORITMY' : 'POJMY';
+  card.innerHTML = `
+    <div class="q-num">
+      <span class="tag ${tagClass}">${tagLabel}</span>
+    </div>
+    <div class="q-text">${q.q}</div>
+    <div class="options" id="opts-${idx}">
+      ${q.a.map((ans, ai) => `
+        <div class="opt" id="opt-${idx}-${ai}" onclick="selectOpt(${idx},${ai})">
+          <span class="opt-letter">${LETTERS[ai]}</span>
+          <span>${ans}</span>
+        </div>
+      `).join('')}
+    </div>
+    <div class="feedback" id="fb-${idx}"></div>
+  `;
+  return card;
 }
 
-function selectAnswer(idx) {
-  if (answered) return;
-  answered = true;
-  const q = shuffled[current];
-  const items = document.querySelectorAll('.option');
+function selectOpt(qIdx, optIdx) {
+  const q = questions[qIdx];
+  if (q._answered) return;
 
-  if (idx === q.c) {
-    items[idx].classList.add('correct');
-    score++;
-    catScores[q.cat].right++;
+  // Deselect previous
+  q.a.forEach((_, ai) => {
+    document.getElementById(`opt-${qIdx}-${ai}`).classList.remove('selected');
+  });
+  document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add('selected');
+  q._selected = optIdx;
+
+  if (!q._answered) {
+    answered++;
+    q._answered = true;
+    updateProgress();
+    checkSubmit();
+  }
+}
+
+function updateProgress() {
+  const total = questions.length;
+  const pct = total > 0 ? (answered / total * 100) : 0;
+  document.getElementById('prog').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `${answered} / ${total}`;
+  document.getElementById('unanswered-note').textContent =
+    answered === total
+      ? 'Všechny otázky zodpovězeny ✓'
+      : `Zodpověz všechny otázky (${answered} / ${total})`;
+}
+
+function checkSubmit() {
+  const allDone = questions.every(q => q._answered !== undefined);
+  document.getElementById('submit-btn').disabled = !allDone;
+}
+
+function submitQuiz() {
+  let correct = 0;
+  questions.forEach((q, idx) => {
+    const sel = q._selected;
+    const card = document.getElementById(`q-${idx}`);
+    const fb   = document.getElementById(`fb-${idx}`);
+
+    // Mark options
+    q.a.forEach((_, ai) => {
+      const opt = document.getElementById(`opt-${idx}-${ai}`);
+      opt.style.cursor = 'default';
+      if (ai === q.c) opt.classList.add('reveal-correct');
+    });
+
+    const selOpt = document.getElementById(`opt-${idx}-${sel}`);
+    if (sel === q.c) {
+      correct++;
+      selOpt.classList.add('correct');
+      selOpt.classList.remove('reveal-correct');
+      card.classList.add('correct');
+      fb.className = 'feedback ok show';
+      fb.textContent = '✓ Správně! ' + (q.exp || '');
+    } else {
+      selOpt.classList.add('wrong');
+      card.classList.add('wrong');
+      fb.className = 'feedback err show';
+      fb.textContent = '✗ Špatně. ' + (q.exp || '');
+    }
+  });
+
+  const total = questions.length;
+  const pct = Math.round(correct / total * 100);
+  const resultsEl = document.getElementById('results');
+  const scoreBig  = document.getElementById('score-big');
+  const scoreLabel= document.getElementById('score-label');
+  const scoreMsg  = document.getElementById('score-msg');
+
+  scoreBig.textContent = pct + '%';
+  scoreLabel.textContent = `${correct} správně z ${total} otázek`;
+
+  if (pct >= 75) {
+    scoreBig.className = 'score-big pass';
+    scoreMsg.textContent = pct >= 90
+      ? '🏆 Výborně! Jsi připraven na test.'
+      : '✅ Dobrý výsledek! Ještě trochu zopakuj a projdeš.';
   } else {
-    items[idx].classList.add('wrong');
-    items[q.c].classList.add('correct');
+    scoreBig.className = 'score-big fail';
+    scoreMsg.textContent = pct >= 50
+      ? '⚠️ Taktak. Zaměř se na červeně označené otázky.'
+      : '❌ Potřebuješ ještě procvičit. Zkus to znovu!';
   }
-  items.forEach((el, i) => {
-    if (i !== idx && i !== q.c) el.classList.add('disabled');
-    el.onclick = null;
-  });
 
-  const expl = document.getElementById('q-explanation');
-  expl.innerHTML = `<strong>Vysvětlení:</strong> ${q.e}`;
-  expl.classList.add('show');
-
-  const nb = document.getElementById('next-btn');
-  nb.textContent = current < shuffled.length - 1 ? 'Další otázka →' : 'Zobrazit výsledky →';
-  nb.classList.add('show');
+  resultsEl.classList.add('show');
+  document.getElementById('submit-btn').disabled = true;
+  resultsEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-function nextQuestion() {
-  current++;
-  if (current >= shuffled.length) {
-    showResult();
-  } else {
-    loadQuestion();
-  }
+function restartQuiz() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(buildQuiz, 300);
 }
 
-function showResult() {
-  document.getElementById('quiz').classList.add('hidden');
-  const res = document.getElementById('result');
-  res.style.display = 'block';
-
-  const pct = Math.round((score / shuffled.length) * 100);
-  document.getElementById('ring-pct').textContent = pct + '%';
-  document.getElementById('ring-raw').textContent = `${score} / ${shuffled.length}`;
-
-  const circumference = 2 * Math.PI * 70;
-  const offset = circumference * (1 - score / shuffled.length);
-  setTimeout(() => {
-    document.getElementById('ring-fill').style.strokeDashoffset = offset;
-  }, 100);
-
-  let msg, sub;
-  if (pct >= 90) {
-    msg = 'Výborně.';
-    sub = 'Látku máš pevně v ruce. Jen si zopakuj případné slabší kategorie.';
-  } else if (pct >= 75) {
-    msg = 'Dobrý výkon.';
-    sub = 'Solidní základ — projdi si kategorie pod 80 % ještě jednou.';
-  } else if (pct >= 55) {
-    msg = 'Solidní základ.';
-    sub = 'Projdi si ještě jednou slabší kategorie a zopakuj kvíz.';
-  } else {
-    msg = 'Je co zlepšovat.';
-    sub = 'Doporučuji projít studijní materiály a zkusit kvíz znovu.';
-  }
-  document.getElementById('result-msg').textContent = msg;
-  document.getElementById('result-sub').textContent = sub;
-
-  const catDiv = document.getElementById('cat-results');
-  catDiv.innerHTML = '<div style="font-size:0.8rem;color:var(--muted);margin-bottom:12px;letter-spacing:0.05em;text-transform:uppercase">Výsledky podle kategorií</div>';
-  Object.entries(catScores).forEach(([cat, s]) => {
-    const p = Math.round((s.right / s.total) * 100);
-    catDiv.innerHTML += `
-      <div class="cat-result-row">
-        <span class="cat-result-name">${cat}</span>
-        <div class="cat-mini-bar"><div class="cat-mini-fill" style="width:${p}%"></div></div>
-        <span class="cat-result-score">${s.right}/${s.total} (${p}%)</span>
-      </div>`;
-  });
-}
+// Start
+buildQuiz();
 </script>
 </body>
 </html>
