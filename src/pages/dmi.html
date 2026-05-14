@@ -2,249 +2,455 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Mining & SPSS Modeler – Zkouškový kvíz</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Data Mining & SPSS Modeler – Kvíz</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d1117;
-    --surface: #161b22;
-    --surface2: #1c2330;
-    --border: #30363d;
-    --accent: #58a6ff;
-    --accent2: #3fb950;
-    --warn: #f85149;
-    --gold: #e3b341;
-    --text: #e6edf3;
-    --muted: #8b949e;
-    --radius: 8px;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #0a0c10;
+  --card:     #12161e;
+  --card2:    #181d28;
+  --border:   #252d3d;
+  --border2:  #2e3a50;
+  --blue:     #4d9fff;
+  --blue-dim: rgba(77,159,255,.12);
+  --green:    #3dd68c;
+  --green-dim:rgba(61,214,140,.12);
+  --red:      #ff5f5f;
+  --red-dim:  rgba(255,95,95,.12);
+  --amber:    #f4a94e;
+  --amber-dim:rgba(244,169,78,.12);
+  --text:     #e2e8f4;
+  --muted:    #6b7897;
+  --muted2:   #3f4d66;
+  --radius:   14px;
+  --r-sm:     8px;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  /* ── Header ── */
-  header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 24px 32px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--accent);
-    background: rgba(88,166,255,.1);
-    border: 1px solid rgba(88,166,255,.3);
-    padding: 4px 10px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
-  header h1 { font-size: 18px; font-weight: 600; flex: 1; }
-  .progress-wrap { display: flex; align-items: center; gap: 12px; }
-  .progress-bar {
-    width: 160px; height: 6px;
-    background: var(--border);
-    border-radius: 3px; overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%; background: var(--accent);
-    border-radius: 3px;
-    transition: width .4s ease;
-    width: 0%;
-  }
-  #progress-text { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+/* ── Wrapper ── */
+.shell {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 32px;
+}
 
-  /* ── Layout ── */
-  .container { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
+/* ── Top bar ── */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px 12px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+}
 
-  /* ── Section headings ── */
-  .section-title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-    margin: 40px 0 20px;
-  }
+.chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.chip-blue   { background: var(--blue-dim);  color: var(--blue);  border: 1px solid rgba(77,159,255,.25); }
+.chip-green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(61,214,140,.25); }
+.chip-amber  { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(244,169,78,.25); }
 
-  /* ── Question card ── */
-  .q-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px 24px;
-    margin-bottom: 16px;
-    transition: border-color .2s;
-  }
-  .q-card.answered { border-color: var(--border); }
-  .q-card.correct  { border-color: var(--accent2); background: rgba(63,185,80,.05); }
-  .q-card.wrong    { border-color: var(--warn);    background: rgba(248,81,73,.05); }
+.section-label {
+  font-size: 12px;
+  color: var(--muted);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .q-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px; color: var(--muted);
-    margin-bottom: 6px;
-  }
-  .q-text { font-weight: 600; font-size: 15px; margin-bottom: 16px; }
+.q-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
 
-  .options { display: grid; gap: 8px; }
-  .opt {
-    display: flex; align-items: flex-start; gap: 10px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 10px 14px;
-    cursor: pointer;
-    transition: background .15s, border-color .15s;
-    font-size: 14px;
-  }
-  .opt:hover { background: #1f2937; border-color: var(--accent); }
-  .opt.selected { border-color: var(--accent); background: rgba(88,166,255,.1); }
-  .opt.correct  { border-color: var(--accent2) !important; background: rgba(63,185,80,.15) !important; }
-  .opt.wrong    { border-color: var(--warn)   !important; background: rgba(248,81,73,.12)  !important; }
-  .opt.reveal-correct { border-color: var(--accent2) !important; background: rgba(63,185,80,.08) !important; }
+/* ── Progress ── */
+.prog-bar {
+  height: 3px;
+  background: var(--border);
+  position: sticky;
+  top: 57px;
+  z-index: 9;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+}
 
-  .opt-letter {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px; font-weight: 600;
-    min-width: 22px; height: 22px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 4px;
-    background: var(--border); color: var(--muted);
-    flex-shrink: 0; margin-top: 1px;
-  }
-  .opt.selected .opt-letter { background: var(--accent); color: #000; }
-  .opt.correct  .opt-letter { background: var(--accent2); color: #000; }
-  .opt.wrong    .opt-letter { background: var(--warn);    color: #fff; }
-  .opt.reveal-correct .opt-letter { background: var(--accent2); color: #000; }
+/* ── Question area ── */
+.q-area {
+  flex: 1;
+  padding: 24px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
-  .feedback {
-    display: none;
-    margin-top: 12px;
-    font-size: 13px;
-    padding: 10px 14px;
-    border-radius: 6px;
-    line-height: 1.5;
-  }
-  .feedback.show { display: block; }
-  .feedback.ok  { background: rgba(63,185,80,.12);  border-left: 3px solid var(--accent2); color: #7ee787; }
-  .feedback.err { background: rgba(248,81,73,.12);  border-left: 3px solid var(--warn);    color: #ff7b72; }
+.q-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text);
+}
 
-  /* ── Results panel ── */
-  #results {
-    display: none;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 36px;
-    text-align: center;
-    margin-top: 40px;
-  }
-  #results.show { display: block; }
-  .score-big {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 64px; font-weight: 600;
-    line-height: 1;
-  }
-  .score-big.pass { color: var(--accent2); }
-  .score-big.fail { color: var(--warn); }
-  .score-label { color: var(--muted); margin-top: 8px; font-size: 14px; }
-  .score-msg { margin-top: 20px; font-size: 16px; font-weight: 600; }
+/* ── Options ── */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-  #results-btn {
-    margin-top: 28px;
-    background: var(--accent);
-    color: #000;
-    border: none; border-radius: 6px;
-    padding: 12px 28px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 15px; font-weight: 600;
-    cursor: pointer;
-    transition: opacity .2s;
-  }
-  #results-btn:hover { opacity: .85; }
+.opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.opt:active { transform: scale(.98); }
+.opt:hover:not(.locked) {
+  border-color: var(--border2);
+  background: var(--card2);
+}
+.opt.locked { cursor: default; }
 
-  /* ── Sticky submit ── */
-  .submit-bar {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background: rgba(13,17,23,.92);
-    backdrop-filter: blur(12px);
-    border-top: 1px solid var(--border);
-    padding: 14px 32px;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 16px;
-  }
-  .unanswered-note { color: var(--muted); font-size: 13px; }
-  #submit-btn {
-    background: var(--accent2);
-    color: #000;
-    border: none; border-radius: 6px;
-    padding: 10px 26px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 14px; font-weight: 700;
-    cursor: pointer; transition: opacity .2s;
-  }
-  #submit-btn:hover { opacity: .85; }
-  #submit-btn:disabled { opacity: .4; cursor: not-allowed; }
+.opt-letter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--border);
+  color: var(--muted);
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: background .15s, color .15s;
+}
+.opt-text {
+  font-size: 15px;
+  line-height: 1.45;
+  padding-top: 2px;
+}
 
-  .tag {
-    display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px; font-weight: 600;
-    padding: 2px 7px; border-radius: 20px;
-    margin-bottom: 6px;
-  }
-  .tag-concept { background: rgba(88,166,255,.15); color: var(--accent); border: 1px solid rgba(88,166,255,.3); }
-  .tag-modeler { background: rgba(63,185,80,.15);  color: var(--accent2); border: 1px solid rgba(63,185,80,.3); }
-  .tag-algo    { background: rgba(227,179,65,.15);  color: var(--gold);   border: 1px solid rgba(227,179,65,.3); }
+/* States */
+.opt.selected:not(.reveal) {
+  border-color: var(--blue);
+  background: var(--blue-dim);
+}
+.opt.selected:not(.reveal) .opt-letter {
+  background: var(--blue);
+  color: #000;
+}
+.opt.correct {
+  border-color: var(--green) !important;
+  background: var(--green-dim) !important;
+}
+.opt.correct .opt-letter {
+  background: var(--green) !important;
+  color: #000 !important;
+}
+.opt.wrong {
+  border-color: var(--red) !important;
+  background: var(--red-dim) !important;
+}
+.opt.wrong .opt-letter {
+  background: var(--red) !important;
+  color: #fff !important;
+}
+.opt.reveal-correct {
+  border-color: rgba(61,214,140,.4) !important;
+  background: rgba(61,214,140,.05) !important;
+}
+.opt.reveal-correct .opt-letter {
+  background: rgba(61,214,140,.3) !important;
+  color: var(--green) !important;
+}
+
+/* ── Feedback card ── */
+.feedback {
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.55;
+  display: none;
+  animation: slideUp .25s ease;
+}
+.feedback.show { display: block; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.feedback.ok {
+  background: var(--green-dim);
+  border: 1.5px solid rgba(61,214,140,.3);
+  color: #7efbb8;
+}
+.feedback.err {
+  background: var(--red-dim);
+  border: 1.5px solid rgba(255,95,95,.3);
+  color: #ff9a9a;
+}
+
+.fb-head {
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.fb-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.ok  .fb-icon { background: var(--green); color: #000; }
+.err .fb-icon { background: var(--red);   color: #fff; }
+
+.fb-exp {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-top: 4px;
+  color: inherit;
+  opacity: .88;
+}
+
+/* ── Next button ── */
+.next-wrap {
+  padding: 0 20px;
+  margin-top: 4px;
+}
+
+.btn-next {
+  width: 100%;
+  background: var(--blue);
+  color: #000;
+  border: none;
+  border-radius: var(--radius);
+  padding: 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-next:active { transform: scale(.97); }
+.btn-next.show { display: flex; }
+.btn-next.finish { background: var(--green); }
+
+.arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ── Results ── */
+.results {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 24px;
+  text-align: center;
+}
+.results.show { display: flex; }
+
+.score-ring {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--border);
+  position: relative;
+}
+.score-ring svg {
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 138px; height: 138px;
+}
+.score-ring circle {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.ring-track  { stroke: var(--border); }
+.ring-fill   { stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 1s ease; }
+.ring-fill.pass { stroke: var(--green); }
+.ring-fill.fail { stroke: var(--red); }
+
+.score-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+.score-pct.pass { color: var(--green); }
+.score-pct.fail { color: var(--red); }
+
+.score-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.score-msg {
+  font-size: 18px;
+  font-weight: 500;
+  max-width: 300px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-family: 'JetBrains Mono', monospace;
+}
+.stat-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+}
+.stat-val.green { color: var(--green); }
+.stat-val.red   { color: var(--red); }
+
+.btn-restart {
+  width: 100%;
+  background: var(--card);
+  border: 1.5px solid var(--border2);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-restart:hover { background: var(--card2); }
 </style>
 </head>
 <body>
+<div class="shell">
 
-<header>
-  <div class="logo">SPSS MODELER</div>
-  <h1>Data Mining — zkouškový kvíz</h1>
-  <div class="progress-wrap">
-    <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
-    <span id="progress-text">0 / 0</span>
+  <div class="topbar" id="topbar">
+    <span class="chip chip-blue" id="tag-chip">POJMY</span>
+    <span class="section-label" id="section-label">—</span>
+    <span class="q-counter" id="q-counter">1 / 0</span>
   </div>
-</header>
+  <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
 
-<div class="container" id="quiz-container">
-  <!-- generated by JS -->
-  <div id="results">
-    <div class="score-big" id="score-big">0%</div>
-    <div class="score-label" id="score-label"></div>
+  <div class="q-area" id="q-area">
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback">
+      <div class="fb-head"><span class="fb-icon" id="fb-icon"></span><span id="fb-head-txt"></span></div>
+      <div class="fb-exp" id="fb-exp"></div>
+    </div>
+  </div>
+
+  <div class="next-wrap">
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">
+      <span id="btn-label">Další otázka</span>
+      <span class="arrow">→</span>
+    </button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="score-ring" id="score-ring">
+      <svg viewBox="0 0 138 138"><circle class="ring-track" cx="69" cy="69" r="65"/><circle class="ring-fill" id="ring-fill" cx="69" cy="69" r="65" transform="rotate(-90 69 69)"/></svg>
+      <div class="score-pct" id="score-pct">0%</div>
+      <div class="score-sub" id="score-sub">0 / 0</div>
+    </div>
     <div class="score-msg" id="score-msg"></div>
-    <button id="results-btn" onclick="restartQuiz()">Zkusit znovu (přemíchat pořadí)</button>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Správně</span>
+        <span class="stat-val green" id="r-correct">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Špatně</span>
+        <span class="stat-val red" id="r-wrong">0</span>
+      </div>
+    </div>
+    <button class="btn-restart" onclick="startQuiz()">↺ Zkusit znovu (přemíchat)</button>
   </div>
-</div>
 
-<div class="submit-bar">
-  <span class="unanswered-note" id="unanswered-note">Zodpověz všechny otázky</span>
-  <button id="submit-btn" onclick="submitQuiz()" disabled>Vyhodnotit</button>
 </div>
 
 <script>
 const ALL_QUESTIONS = [
 
-/* ═══════════════ ZÁKLADNÍ POJMY ═══════════════ */
 {s:"Základní pojmy DM", tag:"concept",
  q:"Co je datamining?",
  a:["Proces dolování znalostí z velkého množství dat pomocí statistických a algoritmických metod.",
@@ -301,7 +507,6 @@ const ALL_QUESTIONS = [
     "Ano – modelování je jediná smysluplná část celého DM procesu."],
  c:0, exp:"Dle CRISP-DM je modelování jen jedna z 6 fází. DM zahrnuje datové porozumění, přípravu, nasazení atd."},
 
-/* ═══════════════ CRISP-DM ═══════════════ */
 {s:"Metodologie CRISP-DM", tag:"concept",
  q:"Kdy a proč vznikla metodologie CRISP-DM a kdo stál u jejího vzniku?",
  a:["Vznikla v roce 1996, iniciovala ji konsorcium firem SPSS, NCR, DaimlerChrysler a OHRA – potřeba standardního procesu pro DM projekty.",
@@ -342,7 +547,6 @@ const ALL_QUESTIONS = [
     "Statistika je automatizovaná, DM vyžaduje ruční analýzu každého záznamu."],
  c:0, exp:"DM: discovery-driven, prediktivní, velká data. Statistika: hypotézy, kauzalita, matematické odvozování."},
 
-/* ═══════════════ PROMĚNNÉ ═══════════════ */
 {s:"Typy proměnných a úloh", tag:"concept",
  q:"Co je vstupní proměnná (prediktor, nezávislá proměnná)?",
  a:["Proměnná, která vstupuje do modelu jako vstup a slouží k předpovídání výstupní proměnné.",
@@ -399,7 +603,6 @@ const ALL_QUESTIONS = [
     "Hledání vztahů mezi položkami v transakcích; příklad: analýza košíku, algoritmus: Apriori."],
  c:0, exp:"Clustering = unsupervised. K-Means, Two Step, Kohonen. Výstup: přiřazení do shluku (cluster ID)."},
 
-/* ═══════════════ SPSS MODELER – UZLY ═══════════════ */
 {s:"SPSS Modeler – uzly", tag:"modeler",
  q:"K čemu slouží uzel TYPE v SPSS Modeler?",
  a:["Definuje role a měrné úrovně proměnných (input/target/ID, nominal/scale/flag...).",
@@ -414,7 +617,7 @@ const ALL_QUESTIONS = [
     "Filtruje záznamy podle zadané podmínky (např. věk > 30).",
     "Sloučí dva datové toky horizontálně (přidání sloupců).",
     "Agreguje záznamy a počítá průměry nebo součty."],
- c:0, exp:"Partition: přidá sloupec s rozdělením na Train/Test/(Validation). Nastavuje se jako %)."},
+ c:0, exp:"Partition: přidá sloupec s rozdělením na Train/Test/(Validation). Nastavuje se jako %."},
 
 {s:"SPSS Modeler – uzly", tag:"modeler",
  q:"K čemu slouží uzel BALANCE?",
@@ -560,7 +763,6 @@ const ALL_QUESTIONS = [
     "Uzel Balance nastavený na generování nových záznamů."],
  c:0, exp:"User Input: ruční zadání testovacích dat. Simulation Generate: generuje data dle distribučních parametrů."},
 
-/* ═══════════════ LINEÁRNÍ REGRESE & C&RT ═══════════════ */
 {s:"Modely a hodnocení kvality", tag:"algo",
  q:"K jakým typům DM úloh se hodí algoritmus C&RT?",
  a:["Klasifikace (kategoriální target) i regrese (numerický target) – jde o rozhodovací strom.",
@@ -601,7 +803,6 @@ const ALL_QUESTIONS = [
     "Bylo nutné log-transformovat všechny proměnné – lineární regrese vyžaduje logaritmické škálování."],
  c:0, exp:"Dummy coding: nominální proměnné → sada binárních proměnných (SetToFlag nebo Reclassify). Regrese neumí přímo pracovat s kategoriemi."},
 
-/* ═══════════════ ROZHODOVACÍ STROMY ═══════════════ */
 {s:"Rozhodovací stromy", tag:"algo",
  q:"Jaké TYPY klasifikačních stromů znáte? Které jste použili v Modeleru?",
  a:["C&RT, C5.0, CHAID, QUEST – v Modeleru běžně C&RT a CHAID.",
@@ -659,14 +860,13 @@ const ALL_QUESTIONS = [
  c:0, exp:"Boosting: AdaBoost, Gradient Boosting, XGBoost. Iterativně opravuje chyby – silný ensemble ze slabých learnerů."},
 
 {s:"Rozhodovací stromy", tag:"algo",
- q:"Jaké DVě proměnné přidávají klasifikační stromy do datové matice v Modeleru? Vysvětlete jejich význam.",
+ q:"Jaké DVě proměnné přidávají klasifikační stromy do datové matice v Modeleru?",
  a:["$R-<target>: predikovaná třída (label), $RC-<target>: spolehlivost predikce (confidence/pravděpodobnost).",
     "$MEAN-<target>: průměr predikované hodnoty, $STD-<target>: směrodatná odchylka predikce.",
     "$SEGMENT: číslo listu stromu, $DEPTH: hloubka uzlu, na který byl záznam přiřazen.",
     "$TRAIN: označení trénovacího záznamu, $TEST: označení testovacího záznamu."],
  c:0, exp:"$R-target = predicted class. $RC-target = confidence (pravděpodobnost dané třídy). Analogicky $XR/$XRC u jiných modelů."},
 
-/* ═══════════════ MATICE ZÁMĚN & HODNOCENÍ ═══════════════ */
 {s:"Matice záměn a hodnocení modelů", tag:"algo",
  q:"Co je a k čemu se používá MATICE ZÁMĚN (Confusion Matrix)?",
  a:["Tabulka srovnávající skutečné třídy s predikovanými třídami – umožňuje hodnotit přesnost klasifikátoru.",
@@ -747,7 +947,6 @@ const ALL_QUESTIONS = [
     "Nejlepší model je ten, jehož křivka zisku protíná základní linii na hodnotě 50 %."],
  c:0, exp:"Gain chart: ideální model = strmá křivka. Baseline (náhodný model) = diagonála. Čím výše nad diagonálou, tím lépe."},
 
-/* ═══════════════ ASOCIAČNÍ PRAVIDLA ═══════════════ */
 {s:"Asociační pravidla", tag:"algo",
  q:"Co jsou TRANSAKČNÍ DATA?",
  a:["Data popisující sady položek zakoupených (nebo jinak spojených) v rámci jedné transakce (nákupu, návštěvy...).",
@@ -796,7 +995,6 @@ const ALL_QUESTIONS = [
     "Linear Regression a Logistic Regression – generují lineární asociační pravidla."],
  c:0, exp:"Apriori: klasický basket analysis. GRI (General Rule Induction): rychlejší, zvládne i tabulárními daty (ne jen transakcemi)."},
 
-/* ═══════════════ SHLUKOVÁ ANALÝZA ═══════════════ */
 {s:"Shluková analýza", tag:"algo",
  q:"Co je shluková analýza a k čemu se používá?",
  a:["Unsupervised metoda rozdělující záznamy do skupin (shluků) tak, aby záznamy ve skupině byly si navzájem podobné a od ostatních skupin odlišné.",
@@ -885,7 +1083,6 @@ const ALL_QUESTIONS = [
     "Záznamy přiřazené do shluku č. 1 byly automaticky označeny jako anomálie."],
  c:0, exp:"Anomaly detection: záznamy s highest distance to cluster center jsou podezřelé. Modeler má i Anomaly Detection uzel."},
 
-/* ═══════════════ NÁSTROJE & JAZYKY ═══════════════ */
 {s:"Nástroje a jazyky", tag:"concept",
  q:"Jaké programovací jazyky jsou nejpopulárnější pro DM, ML a AI?",
  a:["Python a R (Python dominuje – scikit-learn, TensorFlow, PyTorch; R: statistická analýza).",
@@ -903,14 +1100,13 @@ const ALL_QUESTIONS = [
  c:0, exp:"DM toolkity: IBM SPSS Modeler, RapidMiner, KNIME (open source), Weka, SAS EM, Azure ML Studio."},
 
 {s:"Nástroje a jazyky", tag:"concept",
- q:"Kde se všude dá DM uplatnit? (Uveďte oblasti)",
+ q:"Kde se všude dá DM uplatnit?",
  a:["Finance (fraud, credit), CRM (churn, segmentace), medicína (diagnóza), e-commerce (doporučení), výroba (prediktivní údržba), telco, pojišťovnictví.",
     "Výhradně v bankovnictví a pojišťovnictví – ostatní odvětví DM nevyužívají.",
     "Pouze v oblasti e-commerce a sociálních sítí pro analýzu uživatelského chování.",
     "DM se uplatňuje jen ve výzkumu a akademické sféře, ne v komerční praxi."],
  c:0, exp:"DM je průřezová disciplína: finance, zdravotnictví, retail, telco, výroba, HR, sport, vláda..."},
 
-/* ═══════════════ TRÉNOVACÍ / TESTOVACÍ MNOŽINA ═══════════════ */
 {s:"Trénovací a testovací data", tag:"modeler",
  q:"Co je TRÉNOVACÍ a TESTOVACÍ množina dat?",
  a:["Trénovací: data pro učení modelu. Testovací: nezávislá data pro ověření generalizace modelu na neviděných datech.",
@@ -927,9 +1123,20 @@ const ALL_QUESTIONS = [
     "Uzlem Balance s nastavením 70 % pro trénovací a 30 % pro testovací záznamy."],
  c:0, exp:"Partition uzel: standardní způsob. Přidá pole $Partition. Hodnoty: 1_Training, 2_Testing (3_Validation volitelně)."},
 
-]; // end ALL_QUESTIONS
+];
 
-// ── Shuffle helper ──
+const LETTERS = ['A','B','C','D'];
+const TAG_CFG = {
+  concept: { label:'POJMY',    cls:'chip-blue'  },
+  modeler: { label:'MODELER',  cls:'chip-green' },
+  algo:    { label:'ALGORITMY',cls:'chip-amber' }
+};
+
+let questions = [];
+let current   = 0;
+let correct   = 0;
+let wrong     = 0;
+
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -938,178 +1145,146 @@ function shuffle(arr) {
   return arr;
 }
 
-// ── Build quiz ──
-let questions = [];
-let answered  = 0;
-
-function buildQuiz() {
+function startQuiz() {
   questions = ALL_QUESTIONS.map(q => {
-    // Shuffle options and track new correct index
-    const indices = [0, 1, 2, 3];
-    shuffle(indices);
-    const newAnswers = indices.map(i => q.a[i]);
-    const newCorrect = indices.indexOf(q.c);
-    return { ...q, a: newAnswers, c: newCorrect, _orig: q };
+    const idx = [0,1,2,3];
+    shuffle(idx);
+    return {
+      ...q,
+      a: idx.map(i => q.a[i]),
+      c: idx.indexOf(q.c)
+    };
   });
+  shuffle(questions);
+  current = 0; correct = 0; wrong = 0;
 
-  // Group by section
-  const sections = {};
-  questions.forEach((q, i) => {
-    if (!sections[q.s]) sections[q.s] = [];
-    sections[q.s].push({ q, idx: i });
-  });
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('q-area').style.display = '';
+  document.getElementById('topbar').style.display = '';
+  document.querySelector('.prog-bar').style.display = '';
+  document.getElementById('next-wrap') && (document.getElementById('next-wrap') || document.querySelector('.next-wrap')).style && (document.querySelector('.next-wrap').style.display = '');
 
-  const container = document.getElementById('quiz-container');
-  const resultsEl = document.getElementById('results');
-
-  // Clear old content (keep results div)
-  Array.from(container.children).forEach(c => {
-    if (c.id !== 'results') c.remove();
-  });
-
-  answered = 0;
-  updateProgress();
-
-  Object.entries(sections).forEach(([secName, items]) => {
-    const sec = document.createElement('div');
-    sec.innerHTML = `<div class="section-title">${secName}</div>`;
-    items.forEach(({ q, idx }) => {
-      sec.appendChild(buildCard(q, idx));
-    });
-    container.insertBefore(sec, resultsEl);
-  });
-
-  document.getElementById('submit-btn').disabled = true;
-  document.getElementById('unanswered-note').textContent = `Zodpověz všechny otázky (0 / ${questions.length})`;
-  resultsEl.classList.remove('show');
-  updateProgress();
+  renderQuestion();
 }
 
-const LETTERS = ['A', 'B', 'C', 'D'];
+function renderQuestion() {
+  const q      = questions[current];
+  const total  = questions.length;
+  const pct    = (current / total) * 100;
+  const tc     = TAG_CFG[q.tag] || TAG_CFG.concept;
 
-function buildCard(q, idx) {
-  const card = document.createElement('div');
-  card.className = 'q-card';
-  card.id = `q-${idx}`;
-  const tagClass = q.tag === 'modeler' ? 'tag-modeler' : q.tag === 'algo' ? 'tag-algo' : 'tag-concept';
-  const tagLabel = q.tag === 'modeler' ? 'MODELER' : q.tag === 'algo' ? 'ALGORITMY' : 'POJMY';
-  card.innerHTML = `
-    <div class="q-num">
-      <span class="tag ${tagClass}">${tagLabel}</span>
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('q-counter').textContent = (current + 1) + ' / ' + total;
+
+  const chip = document.getElementById('tag-chip');
+  chip.textContent  = tc.label;
+  chip.className    = 'chip ' + tc.cls;
+  document.getElementById('section-label').textContent = q.s;
+
+  document.getElementById('q-text').textContent = q.q;
+
+  const opts = document.getElementById('options');
+  opts.innerHTML = q.a.map((ans, i) => `
+    <div class="opt" id="opt-${i}" onclick="selectOpt(${i})">
+      <span class="opt-letter">${LETTERS[i]}</span>
+      <span class="opt-text">${ans}</span>
     </div>
-    <div class="q-text">${q.q}</div>
-    <div class="options" id="opts-${idx}">
-      ${q.a.map((ans, ai) => `
-        <div class="opt" id="opt-${idx}-${ai}" onclick="selectOpt(${idx},${ai})">
-          <span class="opt-letter">${LETTERS[ai]}</span>
-          <span>${ans}</span>
-        </div>
-      `).join('')}
-    </div>
-    <div class="feedback" id="fb-${idx}"></div>
-  `;
-  return card;
+  `).join('');
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+
+  const btn = document.getElementById('btn-next');
+  btn.classList.remove('show','finish');
+  const isLast = current === total - 1;
+  document.getElementById('btn-label').textContent = isLast ? 'Zobrazit výsledky' : 'Další otázka';
+  if (isLast) btn.classList.add('finish');
 }
 
-function selectOpt(qIdx, optIdx) {
-  const q = questions[qIdx];
+function selectOpt(chosen) {
+  const q = questions[current];
   if (q._answered) return;
+  q._answered = true;
 
-  // Deselect previous
-  q.a.forEach((_, ai) => {
-    document.getElementById(`opt-${qIdx}-${ai}`).classList.remove('selected');
-  });
-  document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add('selected');
-  q._selected = optIdx;
+  const isCorrect = chosen === q.c;
+  if (isCorrect) correct++; else wrong++;
 
-  if (!q._answered) {
-    answered++;
-    q._answered = true;
-    updateProgress();
-    checkSubmit();
-  }
-}
-
-function updateProgress() {
-  const total = questions.length;
-  const pct = total > 0 ? (answered / total * 100) : 0;
-  document.getElementById('prog').style.width = pct + '%';
-  document.getElementById('progress-text').textContent = `${answered} / ${total}`;
-  document.getElementById('unanswered-note').textContent =
-    answered === total
-      ? 'Všechny otázky zodpovězeny ✓'
-      : `Zodpověz všechny otázky (${answered} / ${total})`;
-}
-
-function checkSubmit() {
-  const allDone = questions.every(q => q._answered !== undefined);
-  document.getElementById('submit-btn').disabled = !allDone;
-}
-
-function submitQuiz() {
-  let correct = 0;
-  questions.forEach((q, idx) => {
-    const sel = q._selected;
-    const card = document.getElementById(`q-${idx}`);
-    const fb   = document.getElementById(`fb-${idx}`);
-
-    // Mark options
-    q.a.forEach((_, ai) => {
-      const opt = document.getElementById(`opt-${idx}-${ai}`);
-      opt.style.cursor = 'default';
-      if (ai === q.c) opt.classList.add('reveal-correct');
-    });
-
-    const selOpt = document.getElementById(`opt-${idx}-${sel}`);
-    if (sel === q.c) {
-      correct++;
-      selOpt.classList.add('correct');
-      selOpt.classList.remove('reveal-correct');
-      card.classList.add('correct');
-      fb.className = 'feedback ok show';
-      fb.textContent = '✓ Správně! ' + (q.exp || '');
-    } else {
-      selOpt.classList.add('wrong');
-      card.classList.add('wrong');
-      fb.className = 'feedback err show';
-      fb.textContent = '✗ Špatně. ' + (q.exp || '');
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById('opt-' + i);
+    if (!el) continue;
+    el.classList.add('locked');
+    if (i === q.c) {
+      el.classList.add(chosen === q.c ? 'correct' : 'reveal-correct');
     }
-  });
-
-  const total = questions.length;
-  const pct = Math.round(correct / total * 100);
-  const resultsEl = document.getElementById('results');
-  const scoreBig  = document.getElementById('score-big');
-  const scoreLabel= document.getElementById('score-label');
-  const scoreMsg  = document.getElementById('score-msg');
-
-  scoreBig.textContent = pct + '%';
-  scoreLabel.textContent = `${correct} správně z ${total} otázek`;
-
-  if (pct >= 75) {
-    scoreBig.className = 'score-big pass';
-    scoreMsg.textContent = pct >= 90
-      ? '🏆 Výborně! Jsi připraven na test.'
-      : '✅ Dobrý výsledek! Ještě trochu zopakuj a projdeš.';
-  } else {
-    scoreBig.className = 'score-big fail';
-    scoreMsg.textContent = pct >= 50
-      ? '⚠️ Taktak. Zaměř se na červeně označené otázky.'
-      : '❌ Potřebuješ ještě procvičit. Zkus to znovu!';
+    if (i === chosen && !isCorrect) el.classList.add('wrong');
   }
 
-  resultsEl.classList.add('show');
-  document.getElementById('submit-btn').disabled = true;
-  resultsEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback ' + (isCorrect ? 'ok' : 'err') + ' show';
+  document.getElementById('fb-icon').textContent = isCorrect ? '✓' : '✗';
+  document.getElementById('fb-head-txt').textContent = isCorrect ? 'Správně!' : 'Špatně – správná odpověď je zvýrazněna výše.';
+  document.getElementById('fb-exp').textContent = q.exp || '';
+
+  document.getElementById('btn-next').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('btn-next').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }, 100);
 }
 
-function restartQuiz() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  setTimeout(buildQuiz, 300);
+function nextQuestion() {
+  current++;
+  if (current >= questions.length) {
+    showResults();
+    return;
+  }
+  questions[current]._answered = false;
+  document.getElementById('q-area').scrollTop = 0;
+  window.scrollTo({ top: 0, behavior:'smooth' });
+  renderQuestion();
 }
 
-// Start
-buildQuiz();
+function showResults() {
+  document.getElementById('q-area').style.display = 'none';
+  document.querySelector('.prog-bar').style.display = 'none';
+  document.querySelector('.next-wrap').style.display = 'none';
+  document.getElementById('topbar').style.display = 'none';
+
+  const total = questions.length;
+  const pct   = Math.round(correct / total * 100);
+  const pass  = pct >= 70;
+
+  const pctEl = document.getElementById('score-pct');
+  pctEl.textContent = pct + '%';
+  pctEl.className   = 'score-pct ' + (pass ? 'pass' : 'fail');
+
+  document.getElementById('score-sub').textContent = correct + ' správně z ' + total;
+  document.getElementById('r-correct').textContent = correct;
+  document.getElementById('r-wrong').textContent   = wrong;
+
+  const msgs = [
+    [90, '🏆 Výborně! Jsi připraven na zkoušku.'],
+    [70, '✅ Dobrý výsledek! Ještě trochu zopakuj.'],
+    [50, '⚠️ Taktak. Zaměř se na chyby a opakuj.'],
+    [0,  '❌ Potřebuješ procvičit. Zkus to znovu!']
+  ];
+  document.getElementById('score-msg').textContent = (msgs.find(([t]) => pct >= t) || msgs[3])[1];
+
+  const circumference = 2 * Math.PI * 65;
+  const ring = document.getElementById('ring-fill');
+  ring.className = 'ring-fill ' + (pass ? 'pass' : 'fail');
+  ring.style.strokeDashoffset = circumference;
+  ring.style.strokeDasharray  = circumference;
+
+  const res = document.getElementById('results');
+  res.classList.add('show');
+  window.scrollTo({ top: 0, behavior:'smooth' });
+
+  setTimeout(() => {
+    ring.style.strokeDashoffset = circumference * (1 - pct / 100);
+  }, 200);
+}
+
+document.addEventListener('DOMContentLoaded', startQuiz);
 </script>
 </body>
 </html>
